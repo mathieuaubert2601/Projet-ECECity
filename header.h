@@ -11,5 +11,6 @@
 #include <stdlib.h>
 #include "time.h"
 
+void initialisationAllegro();
 
 #endif //PROJET_ECECITY_HEADER_H
