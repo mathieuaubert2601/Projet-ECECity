@@ -11,6 +11,9 @@
 #include <stdlib.h>
 #include "time.h"
 
+//Prototype des fonctions
 void initialisationAllegro();
+void AffichageBouton(BITMAP* bouton,BITMAP* boutonInv, BITMAP* page,int sourcex,int sourcey,int destx,int desty,int longueur, int hauteur);
+void menuJeu(BITMAP* bmpAffichage);
 
 #endif //PROJET_ECECITY_HEADER_H
