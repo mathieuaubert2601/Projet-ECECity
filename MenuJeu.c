@@ -60,3 +60,9 @@ void actionChoixMenu(int choixDuMenu)
         exit(0);
     }
 }
+
+//Choix du mode de jeu
+int choixModeJeu(BITMAP* bmpAfficher)
+{
+    //Déclaration des variables
+}
