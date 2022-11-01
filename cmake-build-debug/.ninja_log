@@ -1,18 +1,8 @@
 # ninja log v5
-4	170	6890059854708457	CMakeFiles/Projet_ECECity.dir/main.c.obj	49254d21c297351e
-171	417	6890059857122883	Projet_ECECity.exe	8393cdd2e9749dea
-9	255	6890049271936770	CMakeFiles/Projet_ECECity.dir/init_allegro.c.obj	78e03f514623a662
-2	219	6890069447505253	build.ninja	e1d1b8286e764da2
-19	286	6890049272327192	CMakeFiles/Projet_ECECity.dir/MenuJeu.c.obj	f0a0808f762083e3
-23	275	6890049272188176	CMakeFiles/Projet_ECECity.dir/gestionBouton.c.obj	93badb13844ce00c
-9	192	6890055675188872	CMakeFiles/Projet_ECECity.dir/map.c.obj	8e40af2641e82a7
-10	246	6890069473103893	CMakeFiles/Projet_ECECity.dir/init_allegro.c.obj	78e03f514623a662
-4	251	6890069473225714	CMakeFiles/Projet_ECECity.dir/main.c.obj	49254d21c297351e
-18	263	6890069473356202	CMakeFiles/Projet_ECECity.dir/gestionBouton.c.obj	93badb13844ce00c
-22	266	6890069473396740	CMakeFiles/Projet_ECECity.dir/map.c.obj	8e40af2641e82a7
-4	182	6890070201626385	CMakeFiles/Projet_ECECity.dir/MenuJeu.c.obj	f0a0808f762083e3
-183	374	6890070203519320	Projet_ECECity.exe	8393cdd2e9749dea
-13	670	6890086539594670	CMakeFiles/Projet_ECECity.dir/map.c.obj	8e40af2641e82a7
 6	672	6890086539584730	CMakeFiles/Projet_ECECity.dir/main.c.obj	49254d21c297351e
-18	676	6890086539625295	CMakeFiles/Projet_ECECity.dir/MenuJeu.c.obj	f0a0808f762083e3
 676	1091	6890086543746413	Projet_ECECity.exe	8393cdd2e9749dea
+10	246	6890069473103893	CMakeFiles/Projet_ECECity.dir/init_allegro.c.obj	78e03f514623a662
+2	219	6890272496181930	build.ninja	e1d1b8286e764da2
+18	676	6890086539625295	CMakeFiles/Projet_ECECity.dir/MenuJeu.c.obj	f0a0808f762083e3
+18	263	6890069473356202	CMakeFiles/Projet_ECECity.dir/gestionBouton.c.obj	93badb13844ce00c
+13	670	6890086539594670	CMakeFiles/Projet_ECECity.dir/map.c.obj	8e40af2641e82a7
