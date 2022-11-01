@@ -18,5 +18,8 @@ void AffichageBouton(BITMAP* bouton,BITMAP* boutonInv, BITMAP* page,int sourcex,
 int menuJeu(BITMAP* bmpAffichage);
 void actionChoixMenu(int choixDuMenu);
 
+//Fonctions pour la map
+void creer_map(BITMAP* page);
+
 
 #endif //PROJET_ECECITY_HEADER_H

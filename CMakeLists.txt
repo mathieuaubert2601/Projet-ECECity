@@ -13,7 +13,7 @@ add_executable(Projet_ECECity
         main.c
         init_allegro.c
         MenuJeu.c
-        gestionBouton.c)
+        gestionBouton.c map.c)
 
 
 target_link_libraries(Projet_ECECity -lmingw32 -lalleg44)
