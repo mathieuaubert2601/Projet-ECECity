@@ -16,7 +16,10 @@ void AffichageBouton(BITMAP* bouton,BITMAP* boutonInv, BITMAP* page,int sourcex,
 
 //Fonctions pour le menu
 int menuJeu(BITMAP* bmpAffichage);
-void actionChoixMenu(int choixDuMenu);
+void actionChoixMenu(int choixDuMenu,BITMAP* bmpAffichage);
+int choixModeJeu(BITMAP* bmpAffichage);
 
+//Sauvegarde
+int testSauvegarde();
 
 #endif //PROJET_ECECITY_HEADER_H

@@ -20,7 +20,7 @@ int main()
     while(!key[KEY_ESC])
     {
         choixMenu = menuJeu(page);
-        actionChoixMenu(choixMenu);
+        actionChoixMenu(choixMenu,page);
 
     }
     return 0;
