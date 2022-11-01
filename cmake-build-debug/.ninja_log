@@ -1,0 +1,7 @@
+# ninja log v5
+5	238	6889440035550294	CMakeFiles/Projet_ECECity.dir/main.c.obj	6295be6229f49b20
+114	223	6889447629794127	Projet_ECECity.exe	114c13adb9abe647
+14	240	6889440035577585	CMakeFiles/Projet_ECECity.dir/init_allegro.c.obj	94908d4aacab8f15
+2	219	6889913948127338	build.ninja	e1d1b8286e764da2
+3	116	6889446131444707	CMakeFiles/Projet_ECECity.dir/MenuJeu.c.obj	d7d59fe97f5a3f0d
+3	113	6889447628747577	CMakeFiles/Projet_ECECity.dir/gestionBouton.c.obj	871a0c10b37b0439
