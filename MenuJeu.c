@@ -45,13 +45,13 @@ int menuJeu(BITMAP* bmpAffichage)
 }
 
 //Action en cas de choix
-void actionChoixMenu(int choixDuMenu)
+void actionChoixMenu(int choixDuMenu,BITMAP* bmpAffichage)
 {
     if(choixDuMenu == 1)
     {
-
+        choixModeJeu(bmpAffichage);
     }
-    else if(choixDuMenu == 2)
+    else if(choixDuMenu == 2 && testSauvegarde())
     {
 
     }
@@ -62,7 +62,24 @@ void actionChoixMenu(int choixDuMenu)
 }
 
 //Choix du mode de jeu
-int choixModeJeu(BITMAP* bmpAfficher)
+int choixModeJeu(BITMAP* bmpAffichage)
 {
     //Déclaration des variables
+    int sortie = 0;
+
+    //Déclaration des bitmaps
+    BITMAP* fondMenu = load_bitmap("menuDepart/fond1.bmp",NULL);
+    BITMAP* boutonModeCommuniste = load_bitmap("menuDepart/boutonQuitterPartieInv.bmp",NULL);
+    BITMAP* boutonModeCommunisteInv = load_bitmap("menuDepart/boutonQuitterPartieInv.bmp",NULL);
+    BITMAP* boutonModeCapitaliste = load_bitmap("menuDepart/boutonQuitterPartieInv.bmp",NULL);
+    BITMAP* boutonModeCapitalisteinv = load_bitmap("menuDepart/boutonQuitterPartieInv.bmp",NULL);
+
+    while(sortie == 0 )
+    {
+        //Affichage des bitmaps
+        clear_bitmap(bmpAffichage);
+        blit(fondMenu,bmpAffichage,0,0,0,0,bmpAffichage->w,bmpAffichage->h);
+        show_mouse(bmpAffichage);
+        blit(bmpAffichage,screen,0,0,0,0,1024,768);
+    }
 }
