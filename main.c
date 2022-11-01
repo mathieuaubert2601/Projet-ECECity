@@ -3,22 +3,24 @@
 
 int main()
 {
+    //Initialisation
     initialisationAllegro();
     install_keyboard();
     install_mouse();
     install_sound(DIGI_AUTODETECT,MIDI_AUTODETECT,"A");
     srand(time(NULL));
 
-
+    //Création et déclaration des bitmaps
     BITMAP* page=create_bitmap(1024,768);
+
+    //Déclaration des variables
+    int choixMenu;
 
 
     while(!key[KEY_ESC])
     {
-        clear_bitmap(page);
-        menuJeu(page);
-        show_mouse(page);
-        blit(page,screen,0,0,0,0,1024,768);
+        choixMenu = menuJeu(page);
+        actionChoixMenu(choixMenu);
 
     }
     return 0;

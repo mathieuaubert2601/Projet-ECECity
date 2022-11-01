@@ -14,6 +14,7 @@
 //Prototype des fonctions
 void initialisationAllegro();
 void AffichageBouton(BITMAP* bouton,BITMAP* boutonInv, BITMAP* page,int sourcex,int sourcey,int destx,int desty,int longueur, int hauteur);
-void menuJeu(BITMAP* bmpAffichage);
+int menuJeu(BITMAP* bmpAffichage);
+void actionChoixMenu(int choixDuMenu);
 
 #endif //PROJET_ECECITY_HEADER_H
