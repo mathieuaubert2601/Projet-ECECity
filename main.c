@@ -25,11 +25,11 @@ int main()
     while(!key[KEY_ESC])
     {
         //choixMenu = menuJeu(page);
-        //actionChoixMenu(choixMenu);
-        //creer_map(page);
+        //actionChoixMenu(choixMenu,page);
+       // creer_map(page);
 
-        masked_blit(cases,page,0,0,0,0,77,77);
-        blit(page,screen,0,0,0,0,1024,768);
+        //masked_blit(cases,page,0,0,0,0,77,77);
+        //blit(page,screen,0,0,0,0,1024,768);
 
     }
     return 0;

@@ -10,6 +10,7 @@ int menuJeu(BITMAP* bmpAffichage)
     BITMAP* boutonNouvellePartie = load_bitmap("menuDepart/boutonNouvellePartie.bmp",NULL);
     BITMAP* logoEceCityAvecFond = load_bitmap("menuDepart/logo1.bmp",NULL);
     BITMAP* logoEceCitySansFond = load_bitmap("menuDepart/logo2.bmp",NULL);
+    BITMAP* logoEceCitySansFond2 = load_bitmap("menuDepart/logo3.bmp",NULL);
     BITMAP* boutonNouvellePartieInv = load_bitmap("menuDepart/boutonNouvellePartieInv.bmp",NULL);
     BITMAP* boutonChargerPartie = load_bitmap("menuDepart/boutonChargerPartie.bmp",NULL);
     BITMAP* boutonChargerPartieInv = load_bitmap("menuDepart/boutonChargerPartieInv.bmp",NULL);
@@ -21,7 +22,7 @@ int menuJeu(BITMAP* bmpAffichage)
     {
         clear_bitmap(bmpAffichage);
         blit(fondMenu,bmpAffichage,0,0,0,0,bmpAffichage->w,bmpAffichage->h);
-        masked_blit(logoEceCityAvecFond,bmpAffichage,0,0,0,0,logoEceCityAvecFond->w,logoEceCityAvecFond->h);
+        masked_blit(logoEceCitySansFond2,bmpAffichage,0,0,0,0,logoEceCitySansFond2->w,logoEceCitySansFond2->h);
         AffichageBouton(boutonNouvellePartie,boutonNouvellePartieInv,bmpAffichage,0,0,340,250,boutonNouvellePartie->w ,boutonNouvellePartie->h);
         AffichageBouton(boutonChargerPartie,boutonChargerPartieInv,bmpAffichage,0,0,340,370,boutonChargerPartie->w,boutonChargerPartie->h);
         AffichageBouton(boutonQuitterPartie,boutonQuitterPartieInv,bmpAffichage,0,0,340,490,boutonQuitterPartie->w,boutonQuitterPartie->h);
