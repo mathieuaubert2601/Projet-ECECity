@@ -24,8 +24,8 @@ int main()
 
     while(!key[KEY_ESC])
     {
-        //choixMenu = menuJeu(page);
-        //actionChoixMenu(choixMenu,page);
+        choixMenu = menuJeu(page);
+        actionChoixMenu(choixMenu,page);
        // creer_map(page);
 
         //masked_blit(cases,page,0,0,0,0,77,77);
