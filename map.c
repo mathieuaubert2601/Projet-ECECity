@@ -1,8 +1,4 @@
-//
-// Created by thiba on 01/11/2022.
-//
 #include "header.h"
-
 
 void creer_map(BITMAP* page)
 {
