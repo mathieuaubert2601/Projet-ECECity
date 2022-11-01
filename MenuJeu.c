@@ -45,7 +45,7 @@ int menuJeu(BITMAP* bmpAffichage)
 }
 
 //Action en cas de choix
-void actionChoixMenu(int choixDuMenu,BITMAP* bmpAffichage)
+/*void actionChoixMenu(int choixDuMenu,BITMAP* bmpAffichage)
 {
     if(choixDuMenu == 1)
     {
@@ -59,7 +59,7 @@ void actionChoixMenu(int choixDuMenu,BITMAP* bmpAffichage)
     {
         exit(0);
     }
-}
+}*/
 
 //Choix du mode de jeu
 int choixModeJeu(BITMAP* bmpAffichage)

@@ -14,9 +14,6 @@ int main()
     BITMAP* page=create_bitmap(1024,768);
 
 
-    BITMAP* cases;
-    cases = load_bitmap("map/test_tuile.bmp", NULL);
-
     //Déclaration des variables
     int choixMenu;
 
@@ -26,10 +23,8 @@ int main()
     {
         //choixMenu = menuJeu(page);
         //actionChoixMenu(choixMenu);
-        //creer_map(page);
+        creer_map(page);
 
-        masked_blit(cases,page,0,0,0,0,77,77);
-        blit(page,screen,0,0,0,0,1024,768);
 
     }
     return 0;

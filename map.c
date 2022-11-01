@@ -6,7 +6,7 @@
 
 void creer_map(BITMAP* page)
 {
-    BITMAP* tuile = load_bitmap("map/test_tuile.bmp",NULL);
+    BITMAP* tuile = load_bitmap("map/tuile_test.bmp",NULL);
     for (int i = 0; i<35; i++)
         for(int j = 0; j<45; j++)
         {
