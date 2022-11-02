@@ -203,6 +203,30 @@ init_allegro.c.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles\Projet_ECECity.dir\build.make CMakeFiles/Projet_ECECity.dir/init_allegro.c.s
 .PHONY : init_allegro.c.s
 
+interface.obj: interface.c.obj
+.PHONY : interface.obj
+
+# target to build an object file
+interface.c.obj:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\Projet_ECECity.dir\build.make CMakeFiles/Projet_ECECity.dir/interface.c.obj
+.PHONY : interface.c.obj
+
+interface.i: interface.c.i
+.PHONY : interface.i
+
+# target to preprocess a source file
+interface.c.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\Projet_ECECity.dir\build.make CMakeFiles/Projet_ECECity.dir/interface.c.i
+.PHONY : interface.c.i
+
+interface.s: interface.c.s
+.PHONY : interface.s
+
+# target to generate assembly for a file
+interface.c.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\Projet_ECECity.dir\build.make CMakeFiles/Projet_ECECity.dir/interface.c.s
+.PHONY : interface.c.s
+
 main.obj: main.c.obj
 .PHONY : main.obj
 
@@ -293,6 +317,9 @@ help:
 	@echo ... init_allegro.obj
 	@echo ... init_allegro.i
 	@echo ... init_allegro.s
+	@echo ... interface.obj
+	@echo ... interface.i
+	@echo ... interface.s
 	@echo ... main.obj
 	@echo ... main.i
 	@echo ... main.s

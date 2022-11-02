@@ -76,90 +76,105 @@ CMakeFiles/Projet_ECECity.dir/main.c.obj: CMakeFiles/Projet_ECECity.dir/includes
 CMakeFiles/Projet_ECECity.dir/main.c.obj: ../main.c
 CMakeFiles/Projet_ECECity.dir/main.c.obj: CMakeFiles/Projet_ECECity.dir/compiler_depend.ts
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=C:\Users\maube\CLionProjects\Projet-ECECity\cmake-build-debug\CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Building C object CMakeFiles/Projet_ECECity.dir/main.c.obj"
-	C:\PROGRA~1\JETBRA~1\CLION2~1.4\bin\mingw\bin\gcc.exe $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/Projet_ECECity.dir/main.c.obj -MF CMakeFiles\Projet_ECECity.dir\main.c.obj.d -o CMakeFiles\Projet_ECECity.dir\main.c.obj -c C:\Users\maube\CLionProjects\Projet-ECECity\main.c
+	C:\PROGRA~1\CODEBL~1\MinGW\bin\gcc.exe $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/Projet_ECECity.dir/main.c.obj -MF CMakeFiles\Projet_ECECity.dir\main.c.obj.d -o CMakeFiles\Projet_ECECity.dir\main.c.obj -c C:\Users\maube\CLionProjects\Projet-ECECity\main.c
 
 CMakeFiles/Projet_ECECity.dir/main.c.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing C source to CMakeFiles/Projet_ECECity.dir/main.c.i"
-	C:\PROGRA~1\JETBRA~1\CLION2~1.4\bin\mingw\bin\gcc.exe $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E C:\Users\maube\CLionProjects\Projet-ECECity\main.c > CMakeFiles\Projet_ECECity.dir\main.c.i
+	C:\PROGRA~1\CODEBL~1\MinGW\bin\gcc.exe $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E C:\Users\maube\CLionProjects\Projet-ECECity\main.c > CMakeFiles\Projet_ECECity.dir\main.c.i
 
 CMakeFiles/Projet_ECECity.dir/main.c.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling C source to assembly CMakeFiles/Projet_ECECity.dir/main.c.s"
-	C:\PROGRA~1\JETBRA~1\CLION2~1.4\bin\mingw\bin\gcc.exe $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S C:\Users\maube\CLionProjects\Projet-ECECity\main.c -o CMakeFiles\Projet_ECECity.dir\main.c.s
+	C:\PROGRA~1\CODEBL~1\MinGW\bin\gcc.exe $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S C:\Users\maube\CLionProjects\Projet-ECECity\main.c -o CMakeFiles\Projet_ECECity.dir\main.c.s
 
 CMakeFiles/Projet_ECECity.dir/init_allegro.c.obj: CMakeFiles/Projet_ECECity.dir/flags.make
 CMakeFiles/Projet_ECECity.dir/init_allegro.c.obj: CMakeFiles/Projet_ECECity.dir/includes_C.rsp
 CMakeFiles/Projet_ECECity.dir/init_allegro.c.obj: ../init_allegro.c
 CMakeFiles/Projet_ECECity.dir/init_allegro.c.obj: CMakeFiles/Projet_ECECity.dir/compiler_depend.ts
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=C:\Users\maube\CLionProjects\Projet-ECECity\cmake-build-debug\CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Building C object CMakeFiles/Projet_ECECity.dir/init_allegro.c.obj"
-	C:\PROGRA~1\JETBRA~1\CLION2~1.4\bin\mingw\bin\gcc.exe $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/Projet_ECECity.dir/init_allegro.c.obj -MF CMakeFiles\Projet_ECECity.dir\init_allegro.c.obj.d -o CMakeFiles\Projet_ECECity.dir\init_allegro.c.obj -c C:\Users\maube\CLionProjects\Projet-ECECity\init_allegro.c
+	C:\PROGRA~1\CODEBL~1\MinGW\bin\gcc.exe $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/Projet_ECECity.dir/init_allegro.c.obj -MF CMakeFiles\Projet_ECECity.dir\init_allegro.c.obj.d -o CMakeFiles\Projet_ECECity.dir\init_allegro.c.obj -c C:\Users\maube\CLionProjects\Projet-ECECity\init_allegro.c
 
 CMakeFiles/Projet_ECECity.dir/init_allegro.c.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing C source to CMakeFiles/Projet_ECECity.dir/init_allegro.c.i"
-	C:\PROGRA~1\JETBRA~1\CLION2~1.4\bin\mingw\bin\gcc.exe $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E C:\Users\maube\CLionProjects\Projet-ECECity\init_allegro.c > CMakeFiles\Projet_ECECity.dir\init_allegro.c.i
+	C:\PROGRA~1\CODEBL~1\MinGW\bin\gcc.exe $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E C:\Users\maube\CLionProjects\Projet-ECECity\init_allegro.c > CMakeFiles\Projet_ECECity.dir\init_allegro.c.i
 
 CMakeFiles/Projet_ECECity.dir/init_allegro.c.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling C source to assembly CMakeFiles/Projet_ECECity.dir/init_allegro.c.s"
-	C:\PROGRA~1\JETBRA~1\CLION2~1.4\bin\mingw\bin\gcc.exe $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S C:\Users\maube\CLionProjects\Projet-ECECity\init_allegro.c -o CMakeFiles\Projet_ECECity.dir\init_allegro.c.s
+	C:\PROGRA~1\CODEBL~1\MinGW\bin\gcc.exe $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S C:\Users\maube\CLionProjects\Projet-ECECity\init_allegro.c -o CMakeFiles\Projet_ECECity.dir\init_allegro.c.s
 
 CMakeFiles/Projet_ECECity.dir/MenuJeu.c.obj: CMakeFiles/Projet_ECECity.dir/flags.make
 CMakeFiles/Projet_ECECity.dir/MenuJeu.c.obj: CMakeFiles/Projet_ECECity.dir/includes_C.rsp
 CMakeFiles/Projet_ECECity.dir/MenuJeu.c.obj: ../MenuJeu.c
 CMakeFiles/Projet_ECECity.dir/MenuJeu.c.obj: CMakeFiles/Projet_ECECity.dir/compiler_depend.ts
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=C:\Users\maube\CLionProjects\Projet-ECECity\cmake-build-debug\CMakeFiles --progress-num=$(CMAKE_PROGRESS_3) "Building C object CMakeFiles/Projet_ECECity.dir/MenuJeu.c.obj"
-	C:\PROGRA~1\JETBRA~1\CLION2~1.4\bin\mingw\bin\gcc.exe $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/Projet_ECECity.dir/MenuJeu.c.obj -MF CMakeFiles\Projet_ECECity.dir\MenuJeu.c.obj.d -o CMakeFiles\Projet_ECECity.dir\MenuJeu.c.obj -c C:\Users\maube\CLionProjects\Projet-ECECity\MenuJeu.c
+	C:\PROGRA~1\CODEBL~1\MinGW\bin\gcc.exe $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/Projet_ECECity.dir/MenuJeu.c.obj -MF CMakeFiles\Projet_ECECity.dir\MenuJeu.c.obj.d -o CMakeFiles\Projet_ECECity.dir\MenuJeu.c.obj -c C:\Users\maube\CLionProjects\Projet-ECECity\MenuJeu.c
 
 CMakeFiles/Projet_ECECity.dir/MenuJeu.c.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing C source to CMakeFiles/Projet_ECECity.dir/MenuJeu.c.i"
-	C:\PROGRA~1\JETBRA~1\CLION2~1.4\bin\mingw\bin\gcc.exe $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E C:\Users\maube\CLionProjects\Projet-ECECity\MenuJeu.c > CMakeFiles\Projet_ECECity.dir\MenuJeu.c.i
+	C:\PROGRA~1\CODEBL~1\MinGW\bin\gcc.exe $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E C:\Users\maube\CLionProjects\Projet-ECECity\MenuJeu.c > CMakeFiles\Projet_ECECity.dir\MenuJeu.c.i
 
 CMakeFiles/Projet_ECECity.dir/MenuJeu.c.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling C source to assembly CMakeFiles/Projet_ECECity.dir/MenuJeu.c.s"
-	C:\PROGRA~1\JETBRA~1\CLION2~1.4\bin\mingw\bin\gcc.exe $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S C:\Users\maube\CLionProjects\Projet-ECECity\MenuJeu.c -o CMakeFiles\Projet_ECECity.dir\MenuJeu.c.s
+	C:\PROGRA~1\CODEBL~1\MinGW\bin\gcc.exe $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S C:\Users\maube\CLionProjects\Projet-ECECity\MenuJeu.c -o CMakeFiles\Projet_ECECity.dir\MenuJeu.c.s
 
 CMakeFiles/Projet_ECECity.dir/gestionBouton.c.obj: CMakeFiles/Projet_ECECity.dir/flags.make
 CMakeFiles/Projet_ECECity.dir/gestionBouton.c.obj: CMakeFiles/Projet_ECECity.dir/includes_C.rsp
 CMakeFiles/Projet_ECECity.dir/gestionBouton.c.obj: ../gestionBouton.c
 CMakeFiles/Projet_ECECity.dir/gestionBouton.c.obj: CMakeFiles/Projet_ECECity.dir/compiler_depend.ts
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=C:\Users\maube\CLionProjects\Projet-ECECity\cmake-build-debug\CMakeFiles --progress-num=$(CMAKE_PROGRESS_4) "Building C object CMakeFiles/Projet_ECECity.dir/gestionBouton.c.obj"
-	C:\PROGRA~1\JETBRA~1\CLION2~1.4\bin\mingw\bin\gcc.exe $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/Projet_ECECity.dir/gestionBouton.c.obj -MF CMakeFiles\Projet_ECECity.dir\gestionBouton.c.obj.d -o CMakeFiles\Projet_ECECity.dir\gestionBouton.c.obj -c C:\Users\maube\CLionProjects\Projet-ECECity\gestionBouton.c
+	C:\PROGRA~1\CODEBL~1\MinGW\bin\gcc.exe $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/Projet_ECECity.dir/gestionBouton.c.obj -MF CMakeFiles\Projet_ECECity.dir\gestionBouton.c.obj.d -o CMakeFiles\Projet_ECECity.dir\gestionBouton.c.obj -c C:\Users\maube\CLionProjects\Projet-ECECity\gestionBouton.c
 
 CMakeFiles/Projet_ECECity.dir/gestionBouton.c.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing C source to CMakeFiles/Projet_ECECity.dir/gestionBouton.c.i"
-	C:\PROGRA~1\JETBRA~1\CLION2~1.4\bin\mingw\bin\gcc.exe $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E C:\Users\maube\CLionProjects\Projet-ECECity\gestionBouton.c > CMakeFiles\Projet_ECECity.dir\gestionBouton.c.i
+	C:\PROGRA~1\CODEBL~1\MinGW\bin\gcc.exe $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E C:\Users\maube\CLionProjects\Projet-ECECity\gestionBouton.c > CMakeFiles\Projet_ECECity.dir\gestionBouton.c.i
 
 CMakeFiles/Projet_ECECity.dir/gestionBouton.c.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling C source to assembly CMakeFiles/Projet_ECECity.dir/gestionBouton.c.s"
-	C:\PROGRA~1\JETBRA~1\CLION2~1.4\bin\mingw\bin\gcc.exe $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S C:\Users\maube\CLionProjects\Projet-ECECity\gestionBouton.c -o CMakeFiles\Projet_ECECity.dir\gestionBouton.c.s
+	C:\PROGRA~1\CODEBL~1\MinGW\bin\gcc.exe $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S C:\Users\maube\CLionProjects\Projet-ECECity\gestionBouton.c -o CMakeFiles\Projet_ECECity.dir\gestionBouton.c.s
 
 CMakeFiles/Projet_ECECity.dir/map.c.obj: CMakeFiles/Projet_ECECity.dir/flags.make
 CMakeFiles/Projet_ECECity.dir/map.c.obj: CMakeFiles/Projet_ECECity.dir/includes_C.rsp
 CMakeFiles/Projet_ECECity.dir/map.c.obj: ../map.c
 CMakeFiles/Projet_ECECity.dir/map.c.obj: CMakeFiles/Projet_ECECity.dir/compiler_depend.ts
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=C:\Users\maube\CLionProjects\Projet-ECECity\cmake-build-debug\CMakeFiles --progress-num=$(CMAKE_PROGRESS_5) "Building C object CMakeFiles/Projet_ECECity.dir/map.c.obj"
-	C:\PROGRA~1\JETBRA~1\CLION2~1.4\bin\mingw\bin\gcc.exe $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/Projet_ECECity.dir/map.c.obj -MF CMakeFiles\Projet_ECECity.dir\map.c.obj.d -o CMakeFiles\Projet_ECECity.dir\map.c.obj -c C:\Users\maube\CLionProjects\Projet-ECECity\map.c
+	C:\PROGRA~1\CODEBL~1\MinGW\bin\gcc.exe $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/Projet_ECECity.dir/map.c.obj -MF CMakeFiles\Projet_ECECity.dir\map.c.obj.d -o CMakeFiles\Projet_ECECity.dir\map.c.obj -c C:\Users\maube\CLionProjects\Projet-ECECity\map.c
 
 CMakeFiles/Projet_ECECity.dir/map.c.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing C source to CMakeFiles/Projet_ECECity.dir/map.c.i"
-	C:\PROGRA~1\JETBRA~1\CLION2~1.4\bin\mingw\bin\gcc.exe $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E C:\Users\maube\CLionProjects\Projet-ECECity\map.c > CMakeFiles\Projet_ECECity.dir\map.c.i
+	C:\PROGRA~1\CODEBL~1\MinGW\bin\gcc.exe $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E C:\Users\maube\CLionProjects\Projet-ECECity\map.c > CMakeFiles\Projet_ECECity.dir\map.c.i
 
 CMakeFiles/Projet_ECECity.dir/map.c.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling C source to assembly CMakeFiles/Projet_ECECity.dir/map.c.s"
-	C:\PROGRA~1\JETBRA~1\CLION2~1.4\bin\mingw\bin\gcc.exe $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S C:\Users\maube\CLionProjects\Projet-ECECity\map.c -o CMakeFiles\Projet_ECECity.dir\map.c.s
+	C:\PROGRA~1\CODEBL~1\MinGW\bin\gcc.exe $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S C:\Users\maube\CLionProjects\Projet-ECECity\map.c -o CMakeFiles\Projet_ECECity.dir\map.c.s
 
 CMakeFiles/Projet_ECECity.dir/sauvegarde.c.obj: CMakeFiles/Projet_ECECity.dir/flags.make
 CMakeFiles/Projet_ECECity.dir/sauvegarde.c.obj: CMakeFiles/Projet_ECECity.dir/includes_C.rsp
 CMakeFiles/Projet_ECECity.dir/sauvegarde.c.obj: ../sauvegarde.c
 CMakeFiles/Projet_ECECity.dir/sauvegarde.c.obj: CMakeFiles/Projet_ECECity.dir/compiler_depend.ts
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=C:\Users\maube\CLionProjects\Projet-ECECity\cmake-build-debug\CMakeFiles --progress-num=$(CMAKE_PROGRESS_6) "Building C object CMakeFiles/Projet_ECECity.dir/sauvegarde.c.obj"
-	C:\PROGRA~1\JETBRA~1\CLION2~1.4\bin\mingw\bin\gcc.exe $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/Projet_ECECity.dir/sauvegarde.c.obj -MF CMakeFiles\Projet_ECECity.dir\sauvegarde.c.obj.d -o CMakeFiles\Projet_ECECity.dir\sauvegarde.c.obj -c C:\Users\maube\CLionProjects\Projet-ECECity\sauvegarde.c
+	C:\PROGRA~1\CODEBL~1\MinGW\bin\gcc.exe $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/Projet_ECECity.dir/sauvegarde.c.obj -MF CMakeFiles\Projet_ECECity.dir\sauvegarde.c.obj.d -o CMakeFiles\Projet_ECECity.dir\sauvegarde.c.obj -c C:\Users\maube\CLionProjects\Projet-ECECity\sauvegarde.c
 
 CMakeFiles/Projet_ECECity.dir/sauvegarde.c.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing C source to CMakeFiles/Projet_ECECity.dir/sauvegarde.c.i"
-	C:\PROGRA~1\JETBRA~1\CLION2~1.4\bin\mingw\bin\gcc.exe $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E C:\Users\maube\CLionProjects\Projet-ECECity\sauvegarde.c > CMakeFiles\Projet_ECECity.dir\sauvegarde.c.i
+	C:\PROGRA~1\CODEBL~1\MinGW\bin\gcc.exe $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E C:\Users\maube\CLionProjects\Projet-ECECity\sauvegarde.c > CMakeFiles\Projet_ECECity.dir\sauvegarde.c.i
 
 CMakeFiles/Projet_ECECity.dir/sauvegarde.c.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling C source to assembly CMakeFiles/Projet_ECECity.dir/sauvegarde.c.s"
-	C:\PROGRA~1\JETBRA~1\CLION2~1.4\bin\mingw\bin\gcc.exe $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S C:\Users\maube\CLionProjects\Projet-ECECity\sauvegarde.c -o CMakeFiles\Projet_ECECity.dir\sauvegarde.c.s
+	C:\PROGRA~1\CODEBL~1\MinGW\bin\gcc.exe $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S C:\Users\maube\CLionProjects\Projet-ECECity\sauvegarde.c -o CMakeFiles\Projet_ECECity.dir\sauvegarde.c.s
+
+CMakeFiles/Projet_ECECity.dir/interface.c.obj: CMakeFiles/Projet_ECECity.dir/flags.make
+CMakeFiles/Projet_ECECity.dir/interface.c.obj: CMakeFiles/Projet_ECECity.dir/includes_C.rsp
+CMakeFiles/Projet_ECECity.dir/interface.c.obj: ../interface.c
+CMakeFiles/Projet_ECECity.dir/interface.c.obj: CMakeFiles/Projet_ECECity.dir/compiler_depend.ts
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=C:\Users\maube\CLionProjects\Projet-ECECity\cmake-build-debug\CMakeFiles --progress-num=$(CMAKE_PROGRESS_7) "Building C object CMakeFiles/Projet_ECECity.dir/interface.c.obj"
+	C:\PROGRA~1\CODEBL~1\MinGW\bin\gcc.exe $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/Projet_ECECity.dir/interface.c.obj -MF CMakeFiles\Projet_ECECity.dir\interface.c.obj.d -o CMakeFiles\Projet_ECECity.dir\interface.c.obj -c C:\Users\maube\CLionProjects\Projet-ECECity\interface.c
+
+CMakeFiles/Projet_ECECity.dir/interface.c.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing C source to CMakeFiles/Projet_ECECity.dir/interface.c.i"
+	C:\PROGRA~1\CODEBL~1\MinGW\bin\gcc.exe $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E C:\Users\maube\CLionProjects\Projet-ECECity\interface.c > CMakeFiles\Projet_ECECity.dir\interface.c.i
+
+CMakeFiles/Projet_ECECity.dir/interface.c.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling C source to assembly CMakeFiles/Projet_ECECity.dir/interface.c.s"
+	C:\PROGRA~1\CODEBL~1\MinGW\bin\gcc.exe $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S C:\Users\maube\CLionProjects\Projet-ECECity\interface.c -o CMakeFiles\Projet_ECECity.dir\interface.c.s
 
 # Object files for target Projet_ECECity
 Projet_ECECity_OBJECTS = \
@@ -168,7 +183,8 @@ Projet_ECECity_OBJECTS = \
 "CMakeFiles/Projet_ECECity.dir/MenuJeu.c.obj" \
 "CMakeFiles/Projet_ECECity.dir/gestionBouton.c.obj" \
 "CMakeFiles/Projet_ECECity.dir/map.c.obj" \
-"CMakeFiles/Projet_ECECity.dir/sauvegarde.c.obj"
+"CMakeFiles/Projet_ECECity.dir/sauvegarde.c.obj" \
+"CMakeFiles/Projet_ECECity.dir/interface.c.obj"
 
 # External object files for target Projet_ECECity
 Projet_ECECity_EXTERNAL_OBJECTS =
@@ -179,11 +195,12 @@ Projet_ECECity.exe: CMakeFiles/Projet_ECECity.dir/MenuJeu.c.obj
 Projet_ECECity.exe: CMakeFiles/Projet_ECECity.dir/gestionBouton.c.obj
 Projet_ECECity.exe: CMakeFiles/Projet_ECECity.dir/map.c.obj
 Projet_ECECity.exe: CMakeFiles/Projet_ECECity.dir/sauvegarde.c.obj
+Projet_ECECity.exe: CMakeFiles/Projet_ECECity.dir/interface.c.obj
 Projet_ECECity.exe: CMakeFiles/Projet_ECECity.dir/build.make
 Projet_ECECity.exe: CMakeFiles/Projet_ECECity.dir/linklibs.rsp
 Projet_ECECity.exe: CMakeFiles/Projet_ECECity.dir/objects1.rsp
 Projet_ECECity.exe: CMakeFiles/Projet_ECECity.dir/link.txt
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=C:\Users\maube\CLionProjects\Projet-ECECity\cmake-build-debug\CMakeFiles --progress-num=$(CMAKE_PROGRESS_7) "Linking C executable Projet_ECECity.exe"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=C:\Users\maube\CLionProjects\Projet-ECECity\cmake-build-debug\CMakeFiles --progress-num=$(CMAKE_PROGRESS_8) "Linking C executable Projet_ECECity.exe"
 	$(CMAKE_COMMAND) -E cmake_link_script CMakeFiles\Projet_ECECity.dir\link.txt --verbose=$(VERBOSE)
 
 # Rule to build all files generated by this target.
