@@ -16,16 +16,20 @@ int menuJeu(BITMAP* bmpAffichage)
     BITMAP* boutonChargerPartieInv = load_bitmap("menuDepart/boutonChargerPartieInv.bmp",NULL);
     BITMAP* boutonQuitterPartie = load_bitmap("menuDepart/boutonQuitterPartie.bmp",NULL);
     BITMAP* boutonQuitterPartieInv = load_bitmap("menuDepart/boutonQuitterPartieInv.bmp",NULL);
+    BITMAP* boutonRegle = load_bitmap("menuDepart/boutonRegles.bmp",NULL);
+    BITMAP* boutonRegleInv = load_bitmap("menuDepart/boutonReglesInv.bmp",NULL);
+
 
     //Affichage des bitmap
     while(sortie == 0)
     {
         clear_bitmap(bmpAffichage);
         blit(fondMenu,bmpAffichage,0,0,0,0,bmpAffichage->w,bmpAffichage->h);
-        masked_blit(logoEceCitySansFond2,bmpAffichage,0,0,0,0,logoEceCitySansFond2->w,logoEceCitySansFond2->h);
+        masked_blit(logoEceCitySansFond2,bmpAffichage,0,0,230,0,logoEceCitySansFond2->w,logoEceCitySansFond2->h);
         AffichageBouton(boutonNouvellePartie,boutonNouvellePartieInv,bmpAffichage,0,0,340,250,boutonNouvellePartie->w ,boutonNouvellePartie->h);
         AffichageBouton(boutonChargerPartie,boutonChargerPartieInv,bmpAffichage,0,0,340,370,boutonChargerPartie->w,boutonChargerPartie->h);
         AffichageBouton(boutonQuitterPartie,boutonQuitterPartieInv,bmpAffichage,0,0,340,490,boutonQuitterPartie->w,boutonQuitterPartie->h);
+        AffichageBouton(boutonRegle,boutonRegleInv,bmpAffichage,0,0,340,610,boutonRegle->w,boutonRegle->h);
         show_mouse(bmpAffichage);
         blit(bmpAffichage,screen,0,0,0,0,1024,768);
 
@@ -41,6 +45,10 @@ int menuJeu(BITMAP* bmpAffichage)
         {
             return 3;
         }
+        if(((mouse_x>=(340)&& mouse_x<=(340+330))&& (mouse_y)>=(610)&& mouse_y<=(610 + 95))&&(mouse_b & 1))
+        {
+            return 4;
+        }
     }
 
 }
@@ -50,6 +58,7 @@ void actionChoixMenu(int choixDuMenu,BITMAP* bmpAffichage)
 {
     if(choixDuMenu == 1)
     {
+        Sleep(200);
         choixModeJeu(bmpAffichage);
     }
     else if(choixDuMenu == 2 && testSauvegarde())
@@ -59,6 +68,10 @@ void actionChoixMenu(int choixDuMenu,BITMAP* bmpAffichage)
     else if(choixDuMenu == 3)
     {
         exit(0);
+    }
+    else if(choixDuMenu == 4)
+    {
+
     }
 }
 
@@ -70,17 +83,32 @@ int choixModeJeu(BITMAP* bmpAffichage)
 
     //Déclaration des bitmaps
     BITMAP* fondMenu = load_bitmap("menuDepart/fond1.bmp",NULL);
-    BITMAP* boutonModeCommuniste = load_bitmap("menuDepart/boutonQuitterPartieInv.bmp",NULL);
-    BITMAP* boutonModeCommunisteInv = load_bitmap("menuDepart/boutonQuitterPartieInv.bmp",NULL);
-    BITMAP* boutonModeCapitaliste = load_bitmap("menuDepart/boutonQuitterPartieInv.bmp",NULL);
-    BITMAP* boutonModeCapitalisteinv = load_bitmap("menuDepart/boutonQuitterPartieInv.bmp",NULL);
+    BITMAP* boutonModeCapitaliste = load_bitmap("menuDepart/boutonCapitaliste.bmp",NULL);
+    BITMAP* boutonModeCapitalisteInv = load_bitmap("menuDepart/boutonCapitalisteInv.bmp",NULL);
+    BITMAP* boutonModeCommuniste = load_bitmap("menuDepart/boutonCommuniste.bmp",NULL);
+    BITMAP* boutonModeCommunisteInv = load_bitmap("menuDepart/boutonCommunisteInv.bmp",NULL);
+    BITMAP* phraseChoixMode = load_bitmap("menuDepart/phraseChoixMode.bmp",NULL);
 
     while(sortie == 0 )
     {
         //Affichage des bitmaps
         clear_bitmap(bmpAffichage);
         blit(fondMenu,bmpAffichage,0,0,0,0,bmpAffichage->w,bmpAffichage->h);
+        masked_blit(phraseChoixMode,bmpAffichage,0,0,130,100,phraseChoixMode->w,phraseChoixMode->h);
+        AffichageBouton(boutonModeCapitaliste,boutonModeCapitalisteInv,bmpAffichage,0,0,340,250,boutonModeCapitaliste->w,boutonModeCapitaliste->h);
+        AffichageBouton(boutonModeCommuniste,boutonModeCommunisteInv,bmpAffichage,0,0,340,370,boutonModeCommuniste->w,boutonModeCommuniste->h);
         show_mouse(bmpAffichage);
         blit(bmpAffichage,screen,0,0,0,0,1024,768);
+
+        if(((mouse_x>=(340)&& mouse_x<=(340+330))&& (mouse_y)>=(250)&& mouse_y<=(250 + 95))&&(mouse_b & 1))
+        {
+            Sleep(100);
+            return 1;
+        }
+        if(((mouse_x>=(340)&& mouse_x<=(340+330))&& (mouse_y)>=(370)&& mouse_y<=(370 + 95))&&(mouse_b & 1))
+        {
+            Sleep(100);
+            return 2;
+        }
     }
 }
