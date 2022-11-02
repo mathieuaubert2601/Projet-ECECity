@@ -17,6 +17,7 @@ int main()
 
     //Déclaration des variables
     int choixMenu;
+    int map[35][45];
 
 
 
@@ -28,7 +29,8 @@ int main()
         //actionChoixMenu(choixMenu,page);
         time_t temps2 = time(NULL);
         unsigned long diff=difftime(temps2,tempsdep);
-        creer_map(page);
+        lireFichierMap(map,"map/mapBase.txt");
+        creer_map(page,map);
         textprintf_ex(page,font,980,750,makecol(255,255,255),-1,"%d",diff);
         show_mouse(page);
         blit(page,screen,0,0,0,0,1024,768);

@@ -20,8 +20,9 @@ void actionChoixMenu(int choixDuMenu,BITMAP* bmpAffichage);
 int choixModeJeu(BITMAP* bmpAffichage);
 
 //Fonctions pour la map
-void creer_map(BITMAP* page);
+void creer_map(BITMAP* page, int matriceMap[35][45]);
 int afficher_interface(BITMAP* page);
+void lireFichierMap(int matrice_a_remplir[35][45],char* nomFichier);
 
 //Sauvegarde
 int testSauvegarde();
