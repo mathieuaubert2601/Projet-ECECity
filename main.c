@@ -16,6 +16,7 @@ int main()
 
     //Déclaration des variables
     int choixMenu;
+    int routeInterface;
 
 
 
@@ -23,9 +24,13 @@ int main()
     {
         //choixMenu = menuJeu(page);
         //actionChoixMenu(choixMenu);
+
+        //interface
+        //routeInterface = afficher_interface(page);
+        //route(page,routeInterface);
         creer_map(page);
 
-
+        clear_bitmap(page);
     }
     return 0;
 }
