@@ -25,4 +25,21 @@ void creer_map(BITMAP* page);
 //Sauvegarde
 int testSauvegarde();
 
+typedef struct bâtiment
+{
+    char nom[15];
+    int prix;
+    int num_bat;
+    int capacite_eau;
+    int capacite_elec;
+    int nb_hab;
+    time_t tempsCrea;
+    BITMAP* bouton;
+    BITMAP* boutonInv;
+    BITMAP* imageCarte;
+    SAMPLE* sonBat;
+
+}t_batiment;
+
+
 #endif //PROJET_ECECITY_HEADER_H

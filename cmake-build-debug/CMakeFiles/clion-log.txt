@@ -1,8 +1,8 @@
 "D:\Program Files\JetBrains\CLion 2022.2.1\bin\cmake\win\bin\cmake.exe" -DCMAKE_BUILD_TYPE=Debug "-DCMAKE_MAKE_PROGRAM=D:/Program Files/JetBrains/CLion 2022.2.1/bin/ninja/win/ninja.exe" -G Ninja -S D:\Users\thiba\ECE\ING2\TheorieDesGraphes\projet\Projet-ECECity -B D:\Users\thiba\ECE\ING2\TheorieDesGraphes\projet\Projet-ECECity\cmake-build-debug
--- The C compiler identification is GNU 11.2.0
+-- The C compiler identification is GNU 8.1.0
 -- Detecting C compiler ABI info
 -- Detecting C compiler ABI info - done
--- Check for working C compiler: D:/Program Files/JetBrains/CLion 2022.2.1/bin/mingw/bin/gcc.exe - skipped
+-- Check for working C compiler: D:/Users/thiba/ECE/ING2/TheorieDesGraphes/projet/MinGW/bin/gcc.exe - skipped
 -- Detecting C compile features
 -- Detecting C compile features - done
 -- Configuring done
