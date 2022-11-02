@@ -18,15 +18,14 @@ int afficher_interface(BITMAP* page)
     int sortie =0;
     int route;
 
-    while(sortie == 0) {
-        clear_bitmap(page);
+
         blit(fondCote, page, 0, 0, 900, 0, page->w, page->h);
 
         AffichageBouton(iconeRoute, iconeRouteInv, page, 0, 0, 920, 130, iconeRoute->w, iconeRoute->h);
         AffichageBouton(iconeMaison, iconeMaisonInv, page, 0,0, 920, 200, iconeMaison->w, iconeMaison->h);
         AffichageBouton(iconeBatiment, iconeBatimentInv, page, 0, 0, 920, 250,iconeBatiment->w,iconeBatiment->h);
 
-        if (((mouse_x >= (920) && mouse_x <= (920 + 90)) && (mouse_y) >= (150) && mouse_y <= (150 + 65)) && (mouse_b & 1))
+        /*if (((mouse_x >= (920) && mouse_x <= (920 + 90)) && (mouse_y) >= (150) && mouse_y <= (150 + 65)) && (mouse_b & 1))
         {
             //masked_blit(iconeRouteTran, page,0,0,mouse_x,mouse_y,page->w, page->h);
             return 1;
@@ -34,10 +33,9 @@ int afficher_interface(BITMAP* page)
         if (((mouse_x >= (920) && mouse_x <= (920 + 100)) && (mouse_y) >= (180) && mouse_y <= (180 + 100)) && (mouse_b & 1)) {
             //masked_blit(iconeRouteTran, page,0,0,mouse_x,mouse_y,page->w, page->h);
             return 2;
-        }
+        }*/
         show_mouse(page);
         blit(page, screen, 0, 0, 0, 0, 1024, 768);
-    }
 }
 
 /*

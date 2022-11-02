@@ -91,6 +91,13 @@ build CMakeFiles/Projet_ECECity.dir/sauvegarde.c.obj: C_COMPILER__Projet_ECECity
   OBJECT_DIR = CMakeFiles\Projet_ECECity.dir
   OBJECT_FILE_DIR = CMakeFiles\Projet_ECECity.dir
 
+build CMakeFiles/Projet_ECECity.dir/interface.c.obj: C_COMPILER__Projet_ECECity_Debug D$:/Users/thiba/ECE/ING2/TheorieDesGraphes/projet/Projet-ECECity/interface.c || cmake_object_order_depends_target_Projet_ECECity
+  DEP_FILE = CMakeFiles\Projet_ECECity.dir\interface.c.obj.d
+  FLAGS = -g -std=gnu99
+  INCLUDES = -ID:/Users/thiba/ECE/ING2/TheorieDesGraphes/projet/Projet-ECECity/. -IC:/Program -ID:/Users/thiba/ECE/ING2/TheorieDesGraphes/projet/Projet-ECECity/Files/JetBrains/CLion -ID:/Users/thiba/ECE/ING2/TheorieDesGraphes/projet/Projet-ECECity/2022.2.4/bin/mingw/x86_64-w64-mingw32/include
+  OBJECT_DIR = CMakeFiles\Projet_ECECity.dir
+  OBJECT_FILE_DIR = CMakeFiles\Projet_ECECity.dir
+
 
 # =============================================================================
 # Link build statements for EXECUTABLE target Projet_ECECity
@@ -99,7 +106,7 @@ build CMakeFiles/Projet_ECECity.dir/sauvegarde.c.obj: C_COMPILER__Projet_ECECity
 #############################################
 # Link the executable Projet_ECECity.exe
 
-build Projet_ECECity.exe: C_EXECUTABLE_LINKER__Projet_ECECity_Debug CMakeFiles/Projet_ECECity.dir/main.c.obj CMakeFiles/Projet_ECECity.dir/init_allegro.c.obj CMakeFiles/Projet_ECECity.dir/MenuJeu.c.obj CMakeFiles/Projet_ECECity.dir/gestionBouton.c.obj CMakeFiles/Projet_ECECity.dir/map.c.obj CMakeFiles/Projet_ECECity.dir/sauvegarde.c.obj
+build Projet_ECECity.exe: C_EXECUTABLE_LINKER__Projet_ECECity_Debug CMakeFiles/Projet_ECECity.dir/main.c.obj CMakeFiles/Projet_ECECity.dir/init_allegro.c.obj CMakeFiles/Projet_ECECity.dir/MenuJeu.c.obj CMakeFiles/Projet_ECECity.dir/gestionBouton.c.obj CMakeFiles/Projet_ECECity.dir/map.c.obj CMakeFiles/Projet_ECECity.dir/sauvegarde.c.obj CMakeFiles/Projet_ECECity.dir/interface.c.obj
   FLAGS = -g
   LINK_LIBRARIES = -lmingw32  -lalleg44  -lkernel32 -luser32 -lgdi32 -lwinspool -lshell32 -lole32 -loleaut32 -luuid -lcomdlg32 -ladvapi32
   LINK_PATH = -LC:/Program   -LD:/Users/thiba/ECE/ING2/TheorieDesGraphes/projet/Projet-ECECity/Files/JetBrains/CLion   -LD:/Users/thiba/ECE/ING2/TheorieDesGraphes/projet/Projet-ECECity/2022.2.4/bin/mingw/x86_64-w64-mingw32/lib

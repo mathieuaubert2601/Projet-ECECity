@@ -21,11 +21,12 @@ int choixModeJeu(BITMAP* bmpAffichage);
 
 //Fonctions pour la map
 void creer_map(BITMAP* page);
+int afficher_interface(BITMAP* page);
 
 //Sauvegarde
 int testSauvegarde();
 
-typedef struct bâtiment
+typedef struct batiment
 {
     char nom[15];
     int prix;
