@@ -1,4 +1,4 @@
-set(CMAKE_RC_COMPILER "C:/Program Files/CodeBlocks/MinGW/bin/windres.exe")
+set(CMAKE_RC_COMPILER "D:/Users/thiba/ECE/ING2/TheorieDesGraphes/projet/MinGW/bin/windres.exe")
 set(CMAKE_RC_COMPILER_ARG1 "")
 set(CMAKE_RC_COMPILER_LOADED 1)
 set(CMAKE_RC_SOURCE_FILE_EXTENSIONS rc;RC)
