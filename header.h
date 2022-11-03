@@ -44,4 +44,8 @@ typedef struct batiment
 }t_batiment;
 
 
+//Interface
+void afficherInterface(BITMAP* page);
+void route (BITMAP* page, int retourInterface);
+
 #endif //PROJET_ECECITY_HEADER_H
