@@ -27,13 +27,14 @@ int main()
     {
         clear_bitmap(page);
         //play_sample(musiqueFond,25,0,1000,1);
-        //choixMenu = menuJeu(page);
-
-        play_sample(musiqueFond,25,0,1000,1);
         choixMenu = menuJeu(page);
+        //play_sample(musiqueFond,25,0,1000,1);
+        choixMenu = menuJeu(page);
+
         //actionChoixMenu(choixMenu,page);
         time_t temps2 = time(NULL);
         unsigned long diff=difftime(temps2,tempsdep);
+        lireFichierMap(map,"map/mapBase.txt");
         creer_map(page, map);
         textprintf_ex(page,font,980,750,makecol(255,255,255),-1,"%d",diff);
         show_mouse(page);
