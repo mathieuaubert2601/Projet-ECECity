@@ -1,1 +1,1 @@
-  -LC:/Program  -L"C:/Users/Lea/CLionProjects/Projet-ECECity/Files/CodeBlocks/MinGW/x86_64-w64-mingw32/lib"  -lmingw32 -lalleg44 -lkernel32 -luser32 -lgdi32 -lwinspool -lshell32 -lole32 -loleaut32 -luuid -lcomdlg32 -ladvapi32 
+  -LC:/Program  -L"C:/Users/maube/CLionProjects/Projet-ECECity/Files/CodeBlocks/MinGW/x86_64-w64-mingw32/lib"  -lmingw32 -lalleg44 -lkernel32 -luser32 -lgdi32 -lwinspool -lshell32 -lole32 -loleaut32 -luuid -lcomdlg32 -ladvapi32 
