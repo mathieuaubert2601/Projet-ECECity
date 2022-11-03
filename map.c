@@ -5,7 +5,6 @@ void creer_map(BITMAP* page, int map[35][45])
     BITMAP* tuile = load_bitmap("map/tuile_test.bmp",NULL);
     BITMAP* maison = load_bitmap("map/maison.bmp",NULL);
     BITMAP* route = load_bitmap("map/route.bmp",NULL);
-    BITMAP* centraleElec = load_bitmap("map/centraleElec.bmp",NULL);
 
     for (int i = 0; i<35; i++) {
         for (int j = 0; j < 45; j++) {
@@ -26,7 +25,7 @@ void creer_map(BITMAP* page, int map[35][45])
             }
             else if(map[i][j] == 5)
             {
-                masked_blit(centraleElec,page,0,0,(j*20)-20,(i*20)-65,centraleElec->w,centraleElec->h);
+
             }
             else
             {
