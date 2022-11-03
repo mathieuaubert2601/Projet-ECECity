@@ -11,6 +11,7 @@ set(CMAKE_DEPENDS_DEPENDENCY_FILES
   "C:/Users/m28wa/CLionProjects/Projet-ECECity/MenuJeu.c" "CMakeFiles/Projet_ECECity.dir/MenuJeu.c.obj" "gcc" "CMakeFiles/Projet_ECECity.dir/MenuJeu.c.obj.d"
   "C:/Users/m28wa/CLionProjects/Projet-ECECity/gestionBouton.c" "CMakeFiles/Projet_ECECity.dir/gestionBouton.c.obj" "gcc" "CMakeFiles/Projet_ECECity.dir/gestionBouton.c.obj.d"
   "C:/Users/m28wa/CLionProjects/Projet-ECECity/init_allegro.c" "CMakeFiles/Projet_ECECity.dir/init_allegro.c.obj" "gcc" "CMakeFiles/Projet_ECECity.dir/init_allegro.c.obj.d"
+  "C:/Users/m28wa/CLionProjects/Projet-ECECity/interface.c" "CMakeFiles/Projet_ECECity.dir/interface.c.obj" "gcc" "CMakeFiles/Projet_ECECity.dir/interface.c.obj.d"
   "C:/Users/m28wa/CLionProjects/Projet-ECECity/main.c" "CMakeFiles/Projet_ECECity.dir/main.c.obj" "gcc" "CMakeFiles/Projet_ECECity.dir/main.c.obj.d"
   "C:/Users/m28wa/CLionProjects/Projet-ECECity/map.c" "CMakeFiles/Projet_ECECity.dir/map.c.obj" "gcc" "CMakeFiles/Projet_ECECity.dir/map.c.obj.d"
   "C:/Users/m28wa/CLionProjects/Projet-ECECity/sauvegarde.c" "CMakeFiles/Projet_ECECity.dir/sauvegarde.c.obj" "gcc" "CMakeFiles/Projet_ECECity.dir/sauvegarde.c.obj.d"

@@ -1,5 +1,20 @@
 #include "header.h"
+void affichageregles(BITMAP* bmpAffichage)
+{
+    int sortie=0;
+    BITMAP* fondMenu = load_bitmap("menuDepart/fond1.bmp",NULL);
+    BITMAP* regle = load_bitmap("menuDepart/regle.bmp",NULL);
+    BITMAP* logoEceCitySansFond2 = load_bitmap("menuDepart/logo3.bmp",NULL);
+    while(sortie == 0)
+    {
+        clear_bitmap(bmpAffichage);
+        blit(fondMenu,bmpAffichage,0,0,0,0,bmpAffichage->w,bmpAffichage->h);
+        masked_blit(logoEceCitySansFond2,bmpAffichage,0,0,230,0,logoEceCitySansFond2->w,logoEceCitySansFond2->h);
+        Sleep(7000);
+        sortie=1;
+    }
 
+}
 int menuJeu(BITMAP* bmpAffichage)
 {
     //déclaration des variables
@@ -71,7 +86,7 @@ void actionChoixMenu(int choixDuMenu,BITMAP* bmpAffichage)
     }
     else if(choixDuMenu == 4)
     {
-
+        affichageregles(bmpAffichage);
     }
 }
 
