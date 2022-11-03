@@ -10,6 +10,7 @@ void affichageregles(BITMAP* bmpAffichage)
         clear_bitmap(bmpAffichage);
         blit(fondMenu,bmpAffichage,0,0,0,0,bmpAffichage->w,bmpAffichage->h);
         masked_blit(logoEceCitySansFond2,bmpAffichage,0,0,230,0,logoEceCitySansFond2->w,logoEceCitySansFond2->h);
+        masked_stretch_blit(regle,bmpAffichage,0,0,regle->w,regle->h,150,190,regle->w /1.4 ,regle->h/1.4);
         blit(bmpAffichage,screen,0,0,0,0,1024,768);
         Sleep(7000);
         sortie=1;
