@@ -27,6 +27,8 @@ void lireFichierMap(int matrice_a_remplir[35][45],char* nomFichier);
 
 //Sauvegarde
 int testSauvegarde();
+void indiquerSauvegarde(int ouvertureOuNon);
+void sauvegarderMatriceFichier(int matrice[35][45], char* nomFichier);
 
 typedef struct batiment
 {
