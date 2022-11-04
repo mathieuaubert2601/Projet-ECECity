@@ -45,21 +45,18 @@ void afficherInterface(BITMAP* page,int map[35][45])
     //Affichage des boutons de niveaux
     AffichageBouton(boutonElec, boutonElecInv, page, 0,0,920, 550, boutonElec->w,boutonElec->h);
     AffichageBouton(boutonEau,boutonEauInv,page,0,0, 920, 620, boutonEau->w, boutonEau->h);
-
+    int test =0;
     //Test pour la construction des routes
-    if (((mouse_x >= (920) && mouse_x <= (920 + 90)) && (mouse_y) >= (150) && mouse_y <= (150 + 65)) && (mouse_b & 1))
-    {
-        route(page,map);
-    }
 
-    //Test pour la construction
-    if (((mouse_x >= (920) && mouse_x <= (920 + 100)) && (mouse_y) >= (180) && mouse_y <= (180 + 100)) && (mouse_b & 1))
-    {
-        //sous programme maison
-    }
 
-    show_mouse(page);
-    blit(page, screen, 0, 0, 0, 0, 1024, 768);
+        //Test pour la construction
+        if (((mouse_x >= (920) && mouse_x <= (920 + 100)) && (mouse_y) >= (180) && mouse_y <= (180 + 100)) &&
+            (mouse_b & 1)) {
+            //sous programme maison
+        }
+
+        show_mouse(page);
+        blit(page, screen, 0, 0, 0, 0, 1024, 768);
 
 }
 

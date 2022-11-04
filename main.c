@@ -18,8 +18,9 @@ int main()
     //Déclaration des variables
     int choixMenu;
     int map[35][45];
-    int route=1;
     int sortie=0;
+
+    int banque = banqueDep;
 
 
     while(!key[KEY_ESC])
@@ -45,6 +46,10 @@ int main()
             {
                 afficher_map(page,map);
                 afficherInterface(page,map);
+                if (((mouse_x >= (920) && mouse_x <= (920 + 90)) && (mouse_y) >= (150) && mouse_y <= (150 + 65)) &&
+                    (mouse_b & 1)) {
+                    route(page, map, banque);
+                }
                 time_t temps2 = time(NULL);
                 unsigned long diff=difftime(temps2,tempsdep);
 
