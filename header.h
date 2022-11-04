@@ -22,8 +22,13 @@ void affichageregles(BITMAP* bmpAffichage);
 
 //Fonctions pour la map
 void creer_map(BITMAP* page, int matriceMap[35][45]);
-void afficherInterface(BITMAP* page);
+void afficherInterface(BITMAP* page, int map[35][45]);
 void lireFichierMap(int matrice_a_remplir[35][45],char* nomFichier);
+
+//Constructions
+void route (BITMAP* page, int map[35][45]);
+void canalisations (BITMAP* page);
+void cables (BITMAP* page);
 
 //Sauvegarde
 int testSauvegarde();
@@ -45,10 +50,5 @@ typedef struct batiment
     SAMPLE* sonBat;
 
 }t_batiment;
-
-
-//Interface
-void afficherInterface(BITMAP* page);
-void route (BITMAP* page, int retourInterface);
 
 #endif //PROJET_ECECITY_HEADER_H

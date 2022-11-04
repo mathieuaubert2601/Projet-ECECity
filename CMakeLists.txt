@@ -16,7 +16,8 @@ add_executable(Projet_ECECity
         gestionBouton.c
         map.c
         sauvegarde.c
-        interface.c)
+        interface.c
+        construction.c)
 
 
 target_link_libraries(Projet_ECECity -lmingw32 -lalleg44)
