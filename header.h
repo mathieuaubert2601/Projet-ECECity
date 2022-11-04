@@ -12,7 +12,7 @@
 
 
 #define impots 10
-#define banqueDep 500000
+#define banqueDep 15
 
 ///Prototype des fonctions
 void initialisationAllegro();
@@ -31,7 +31,7 @@ void afficherInterface(BITMAP* page,int map[35][45], time_t tempsdepart, int arg
 void lireFichierMap(int matrice_a_remplir[35][45],char* nomFichier);
 
 //Constructions
-void route (BITMAP* page, int map[35][45]);
+void route (BITMAP* page, int map[35][45], int banque);
 void canalisations (BITMAP* page);
 void cables (BITMAP* page);
 
