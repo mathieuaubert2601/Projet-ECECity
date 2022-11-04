@@ -10,6 +10,10 @@
 #include <stdlib.h>
 #include "time.h"
 
+
+#define impots 10
+#define banqueDep 500000
+
 ///Prototype des fonctions
 void initialisationAllegro();
 void AffichageBouton(BITMAP* bouton,BITMAP* boutonInv, BITMAP* page,int sourcex,int sourcey,int destx,int desty,int longueur, int hauteur);
@@ -21,7 +25,8 @@ int choixModeJeu(BITMAP* bmpAffichage);
 void affichageregles(BITMAP* bmpAffichage);
 
 //Fonctions pour la map
-void creer_map(BITMAP* page, int matriceMap[35][45]);
+void afficher_map(BITMAP* page, int map[35][45]);
+void creer_map(BITMAP* page, int map[35][45]);
 void afficherInterface(BITMAP* page, int map[35][45]);
 void lireFichierMap(int matrice_a_remplir[35][45],char* nomFichier);
 

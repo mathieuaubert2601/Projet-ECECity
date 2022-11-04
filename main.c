@@ -18,28 +18,37 @@ int main()
     //Déclaration des variables
     int choixMenu;
     int map[35][45];
+    int route=1;
     int sortie=0;
 
 
     while(!key[KEY_ESC])
     {
         clear_bitmap(page);
+        play_sample(musiqueFond,15,0,1000,1);
         choixMenu = menuJeu(page);
         actionChoixMenu(choixMenu,page);
-        if(choixMenu == 1)
+        if(choixMenu == 1 || choixMenu==2)
         {
             clear_bitmap(page);
             time_t tempsdep = time(NULL);
             play_sample(ambiance,15,0,1000,1);
-            lireFichierMap(map,"map/mapBase.txt");
-            while(sortie==0)
+            if(choixMenu==2)
+            {
+                lireFichierMap(map,"map/mapBase.txt");
+            }
+            if(choixMenu==1)
             {
                 creer_map(page,map);
+            }
+            while(sortie==0)
+            {
+                afficher_map(page,map);
                 afficherInterface(page,map);
                 time_t temps2 = time(NULL);
                 unsigned long diff=difftime(temps2,tempsdep);
 
-                textprintf_ex(page,font,980,700,makecol(255,255,255),-1,"%d",diff);
+                textprintf_ex(page,font,980,50,makecol(255,255,255),-1,"%d",diff);
                 show_mouse(page);
                 blit(page,screen,0,0,0,0,1024,768);
             }

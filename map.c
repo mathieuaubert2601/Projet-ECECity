@@ -2,6 +2,16 @@
 
 void creer_map(BITMAP* page, int map[35][45])
 {
+    for (int i = 0; i<35; i++) {
+        for (int j = 0; j < 45; j++) {
+            map[i][j]=0;
+        }
+    }
+}
+
+
+void afficher_map(BITMAP* page, int map[35][45])
+{
     BITMAP* tuile = load_bitmap("map/tuile_verte.bmp",NULL);
     BITMAP* maison = load_bitmap("map/maison.bmp",NULL);
     BITMAP* route = load_bitmap("Constructions/route.bmp",NULL);
