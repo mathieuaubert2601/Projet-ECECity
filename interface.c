@@ -1,6 +1,3 @@
-//
-// Created by Lea on 01/11/2022.
-//
 #include "header.h"
 
 void afficherInterface(BITMAP* page)

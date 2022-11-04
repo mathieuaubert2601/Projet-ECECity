@@ -18,14 +18,17 @@ void AffichageBouton(BITMAP* bouton,BITMAP* boutonInv, BITMAP* page,int sourcex,
 int menuJeu(BITMAP* bmpAffichage);
 void actionChoixMenu(int choixDuMenu,BITMAP* bmpAffichage);
 int choixModeJeu(BITMAP* bmpAffichage);
+void affichageregles(BITMAP* bmpAffichage);
 
 //Fonctions pour la map
 void creer_map(BITMAP* page, int matriceMap[35][45]);
-int afficher_interface(BITMAP* page);
+void afficherInterface(BITMAP* page);
 void lireFichierMap(int matrice_a_remplir[35][45],char* nomFichier);
 
 //Sauvegarde
 int testSauvegarde();
+void indiquerSauvegarde(int ouvertureOuNon);
+void sauvegarderMatriceFichier(int matrice[35][45], char* nomFichier);
 
 typedef struct batiment
 {

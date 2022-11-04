@@ -5,15 +5,15 @@ void affichageregles(BITMAP* bmpAffichage)
     BITMAP* fondMenu = load_bitmap("menuDepart/fond1.bmp",NULL);
     BITMAP* regle = load_bitmap("menuDepart/regle.bmp",NULL);
     BITMAP* logoEceCitySansFond2 = load_bitmap("menuDepart/logo3.bmp",NULL);
-    while(sortie == 0)
+
+    while(!key[KEY_Q])
     {
         clear_bitmap(bmpAffichage);
         blit(fondMenu,bmpAffichage,0,0,0,0,bmpAffichage->w,bmpAffichage->h);
         masked_blit(logoEceCitySansFond2,bmpAffichage,0,0,230,0,logoEceCitySansFond2->w,logoEceCitySansFond2->h);
-        Sleep(7000);
-        sortie=1;
+        masked_stretch_blit(regle,bmpAffichage,0,0,regle->w,regle->h,150,190,regle->w /1.4 ,regle->h/1.4);
+        blit(bmpAffichage,screen,0,0,0,0,1024,768);
     }
-
 }
 int menuJeu(BITMAP* bmpAffichage)
 {
