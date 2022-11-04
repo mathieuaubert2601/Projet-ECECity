@@ -49,11 +49,11 @@ int main()
             {
                 afficher_map(page,map);
                 afficherInterface(page,map,tempsdep, banque);
-                if (((mouse_x >= (920) && mouse_x <= (920 + 90)) && (mouse_y) >= (150) && mouse_y <= (150 + 65)) &&
+                if (((mouse_x >= (920) && mouse_x <= (920 + 90)) && (mouse_y) >= (130) && mouse_y <= (130 + 65)) &&
                     (mouse_b & 1)) {
                     route(page, map, tempsdep,&banque);
                 }
-                if (((mouse_x >= (920) && mouse_x <= (920 + 100)) && (mouse_y) >= (180) && mouse_y <= (180 + 100)) && (mouse_b & 1))
+                if (((mouse_x >= (920) && mouse_x <= (920 + 100)) && (mouse_y) >= (200) && mouse_y <= (200 + 100)) && (mouse_b & 1))
                 {
                     habitation(page,map,tempsdep,&banque,&nb_hab, tab_hab);
                 }

@@ -32,7 +32,7 @@ void route (BITMAP* page, int map[35][45],time_t tempsdepart, int* banque)
 
 void habitation (BITMAP* page, int map[35][45],time_t tempsdepart, int* banque, int* nb_hab, t_habitation* tab_hab)
 {
-    BITMAP* maison = load_bitmap("map/maison.bmp",NULL);
+    BITMAP* terrain_vague = load_bitmap("Constructions/terrain_vague.bmp", NULL);
 
     int x,y;
     int clic=0;
@@ -44,7 +44,7 @@ void habitation (BITMAP* page, int map[35][45],time_t tempsdepart, int* banque, 
 
             afficher_map(page,map);
             afficherInterface(page,map,tempsdepart, *banque);
-            blit(maison, page, 0, 0, mouse_x, mouse_y-40, maison->w, maison->h);
+            blit(terrain_vague, page, 0, 0, mouse_x, mouse_y-40, terrain_vague->w, terrain_vague->h);
             blit(page,screen,0,0,0,0,900,700);
         }
 
