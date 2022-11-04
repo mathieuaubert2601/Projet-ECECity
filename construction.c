@@ -3,24 +3,6 @@
 
 void route (BITMAP* page, int map[35][45])
 {
-    //Creation Diff batiments
-    t_batiment terrain_vague, cabane, maison, immeuble, gratte_ciel, routes, chateau_eau, centrale;
-
-    //Definition prix differents batiments
-    terrain_vague.prix = 1000;
-    routes.prix = 10;
-    centrale.prix = 100000;
-    chateau_eau.prix=100000;
-
-    //Definition capacite habitation
-    cabane.nb_hab=10;
-    maison.nb_hab=50;
-    immeuble.nb_hab=100;
-    gratte_ciel.nb_hab=1000;
-
-    //Definition capacite de distribution
-    centrale.capacite_elec=5000;
-    chateau_eau.capacite_eau=5000;
 
     BITMAP* route = load_bitmap("Constructions/route.bmp", NULL);
     BITMAP* routeTran = load_bitmap("Constructions/routeTran.bmp", NULL);

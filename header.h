@@ -27,7 +27,7 @@ void affichageregles(BITMAP* bmpAffichage);
 //Fonctions pour la map
 void afficher_map(BITMAP* page, int map[35][45]);
 void creer_map(BITMAP* page, int map[35][45]);
-void afficherInterface(BITMAP* page, int map[35][45]);
+void afficherInterface(BITMAP* page,int map[35][45], time_t tempsdepart, int argent);
 void lireFichierMap(int matrice_a_remplir[35][45],char* nomFichier);
 
 //Constructions

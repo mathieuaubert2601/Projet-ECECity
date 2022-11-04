@@ -1,6 +1,6 @@
 #include "header.h"
 
-void afficherInterface(BITMAP* page,int map[35][45])
+void afficherInterface(BITMAP* page,int map[35][45], time_t tempsdepart, int argent)
 {
     //Déclaration des BITMAP pour l'interface
     BITMAP* fondCote = load_bitmap("Interface/fondCote.bmp",NULL);
@@ -46,11 +46,11 @@ void afficherInterface(BITMAP* page,int map[35][45])
     AffichageBouton(boutonElec, boutonElecInv, page, 0,0,920, 550, boutonElec->w,boutonElec->h);
     AffichageBouton(boutonEau,boutonEauInv,page,0,0, 920, 620, boutonEau->w, boutonEau->h);
 
-    //Test pour la construction des routes
-    if (((mouse_x >= (920) && mouse_x <= (920 + 90)) && (mouse_y) >= (150) && mouse_y <= (150 + 65)) && (mouse_b & 1))
-    {
-        route(page,map);
-    }
+    time_t tempsact = time(NULL);
+    unsigned long diff=difftime(tempsact,tempsdepart);
+    textprintf_ex(page,font,980,720,makecol(255,255,255),-1,"%d",diff);
+
+    textprintf_ex(page,font,80,720,makecol(255,255,255),-1,"%d",argent);
 
     //Test pour la construction
     if (((mouse_x >= (920) && mouse_x <= (920 + 100)) && (mouse_y) >= (180) && mouse_y <= (180 + 100)) && (mouse_b & 1))
@@ -63,15 +63,3 @@ void afficherInterface(BITMAP* page,int map[35][45])
 
 }
 
-/*
-void routeInterface (BITMAP* page, int retourInterface)
-{
-    BITMAP* iconeRouteTran = load_bitmap("Interface/iconeRouteTran.bmp", NULL);
-
-    //affichage route
-    if (retourInterface == 1)
-    {
-        masked_blit(iconeRouteTran, page,0,0,mouse_x,mouse_y,page->w, page->h);
-    }
-}
-*/

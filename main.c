@@ -20,6 +20,7 @@ int main()
     int map[35][45];
     int route=1;
     int sortie=0;
+    int banque=banqueDep;
 
 
     while(!key[KEY_ESC])
@@ -43,18 +44,13 @@ int main()
             }
             while(sortie==0)
             {
-                afficher_map(page,map);
-                afficherInterface(page,map);
-                time_t temps2 = time(NULL);
-                unsigned long diff=difftime(temps2,tempsdep);
 
-                textprintf_ex(page,font,980,50,makecol(255,255,255),-1,"%d",diff);
+                afficher_map(page,map);
+                afficherInterface(page,map,tempsdep, banque);
                 show_mouse(page);
                 blit(page,screen,0,0,0,0,1024,768);
             }
-
         }
-
     }
     return 0;
 }
