@@ -1,6 +1,6 @@
 #include "header.h"
 
-void afficherInterface(BITMAP* page,int map[35][45], time_t tempsdepart, int* argent)
+void afficherInterface(BITMAP* page,int map[35][45], time_t tempsdepart, int argent)
 {
     //Déclaration des BITMAP pour l'interface
     BITMAP* fondCote = load_bitmap("Interface/fondCote.bmp",NULL);
@@ -54,10 +54,7 @@ void afficherInterface(BITMAP* page,int map[35][45], time_t tempsdepart, int* ar
     textprintf_ex(page,font,80,720,makecol(255,255,255),-1,"%d",argent);
 
     //Test pour la construction
-    if (((mouse_x >= (920) && mouse_x <= (920 + 100)) && (mouse_y) >= (180) && mouse_y <= (180 + 100)) && (mouse_b & 1))
-    {
-        //sous programme maison
-    }
+
 
     show_mouse(page);
     blit(page, screen, 0, 0, 0, 0, 1024, 768);

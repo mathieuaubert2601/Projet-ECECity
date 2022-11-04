@@ -12,7 +12,7 @@ void affichageregles(BITMAP* bmpAffichage)
         masked_blit(logoEceCitySansFond2,bmpAffichage,0,0,230,0,logoEceCitySansFond2->w,logoEceCitySansFond2->h);
         masked_stretch_blit(regle,bmpAffichage,0,0,regle->w,regle->h,150,190,regle->w /1.4 ,regle->h/1.4);
         blit(bmpAffichage,screen,0,0,0,0,1024,768);
-        Sleep(7000);
+        rest(7000);
         sortie=1;
     }
 
@@ -75,7 +75,7 @@ void actionChoixMenu(int choixDuMenu,BITMAP* bmpAffichage)
 {
     if(choixDuMenu == 1)
     {
-        Sleep(200);
+        rest(200);
         choixModeJeu(bmpAffichage);
     }
     else if(choixDuMenu == 2 && testSauvegarde())
@@ -119,12 +119,12 @@ int choixModeJeu(BITMAP* bmpAffichage)
 
         if(((mouse_x>=(340)&& mouse_x<=(340+330))&& (mouse_y)>=(250)&& mouse_y<=(250 + 95))&&(mouse_b & 1))
         {
-            Sleep(100);
+            rest(100);
             return 1;
         }
         if(((mouse_x>=(340)&& mouse_x<=(340+330))&& (mouse_y)>=(370)&& mouse_y<=(370 + 95))&&(mouse_b & 1))
         {
-            Sleep(100);
+            rest(100);
             return 2;
         }
     }

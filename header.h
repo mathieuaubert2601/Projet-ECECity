@@ -14,10 +14,17 @@
 #define impots 10
 #define banqueDep 500000
 
+
+typedef struct habitation
+{
+    int niveau;
+    int nb_hab;
+    time_t tempsCrea;
+}t_habitation;
+
 ///Prototype des fonctions
 void initialisationAllegro();
 void AffichageBouton(BITMAP* bouton,BITMAP* boutonInv, BITMAP* page,int sourcex,int sourcey,int destx,int desty,int longueur, int hauteur);
-void AffichageIcone(BITMAP* bouton,BITMAP* boutonInv,BITMAP* infos, BITMAP* page,int sourcex,int sourcey,int destx,int desty,int longueur,int hauteur,int longueurinfos,int hauteurinfos);
 
 //Fonctions pour le menu
 int menuJeu(BITMAP* bmpAffichage);
@@ -28,20 +35,20 @@ void affichageregles(BITMAP* bmpAffichage);
 //Fonctions pour la map
 void afficher_map(BITMAP* page, int map[35][45]);
 void creer_map(BITMAP* page, int map[35][45]);
-void afficherInterface(BITMAP* page,int map[35][45],time_t tempsdepart, int* banque);
+void afficherInterface(BITMAP* page,int map[35][45], time_t tempsdepart, int argent);
 void lireFichierMap(int matrice_a_remplir[35][45],char* nomFichier);
 
 //Constructions
 void route (BITMAP* page, int map[35][45],time_t tempsdepart, int* banque);
-void canalisations (BITMAP* page);
-void cables (BITMAP* page);
+void habitation (BITMAP* page, int map[35][45],time_t tempsdepart, int* banque, int* nb_hab, t_habitation* tab_hab);
+void chateau_eau(BITMAP* page, int map[35][45],time_t tempsdepart, int* banque);
 
 //Sauvegarde
 int testSauvegarde();
 void indiquerSauvegarde(int ouvertureOuNon);
 void sauvegarderMatriceFichier(int matrice[35][45], char* nomFichier);
 
-typedef struct batiment
+/*typedef struct batiment
 {
     char nom[15];
     int prix;
@@ -55,6 +62,7 @@ typedef struct batiment
     BITMAP* imageCarte;
     SAMPLE* sonBat;
 
-}t_batiment;
+}t_batiment;*/
+
 
 #endif //PROJET_ECECITY_HEADER_H
