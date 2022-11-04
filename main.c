@@ -18,9 +18,9 @@ int main()
     //Déclaration des variables
     int choixMenu;
     int map[35][45];
-    int route=1;
     int sortie=0;
-    int banque=banqueDep;
+
+    int banque = banqueDep;
 
 
     while(!key[KEY_ESC])
@@ -44,13 +44,22 @@ int main()
             }
             while(sortie==0)
             {
-
                 afficher_map(page,map);
                 afficherInterface(page,map,tempsdep, banque);
+                if (((mouse_x >= (920) && mouse_x <= (920 + 90)) && (mouse_y) >= (150) && mouse_y <= (150 + 65)) &&
+                    (mouse_b & 1)) {
+                    route(page, map,tempsdep,&banque);
+                }
+                if (((mouse_x >= (920) && mouse_x <= (920 + 75)) && (mouse_y) >= (270) && mouse_y <= (270 + 100)) &&
+                    (mouse_b & 1)) {
+                    chateau_eau(page, map,tempsdep,&banque);
+                }
                 show_mouse(page);
                 blit(page,screen,0,0,0,0,1024,768);
             }
+
         }
+
     }
     return 0;
 }

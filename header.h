@@ -12,11 +12,12 @@
 
 
 #define impots 10
-#define banqueDep 15
+#define banqueDep 500000
 
 ///Prototype des fonctions
 void initialisationAllegro();
 void AffichageBouton(BITMAP* bouton,BITMAP* boutonInv, BITMAP* page,int sourcex,int sourcey,int destx,int desty,int longueur, int hauteur);
+void AffichageIcone(BITMAP* bouton,BITMAP* boutonInv,BITMAP* infos, BITMAP* page,int sourcex,int sourcey,int destx,int desty,int longueur,int hauteur,int longueurinfos,int hauteurinfos);
 
 //Fonctions pour le menu
 int menuJeu(BITMAP* bmpAffichage);
@@ -27,11 +28,11 @@ void affichageregles(BITMAP* bmpAffichage);
 //Fonctions pour la map
 void afficher_map(BITMAP* page, int map[35][45]);
 void creer_map(BITMAP* page, int map[35][45]);
-void afficherInterface(BITMAP* page,int map[35][45], time_t tempsdepart, int argent);
+void afficherInterface(BITMAP* page,int map[35][45],time_t tempsdepart, int* banque);
 void lireFichierMap(int matrice_a_remplir[35][45],char* nomFichier);
 
 //Constructions
-void route (BITMAP* page, int map[35][45], int banque);
+void route (BITMAP* page, int map[35][45],time_t tempsdepart, int* banque);
 void canalisations (BITMAP* page);
 void cables (BITMAP* page);
 

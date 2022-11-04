@@ -15,6 +15,7 @@ void afficher_map(BITMAP* page, int map[35][45])
     BITMAP* tuile = load_bitmap("map/tuile_verte.bmp",NULL);
     BITMAP* maison = load_bitmap("map/maison.bmp",NULL);
     BITMAP* route = load_bitmap("Constructions/route.bmp",NULL);
+    BITMAP* chateauEau = load_bitmap("Constructions/ChateauEau.bmp", NULL);
 
     for (int i = 0; i<35; i++) {
         for (int j = 0; j < 45; j++) {
@@ -35,7 +36,7 @@ void afficher_map(BITMAP* page, int map[35][45])
             }
             else if(map[i][j] == 5)
             {
-
+                blit(chateauEau,page,0,0,j*20,i*20,chateauEau->w,chateauEau->h);
             }
             else
             {

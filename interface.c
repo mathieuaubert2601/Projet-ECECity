@@ -1,14 +1,15 @@
 #include "header.h"
 
-void afficherInterface(BITMAP* page,int map[35][45], time_t tempsdepart, int argent)
+void afficherInterface(BITMAP* page,int map[35][45], time_t tempsdepart, int* argent)
 {
     //Déclaration des BITMAP pour l'interface
     BITMAP* fondCote = load_bitmap("Interface/fondCote.bmp",NULL);
     BITMAP* fondBas = load_bitmap("Interface/fondBas.bmp", NULL);
     BITMAP* iconeRoute = load_bitmap("Interface/iconeRoute.bmp", NULL);
     BITMAP* iconeRouteInv = load_bitmap("Interface/iconeRouteInv.bmp", NULL);
-    BITMAP* iconeChateau = load_bitmap("Interface/iconeChateau.bmp", NULL);
-    BITMAP* iconeChateauInv = load_bitmap("Interface/iconeChateauInv.bmp",NULL);
+    BITMAP* infosRoute = load_bitmap("Interface/infosRoute.bmp", NULL);
+    BITMAP* iconeChateauEau = load_bitmap("Interface/iconeChateauEau.bmp", NULL);
+    BITMAP* iconeChateauEauInv = load_bitmap("Interface/iconeChateauEauInv.bmp",NULL);
     BITMAP* iconeCentrale = load_bitmap("Interface/iconeCentrale.bmp", NULL);
     BITMAP* iconeCentraleInv = load_bitmap("Interface/iconeCentraleInv.bmp", NULL);
     BITMAP* iconeMaison = load_bitmap("Interface/iconeMaison.bmp", NULL);
@@ -32,10 +33,10 @@ void afficherInterface(BITMAP* page,int map[35][45], time_t tempsdepart, int arg
     blit(fondBas, page, 0, 0, 0, 700, page->w, page->h);
 
     //Affichage des boutons pour les concentrations
-    AffichageBouton(iconeRoute, iconeRouteInv, page, 0, 0, 920, 130, iconeRoute->w, iconeRoute->h);
+    AffichageIcone(iconeRoute, iconeRouteInv,infosRoute, page, 0, 0, 920, 130, iconeRoute->w, iconeRoute->h,infosRoute->w,infosRoute->h);
     AffichageBouton(iconeMaison, iconeMaisonInv, page, 0,0, 920, 200, iconeMaison->w, iconeMaison->h);
-    AffichageBouton(iconeChateau, iconeChateauInv, page, 0, 0, 920, 260,iconeChateau->w,iconeChateau->h);
-    AffichageBouton(iconeCentrale, iconeCentraleInv, page, 0, 0, 920, 340,iconeCentrale->w,iconeCentrale->h);
+    AffichageBouton(iconeChateauEau, iconeChateauEauInv,page,0,0,920,270,iconeChateauEau->w,iconeChateauEau->h);
+    AffichageBouton(iconeCentrale, iconeCentraleInv, page, 0, 0, 920, 380,iconeCentrale->w,iconeCentrale->h);
 
     //Affichage des boutons
     AffichageBouton(boutonQuitter,boutonQuitterInv,page,0,0,970,25,boutonQuitter->w,boutonQuitter->h);
