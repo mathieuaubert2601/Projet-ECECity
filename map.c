@@ -123,7 +123,7 @@ void lireFichierMap(int matrice_a_remplir[35][45],char* nomFichier)
 {
     //déclaration des variables
     FILE* fichier_a_lire = fopen(nomFichier,"r");
-    int caractere_du_fichier;
+    int caractere_du_fichier,caractere_du_fichier_prec = ' ';
     int i = 0, j = 0;
 
     //test d'ouverture du fichier
@@ -142,56 +142,360 @@ void lireFichierMap(int matrice_a_remplir[35][45],char* nomFichier)
         {
             if(caractere_du_fichier == '0')
             {
-                matrice_a_remplir[i][j] = 0;
-                j++;
+                if(caractere_du_fichier_prec == ' ' ||caractere_du_fichier_prec == '\n' )
+                {
+                    matrice_a_remplir[i][j] = 0;
+                    j++;
+                }
+                else
+                {
+                    if(j==0)
+                    {
+                        if(matrice_a_remplir[i-1][44] == 1)
+                        {
+                            matrice_a_remplir[i-1][44] = 10;
+                        }
+                        else if(matrice_a_remplir[i-1][44] == 2)
+                        {
+                            matrice_a_remplir[i-1][44] = 20;
+                        }
 
+                    }
+                    else
+                    {
+                        if(matrice_a_remplir[i][j-1] == 1)
+                        {
+                            matrice_a_remplir[i][j-1] = 10;
+                        }
+                        else if(matrice_a_remplir[i][j-1] == 2)
+                        {
+                            matrice_a_remplir[i][j-1] = 20;
+                        }
+                    }
+
+                }
             }
             else if (caractere_du_fichier == '1')
             {
-                matrice_a_remplir[i][j] = 1;
-                j++;
+                if(caractere_du_fichier_prec == ' ' ||caractere_du_fichier_prec == '\n' )
+                {
+                    matrice_a_remplir[i][j] = 1;
+                    j++;
+                }
+                else
+                {
+                    if(j==0)
+                    {
+                        if(matrice_a_remplir[i-1][44] == 1)
+                        {
+                            matrice_a_remplir[i-1][44] = 11;
+                        }
+                        else if(matrice_a_remplir[i-1][44] == 2)
+                        {
+                            matrice_a_remplir[i-1][44] = 21;
+                        }
+
+                    }
+                    else
+                    {
+                        if(matrice_a_remplir[i][j-1] == 1)
+                        {
+                            matrice_a_remplir[i][j-1] = 11;
+                        }
+                        else if(matrice_a_remplir[i][j-1] == 2)
+                        {
+                            matrice_a_remplir[i][j-1] = 21;
+                        }
+                    }
+
+                }
+            }
+            else if (caractere_du_fichier == '2')
+            {
+                if(caractere_du_fichier_prec == ' ' ||caractere_du_fichier_prec == '\n' )
+                {
+                    matrice_a_remplir[i][j] = 2;
+                    j++;
+                }
+                else
+                {
+                    if(j==0)
+                    {
+                        if(matrice_a_remplir[i-1][44] == 1)
+                        {
+                            matrice_a_remplir[i-1][44] = 12;
+                        }
+                        else if(matrice_a_remplir[i-1][44] == 2)
+                        {
+                            matrice_a_remplir[i-1][44] = 22;
+                        }
+
+                    }
+                    else
+                    {
+                        if(matrice_a_remplir[i][j-1] == 1)
+                        {
+                            matrice_a_remplir[i][j-1] = 12;
+                        }
+                        else if(matrice_a_remplir[i][j-1] == 2)
+                        {
+                            matrice_a_remplir[i][j-1] = 22;
+                        }
+                    }
+
+                }
             }
             else if (caractere_du_fichier == '3')
             {
-                matrice_a_remplir[i][j] = 3;
-                j++;
+                if(caractere_du_fichier_prec == ' ' ||caractere_du_fichier_prec == '\n' )
+                {
+                    matrice_a_remplir[i][j] = 3;
+                    j++;
+                }
+                else
+                {
+                    if(j==0)
+                    {
+                        if(matrice_a_remplir[i-1][44] == 1)
+                        {
+                            matrice_a_remplir[i-1][44] = 13;
+                        }
+                        else if(matrice_a_remplir[i-1][44] == 2)
+                        {
+                            matrice_a_remplir[i-1][44] = 23;
+                        }
+
+                    }
+                    else
+                    {
+                        if(matrice_a_remplir[i][j-1] == 1)
+                        {
+                            matrice_a_remplir[i][j-1] = 13;
+                        }
+                        else if(matrice_a_remplir[i][j-1] == 2)
+                        {
+                            matrice_a_remplir[i][j-1] = 23;
+                        }
+                    }
+
+                }
             }
             else if (caractere_du_fichier == '4')
             {
-                matrice_a_remplir[i][j] = 4;
-                j++;
+                if(caractere_du_fichier_prec == ' ' ||caractere_du_fichier_prec == '\n' )
+                {
+                    matrice_a_remplir[i][j] = 4;
+                    j++;
+                }
+                else
+                {
+                    if(j==0)
+                    {
+                        if(matrice_a_remplir[i-1][44] == 1)
+                        {
+                            matrice_a_remplir[i-1][44] = 14;
+                        }
+                        else if(matrice_a_remplir[i-1][44] == 2)
+                        {
+                            matrice_a_remplir[i-1][44] = 24;
+                        }
+
+                    }
+                    else
+                    {
+                        if(matrice_a_remplir[i][j-1] == 1)
+                        {
+                            matrice_a_remplir[i][j-1] = 14;
+                        }
+                        else if(matrice_a_remplir[i][j-1] == 2)
+                        {
+                            matrice_a_remplir[i][j-1] = 24;
+                        }
+                    }
+
+                }
             }
             else if (caractere_du_fichier == '5')
             {
-                matrice_a_remplir[i][j] = 5;
-                j++;
+                if(caractere_du_fichier_prec == ' ' ||caractere_du_fichier_prec == '\n' )
+                {
+                    matrice_a_remplir[i][j] = 5;
+                    j++;
+                }
+                else
+                {
+                    if(j==0)
+                    {
+                        if(matrice_a_remplir[i-1][44] == 1)
+                        {
+                            matrice_a_remplir[i-1][44] = 15;
+                        }
+                        else if(matrice_a_remplir[i-1][44] == 2)
+                        {
+                            matrice_a_remplir[i-1][44] = 25;
+                        }
+
+                    }
+                    else
+                    {
+                        if(matrice_a_remplir[i][j-1] == 1)
+                        {
+                            matrice_a_remplir[i][j-1] = 15;
+                        }
+                        else if(matrice_a_remplir[i][j-1] == 2)
+                        {
+                            matrice_a_remplir[i][j-1] = 25;
+                        }
+                    }
+
+                }
             }
             else if (caractere_du_fichier == '6')
             {
-                matrice_a_remplir[i][j] = 6;
-                j++;
+                if(caractere_du_fichier_prec == ' ' ||caractere_du_fichier_prec == '\n' )
+                {
+                    matrice_a_remplir[i][j] = 6;
+                    j++;
+                }
+                else
+                {
+                    if(j==0)
+                    {
+                        if(matrice_a_remplir[i-1][44] == 1)
+                        {
+                            matrice_a_remplir[i-1][44] = 16;
+                        }
+                        else if(matrice_a_remplir[i-1][44] == 2)
+                        {
+                            matrice_a_remplir[i-1][44] = 26;
+                        }
+
+                    }
+                    else
+                    {
+                        if(matrice_a_remplir[i][j-1] == 1)
+                        {
+                            matrice_a_remplir[i][j-1] = 16;
+                        }
+                        else if(matrice_a_remplir[i][j-1] == 2)
+                        {
+                            matrice_a_remplir[i][j-1] = 26;
+                        }
+                    }
+
+                }
             }
             else if (caractere_du_fichier == '7')
             {
-                matrice_a_remplir[i][j] = 7;
-                j++;
+                if(caractere_du_fichier_prec == ' ' ||caractere_du_fichier_prec == '\n' )
+                {
+                    matrice_a_remplir[i][j] = 7;
+                    j++;
+                }
+                else
+                {
+                    if(j==0)
+                    {
+                        if(matrice_a_remplir[i-1][44] == 1)
+                        {
+                            matrice_a_remplir[i-1][44] = 17;
+                        }
+                        else if(matrice_a_remplir[i-1][44] == 2)
+                        {
+                            matrice_a_remplir[i-1][44] = 27;
+                        }
+
+                    }
+                    else
+                    {
+                        if(matrice_a_remplir[i][j-1] == 1)
+                        {
+                            matrice_a_remplir[i][j-1] = 17;
+                        }
+                        else if(matrice_a_remplir[i][j-1] == 2)
+                        {
+                            matrice_a_remplir[i][j-1] = 27;
+                        }
+                    }
+
+                }
             }
             else if (caractere_du_fichier == '8')
             {
-                matrice_a_remplir[i][j] = 8;
-                j++;
+                if(caractere_du_fichier_prec == ' ' ||caractere_du_fichier_prec == '\n' )
+                {
+                    matrice_a_remplir[i][j] = 8;
+                    j++;
+                }
+                else
+                {
+                    if(j==0)
+                    {
+                        if(matrice_a_remplir[i-1][44] == 1)
+                        {
+                            matrice_a_remplir[i-1][44] = 18;
+                        }
+                        else if(matrice_a_remplir[i-1][44] == 2)
+                        {
+                            matrice_a_remplir[i-1][44] = 28;
+                        }
+
+                    }
+                    else
+                    {
+                        if(matrice_a_remplir[i][j-1] == 1)
+                        {
+                            matrice_a_remplir[i][j-1] = 18;
+                        }
+                        else if(matrice_a_remplir[i][j-1] == 2)
+                        {
+                            matrice_a_remplir[i][j-1] = 28;
+                        }
+                    }
+
+                }
             }
             else if (caractere_du_fichier == '9')
             {
-                matrice_a_remplir[i][j] = 9;
-                j++;
+                if(caractere_du_fichier_prec == ' ' ||caractere_du_fichier_prec == '\n' )
+                {
+                    matrice_a_remplir[i][j] = 9;
+                    j++;
+                }
+                else
+                {
+                    if(j==0)
+                    {
+                        if(matrice_a_remplir[i-1][44] == 1)
+                        {
+                            matrice_a_remplir[i-1][44] = 19;
+                        }
+                        else if(matrice_a_remplir[i-1][44] == 2)
+                        {
+                            matrice_a_remplir[i-1][44] = 29;
+                        }
+
+                    }
+                    else
+                    {
+                        if(matrice_a_remplir[i][j-1] == 1)
+                        {
+                            matrice_a_remplir[i][j-1] = 19;
+                        }
+                        else if(matrice_a_remplir[i][j-1] == 2)
+                        {
+                            matrice_a_remplir[i][j-1] = 29;
+                        }
+                    }
+
+                }
             }
-            if(j == 45)
-            {
-                j=0;
+            if(j == 45) {
+                j = 0;
                 i++;
             }
         }
+        caractere_du_fichier_prec = caractere_du_fichier;
     }
     while(caractere_du_fichier != EOF);
 

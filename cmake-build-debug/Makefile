@@ -50,19 +50,19 @@ cmake_force:
 SHELL = cmd.exe
 
 # The CMake executable.
-CMAKE_COMMAND = "C:\Users\m28wa\OneDrive\Bureau\algorithmique\ING 2 Algo\CLion 2022.2.4\bin\cmake\win\bin\cmake.exe"
+CMAKE_COMMAND = "C:\Program Files\JetBrains\CLion 2022.2.4\bin\cmake\win\bin\cmake.exe"
 
 # The command to remove a file.
-RM = "C:\Users\m28wa\OneDrive\Bureau\algorithmique\ING 2 Algo\CLion 2022.2.4\bin\cmake\win\bin\cmake.exe" -E rm -f
+RM = "C:\Program Files\JetBrains\CLion 2022.2.4\bin\cmake\win\bin\cmake.exe" -E rm -f
 
 # Escaping for special characters.
 EQUALS = =
 
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = C:\Users\m28wa\CLionProjects\Projet-ECECity
+CMAKE_SOURCE_DIR = C:\Users\maube\CLionProjects\Projet-ECECity
 
 # The top-level build directory on which CMake was run.
-CMAKE_BINARY_DIR = C:\Users\m28wa\CLionProjects\Projet-ECECity\cmake-build-debug
+CMAKE_BINARY_DIR = C:\Users\maube\CLionProjects\Projet-ECECity\cmake-build-debug
 
 #=============================================================================
 # Targets provided globally by CMake.
@@ -70,7 +70,7 @@ CMAKE_BINARY_DIR = C:\Users\m28wa\CLionProjects\Projet-ECECity\cmake-build-debug
 # Special rule for the target edit_cache
 edit_cache:
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "No interactive CMake dialog available..."
-	"C:\Users\m28wa\OneDrive\Bureau\algorithmique\ING 2 Algo\CLion 2022.2.4\bin\cmake\win\bin\cmake.exe" -E echo "No interactive CMake dialog available."
+	"C:\Program Files\JetBrains\CLion 2022.2.4\bin\cmake\win\bin\cmake.exe" -E echo "No interactive CMake dialog available."
 .PHONY : edit_cache
 
 # Special rule for the target edit_cache
@@ -80,7 +80,7 @@ edit_cache/fast: edit_cache
 # Special rule for the target rebuild_cache
 rebuild_cache:
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "Running CMake to regenerate build system..."
-	"C:\Users\m28wa\OneDrive\Bureau\algorithmique\ING 2 Algo\CLion 2022.2.4\bin\cmake\win\bin\cmake.exe" --regenerate-during-build -S$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR)
+	"C:\Program Files\JetBrains\CLion 2022.2.4\bin\cmake\win\bin\cmake.exe" --regenerate-during-build -S$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR)
 .PHONY : rebuild_cache
 
 # Special rule for the target rebuild_cache
@@ -89,9 +89,9 @@ rebuild_cache/fast: rebuild_cache
 
 # The main all target
 all: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start C:\Users\m28wa\CLionProjects\Projet-ECECity\cmake-build-debug\CMakeFiles C:\Users\m28wa\CLionProjects\Projet-ECECity\cmake-build-debug\\CMakeFiles\progress.marks
+	$(CMAKE_COMMAND) -E cmake_progress_start C:\Users\maube\CLionProjects\Projet-ECECity\cmake-build-debug\CMakeFiles C:\Users\maube\CLionProjects\Projet-ECECity\cmake-build-debug\\CMakeFiles\progress.marks
 	$(MAKE) $(MAKESILENT) -f CMakeFiles\Makefile2 all
-	$(CMAKE_COMMAND) -E cmake_progress_start C:\Users\m28wa\CLionProjects\Projet-ECECity\cmake-build-debug\CMakeFiles 0
+	$(CMAKE_COMMAND) -E cmake_progress_start C:\Users\maube\CLionProjects\Projet-ECECity\cmake-build-debug\CMakeFiles 0
 .PHONY : all
 
 # The main clean target
@@ -155,29 +155,53 @@ MenuJeu.c.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles\Projet_ECECity.dir\build.make CMakeFiles/Projet_ECECity.dir/MenuJeu.c.s
 .PHONY : MenuJeu.c.s
 
-case.obj: case.c.obj
-.PHONY : case.obj
+compterHabEauElec.obj: compterHabEauElec.c.obj
+.PHONY : compterHabEauElec.obj
 
 # target to build an object file
-case.c.obj:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles\Projet_ECECity.dir\build.make CMakeFiles/Projet_ECECity.dir/case.c.obj
-.PHONY : case.c.obj
+compterHabEauElec.c.obj:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\Projet_ECECity.dir\build.make CMakeFiles/Projet_ECECity.dir/compterHabEauElec.c.obj
+.PHONY : compterHabEauElec.c.obj
 
-case.i: case.c.i
-.PHONY : case.i
+compterHabEauElec.i: compterHabEauElec.c.i
+.PHONY : compterHabEauElec.i
 
 # target to preprocess a source file
-case.c.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles\Projet_ECECity.dir\build.make CMakeFiles/Projet_ECECity.dir/case.c.i
-.PHONY : case.c.i
+compterHabEauElec.c.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\Projet_ECECity.dir\build.make CMakeFiles/Projet_ECECity.dir/compterHabEauElec.c.i
+.PHONY : compterHabEauElec.c.i
 
-case.s: case.c.s
-.PHONY : case.s
+compterHabEauElec.s: compterHabEauElec.c.s
+.PHONY : compterHabEauElec.s
 
 # target to generate assembly for a file
-case.c.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles\Projet_ECECity.dir\build.make CMakeFiles/Projet_ECECity.dir/case.c.s
-.PHONY : case.c.s
+compterHabEauElec.c.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\Projet_ECECity.dir\build.make CMakeFiles/Projet_ECECity.dir/compterHabEauElec.c.s
+.PHONY : compterHabEauElec.c.s
+
+construction.obj: construction.c.obj
+.PHONY : construction.obj
+
+# target to build an object file
+construction.c.obj:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\Projet_ECECity.dir\build.make CMakeFiles/Projet_ECECity.dir/construction.c.obj
+.PHONY : construction.c.obj
+
+construction.i: construction.c.i
+.PHONY : construction.i
+
+# target to preprocess a source file
+construction.c.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\Projet_ECECity.dir\build.make CMakeFiles/Projet_ECECity.dir/construction.c.i
+.PHONY : construction.c.i
+
+construction.s: construction.c.s
+.PHONY : construction.s
+
+# target to generate assembly for a file
+construction.c.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\Projet_ECECity.dir\build.make CMakeFiles/Projet_ECECity.dir/construction.c.s
+.PHONY : construction.c.s
 
 gestionBouton.obj: gestionBouton.c.obj
 .PHONY : gestionBouton.obj
@@ -202,6 +226,30 @@ gestionBouton.s: gestionBouton.c.s
 gestionBouton.c.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles\Projet_ECECity.dir\build.make CMakeFiles/Projet_ECECity.dir/gestionBouton.c.s
 .PHONY : gestionBouton.c.s
+
+gestion_cycles.obj: gestion_cycles.c.obj
+.PHONY : gestion_cycles.obj
+
+# target to build an object file
+gestion_cycles.c.obj:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\Projet_ECECity.dir\build.make CMakeFiles/Projet_ECECity.dir/gestion_cycles.c.obj
+.PHONY : gestion_cycles.c.obj
+
+gestion_cycles.i: gestion_cycles.c.i
+.PHONY : gestion_cycles.i
+
+# target to preprocess a source file
+gestion_cycles.c.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\Projet_ECECity.dir\build.make CMakeFiles/Projet_ECECity.dir/gestion_cycles.c.i
+.PHONY : gestion_cycles.c.i
+
+gestion_cycles.s: gestion_cycles.c.s
+.PHONY : gestion_cycles.s
+
+# target to generate assembly for a file
+gestion_cycles.c.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\Projet_ECECity.dir\build.make CMakeFiles/Projet_ECECity.dir/gestion_cycles.c.s
+.PHONY : gestion_cycles.c.s
 
 init_allegro.obj: init_allegro.c.obj
 .PHONY : init_allegro.obj
@@ -335,12 +383,18 @@ help:
 	@echo ... MenuJeu.obj
 	@echo ... MenuJeu.i
 	@echo ... MenuJeu.s
-	@echo ... case.obj
-	@echo ... case.i
-	@echo ... case.s
+	@echo ... compterHabEauElec.obj
+	@echo ... compterHabEauElec.i
+	@echo ... compterHabEauElec.s
+	@echo ... construction.obj
+	@echo ... construction.i
+	@echo ... construction.s
 	@echo ... gestionBouton.obj
 	@echo ... gestionBouton.i
 	@echo ... gestionBouton.s
+	@echo ... gestion_cycles.obj
+	@echo ... gestion_cycles.i
+	@echo ... gestion_cycles.s
 	@echo ... init_allegro.obj
 	@echo ... init_allegro.i
 	@echo ... init_allegro.s
