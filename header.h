@@ -41,12 +41,15 @@ void affichageregles(BITMAP* bmpAffichage);
 void afficher_map(BITMAP* page, int map[35][45]);
 void creer_map(BITMAP* page, int map[35][45]);
 void afficherInterface(BITMAP* page,int map[35][45], time_t tempsdepart, int argent);
+int compterHab(int map[35][45]);
+int compterEau(int map[35][45]);
+int compterElec(int map[35][45]);
 void lireFichierMap(int matrice_a_remplir[35][45],char* nomFichier);
 
 //Constructions
-void route (BITMAP* page, int map[35][45],time_t tempsdepart, int* banque);
+void route (BITMAP* page, int map[35][45],time_t tempsdepart, int* banque,t_habitation tab_hab[50], int nb_hab);
 void habitation (BITMAP* page, int map[35][45],time_t tempsdepart, int* banque, int* nb_hab, t_habitation* tab_hab);
-void chateau_eau(BITMAP* page, int map[35][45],time_t tempsdepart, int* banque);
+void chateau_eau(BITMAP* page, int map[35][45],time_t tempsdepart, int* banque,t_habitation tab_hab[50], int nb_hab);
 
 void test_temps(int map[35][45], t_habitation tab_hab[50], int* argent, int nb_hab);
 

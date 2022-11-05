@@ -24,40 +24,89 @@ void afficher_map(BITMAP* page, int map[35][45])
 
     for (int i = 0; i<35; i++) {
         for (int j = 0; j < 45; j++) {
+            //Affichage cases vertes
             if (map[i][j] == 0) {
                 masked_stretch_blit(tuile, page, 0, 0, 20, 20, j * 20, i * 20, 20, 20);
             }
+            //Affichage routes horizontales
             else if(map[i][j] == 1)
             {
                 blit(route,page,0,0,j*20,i*20,route->w,route->h);
             }
+            //Affichage routes verticales
+            else if(map[i][j] == 2)
+            {
+
+            }
+            //Affichage terrain vague
             else if(map[i][j] == 3)
             {
                 blit(terrain_vague,page,0,0,j*20,i*20,terrain_vague->w,terrain_vague->h);
             }
+            //Affichage cabane
             else if(map[i][j] == 4)
             {
                 masked_blit(cabane,page,0,0,j*20,i*20,terrain_vague->w,terrain_vague->h);
             }
+            //Affichage maison
             else if(map[i][j] == 5)
             {
                 masked_blit(maison,page,0,0,j*20,i*20,terrain_vague->w,terrain_vague->h);
             }
+            //Affichage immeuble
             else if(map[i][j] == 6)
             {
                 masked_blit(immeuble,page,0,0,j*20,i*20,terrain_vague->w,terrain_vague->h);
             }
+            //Affichage gratte ciel
             else if(map[i][j] == 7)
             {
                 masked_blit(gratte_ciel,page,0,0,j*20,i*20,terrain_vague->w,terrain_vague->h);
             }
+            //Case libre pour affichage terrain vague
             else if(map[i][j] == 9)
             {
 
             }
+            //Case libre pour affichage cabane
             else if(map[i][j] == 10)
             {
+
+            }
+            //Case libre pour affichage maison
+            else if(map[i][j] == 11)
+            {
+
+            }
+            //Case libre pour affichage immeuble
+            else if(map[i][j] == 12)
+            {
+
+            }
+            //Case libre pour affichage gratte ciel
+            else if(map[i][j] == 13)
+            {
+
+            }
+            //Afficher chateau d'eau
+            else if(map[i][j] == 14)
+            {
                 blit(chateauEau,page,0,0,j*20,i*20,chateauEau->w,chateauEau->h);
+            }
+            //Afficher centrale
+            else if(map[i][j] == 15)
+            {
+                //blit(chateauEau,page,0,0,j*20,i*20,chateauEau->w,chateauEau->h);
+            }
+            //Case libre pour affichage chateau d'eau
+            else if(map[i][j] == 16)
+            {
+
+            }
+            //Case libre pour affichage centrale
+            else if(map[i][j] == 17)
+            {
+
             }
             else
             {

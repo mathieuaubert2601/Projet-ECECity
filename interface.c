@@ -2,6 +2,10 @@
 
 void afficherInterface(BITMAP* page,int map[35][45], time_t tempsdepart, int argent)
 {
+    int compteurEau=0;
+    int compteurElec=0;
+    int compteurHab=0;
+
     //Déclaration des BITMAP pour l'interface
     BITMAP* fondCote = load_bitmap("Interface/fondCote.bmp",NULL);
     BITMAP* fondBas = load_bitmap("Interface/fondBas.bmp", NULL);
@@ -53,8 +57,13 @@ void afficherInterface(BITMAP* page,int map[35][45], time_t tempsdepart, int arg
 
     textprintf_ex(page,font,80,720,makecol(255,255,255),-1,"%d",argent);
 
-    //Test pour la construction
+    compteurHab = compterHab(map);
+    compteurEau = compterEau(map);
+    compteurElec = compterElec(map);
 
+    textprintf_ex(page,font,180,720,makecol(255,255,255),-1,"%d",compteurHab);
+    textprintf_ex(page,font,280,720,makecol(255,255,255),-1,"%d",compteurEau);
+    textprintf_ex(page,font,380,720,makecol(255,255,255),-1,"%d",compteurElec);
 
     show_mouse(page);
     blit(page, screen, 0, 0, 0, 0, 1024, 768);
