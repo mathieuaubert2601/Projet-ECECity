@@ -30,6 +30,9 @@ int testSauvegarde();
 void indiquerSauvegarde(int ouvertureOuNon);
 void sauvegarderMatriceFichier(int matrice[35][45], char* nomFichier);
 
+//case
+void affichagecasefree(BITMAP* page,int map[35][45],int type,int rotation);
+
 typedef struct batiment
 {
     char nom[15];
