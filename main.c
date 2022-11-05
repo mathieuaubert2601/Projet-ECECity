@@ -40,11 +40,12 @@ int main()
             play_sample(ambiance,15,0,1000,1);
             if(choixMenu==2)
             {
-                lireFichierMap(map,"map/mapBase.txt");
+                lireFichierMap(map,"Sauvegarde/fichierCarte.txt");
             }
             if(choixMenu==1)
             {
-                creer_map(page,map);
+                lireFichierMap(map,"map/mapBase.txt");
+                //creer_map(page,map);
             }
             while(sortie==0)
             {
@@ -62,6 +63,14 @@ int main()
                 if (((mouse_x >= (920) && mouse_x <= (920 + 75)) && (mouse_y) >= (270) && mouse_y <= (270 + 100)) &&
                     (mouse_b & 1)) {
                     chateau_eau(page, map,tempsdep,&banque, tab_hab, nb_hab);
+                }
+                if (((mouse_x >= (920) && mouse_x <= (920 + 40)) && (mouse_y) >= (25) && mouse_y <= (25 + 40)) &&
+                    (mouse_b & 1)) {
+                    sauvegarderMatriceFichier(map,"Sauvegarde/fichierCarte.txt");
+                }
+                if (((mouse_x >= (970) && mouse_x <= (970 + 40)) && (mouse_y) >= (25) && mouse_y <= (25 + 40)) &&
+                    (mouse_b & 1)) {
+                    sortie = 1;
                 }
                 show_mouse(page);
                 blit(page,screen,0,0,0,0,1024,768);
