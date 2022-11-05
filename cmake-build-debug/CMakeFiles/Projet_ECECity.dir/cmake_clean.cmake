@@ -1,6 +1,8 @@
 file(REMOVE_RECURSE
   "CMakeFiles/Projet_ECECity.dir/MenuJeu.c.obj"
   "CMakeFiles/Projet_ECECity.dir/MenuJeu.c.obj.d"
+  "CMakeFiles/Projet_ECECity.dir/case.c.obj"
+  "CMakeFiles/Projet_ECECity.dir/case.c.obj.d"
   "CMakeFiles/Projet_ECECity.dir/gestionBouton.c.obj"
   "CMakeFiles/Projet_ECECity.dir/gestionBouton.c.obj.d"
   "CMakeFiles/Projet_ECECity.dir/init_allegro.c.obj"
