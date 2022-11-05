@@ -30,7 +30,7 @@ void route (BITMAP* page, int map[35][45],time_t tempsdepart, int* banque)
     }
 }
 
-void habitation (BITMAP* page, int map[35][45],time_t tempsdepart, int* banque, int* nb_hab, t_habitation* tab_hab)
+void habitation (BITMAP* page, int map[35][45],time_t tempsdepart, int* banque, int* nb_hab, t_habitation tab_hab[50])
 {
     BITMAP* terrain_vague = load_bitmap("Constructions/terrain_vague.bmp", NULL);
 
@@ -75,6 +75,14 @@ void habitation (BITMAP* page, int map[35][45],time_t tempsdepart, int* banque, 
             tab_hab[0].nb_hab=0;
             tab_hab[0].niveau=0;
             tab_hab[0].tempsCrea=time(NULL);*/
+
+            tab_hab[*nb_hab].nb_habitants=0;
+            tab_hab[*nb_hab].niveau=0;
+            tab_hab[*nb_hab].tempsCrea=time(NULL);
+            tab_hab[*nb_hab].x=x;
+            tab_hab[*nb_hab].y=y-2;
+
+            *nb_hab+=1;
         }
         if(mouse_b&2)
             clic=1;
@@ -121,7 +129,7 @@ void chateau_eau(BITMAP* page, int map[35][45],time_t tempsdepart, int* banque)
             map[y-2][x] =9;
             map[y-3][x] =9;
             map[y-4][x] =9;
-            map[y-5][x] =5;
+            map[y-5][x] =10;
 
             map[y][x+1] =9;
             map[y-1][x+1] =9;

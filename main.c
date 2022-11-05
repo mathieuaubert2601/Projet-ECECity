@@ -22,8 +22,9 @@ int main()
     int banque=banqueDep;
     int nb_hab=0;
 
-    t_habitation* tab_hab = NULL;
-    tab_hab=(t_habitation*)malloc(nb_hab*sizeof (t_habitation));
+    //t_habitation* tab_hab = NULL;
+    //tab_hab=(t_habitation*)malloc(nb_hab*sizeof (t_habitation));
+    t_habitation tab_hab[50];
 
 
     while(!key[KEY_ESC])
@@ -49,6 +50,7 @@ int main()
             {
                 afficher_map(page,map);
                 afficherInterface(page,map,tempsdep, banque);
+                test_temps(map,tab_hab,&banque,nb_hab);
                 if (((mouse_x >= (920) && mouse_x <= (920 + 90)) && (mouse_y) >= (130) && mouse_y <= (130 + 65)) &&
                     (mouse_b & 1)) {
                     route(page, map, tempsdep,&banque);
@@ -66,8 +68,8 @@ int main()
             }
         }
     }
-    free(tab_hab);
-    tab_hab=NULL;
+    //free(tab_hab);
+    //tab_hab=NULL;
     return 0;
 }
 END_OF_MAIN();

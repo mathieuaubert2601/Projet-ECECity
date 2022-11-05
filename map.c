@@ -13,10 +13,14 @@ void creer_map(BITMAP* page, int map[35][45])
 void afficher_map(BITMAP* page, int map[35][45])
 {
     BITMAP* tuile = load_bitmap("map/tuile_verte.bmp",NULL);
-    BITMAP* maison = load_bitmap("map/maison.bmp",NULL);
+    //BITMAP* maison = load_bitmap("map/maison.bmp",NULL);
     BITMAP* route = load_bitmap("Constructions/route.bmp",NULL);
     BITMAP* chateauEau = load_bitmap("Constructions/ChateauEau.bmp", NULL);
     BITMAP* terrain_vague = load_bitmap("Constructions/terrain_vague.bmp", NULL);
+    BITMAP* cabane = load_bitmap("Constructions/cabane.bmp", NULL);
+    BITMAP* maison = load_bitmap("Constructions/maison.bmp", NULL);
+    BITMAP* immeuble = load_bitmap("Constructions/immeuble.bmp", NULL);
+    BITMAP* gratte_ciel = load_bitmap("Constructions/gratte_ciel.bmp", NULL);
 
     for (int i = 0; i<35; i++) {
         for (int j = 0; j < 45; j++) {
@@ -31,11 +35,27 @@ void afficher_map(BITMAP* page, int map[35][45])
             {
                 blit(terrain_vague,page,0,0,j*20,i*20,terrain_vague->w,terrain_vague->h);
             }
+            else if(map[i][j] == 4)
+            {
+                masked_blit(cabane,page,0,0,j*20,i*20,terrain_vague->w,terrain_vague->h);
+            }
+            else if(map[i][j] == 5)
+            {
+                masked_blit(maison,page,0,0,j*20,i*20,terrain_vague->w,terrain_vague->h);
+            }
+            else if(map[i][j] == 6)
+            {
+                masked_blit(immeuble,page,0,0,j*20,i*20,terrain_vague->w,terrain_vague->h);
+            }
+            else if(map[i][j] == 7)
+            {
+                masked_blit(gratte_ciel,page,0,0,j*20,i*20,terrain_vague->w,terrain_vague->h);
+            }
             else if(map[i][j] == 9)
             {
 
             }
-            else if(map[i][j] == 5)
+            else if(map[i][j] == 10)
             {
                 blit(chateauEau,page,0,0,j*20,i*20,chateauEau->w,chateauEau->h);
             }
