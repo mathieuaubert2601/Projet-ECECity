@@ -18,36 +18,56 @@ int main()
     //Déclaration des variables
     int choixMenu;
     int map[35][45];
-    int route=1;
     int sortie=0;
+    int banque=banqueDep;
+    int nb_hab=0;
+
+    t_habitation* tab_hab = NULL;
+    tab_hab=(t_habitation*)malloc(nb_hab*sizeof (t_habitation));
 
 
     while(!key[KEY_ESC])
     {
         clear_bitmap(page);
+        play_sample(musiqueFond,15,0,1000,1);
         choixMenu = menuJeu(page);
         actionChoixMenu(choixMenu,page);
-        if(choixMenu == 1)
+        if(choixMenu == 1 || choixMenu==2)
         {
             clear_bitmap(page);
             time_t tempsdep = time(NULL);
             play_sample(ambiance,15,0,1000,1);
-            while(sortie==0)
+            if(choixMenu==2)
             {
                 lireFichierMap(map,"map/mapBase.txt");
+            }
+            if(choixMenu==1)
+            {
                 creer_map(page,map);
-                afficherInterface(page);
-                time_t temps2 = time(NULL);
-                unsigned long diff=difftime(temps2,tempsdep);
-
-                textprintf_ex(page,font,980,50,makecol(255,255,255),-1,"%d",diff);
+            }
+            while(sortie==0)
+            {
+                afficher_map(page,map);
+                afficherInterface(page,map,tempsdep, banque);
+                if (((mouse_x >= (920) && mouse_x <= (920 + 90)) && (mouse_y) >= (130) && mouse_y <= (130 + 65)) &&
+                    (mouse_b & 1)) {
+                    route(page, map, tempsdep,&banque);
+                }
+                if (((mouse_x >= (920) && mouse_x <= (920 + 100)) && (mouse_y) >= (200) && mouse_y <= (200 + 100)) && (mouse_b & 1))
+                {
+                    habitation(page,map,tempsdep,&banque,&nb_hab, tab_hab);
+                }
+                if (((mouse_x >= (920) && mouse_x <= (920 + 75)) && (mouse_y) >= (270) && mouse_y <= (270 + 100)) &&
+                    (mouse_b & 1)) {
+                    chateau_eau(page, map,tempsdep,&banque);
+                }
                 show_mouse(page);
                 blit(page,screen,0,0,0,0,1024,768);
             }
-
         }
-
     }
+    free(tab_hab);
+    tab_hab=NULL;
     return 0;
 }
 END_OF_MAIN();
