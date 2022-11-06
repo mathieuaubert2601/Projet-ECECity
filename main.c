@@ -41,10 +41,12 @@ int main()
             if(choixMenu==2)
             {
                 lireFichierMap(map,"Sauvegarde/fichierCarte.txt");
+                sortie = 0;
             }
             if(choixMenu==1)
             {
                 lireFichierMap(map,"map/mapBase.txt");
+                sortie = 0;
                 //creer_map(page,map);
             }
             while(sortie==0)

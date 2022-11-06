@@ -188,3 +188,53 @@ void sauvegarderMatriceFichier(int matrice[35][45], char* nomFichier)
     //On indique que la sauvegarde a été faite
     indiquerSauvegarde(1);
 }
+
+void sauvegarderTableauBatiment(char* nomFichier, t_habitation tableau[],int nombreBatiments)
+{
+    FILE* fichier = fopen(nomFichier,"wb+");
+
+    //test ouverture fichier
+    if(fichier == NULL)
+    {
+        printf("Erreur ouverture fichier : %s",nomFichier);
+    }
+
+    //Enregistrement du nombre de batiment
+    fwrite(&nombreBatiments,sizeof(int),1,fichier);
+
+    //Enregistrement des habitations
+    for(int i = 0 ; i<nombreBatiments ; i++)
+    {
+        fwrite(&tableau[i],sizeof(t_habitation),1,fichier);
+    }
+
+    //Fermeture du fichier
+    fclose(fichier);
+}
+
+int chargerTableauHabitation(t_habitation tableauHabitation[], char* nomFichier)
+{
+    //Déclaration des variables
+    int nombreBatiment = 0;
+    FILE* fichier = fopen(nomFichier,"rb+");
+
+    //test ouverture fichier
+    if(fichier == NULL)
+    {
+        printf("Erreur ouverture fichier : %s",nomFichier);
+    }
+
+    //Lecture du nombre de batiment
+    fread(&nombreBatiment,sizeof(int),1,fichier);
+
+    //Lecture des structure
+    for(int i = 0 ; i<nombreBatiment ; i++)
+    {
+        fread(&tableauHabitation[i],sizeof(t_habitation),1,fichier);
+    }
+
+    //Fermeture du fichier
+    fclose(fichier);
+
+    return nombreBatiment;
+}

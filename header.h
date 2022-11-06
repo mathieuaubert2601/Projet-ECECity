@@ -57,6 +57,8 @@ void test_temps(int map[35][45], t_habitation tab_hab[50], int* argent, int nb_h
 int testSauvegarde();
 void indiquerSauvegarde(int ouvertureOuNon);
 void sauvegarderMatriceFichier(int matrice[35][45], char* nomFichier);
+int chargerTableauHabitation(t_habitation tableauHabitation[], char* nomFichier);
+void sauvegarderTableauBatiment(char* nomFichier, t_habitation tableau[],int nombreBatiments);
 
 /*typedef struct batiment
 {
