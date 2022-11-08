@@ -41,13 +41,14 @@ int main()
             if(choixMenu==2)
             {
                 lireFichierMap(map,"Sauvegarde/fichierCarte.txt");
+                nb_hab = chargerTableauHabitation(tab_hab,"Sauvegarde/tableauBatiment.bin");
                 sortie = 0;
             }
             if(choixMenu==1)
             {
-                lireFichierMap(map,"map/mapBase.txt");
+                //lireFichierMap(map,"map/mapBase.txt");
                 sortie = 0;
-                //creer_map(page,map);
+                creer_map(page,map);
             }
             while(sortie==0)
             {
@@ -68,6 +69,7 @@ int main()
                 }
                 if (((mouse_x >= (920) && mouse_x <= (920 + 40)) && (mouse_y) >= (25) && mouse_y <= (25 + 40)) &&
                     (mouse_b & 1)) {
+                    sauvegarderTableauBatiment("Sauvegarde/tableauBatiment.bin",tab_hab,nb_hab);
                     sauvegarderMatriceFichier(map,"Sauvegarde/fichierCarte.txt");
                 }
                 if (((mouse_x >= (970) && mouse_x <= (970 + 40)) && (mouse_y) >= (25) && mouse_y <= (25 + 40)) &&
