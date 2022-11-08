@@ -13,6 +13,7 @@ void route (BITMAP* page, int map[35][45],time_t tempsdepart, int* banque, t_hab
     {
         afficher_map(page,map);
         afficherInterface(page,map,tempsdepart,*banque);
+        affichagecasefree(page,map,1);
         test_temps(map,tab_hab,banque,nb_hab);
         if(((mouse_x>=(0)&& mouse_x<=(900))&& ((mouse_y)>=(0)&& mouse_y<=(700)))&&(mouse_b &1))
         {

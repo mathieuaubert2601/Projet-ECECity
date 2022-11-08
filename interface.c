@@ -51,6 +51,7 @@ void afficherInterface(BITMAP* page,int map[35][45], time_t tempsdepart, int arg
     AffichageBouton(boutonElec, boutonElecInv, page, 0,0,920, 550, boutonElec->w,boutonElec->h);
     AffichageBouton(boutonEau,boutonEauInv,page,0,0, 920, 620, boutonEau->w, boutonEau->h);
 
+
     time_t tempsact = time(NULL);
     unsigned long diff=difftime(tempsact,tempsdepart);
     textprintf_ex(page,font,980,720,makecol(255,255,255),-1,"%d",diff);

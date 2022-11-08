@@ -60,6 +60,9 @@ void sauvegarderMatriceFichier(int matrice[35][45], char* nomFichier);
 int chargerTableauHabitation(t_habitation tableauHabitation[], char* nomFichier);
 void sauvegarderTableauBatiment(char* nomFichier, t_habitation tableau[],int nombreBatiments);
 
+//Case
+void affichagecasefree(BITMAP* page,int map[35][45],int type);
+
 /*typedef struct batiment
 {
     char nom[15];

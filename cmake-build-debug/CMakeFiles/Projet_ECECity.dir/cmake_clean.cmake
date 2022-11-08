@@ -1,6 +1,8 @@
 file(REMOVE_RECURSE
   "CMakeFiles/Projet_ECECity.dir/MenuJeu.c.obj"
   "CMakeFiles/Projet_ECECity.dir/MenuJeu.c.obj.d"
+  "CMakeFiles/Projet_ECECity.dir/case.c.obj"
+  "CMakeFiles/Projet_ECECity.dir/case.c.obj.d"
   "CMakeFiles/Projet_ECECity.dir/compterHabEauElec.c.obj"
   "CMakeFiles/Projet_ECECity.dir/compterHabEauElec.c.obj.d"
   "CMakeFiles/Projet_ECECity.dir/construction.c.obj"
