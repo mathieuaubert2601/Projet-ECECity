@@ -86,7 +86,16 @@
 		<Unit filename="C:/Users/m28wa/CLionProjects/Projet-ECECity/case.c">
 			<Option target="Projet_ECECity"/>
 		</Unit>
+		<Unit filename="C:/Users/m28wa/CLionProjects/Projet-ECECity/compterHabEauElec.c">
+			<Option target="Projet_ECECity"/>
+		</Unit>
+		<Unit filename="C:/Users/m28wa/CLionProjects/Projet-ECECity/construction.c">
+			<Option target="Projet_ECECity"/>
+		</Unit>
 		<Unit filename="C:/Users/m28wa/CLionProjects/Projet-ECECity/gestionBouton.c">
+			<Option target="Projet_ECECity"/>
+		</Unit>
+		<Unit filename="C:/Users/m28wa/CLionProjects/Projet-ECECity/gestion_cycles.c">
 			<Option target="Projet_ECECity"/>
 		</Unit>
 		<Unit filename="C:/Users/m28wa/CLionProjects/Projet-ECECity/header.h">

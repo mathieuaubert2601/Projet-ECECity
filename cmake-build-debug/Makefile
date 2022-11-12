@@ -179,6 +179,54 @@ case.c.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles\Projet_ECECity.dir\build.make CMakeFiles/Projet_ECECity.dir/case.c.s
 .PHONY : case.c.s
 
+compterHabEauElec.obj: compterHabEauElec.c.obj
+.PHONY : compterHabEauElec.obj
+
+# target to build an object file
+compterHabEauElec.c.obj:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\Projet_ECECity.dir\build.make CMakeFiles/Projet_ECECity.dir/compterHabEauElec.c.obj
+.PHONY : compterHabEauElec.c.obj
+
+compterHabEauElec.i: compterHabEauElec.c.i
+.PHONY : compterHabEauElec.i
+
+# target to preprocess a source file
+compterHabEauElec.c.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\Projet_ECECity.dir\build.make CMakeFiles/Projet_ECECity.dir/compterHabEauElec.c.i
+.PHONY : compterHabEauElec.c.i
+
+compterHabEauElec.s: compterHabEauElec.c.s
+.PHONY : compterHabEauElec.s
+
+# target to generate assembly for a file
+compterHabEauElec.c.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\Projet_ECECity.dir\build.make CMakeFiles/Projet_ECECity.dir/compterHabEauElec.c.s
+.PHONY : compterHabEauElec.c.s
+
+construction.obj: construction.c.obj
+.PHONY : construction.obj
+
+# target to build an object file
+construction.c.obj:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\Projet_ECECity.dir\build.make CMakeFiles/Projet_ECECity.dir/construction.c.obj
+.PHONY : construction.c.obj
+
+construction.i: construction.c.i
+.PHONY : construction.i
+
+# target to preprocess a source file
+construction.c.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\Projet_ECECity.dir\build.make CMakeFiles/Projet_ECECity.dir/construction.c.i
+.PHONY : construction.c.i
+
+construction.s: construction.c.s
+.PHONY : construction.s
+
+# target to generate assembly for a file
+construction.c.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\Projet_ECECity.dir\build.make CMakeFiles/Projet_ECECity.dir/construction.c.s
+.PHONY : construction.c.s
+
 gestionBouton.obj: gestionBouton.c.obj
 .PHONY : gestionBouton.obj
 
@@ -202,6 +250,30 @@ gestionBouton.s: gestionBouton.c.s
 gestionBouton.c.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles\Projet_ECECity.dir\build.make CMakeFiles/Projet_ECECity.dir/gestionBouton.c.s
 .PHONY : gestionBouton.c.s
+
+gestion_cycles.obj: gestion_cycles.c.obj
+.PHONY : gestion_cycles.obj
+
+# target to build an object file
+gestion_cycles.c.obj:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\Projet_ECECity.dir\build.make CMakeFiles/Projet_ECECity.dir/gestion_cycles.c.obj
+.PHONY : gestion_cycles.c.obj
+
+gestion_cycles.i: gestion_cycles.c.i
+.PHONY : gestion_cycles.i
+
+# target to preprocess a source file
+gestion_cycles.c.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\Projet_ECECity.dir\build.make CMakeFiles/Projet_ECECity.dir/gestion_cycles.c.i
+.PHONY : gestion_cycles.c.i
+
+gestion_cycles.s: gestion_cycles.c.s
+.PHONY : gestion_cycles.s
+
+# target to generate assembly for a file
+gestion_cycles.c.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\Projet_ECECity.dir\build.make CMakeFiles/Projet_ECECity.dir/gestion_cycles.c.s
+.PHONY : gestion_cycles.c.s
 
 init_allegro.obj: init_allegro.c.obj
 .PHONY : init_allegro.obj
@@ -338,9 +410,18 @@ help:
 	@echo ... case.obj
 	@echo ... case.i
 	@echo ... case.s
+	@echo ... compterHabEauElec.obj
+	@echo ... compterHabEauElec.i
+	@echo ... compterHabEauElec.s
+	@echo ... construction.obj
+	@echo ... construction.i
+	@echo ... construction.s
 	@echo ... gestionBouton.obj
 	@echo ... gestionBouton.i
 	@echo ... gestionBouton.s
+	@echo ... gestion_cycles.obj
+	@echo ... gestion_cycles.i
+	@echo ... gestion_cycles.s
 	@echo ... init_allegro.obj
 	@echo ... init_allegro.i
 	@echo ... init_allegro.s

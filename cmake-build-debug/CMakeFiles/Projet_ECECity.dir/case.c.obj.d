@@ -1,5 +1,5 @@
-CMakeFiles/Projet_ECECity.dir/construction.c.obj: \
- C:\Users\m28wa\CLionProjects\Projet-ECECity\construction.c \
+CMakeFiles/Projet_ECECity.dir/case.c.obj: \
+ C:\Users\m28wa\CLionProjects\Projet-ECECity\case.c \
  C:\Users\m28wa\CLionProjects\Projet-ECECity\header.h \
  C:/PROGRA~1/CODEBL~1/MinGW/x86_64-w64-mingw32/include/allegro.h \
  C:/PROGRA~1/CODEBL~1/MinGW/x86_64-w64-mingw32/include/allegro/base.h \
