@@ -123,7 +123,7 @@ void chateau_eau(BITMAP* page, int map[35][45],time_t tempsdepart, int* banque, 
             testclic=1;
         }
         test_temps(map,tab_hab,banque,nb_hab);
-        afficher_map(page,map);
+
         afficherInterface(page,map,tempsdepart, *banque);
         if(testclic==1 && *banque>=100000 &&
             map[y][x]==0&&(map[y-1][x] == 0)&&(map[y-2][x] == 0)&&(map[y-3][x] == 0)&&(map[y-4][x] == 0)&&(map[y-5][x] == 0)&&
