@@ -11,7 +11,6 @@ void route (BITMAP* page, int map[35][45],time_t tempsdepart, int* banque, t_hab
 
     while(clic!=1)
     {
-
         afficherInterface(page,map,tempsdepart,*banque);
         affichagecasefree(page,map,1);
         test_temps(map,tab_hab,banque,nb_hab);
