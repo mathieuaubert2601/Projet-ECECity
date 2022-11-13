@@ -66,6 +66,10 @@ int main()
                     (mouse_b & 1)) {
                     chateau_eau(page, map,tempsdep,&banque, tab_hab, nb_hab);
                 }
+                if (((mouse_x >= (920) && mouse_x <= (920 + 75)) && (mouse_y) >= (380) && mouse_y <= (380 + 100)) &&
+                    (mouse_b & 1)) {
+                    centrale(page, map,tempsdep,&banque, tab_hab, nb_hab);
+                }
                 if (((mouse_x >= (920) && mouse_x <= (920 + 40)) && (mouse_y) >= (25) && mouse_y <= (25 + 40)) &&
                     (mouse_b & 1)) {
                     sauvegarderTableauBatiment("Sauvegarde/tableauBatiment.bin",tab_hab,nb_hab);

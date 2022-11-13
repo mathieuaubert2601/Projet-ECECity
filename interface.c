@@ -11,7 +11,6 @@ void afficherInterface(BITMAP* page,int map[35][45], time_t tempsdepart, int arg
     BITMAP* fondBas = load_bitmap("Interface/fondBas.bmp", NULL);
     BITMAP* iconeRoute = load_bitmap("Interface/iconeRoute.bmp", NULL);
     BITMAP* iconeRouteInv = load_bitmap("Interface/iconeRouteInv.bmp", NULL);
-    BITMAP* infosRoute = load_bitmap("Interface/infosRoute.bmp", NULL);
     BITMAP* iconeChateauEau = load_bitmap("Interface/iconeChateauEau.bmp", NULL);
     BITMAP* iconeChateauEauInv = load_bitmap("Interface/iconeChateauEauInv.bmp",NULL);
     BITMAP* iconeCentrale = load_bitmap("Interface/iconeCentrale.bmp", NULL);
@@ -37,7 +36,7 @@ void afficherInterface(BITMAP* page,int map[35][45], time_t tempsdepart, int arg
     blit(fondBas, page, 0, 0, 0, 700, page->w, page->h);
 
     //Affichage des boutons pour les concentrations
-    AffichageIcone(iconeRoute, iconeRouteInv,infosRoute, page, 0, 0, 920, 130, iconeRoute->w, iconeRoute->h,infosRoute->w,infosRoute->h);
+    AffichageBouton(iconeRoute, iconeRouteInv, page, 0, 0, 920, 130, iconeRoute->w, iconeRoute->h);
     AffichageBouton(iconeMaison, iconeMaisonInv, page, 0,0, 920, 200, iconeMaison->w, iconeMaison->h);
     AffichageBouton(iconeChateauEau, iconeChateauEauInv,page,0,0,920,270,iconeChateauEau->w,iconeChateauEau->h);
     AffichageBouton(iconeCentrale, iconeCentraleInv, page, 0, 0, 920, 380,iconeCentrale->w,iconeCentrale->h);
