@@ -27,9 +27,7 @@ void affichagecasefree(BITMAP* page,int map[35][45],int type)
             for(int j=0;j<45; j++)
             {
                 if(matricelibre[i][j]==0 &&
-                (map[i+1][j]==1 || map[i+1][j+1]==1 || map[i+1][j-1]==1 ||
-                map[i-1][j]==1 || map[i-1][j-1]==1 || map[i-1][j+1]==1 ||
-                map[i][j+1]==1 || map[i][j-1]==1) )
+                (map[i+1][j]==1 || map[i-1][j]==1 || map[i][j+1]==1 || map[i][j-1]==1) )
                 {
                     masked_stretch_blit(tuile_surbrillance, page, 0, 0, 20, 20, j * 20, i * 20, 20, 20);
                 }

@@ -20,7 +20,7 @@ void route (BITMAP* page, int map[35][45],time_t tempsdepart, int* banque, t_hab
             y=mouse_y/20;
             testclic=1;
         }
-        if(testclic==1 && *banque>10 && map[y][x]==0) {
+        if(testclic==1 && *banque>10 && map[y][x]==0 && (map[y+1][x]==1 || map[y-1][x]==1 || map[y][x+1]==1 || map[y][x-1]==1)) {
             map[y][x] = 1;
             *banque-=10;
             afficher_map(page,map);
@@ -59,7 +59,12 @@ void habitation (BITMAP* page, int map[35][45],time_t tempsdepart, int* banque, 
             testclic=1;
 
         }
-        if(testclic==1 && *banque>1000 && map[y][x]==0 && map[y][x+1]==0 && map[y][x+2]==0 && map[y-1][x]==0 && map[y-1][x+1]==0 && map[y-1][x+2]==0 && map[y-2][x]==0 && map[y-2][x+1]==0 && map[y-2][x+2]==0) {
+        if(testclic==1 && *banque>1000 && map[y][x]==0 && map[y][x+1]==0 && map[y][x+2]==0 && map[y-1][x]==0 && map[y-1][x+1]==0 && map[y-1][x+2]==0 && map[y-2][x]==0 && map[y-2][x+1]==0 && map[y-2][x+2]==0 &&
+        ( map[y+1][x-1]==1 || map[y+1][x]==1 || map[y+1][x+1]==1 || map[y+1][x+2]==1 ||
+        map[y+1][x+3]==1 || map[y][x+3]==1 || map[y-1][x+3]==1 || map[y-2][x+3]==1 ||
+        map[y-3][x+3]==1 || map[y-3][x+2]==1 || map[y-3][x+1]==1 || map[y-3][x]==1 ||
+        map[y-3][x-1]==1 || map[y-2][x-1]==1 || map[y-1][x-1]==1 || map[y][x-1]==1) )
+        {
             map[y][x]=9;
             map[y][x+1]=9;
             map[y][x+2]=9;
@@ -128,7 +133,11 @@ void chateau_eau(BITMAP* page, int map[35][45],time_t tempsdepart, int* banque, 
             map[y][x]==0&&(map[y-1][x] == 0)&&(map[y-2][x] == 0)&&(map[y-3][x] == 0)&&(map[y-4][x] == 0)&&(map[y-5][x] == 0)&&
            (map[y][x+1]==0)&&(map[y-1][x+1]==0)&&(map[y-2][x+1]==0)&&(map[y-3][x+1]==0)&&(map[y-4][x+1]==0)&&(map[y-5][x+1]==0)&&
            (map[y][x+2]==0)&&(map[y-1][x+2]==0)&&(map[y-2][x+2]==0)&&(map[y-3][x+2]==0)&&(map[y-4][x+2]==0)&&(map[y-5][x+2]==0)&&
-           (map[y][x+3]==0)&&(map[y-1][x+3]==0)&&(map[y-2][x+3]==0)&&(map[y-3][x+3]==0)&&(map[y-4][x+3]==0)&&(map[y-5][x+3]==0))
+           (map[y][x+3]==0)&&(map[y-1][x+3]==0)&&(map[y-2][x+3]==0)&&(map[y-3][x+3]==0)&&(map[y-4][x+3]==0)&&(map[y-5][x+3]==0)&&
+           (map[y+1][x-1]==1 || map[y+1][x]==1 || map[y+1][x+1]==1 || map[y+1][x+2]==1 || map[y+1][x+3]==1 ||
+           map[y+1][x+4]==1 || map[y][x+4]==1 || map[y-1][x+4]==1 || map[y-2][x+4]==1 || map[y-3][x+4]==1 || map[y-4][x+4]==1 || map[y-5][x+4]==1 ||
+           map[y-6][x+4]==1 || map[y-6][x+3]==1|| map[y-6][x+2]==1 || map[y-6][x+1]==1 || map[y-6][x]==1 ||
+           map[y-6][x-1]==1 || map[y-5][x-1]==1 || map[y-4][x-1]==1 || map[y-3][x-1]==1 || map[y-2][x-1]==1 || map[y-1][x-1]==1 || map[y][x-1]==1))
         {
             map[y][x] = 16;
             map[y-1][x] =16;
