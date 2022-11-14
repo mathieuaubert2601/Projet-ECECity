@@ -10,7 +10,7 @@
 #define impots 10
 #define banqueDep 500000
 
-
+//Structure habitation
 typedef struct habitation
 {
     int niveau;
@@ -20,6 +20,28 @@ typedef struct habitation
     time_t tempsCrea;
 
 }t_habitation;
+
+//Structure Maillon
+typedef struct maillon
+{
+    int X;
+    int Y;
+    struct maillon* next;
+}t_maillon;
+
+//Structure case
+typedef struct kase
+{
+    int coordX;
+    int coordY;
+}t_kase;
+
+//Structure file
+typedef struct file
+{
+    t_maillon* tete;
+    t_maillon* queueFile;
+}t_file;
 
 ///Prototype des fonctions
 void initialisationAllegro();
@@ -61,6 +83,11 @@ void sauvegarderTableauBatiment(char* nomFichier, t_habitation tableau[],int nom
 //Case
 void affichagecasefree(BITMAP* page,int map[35][45],int type);
 
+//Gestion Eau
+void chercherCheminPlusCourtEau(int maisonRefX,int maisonRefY,int chateauEauRefX, int chateauEauRefY,int** matriceMap);
+int* defiler(t_file * ptAlignement);
+void enfiler(t_file * ptAlignement, int valeurX,int valeurY);
+int estVide(t_file* fAttente);
 /*typedef struct batiment
 {
     char nom[15];
