@@ -1,7 +1,3 @@
-//
-// Created by thiba on 29/10/2022.
-//
-
 #ifndef PROJET_ECECITY_HEADER_H
 #define PROJET_ECECITY_HEADER_H
 ///Declaration des bibliotheques
@@ -48,8 +44,10 @@ void lireFichierMap(int matrice_a_remplir[35][45],char* nomFichier);
 
 //Constructions
 void route (BITMAP* page, int map[35][45],time_t tempsdepart, int* banque,t_habitation tab_hab[50], int nb_hab);
+void interfaceRoute(BITMAP* page);
 void habitation (BITMAP* page, int map[35][45],time_t tempsdepart, int* banque, int* nb_hab, t_habitation* tab_hab);
 void chateau_eau(BITMAP* page, int map[35][45],time_t tempsdepart, int* banque,t_habitation tab_hab[50], int nb_hab);
+void centrale(BITMAP* page, int map[35][45],time_t tempsdepart, int* banque, t_habitation tab_hab[50], int nb_hab);
 
 void test_temps(int map[35][45], t_habitation tab_hab[50], int* argent, int nb_hab);
 

@@ -15,7 +15,9 @@ void afficher_map(BITMAP* page, int map[35][45])
     BITMAP* tuile = load_bitmap("map/tuile_verte.bmp",NULL);
     //BITMAP* maison = load_bitmap("map/maison.bmp",NULL);
     BITMAP* route = load_bitmap("Constructions/route.bmp",NULL);
+    BITMAP* routeVerti = load_bitmap("Constructions/routeVerti.bmp", NULL);
     BITMAP* chateauEau = load_bitmap("Constructions/ChateauEau.bmp", NULL);
+    BITMAP* centrale = load_bitmap("Constructions/centrale.bmp", NULL);
     BITMAP* terrain_vague = load_bitmap("Constructions/terrain_vague.bmp", NULL);
     BITMAP* cabane = load_bitmap("Constructions/cabane.bmp", NULL);
     BITMAP* maison = load_bitmap("Constructions/maison.bmp", NULL);
@@ -33,12 +35,10 @@ void afficher_map(BITMAP* page, int map[35][45])
             {
                 blit(route,page,0,0,j*20,i*20,route->w,route->h);
             }
-            //Affichage routes verticales
             else if(map[i][j] == 2)
             {
-
+                blit(routeVerti,page,0,0,j*20,i*20,routeVerti->w,routeVerti->h);
             }
-            //Affichage terrain vague
             else if(map[i][j] == 3)
             {
                 blit(terrain_vague,page,0,0,j*20,i*20,terrain_vague->w,terrain_vague->h);
@@ -46,7 +46,7 @@ void afficher_map(BITMAP* page, int map[35][45])
             //Affichage cabane
             else if(map[i][j] == 4)
             {
-                masked_blit(cabane,page,0,0,j*20,i*20,terrain_vague->w,terrain_vague->h);
+
             }
             //Affichage maison
             else if(map[i][j] == 5)
@@ -96,7 +96,7 @@ void afficher_map(BITMAP* page, int map[35][45])
             //Afficher centrale
             else if(map[i][j] == 15)
             {
-                //blit(chateauEau,page,0,0,j*20,i*20,chateauEau->w,chateauEau->h);
+                blit(centrale,page,0,0,j*20,i*20,centrale->w,centrale->h);
             }
             //Case libre pour affichage chateau d'eau
             else if(map[i][j] == 16)
