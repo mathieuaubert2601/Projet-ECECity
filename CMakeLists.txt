@@ -20,7 +20,8 @@ add_executable(Projet_ECECity
         construction.c
         gestion_cycles.c
         compterHabEauElec.c
-        case.c)
+        case.c
+        gestionEau.c)
 
 
 target_link_libraries(Projet_ECECity -lmingw32 -lalleg44)
