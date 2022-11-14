@@ -48,6 +48,7 @@ int main()
             {
                 sortie = 0;
                 creer_map(page,map);
+                map[20][1]=1;
             }
             while(sortie==0)
             {
