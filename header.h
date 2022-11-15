@@ -24,7 +24,7 @@ typedef struct habitation
 ///Prototype des fonctions
 void initialisationAllegro();
 void AffichageBouton(BITMAP* bouton,BITMAP* boutonInv, BITMAP* page,int sourcex,int sourcey,int destx,int desty,int longueur, int hauteur);
-void AffichageIcone(BITMAP* bouton,BITMAP* boutonInv,BITMAP* infos, BITMAP* page,int sourcex,int sourcey,int destx,int desty,int longueur,int hauteur,int longueurinfos,int hauteurinfos);
+void AffichageIcone(BITMAP* bouton,BITMAP* boutonInv,BITMAP* infos, BITMAP* page,int sourcex,int sourcey,int destx,int desty,int destxi, int destyi,int longueur,int hauteur,int longueurinfos,int hauteurinfos);
 
 
 //Fonctions pour le menu
@@ -44,7 +44,7 @@ void lireFichierMap(int matrice_a_remplir[35][45],char* nomFichier);
 
 //Constructions
 void route (BITMAP* page, int map[35][45],time_t tempsdepart, int* banque,t_habitation tab_hab[50], int nb_hab);
-void interfaceRoute(BITMAP* page);
+void interfaceRoute(BITMAP* page,int type);
 void habitation (BITMAP* page, int map[35][45],time_t tempsdepart, int* banque, int* nb_hab, t_habitation* tab_hab);
 void chateau_eau(BITMAP* page, int map[35][45],time_t tempsdepart, int* banque,t_habitation tab_hab[50], int nb_hab);
 void centrale(BITMAP* page, int map[35][45],time_t tempsdepart, int* banque, t_habitation tab_hab[50], int nb_hab);

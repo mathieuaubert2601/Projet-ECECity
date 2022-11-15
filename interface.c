@@ -31,6 +31,15 @@ void afficherInterface(BITMAP* page,int map[35][45], time_t tempsdepart, int arg
     BITMAP* boutonEau = load_bitmap("Interface/boutonEau.bmp", NULL);
     BITMAP* boutonEauInv = load_bitmap("Interface/boutonEauInv.bmp", NULL);
 
+    BITMAP* nbElec = load_bitmap("Interface/nbElec.bmp", NULL);
+    BITMAP* nbElecInfos = load_bitmap("Interface/nbElecInfos.bmp", NULL);
+    BITMAP* nbEau = load_bitmap("Interface/nbEau.bmp", NULL);
+    BITMAP* nbEauInfos = load_bitmap("Interface/nbEauInfos.bmp", NULL);
+    BITMAP* nbHab = load_bitmap("Interface/nbHab.bmp", NULL);
+    BITMAP* nbHabInfos = load_bitmap("Interface/nbHabInfos.bmp", NULL);
+    BITMAP* nbArgent = load_bitmap("Interface/nbArgent.bmp", NULL);
+    BITMAP* nbArgentInfos = load_bitmap("Interface/nbArgentInfos.bmp", NULL);
+
     //Affichage du fond
     blit(fondCote, page, 0, 0, 900, 0, page->w, page->h);
     blit(fondBas, page, 0, 0, 0, 700, page->w, page->h);
@@ -56,6 +65,11 @@ void afficherInterface(BITMAP* page,int map[35][45], time_t tempsdepart, int arg
     textprintf_ex(page,font,980,720,makecol(255,255,255),-1,"%d",diff);
 
     textprintf_ex(page,font,80,720,makecol(255,255,255),-1,"%d",argent);
+
+    AffichageIcone(nbElec,nbElec,nbElecInfos,page,0,0,260,715,0,10,nbElec->w,nbElec->h,nbElecInfos->w,nbElecInfos->h);
+    AffichageIcone(nbEau,nbEau,nbEauInfos,page,0,0,360,715,0,10,nbEau->w,nbEau->h,nbEauInfos->w,nbEauInfos->h);
+    AffichageIcone(nbHab,nbHab,nbHabInfos,page,0,0,160,715,0,10,nbHab->w,nbHab->h,nbHabInfos->w,nbHabInfos->h);
+    AffichageIcone(nbArgent,nbArgent,nbArgentInfos,page,0,0,60,715,0,15,nbArgent->w,nbArgent->h,nbArgentInfos->w,nbArgentInfos->h);
 
     compteurHab = compterHab(map);
     compteurEau = compterEau(map);
