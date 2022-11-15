@@ -1,4 +1,4 @@
-# Install script for directory: C:/Users/m28wa/CLionProjects/Projet-ECECity
+# Install script for directory: C:/Users/maube/CLionProjects/Projet-ECECity
 
 # Set the install prefix
 if(NOT DEFINED CMAKE_INSTALL_PREFIX)
@@ -45,5 +45,5 @@ endif()
 
 string(REPLACE ";" "\n" CMAKE_INSTALL_MANIFEST_CONTENT
        "${CMAKE_INSTALL_MANIFEST_FILES}")
-file(WRITE "C:/Users/m28wa/CLionProjects/Projet-ECECity/cmake-build-debug/${CMAKE_INSTALL_MANIFEST}"
+file(WRITE "C:/Users/maube/CLionProjects/Projet-ECECity/cmake-build-debug/${CMAKE_INSTALL_MANIFEST}"
      "${CMAKE_INSTALL_MANIFEST_CONTENT}")

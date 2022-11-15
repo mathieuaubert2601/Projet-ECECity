@@ -9,6 +9,8 @@ file(REMOVE_RECURSE
   "CMakeFiles/Projet_ECECity.dir/construction.c.obj.d"
   "CMakeFiles/Projet_ECECity.dir/gestionBouton.c.obj"
   "CMakeFiles/Projet_ECECity.dir/gestionBouton.c.obj.d"
+  "CMakeFiles/Projet_ECECity.dir/gestionEau.c.obj"
+  "CMakeFiles/Projet_ECECity.dir/gestionEau.c.obj.d"
   "CMakeFiles/Projet_ECECity.dir/gestion_cycles.c.obj"
   "CMakeFiles/Projet_ECECity.dir/gestion_cycles.c.obj.d"
   "CMakeFiles/Projet_ECECity.dir/init_allegro.c.obj"

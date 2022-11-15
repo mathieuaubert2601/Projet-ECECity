@@ -15,7 +15,7 @@
 				}
 			],
 			"type" : "FILEPATH",
-			"value" : "C:/LEA/ECE/2e annee/Projet informatique/MinGW/bin/addr2line.exe"
+			"value" : "C:/Program Files/CodeBlocks/MinGW/bin/addr2line.exe"
 		},
 		{
 			"name" : "CMAKE_AR",
@@ -31,7 +31,7 @@
 				}
 			],
 			"type" : "FILEPATH",
-			"value" : "C:/LEA/ECE/2e annee/Projet informatique/MinGW/bin/ar.exe"
+			"value" : "C:/Program Files/CodeBlocks/MinGW/bin/ar.exe"
 		},
 		{
 			"name" : "CMAKE_BUILD_TYPE",
@@ -55,7 +55,7 @@
 				}
 			],
 			"type" : "INTERNAL",
-			"value" : "c:/Users/Lea/CLionProjects/Projet-ECECity/cmake-build-debug"
+			"value" : "c:/Users/maube/CLionProjects/Projet-ECECity/cmake-build-debug"
 		},
 		{
 			"name" : "CMAKE_CACHE_MAJOR_VERSION",
@@ -155,7 +155,7 @@
 				}
 			],
 			"type" : "INTERNAL",
-			"value" : "C:/Program Files/JetBrains/CLion 2022.2.1/bin/cmake/win/bin/cmake.exe"
+			"value" : "C:/Program Files/JetBrains/CLion 2022.2.4/bin/cmake/win/bin/cmake.exe"
 		},
 		{
 			"name" : "CMAKE_CPACK_COMMAND",
@@ -167,7 +167,7 @@
 				}
 			],
 			"type" : "INTERNAL",
-			"value" : "C:/Program Files/JetBrains/CLion 2022.2.1/bin/cmake/win/bin/cpack.exe"
+			"value" : "C:/Program Files/JetBrains/CLion 2022.2.4/bin/cmake/win/bin/cpack.exe"
 		},
 		{
 			"name" : "CMAKE_CTEST_COMMAND",
@@ -179,7 +179,7 @@
 				}
 			],
 			"type" : "INTERNAL",
-			"value" : "C:/Program Files/JetBrains/CLion 2022.2.1/bin/cmake/win/bin/ctest.exe"
+			"value" : "C:/Program Files/JetBrains/CLion 2022.2.4/bin/cmake/win/bin/ctest.exe"
 		},
 		{
 			"name" : "CMAKE_C_COMPILER",
@@ -195,7 +195,7 @@
 				}
 			],
 			"type" : "FILEPATH",
-			"value" : "C:/LEA/ECE/2e annee/Projet informatique/MinGW/bin/gcc.exe"
+			"value" : "C:/Program Files/CodeBlocks/MinGW/bin/gcc.exe"
 		},
 		{
 			"name" : "CMAKE_C_COMPILER_AR",
@@ -211,7 +211,7 @@
 				}
 			],
 			"type" : "FILEPATH",
-			"value" : "C:/LEA/ECE/2e annee/Projet informatique/MinGW/bin/gcc-ar.exe"
+			"value" : "C:/Program Files/CodeBlocks/MinGW/bin/gcc-ar.exe"
 		},
 		{
 			"name" : "CMAKE_C_COMPILER_RANLIB",
@@ -227,7 +227,7 @@
 				}
 			],
 			"type" : "FILEPATH",
-			"value" : "C:/LEA/ECE/2e annee/Projet informatique/MinGW/bin/gcc-ranlib.exe"
+			"value" : "C:/Program Files/CodeBlocks/MinGW/bin/gcc-ranlib.exe"
 		},
 		{
 			"name" : "CMAKE_C_FLAGS",
@@ -339,7 +339,7 @@
 				}
 			],
 			"type" : "FILEPATH",
-			"value" : "C:/LEA/ECE/2e annee/Projet informatique/MinGW/bin/dlltool.exe"
+			"value" : "C:/Program Files/CodeBlocks/MinGW/bin/dlltool.exe"
 		},
 		{
 			"name" : "CMAKE_EXECUTABLE_FORMAT",
@@ -467,7 +467,7 @@
 				}
 			],
 			"type" : "INTERNAL",
-			"value" : "C:/LEA/ECE/2e annee/Projet informatique/MinGW/bin/../lib/gcc/x86_64-w64-mingw32/8.1.0/include;C:/LEA/ECE/2e annee/Projet informatique/MinGW/bin/../lib/gcc/x86_64-w64-mingw32/8.1.0/include-fixed;C:/LEA/ECE/2e annee/Projet informatique/MinGW/bin/../lib/gcc/x86_64-w64-mingw32/8.1.0/../../../../x86_64-w64-mingw32/include"
+			"value" : "C:/Program Files/CodeBlocks/MinGW/bin/../lib/gcc/x86_64-w64-mingw32/8.1.0/include;C:/Program Files/CodeBlocks/MinGW/bin/../lib/gcc/x86_64-w64-mingw32/8.1.0/include-fixed;C:/Program Files/CodeBlocks/MinGW/bin/../lib/gcc/x86_64-w64-mingw32/8.1.0/../../../../x86_64-w64-mingw32/include"
 		},
 		{
 			"name" : "CMAKE_GENERATOR",
@@ -539,7 +539,7 @@
 				}
 			],
 			"type" : "INTERNAL",
-			"value" : "C:/Users/Lea/CLionProjects/Projet-ECECity"
+			"value" : "C:/Users/maube/CLionProjects/Projet-ECECity"
 		},
 		{
 			"name" : "CMAKE_INSTALL_PREFIX",
@@ -567,7 +567,7 @@
 				}
 			],
 			"type" : "FILEPATH",
-			"value" : "C:/LEA/ECE/2e annee/Projet informatique/MinGW/bin/ld.exe"
+			"value" : "C:/Program Files/CodeBlocks/MinGW/bin/ld.exe"
 		},
 		{
 			"name" : "CMAKE_MAKE_PROGRAM",
@@ -583,7 +583,7 @@
 				}
 			],
 			"type" : "FILEPATH",
-			"value" : "C:/LEA/ECE/2EANNE~1/PROJET~1/MinGW/bin/mingw32-make.exe"
+			"value" : "C:/PROGRA~1/CODEBL~1/MinGW/bin/mingw32-make.exe"
 		},
 		{
 			"name" : "CMAKE_MODULE_LINKER_FLAGS",
@@ -679,7 +679,7 @@
 				}
 			],
 			"type" : "FILEPATH",
-			"value" : "C:/LEA/ECE/2e annee/Projet informatique/MinGW/bin/nm.exe"
+			"value" : "C:/Program Files/CodeBlocks/MinGW/bin/nm.exe"
 		},
 		{
 			"name" : "CMAKE_NUMBER_OF_MAKEFILES",
@@ -707,7 +707,7 @@
 				}
 			],
 			"type" : "FILEPATH",
-			"value" : "C:/LEA/ECE/2e annee/Projet informatique/MinGW/bin/objcopy.exe"
+			"value" : "C:/Program Files/CodeBlocks/MinGW/bin/objcopy.exe"
 		},
 		{
 			"name" : "CMAKE_OBJDUMP",
@@ -723,7 +723,7 @@
 				}
 			],
 			"type" : "FILEPATH",
-			"value" : "C:/LEA/ECE/2e annee/Projet informatique/MinGW/bin/objdump.exe"
+			"value" : "C:/Program Files/CodeBlocks/MinGW/bin/objdump.exe"
 		},
 		{
 			"name" : "CMAKE_PLATFORM_INFO_INITIALIZED",
@@ -787,7 +787,7 @@
 				}
 			],
 			"type" : "FILEPATH",
-			"value" : "C:/LEA/ECE/2e annee/Projet informatique/MinGW/bin/ranlib.exe"
+			"value" : "C:/Program Files/CodeBlocks/MinGW/bin/ranlib.exe"
 		},
 		{
 			"name" : "CMAKE_RC_COMPILER",
@@ -803,7 +803,7 @@
 				}
 			],
 			"type" : "FILEPATH",
-			"value" : "C:/LEA/ECE/2e annee/Projet informatique/MinGW/bin/windres.exe"
+			"value" : "C:/Program Files/CodeBlocks/MinGW/bin/windres.exe"
 		},
 		{
 			"name" : "CMAKE_RC_COMPILER_WORKS",
@@ -911,7 +911,7 @@
 				}
 			],
 			"type" : "FILEPATH",
-			"value" : "C:/LEA/ECE/2e annee/Projet informatique/MinGW/bin/readelf.exe"
+			"value" : "C:/Program Files/CodeBlocks/MinGW/bin/readelf.exe"
 		},
 		{
 			"name" : "CMAKE_ROOT",
@@ -923,7 +923,7 @@
 				}
 			],
 			"type" : "INTERNAL",
-			"value" : "C:/Program Files/JetBrains/CLion 2022.2.1/bin/cmake/win/share/cmake-3.23"
+			"value" : "C:/Program Files/JetBrains/CLion 2022.2.4/bin/cmake/win/share/cmake-3.23"
 		},
 		{
 			"name" : "CMAKE_SHARED_LINKER_FLAGS",
@@ -1131,7 +1131,7 @@
 				}
 			],
 			"type" : "FILEPATH",
-			"value" : "C:/LEA/ECE/2e annee/Projet informatique/MinGW/bin/strip.exe"
+			"value" : "C:/Program Files/CodeBlocks/MinGW/bin/strip.exe"
 		},
 		{
 			"name" : "CMAKE_VERBOSE_MAKEFILE",
@@ -1159,7 +1159,7 @@
 				}
 			],
 			"type" : "STATIC",
-			"value" : "C:/Users/Lea/CLionProjects/Projet-ECECity/cmake-build-debug"
+			"value" : "C:/Users/maube/CLionProjects/Projet-ECECity/cmake-build-debug"
 		},
 		{
 			"name" : "Projet_ECECity_IS_TOP_LEVEL",
@@ -1183,7 +1183,7 @@
 				}
 			],
 			"type" : "STATIC",
-			"value" : "C:/Users/Lea/CLionProjects/Projet-ECECity"
+			"value" : "C:/Users/maube/CLionProjects/Projet-ECECity"
 		}
 	],
 	"kind" : "cache",
