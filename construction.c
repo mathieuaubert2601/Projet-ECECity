@@ -28,12 +28,14 @@ void route (BITMAP* page, int map[35][45],time_t tempsdepart, int* banque, t_hab
         clic2=0;
         clic3=0;
         interfaceRoute(page, type, tempsdepart, *banque, map);
+        afficher_matrice_cases_vertes(buffer2);
         afficher_map(buffer2, map);
         blit(buffer2,page,0,0,0,0,900,700);
         if(((mouse_x>=(930)&& mouse_x<=(930+40))&& ((mouse_y)>=(220)&& mouse_y<=(220+40)))&&(mouse_b &1)) {
             while (clic2 != 1) {
                 type = 1;
                 interfaceRoute(page, type, tempsdepart, *banque, map);
+                afficher_matrice_cases_vertes(buffer2);
                 afficher_map(buffer2, map);
                 affichagecasefree(buffer2, map, 1);
                 if(((mouse_x>=(0)&& mouse_x<=(900))&& ((mouse_y)>=(0)&& mouse_y<=(700)))) {
@@ -53,6 +55,7 @@ void route (BITMAP* page, int map[35][45],time_t tempsdepart, int* banque, t_hab
                         if (*banque > 10 && map[y][x] == 0) {
                             map[y][x] = 1;
                             *banque -= 10;
+                            afficher_matrice_cases_vertes(buffer2);
                             afficher_map(buffer2, map);
                         }
                     }
@@ -71,6 +74,7 @@ void route (BITMAP* page, int map[35][45],time_t tempsdepart, int* banque, t_hab
             while (clic3 != 1) {
                 type = 2;
                 interfaceRoute(page, type, tempsdepart, *banque, map);
+                afficher_matrice_cases_vertes(buffer2);
                 afficher_map(buffer2, map);
                 affichagecasefree(buffer2, map, 1);
                 if(((mouse_x>=(0)&& mouse_x<=(900))&& ((mouse_y)>=(0)&& mouse_y<=(700)))) {
@@ -90,6 +94,7 @@ void route (BITMAP* page, int map[35][45],time_t tempsdepart, int* banque, t_hab
                         if (*banque > 10 && map[y][x] == 0) {
                             map[y][x] = 2;
                             *banque -= 10;
+                            afficher_matrice_cases_vertes(buffer2);
                             afficher_map(page, map);
                         }
                     }
@@ -126,6 +131,7 @@ void habitation (BITMAP* page, int map[35][45],time_t tempsdepart, int* banque, 
     blit(page,screen,0,0,0,0,1024,768);
 
 
+    afficher_matrice_cases_vertes(buffer2);
     afficher_map(buffer2,map);
     blit(buffer2,page,0,0,0,0,900,700);
     while(clic!=1)
@@ -134,6 +140,7 @@ void habitation (BITMAP* page, int map[35][45],time_t tempsdepart, int* banque, 
         show_mouse(page);
         blit(page,screen,0,0,0,0,1024,768);
 
+        afficher_matrice_cases_vertes(buffer2);
         afficher_map(buffer2,map);
         affichagecasefree(buffer2,map,3);
         if(((mouse_x>=(0)&& mouse_x<=(900))&& ((mouse_y)>=(0)&& mouse_y<=(700)))) {
@@ -177,6 +184,7 @@ void habitation (BITMAP* page, int map[35][45],time_t tempsdepart, int* banque, 
             map[y-2][x]=3;
             map[y-2][x+1]=9;
             map[y-2][x+2]=9;
+            afficher_matrice_cases_vertes(buffer2);
             afficher_map(buffer2,map);
             *banque-=1000;
             /* *nb_hab++;
@@ -232,6 +240,7 @@ void chateau_eau(BITMAP* page, int map[35][45],time_t tempsdepart, int* banque, 
             testclic=1;
         }
         test_temps(map,tab_hab,banque,nb_hab);
+        afficher_matrice_cases_vertes(buffer2);
         afficher_map(buffer2,map);
         affichagecasefree(buffer2,map,14);
         interfaceChateaux(page,tempsdepart,*banque,map);
@@ -295,6 +304,7 @@ void chateau_eau(BITMAP* page, int map[35][45],time_t tempsdepart, int* banque, 
 
 
 
+            afficher_matrice_cases_vertes(buffer2);
             afficher_map(buffer2,map);
         }
         if(mouse_b&2)
@@ -330,6 +340,7 @@ void centrale(BITMAP* page, int map[35][45],time_t tempsdepart, int* banque, t_h
             testclic=1;
         }
         test_temps(map,tab_hab,banque,nb_hab);
+        afficher_matrice_cases_vertes(buffer2);
         afficher_map(buffer2,map);
         affichagecasefree(buffer2,map,15);
         interfaceCentrales(page,tempsdepart,*banque,map);
@@ -380,6 +391,7 @@ void centrale(BITMAP* page, int map[35][45],time_t tempsdepart, int* banque, t_h
             map[y-2][x+5] =17;
             map[y-3][x+5] =17;
             *banque-=100000;
+            afficher_matrice_cases_vertes(buffer2);
             afficher_map(buffer2,map);
         }
         if(mouse_b&2)

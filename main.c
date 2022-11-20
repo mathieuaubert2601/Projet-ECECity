@@ -62,6 +62,7 @@ int main()
             }
             while(sortie==0)
             {
+                afficher_matrice_cases_vertes(page);
                 afficher_map(page,map);
                 afficherInterface(page,map,tempsdep, banque);
                 test_temps(map,tab_hab,&banque,nb_hab);
