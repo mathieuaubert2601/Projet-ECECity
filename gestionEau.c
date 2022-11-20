@@ -88,83 +88,121 @@ int* defiler(t_file * ptAlignement)
         return tableauCo;
     }
 }
-void chercherCheminPlusCourtEau(int maisonRefX,int maisonRefY,int chateauEauRefX, int chateauEauRefY,int** matriceMap)
+void chercherCheminPlusCourtEau(int maisonRefX,int maisonRefY,int chateauEauRefX, int chateauEauRefY,int matriceMap[35][45])
 {
     //Déclaration des variables
-    /*int matriceCouleur[35][45];
+    int matriceCouleur[35][45];
+    int sommetArrivee = 0;
+    printf("1");
     int xFile = 0, yFile= 0;
+    printf("2");
     int* tableauCoordonnee = NULL;
+    printf("3");
     t_kase** tableauPred = (t_kase**)malloc(35 * sizeof(t_kase*));
+    printf("4");
     for(int i = 0 ; i<35 ; i++)
     {
         tableauPred[i] = (t_kase*)malloc(45 * sizeof(t_kase));
     }
+    printf("5");
     t_file fileBfs;
-
+    printf("6");
     //Initialisation de la file
     fileBfs.queueFile = fileBfs.tete = NULL;
+    printf("7");
 
     //On met toutes les cases de la matrice à 0 (pas découvert)ù
     //On met tout les prédécesseur sur -1
-    for(int y = 0 ; y = 35 ; y++)
+    for(int y = 0 ; y < 35 ; y++)
     {
-        for(int x = 0 ; x = 45 ; x++)
+        for(int x = 0 ; x < 45 ; x++)
         {
             matriceCouleur[y][x] = 0;
             tableauPred[y][x].coordX = -1;
             tableauPred[y][x].coordY = -1;
         }
     }
-/*
+    printf("8");
+
     //On met la case du chateau d'eau de départ à 1 : découverte
     matriceCouleur[chateauEauRefY][chateauEauRefX] = 1;
-
+    printf("9");
     //On enfile le premier élement dans la file
     enfiler(&fileBfs,chateauEauRefX,chateauEauRefY);
+    printf("10");
 
     //On va faire une boucle dans que la file n'est pas vide
-    while(fileBfs.tete != NULL)
+    while(fileBfs.tete != NULL && sommetArrivee == 0)
     {
+        printf("11");
         //On défile le numéro du sommet suivant
         tableauCoordonnee = defiler(&fileBfs);
         xFile = tableauCoordonnee[0];
         yFile = tableauCoordonnee[1];
+        printf("defiler : %d %d ||\n", xFile ,yFile);
+        printf("12\n");
         //On recherche les cases à coté
         if(matriceCouleur[yFile+1][xFile] == 0 && matriceMap[yFile + 1][xFile] == 1)
         {
+            printf("enfiler : %d %d ||\n", xFile ,yFile  +1);
             enfiler(&fileBfs,xFile,yFile + 1);
             matriceCouleur[yFile + 1][xFile] = 1;
             tableauPred[yFile + 1][xFile].coordY = yFile;
-            tableauPred[yFile + 1][xFile].coordY = xFile;
+            tableauPred[yFile + 1][xFile].coordX = xFile;
+            if(xFile == maisonRefX && yFile + 1 == maisonRefY)
+            {
+                sommetArrivee = 1;
+            }
         }
         if(matriceCouleur[yFile-1][xFile] == 0 && matriceMap[yFile - 1][xFile] == 1)
         {
+            printf("enfiler : %d %d ||\n", xFile ,yFile -1);
             enfiler(&fileBfs,xFile,yFile - 1);
             matriceCouleur[yFile - 1][xFile] = 1;
             tableauPred[yFile - 1][xFile].coordY = yFile;
-            tableauPred[yFile - 1][xFile].coordY = xFile;
+            tableauPred[yFile - 1][xFile].coordX = xFile;
+
+            if(xFile == maisonRefX && yFile - 1 == maisonRefY)
+            {
+                sommetArrivee = 1;
+            }
         }
         if(matriceCouleur[yFile][xFile+1] == 0 && matriceMap[yFile][xFile+1] == 1)
         {
+            printf("enfiler : %d %d ||\n", xFile + 1 ,yFile);
             enfiler(&fileBfs,xFile + 1,yFile);
             matriceCouleur[yFile][xFile + 1] = 1;
             tableauPred[yFile][xFile + 1].coordY = yFile;
-            tableauPred[yFile][xFile + 1].coordY = xFile;
+            tableauPred[yFile][xFile + 1].coordX = xFile;
+
+            if(xFile + 1 == maisonRefX && yFile == maisonRefY)
+            {
+                sommetArrivee = 1;
+            }
         }
-        if(matriceCouleur[yFile][xFile+1] == 0 && matriceMap[yFile][xFile-1] == 1)
+        if(matriceCouleur[yFile][xFile-1] == 0 && matriceMap[yFile][xFile-1] == 1)
         {
+            printf("enfiler : %d %d ||\n", xFile - 1 ,yFile);
             enfiler(&fileBfs,xFile - 1,yFile);
             matriceCouleur[yFile][xFile - 1] = 1;
             tableauPred[yFile][xFile - 1].coordY = yFile;
-            tableauPred[yFile][xFile - 1].coordY = xFile;
+            tableauPred[yFile][xFile - 1].coordX = xFile;
+            if(xFile - 1 == maisonRefX && yFile == maisonRefY)
+            {
+                sommetArrivee = 1;
+            }
+
         }
+
+
+
     }
 
-    while(!key[KEY_ESC])
+    /*while(!key[KEY_ESC])
     {
-        for(int y = 0 ; y = 35 ; y++)
+        for(int y = 0 ; y < 35 ; y++)
         {
-            for(int x = 0 ; x = 45 ; x++)
+            for(int x = 0 ; x < 45 ; x++)
             {
                if(tableauPred[y][x].coordX < 10)
                {
@@ -177,15 +215,16 @@ void chercherCheminPlusCourtEau(int maisonRefX,int maisonRefY,int chateauEauRefX
 
                 if(tableauPred[y][x].coordY < 10)
                 {
-                    printf("%d  ",tableauPred[y][x].coordY);
+                    printf("%d |",tableauPred[y][x].coordY);
                 }
                 else
                 {
-                    printf("%d ",tableauPred[y][x].coordY);
+                    printf("%d|",tableauPred[y][x].coordY);
                 }
             }
+            printf("\n NOUVELLE LIGNE \n");
         }
 
-    }
-    */
+    }*/
+
 }

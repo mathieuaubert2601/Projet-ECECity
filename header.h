@@ -84,7 +84,7 @@ void sauvegarderTableauBatiment(char* nomFichier, t_habitation tableau[],int nom
 void affichagecasefree(BITMAP* page,int map[35][45],int type);
 
 //Gestion Eau
-void chercherCheminPlusCourtEau(int maisonRefX,int maisonRefY,int chateauEauRefX, int chateauEauRefY,int** matriceMap);
+void chercherCheminPlusCourtEau(int maisonRefX,int maisonRefY,int chateauEauRefX, int chateauEauRefY,int matriceMap[35][45]);
 int* defiler(t_file * ptAlignement);
 void enfiler(t_file * ptAlignement, int valeurX,int valeurY);
 int estVide(t_file* fAttente);
