@@ -105,7 +105,7 @@ int choixModeJeu(BITMAP* bmpAffichage)
     BITMAP* boutonModeCommunisteInv = load_bitmap("menuDepart/boutonCommunisteInv.bmp",NULL);
     BITMAP* phraseChoixMode = load_bitmap("menuDepart/phraseChoixMode.bmp",NULL);
 
-    while(sortie == 0 )
+    while(sortie == 0)
     {
         //Affichage des bitmaps
         clear_bitmap(bmpAffichage);
