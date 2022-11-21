@@ -1,3 +1,4 @@
+
 #include "header.h"
 
 int main()
@@ -21,16 +22,23 @@ int main()
     int sortie=0;
     int banque=banqueDep;
     int nb_hab=0;
-
+    int nb_chateau=0;
+    int play_musique=0;
     //t_habitation* tab_hab = NULL;
     //tab_hab=(t_habitation*)malloc(nb_hab*sizeof (t_habitation));
     t_habitation tab_hab[50];
+    t_chateauEau tab_eau[20];
 
 
     while(!key[KEY_ESC])
     {
         clear_bitmap(page);
-        play_sample(musiqueFond,15,0,1000,1);
+        if (play_musique==0)
+        {
+            play_sample(musiqueFond,15,0,1000,1);
+            play_musique++;
+        }
+
         choixMenu = menuJeu(page);
         actionChoixMenu(choixMenu,page);
         if(choixMenu == 1 || choixMenu==2)
@@ -38,6 +46,8 @@ int main()
             clear_bitmap(page);
             time_t tempsdep = time(NULL);
             play_sample(ambiance,15,0,1000,1);
+
+
             if(choixMenu==2)
             {
                 lireFichierMap(map,"Sauvegarde/fichierCarte.txt");
@@ -52,6 +62,7 @@ int main()
             }
             while(sortie==0)
             {
+                afficher_matrice_cases_vertes(page);
                 afficher_map(page,map);
                 afficherInterface(page,map,tempsdep, banque);
                 test_temps(map,tab_hab,&banque,nb_hab);
@@ -65,7 +76,7 @@ int main()
                 }
                 if (((mouse_x >= (920) && mouse_x <= (920 + 75)) && (mouse_y) >= (270) && mouse_y <= (270 + 100)) &&
                     (mouse_b & 1)) {
-                    chateau_eau(page, map,tempsdep,&banque, tab_hab, nb_hab);
+                    chateau_eau(page, map,tempsdep,&banque, tab_hab, nb_hab,  tab_eau, &nb_chateau);
                     chercherCheminPlusCourtEau(0,3,5,4,map);
                 }
                 if (((mouse_x >= (920) && mouse_x <= (920 + 75)) && (mouse_y) >= (380) && mouse_y <= (380 + 100)) &&
@@ -79,6 +90,7 @@ int main()
                 }
                 if (((mouse_x >= (970) && mouse_x <= (970 + 40)) && (mouse_y) >= (25) && mouse_y <= (25 + 40)) &&
                     (mouse_b & 1)) {
+                    stop_sample(ambiance);
                     sortie = 1;
                 }
                 show_mouse(page);

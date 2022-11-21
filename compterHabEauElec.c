@@ -44,9 +44,9 @@ int compterElec(int map[35][45])
         }
     }
 
-   nb_elec=nb_centrales*5000;
+    nb_elec=nb_centrales*5000;
 
-    return nb_centrales;
+    return nb_elec;
 }
 
 int compterEau(int map[35][45])
