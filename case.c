@@ -42,14 +42,14 @@ void affichagecasefree(BITMAP* page,int map[35][45],int type)
                 if((matricelibre[i][j]==0 && matricelibre[i][j+1]==0 && matricelibre[i][j+2]==0 &&
                     matricelibre[i-1][j]==0 && matricelibre[i-1][j+1]==0 && matricelibre[i-1][j+2]==0 &&
                     matricelibre[i-2][j]==0 && matricelibre[i-2][j+1]==0 && matricelibre[i-2][j+2]==0) &&
-                   (( map[i+1][j-1]==1 || map[i+1][j]==1 || map[i+1][j+1]==1 || map[i+1][j+2]==1 ||
-                      map[i+1][j+3]==1 || map[i][j+3]==1 || map[i-1][j+3]==1 || map[i-2][j+3]==1 ||
-                      map[i-3][j+3]==1 || map[i-3][j+2]==1 || map[i-3][j+1]==1 || map[i-3][j]==1 ||
-                      map[i-3][j-1]==1 || map[i-2][j-1]==1 || map[i-1][j-1]==1 || map[i][j]-1==1) ||
-                    ( map[i+1][j-1]==2 || map[i+1][j]==2 || map[i+1][j+1]==2 || map[i+1][j+2]==2 ||
-                      map[i+1][j+3]==2 || map[i][j+3]==2 || map[i-1][j+3]==2 || map[i-2][j+3]==2 ||
-                      map[i-3][j+3]==2 || map[i-3][j+2]==2 || map[i-3][j+1]==2 || map[i-3][j]==2 ||
-                      map[i-3][j-1]==2 || map[i-2][j-1]==2 || map[i-1][j-1]==2 || map[i][j]-1==2) ))
+                   (( map[i+1][j]==1 || map[i+1][j+1]==1 || map[i+1][j+2]==1 ||
+                      map[i][j+3]==1 || map[i-1][j+3]==1 || map[i-2][j+3]==1 ||
+                      map[i-3][j+2]==1 || map[i-3][j+1]==1 || map[i-3][j]==1 ||
+                      map[i-2][j-1]==1 || map[i-1][j-1]==1 || map[i][j]-1==1) ||
+                    ( map[i+1][j]==2 || map[i+1][j+1]==2 || map[i+1][j+2]==2 ||
+                      map[i][j+3]==2 || map[i-1][j+3]==2 || map[i-2][j+3]==2 ||
+                      map[i-3][j+2]==2 || map[i-3][j+1]==2 || map[i-3][j]==2 ||
+                      map[i-2][j-1]==2 || map[i-1][j-1]==2 || map[i][j]-1==2) ))
                 {
                     masked_stretch_blit(tuile_surbrillance, page, 0, 0, 20, 20, j * 20, i * 20, 20, 20);
                 }
@@ -68,10 +68,10 @@ void affichagecasefree(BITMAP* page,int map[35][45],int type)
                    matricelibre[i-3][j]==0 && matricelibre[i-3][j+1]==0 && matricelibre[i-3][j+2]==0 && matricelibre[i-3][j+3]==0 &&
                    matricelibre[i-4][j]==0 && matricelibre[i-4][j+1]==0 && matricelibre[i-4][j+2]==0 && matricelibre[i-4][j+3]==0 &&
                    matricelibre[i-5][j]==0 && matricelibre[i-5][j+1]==0 && matricelibre[i-5][j+2]==0 && matricelibre[i-5][j+3]==0 &&
-                   (( map[i+1][j-1]==1 || map[i+1][j]==1 || map[i+1][j+1]==1 || map[i+1][j+2]==1 || map[i+1][j+3]==1 ||
-                      map[i+1][j+4]==1 || map[i][j+4]==1 || map[i-1][j+4]==1 || map[i-2][j+4]==1 || map[i-3][j+4]==1 || map[i-4][j+4]==1 || map[i-5][j+4]==1 ||
-                      map[i-6][j+4]==1 || map[i-6][j+3]==1|| map[i-6][j+2]==1 || map[i-6][j+1]==1 || map[i-6][j]==1 ||
-                      map[i-6][j-1]==1 || map[i-5][j-1]==1 || map[i-4][j-1]==1 || map[i-3][j-1]==1 || map[i-2][j-1]==1 || map[i-1][j-1]==1 || map[i][j-1]==1)||
+                   (( map[i+1][j]==1 || map[i+1][j+1]==1 || map[i+1][j+2]==1 || map[i+1][j+3]==1 ||
+                      map[i][j+4]==1 || map[i-1][j+4]==1 || map[i-2][j+4]==1 || map[i-3][j+4]==1 || map[i-4][j+4]==1 || map[i-5][j+4]==1 ||
+                      map[i-6][j+3]==1|| map[i-6][j+2]==1 || map[i-6][j+1]==1 || map[i-6][j]==1 ||
+                      map[i-5][j-1]==1 || map[i-4][j-1]==1 || map[i-3][j-1]==1 || map[i-2][j-1]==1 || map[i-1][j-1]==1 || map[i][j-1]==1)||
                     (map[i+1][j-1]==2 || map[i+1][j]==2 || map[i+1][j+1]==2 || map[i+1][j+2]==2 || map[i+1][j+3]==2 ||
                      map[i+1][j+4]==2 || map[i][j+4]==2 || map[i-1][j+4]==2 || map[i-2][j+4]==2 || map[i-3][j+4]==2 || map[i-4][j+4]==2 || map[i-5][j+4]==2 ||
                      map[i-6][j+4]==2 || map[i-6][j+3]==2|| map[i-6][j+2]==2 || map[i-6][j+1]==2 || map[i-6][j]== 2 ||
@@ -92,14 +92,14 @@ void affichagecasefree(BITMAP* page,int map[35][45],int type)
                    matricelibre[i-1][j]==0 && matricelibre[i-1][j+1]==0 && matricelibre[i-1][j+2]==0 && matricelibre[i-1][j+3]==0 && matricelibre[i-1][j+4]==0 && matricelibre[i-1][j+5]==0 &&
                    matricelibre[i-2][j]==0 && matricelibre[i-2][j+1]==0 && matricelibre[i-2][j+2]==0 && matricelibre[i-2][j+3]==0 && matricelibre[i-2][j+4]==0 && matricelibre[i-2][j+5]==0 &&
                    matricelibre[i-3][j]==0 && matricelibre[i-3][j+1]==0 && matricelibre[i-3][j+2]==0 && matricelibre[i-3][j+3]==0 && matricelibre[i-3][j+4]==0 && matricelibre[i-3][j+5]==0 &&
-                   (( map[i+1][j-1]==1 || map[i+1][j]==1 || map[i+1][j+1]==1 || map[i+1][j+2]==1 || map[i+1][j+3]==1 || map[i+1][j+4]==1 || map[i+1][j+5]==1 ||
-                      map[i+1][j+6]==1 || map[i][j+6]==1 || map[i-1][j+6]==1 || map[i-2][j+6]==1 || map[i-3][j+6]==1 ||
-                      map[i-4][j+6]==1 || map[i-4][j+5]==1 || map[i-4][j+4]==1 || map[i-4][j+3]==1 || map[i-4][j+2]==1 || map[i-4][j+1]==1 || map[i-4][j]==1 ||
-                      map[i-4][j-1]==1 || map[i-3][j-1]==1 || map[i-2][j-1]==1 || map[i-1][j-1]==1 || map[i][j-1]==1)||
-                    (map[i+1][j-1]==2 || map[i+1][j]==2 || map[i+1][j+1]==2 || map[i+1][j+2]==2 || map[i+1][j+3]==2 || map[i+1][j+4]==2 || map[i+1][j+5]==2 ||
-                     map[i+1][j+6]==2 || map[i][j+6]==2 || map[i-1][j+6]==2 || map[i-2][j+6]==2 || map[i-3][j+6]==2 ||
-                     map[i-4][j+6]==2 || map[i-4][j+5]==2 || map[i-4][j+4]==2 || map[i-4][j+3]==2 || map[i-4][j+2]==2 || map[i-4][j+1]==2 || map[i-4][j]==2 ||
-                     map[i-4][j-1]==2 || map[i-3][j-1]==2 || map[i-2][j-1]==2 || map[i-1][j-1]==2 || map[i][j-1]==2)))
+                   (( map[i+1][j]==1 || map[i+1][j+1]==1 || map[i+1][j+2]==1 || map[i+1][j+3]==1 || map[i+1][j+4]==1 || map[i+1][j+5]==1 ||
+                      map[i][j+6]==1 || map[i-1][j+6]==1 || map[i-2][j+6]==1 || map[i-3][j+6]==1 ||
+                      map[i-4][j+5]==1 || map[i-4][j+4]==1 || map[i-4][j+3]==1 || map[i-4][j+2]==1 || map[i-4][j+1]==1 || map[i-4][j]==1 ||
+                      map[i-3][j-1]==1 || map[i-2][j-1]==1 || map[i-1][j-1]==1 || map[i][j-1]==1)||
+                   (map[i+1][j]==2 || map[i+1][j+1]==2 || map[i+1][j+2]==2 || map[i+1][j+3]==2 || map[i+1][j+4]==2 || map[i+1][j+5]==2 ||
+                     map[i][j+6]==2 || map[i-1][j+6]==2 || map[i-2][j+6]==2 || map[i-3][j+6]==2 ||
+                     map[i-4][j+5]==2 || map[i-4][j+4]==2 || map[i-4][j+3]==2 || map[i-4][j+2]==2 || map[i-4][j+1]==2 || map[i-4][j]==2 ||
+                     map[i-3][j-1]==2 || map[i-2][j-1]==2 || map[i-1][j-1]==2 || map[i][j-1]==2)))
                 {
                     masked_stretch_blit(tuile_surbrillance, page, 0, 0, 20, 20, j * 20, i * 20, 20, 20);
                 }
