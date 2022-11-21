@@ -185,8 +185,9 @@ int** creerMatriceEau(t_habitation* tableauHabitation, int nombreHabitation, t_c
     int** matriceEau = (int**)malloc(35*sizeof(int*));
     int* minChateauEau = (int*) malloc(nombreChateauEau * sizeof(int));
     int* cmtChatEau = (int*) calloc(nombreChateauEau,sizeof(int));
-    int index,tmpX,tmpY,tmpDist,tmpNumM,saturationChateau = 0;
+    int index,tmpX,tmpY,tmpDist,tmpNumM,saturationChateau = 0,compteur = 0,test = 0;
 
+    printf("ok");
     for(int i = 0; i < nombreChateauEau; i++)
     {
         distanceChateauEau[i] = (t_kase*) malloc((nombreHabitation)*sizeof(t_kase));
@@ -248,6 +249,44 @@ int** creerMatriceEau(t_habitation* tableauHabitation, int nombreHabitation, t_c
 
     while(saturationChateau == 0)
     {
+        test = 0;
+        for(int i = 0 ; i<nombreChateauEau ; i++)
+        {
+            if(i != compteur)
+            {
+                if((distanceChateauEau[compteur][cmtChatEau[compteur]].numMaison != distanceChateauEau[i][cmtChatEau[i]].numMaison) || ((distanceChateauEau[compteur][cmtChatEau[compteur]].numMaison != distanceChateauEau[i][cmtChatEau[i]].numMaison) && (distanceChateauEau[compteur][cmtChatEau[compteur]].distance <= distanceChateauEau[i][cmtChatEau[i]].distance)))
+                {
+                    test = 1;
+                }
+            }
+        }
+
+        if(test == 1 && tableauChateauEau[compteur].capaciteRestante > 0 && tableauHabitation[distanceChateauEau[compteur][cmtChatEau[compteur]].numMaison].quantiteeEau < tableauHabitation[distanceChateauEau[compteur][cmtChatEau[compteur]].numMaison].nb_habitants)
+        {
+            matriceEau[distanceChateauEau[compteur][cmtChatEau[compteur]].coordY][distanceChateauEau[compteur][cmtChatEau[compteur]].coordX] = 1;
+            tmpX = distanceChateauEau[compteur][cmtChatEau[compteur]].coordX;
+            tmpY = distanceChateauEau[compteur][cmtChatEau[compteur]].coordY;
+
+            while(tmpX != tableauChateauEau[compteur].x && tmpY != tableauChateauEau[compteur].y)
+            {
+                tmpX = tableauCheminPlusCourtChateauEau[compteur][tmpY][tmpX].coordX;
+                tmpY = tableauCheminPlusCourtChateauEau[compteur][tmpY][tmpX].coordY;
+
+                matriceEau[tmpY][tmpX] = 1;
+            }
+
+            if(cmtChatEau[compteur] < nombreHabitation)
+            {
+                cmtChatEau[compteur] ++;
+            }
+        }
+
+        compteur ++;
+        if(compteur == nombreChateauEau)
+        {
+            compteur = 0;
+        }
+
         //Test de sortie de boucle
         for(int i=0 ; i<nombreChateauEau ; i++)
         {
@@ -261,4 +300,14 @@ int** creerMatriceEau(t_habitation* tableauHabitation, int nombreHabitation, t_c
             }
         }
     }
+
+    for(int i = 0 ; i < 35 ; i++)
+    {
+        for(int j=0; j<45 ; j++)
+        {
+            printf("%d ",matriceEau[i][j]);
+        }
+        printf("\n");
+    }
+    return matriceEau;
 }

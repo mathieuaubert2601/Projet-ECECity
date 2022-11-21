@@ -18,6 +18,7 @@ typedef struct habitation
     int nb_habitants;
     int x;
     int y;
+    int quantiteeEau;
     time_t tempsCrea;
 
 }t_habitation;
@@ -105,9 +106,11 @@ void affichagecasefree(BITMAP* page,int map[35][45],int type);
 //Gestion Eau
 t_kase** chercherCheminPlusCourtEau(int chateauEauRefX, int chateauEauRefY,int matriceMap[35][45]);
 int tailleChemin(t_kase** matriceAnalyse, int maisonX, int maisonY,int chateauEauX, int chateauEauY);
+int** creerMatriceEau(t_habitation* tableauHabitation, int nombreHabitation, t_chateauEau* tableauChateauEau,int nombreChateauEau,int map[35][45]);
 int* defiler(t_file * ptAlignement);
 void enfiler(t_file * ptAlignement, int valeurX,int valeurY);
 int estVide(t_file* fAttente);
+
 /*typedef struct batiment
 {
     char nom[15];
