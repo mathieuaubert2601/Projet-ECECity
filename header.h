@@ -30,6 +30,7 @@ typedef struct chateauEau
     int capaciteRestante;
 }t_chateauEau;
 
+
 //Structure Maillon
 typedef struct maillon
 {
@@ -43,6 +44,8 @@ typedef struct kase
 {
     int coordX;
     int coordY;
+    int distance; //utilisé pour eau;
+    int numMaison; //utilisé pour eau;
 }t_kase;
 
 //Structure file
@@ -100,7 +103,8 @@ void sauvegarderTableauBatiment(char* nomFichier, t_habitation tableau[],int nom
 void affichagecasefree(BITMAP* page,int map[35][45],int type);
 
 //Gestion Eau
-void chercherCheminPlusCourtEau(int maisonRefX,int maisonRefY,int chateauEauRefX, int chateauEauRefY,int matriceMap[35][45]);
+t_kase** chercherCheminPlusCourtEau(int chateauEauRefX, int chateauEauRefY,int matriceMap[35][45]);
+int tailleChemin(t_kase** matriceAnalyse, int maisonX, int maisonY,int chateauEauX, int chateauEauY);
 int* defiler(t_file * ptAlignement);
 void enfiler(t_file * ptAlignement, int valeurX,int valeurY);
 int estVide(t_file* fAttente);
