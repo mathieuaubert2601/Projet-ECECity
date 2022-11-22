@@ -93,6 +93,14 @@ int main()
                     stop_sample(ambiance);
                     sortie = 1;
                 }
+                if(((mouse_x>=(920)&& mouse_x<=(920+50))&& ((mouse_y)>=(550)&& mouse_y<=(550+50)))&&(mouse_b &1))
+                {
+                    canalisations(page,map);
+                }
+                if(((mouse_x>=(920)&& mouse_x<=(920+50))&& ((mouse_y)>=(620)&& mouse_y<=(620+50)))&&(mouse_b &1))
+                {
+                    lignes(page,map);
+                }
                 show_mouse(page);
                 blit(page,screen,0,0,0,0,1024,768);
             }

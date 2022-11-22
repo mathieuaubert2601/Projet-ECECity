@@ -31,10 +31,10 @@ void afficherInterface(BITMAP* page,int map[35][45], time_t tempsdepart, int arg
     BITMAP* boutonEau = load_bitmap("Interface/boutonEau.bmp", NULL);
     BITMAP* boutonEauInv = load_bitmap("Interface/boutonEauInv.bmp", NULL);
 
-    BITMAP* nbElec = load_bitmap("Interface/nbElec.bmp", NULL);
-    BITMAP* nbElecInfos = load_bitmap("Interface/nbElecInfos.bmp", NULL);
     BITMAP* nbEau = load_bitmap("Interface/nbEau.bmp", NULL);
     BITMAP* nbEauInfos = load_bitmap("Interface/nbEauInfos.bmp", NULL);
+    BITMAP* nbElec = load_bitmap("Interface/nbElec.bmp", NULL);
+    BITMAP* nbElecInfos = load_bitmap("Interface/nbElecInfos.bmp", NULL);
     BITMAP* nbHab = load_bitmap("Interface/nbHab.bmp", NULL);
     BITMAP* nbHabInfos = load_bitmap("Interface/nbHabInfos.bmp", NULL);
     BITMAP* nbArgent = load_bitmap("Interface/nbArgent.bmp", NULL);
@@ -56,8 +56,8 @@ void afficherInterface(BITMAP* page,int map[35][45], time_t tempsdepart, int arg
     AffichageBouton(boutonPause,boutonPauseInv,page,0,0,945,70,boutonPause->w,boutonPause->h);
 
     //Affichage des boutons de niveaux
-    AffichageBouton(boutonElec, boutonElecInv, page, 0,0,920, 550, boutonElec->w,boutonElec->h);
-    AffichageBouton(boutonEau,boutonEauInv,page,0,0, 920, 620, boutonEau->w, boutonEau->h);
+    AffichageBouton(boutonEau,boutonEauInv,page,0,0, 920, 550, boutonEau->w, boutonEau->h);
+    AffichageBouton(boutonElec, boutonElecInv, page, 0,0,920, 620, boutonElec->w,boutonElec->h);
 
 
     time_t tempsact = time(NULL);
@@ -66,14 +66,14 @@ void afficherInterface(BITMAP* page,int map[35][45], time_t tempsdepart, int arg
 
     textprintf_ex(page,font,80,720,makecol(255,255,255),-1,"%d",argent);
 
-    AffichageIcone(nbElec,nbElec,nbElecInfos,page,0,0,260,715,0,10,nbElec->w,nbElec->h,nbElecInfos->w,nbElecInfos->h);
-    AffichageIcone(nbEau,nbEau,nbEauInfos,page,0,0,360,715,0,10,nbEau->w,nbEau->h,nbEauInfos->w,nbEauInfos->h);
-    AffichageIcone(nbHab,nbHab,nbHabInfos,page,0,0,160,715,0,10,nbHab->w,nbHab->h,nbHabInfos->w,nbHabInfos->h);
-    AffichageIcone(nbArgent,nbArgent,nbArgentInfos,page,0,0,60,715,0,15,nbArgent->w,nbArgent->h,nbArgentInfos->w,nbArgentInfos->h);
-
     compteurHab = compterHab(map);
     compteurEau = compterEau(map);
     compteurElec = compterElec(map);
+
+    AffichageIcone(nbEau,nbEau,nbEauInfos,page,0,0,250,715,0,10,nbEau->w,nbEau->h,nbEauInfos->w,nbEauInfos->h);
+    AffichageIcone(nbElec,nbElec,nbElecInfos,page,0,0,350,715,0,10,nbElec->w,nbElec->h,nbElecInfos->w,nbElecInfos->h);
+    AffichageIcone(nbHab,nbHab,nbHabInfos,page,0,0,150,715,0,10,nbHab->w,nbHab->h,nbHabInfos->w,nbHabInfos->h);
+    AffichageIcone(nbArgent,nbArgent,nbArgentInfos,page,0,0,50,715,0,10,nbHab->w,nbHab->h,nbHabInfos->w,nbHabInfos->h);
 
     textprintf_ex(page,font,180,720,makecol(255,255,255),-1,"%d",compteurHab);
     textprintf_ex(page,font,280,720,makecol(255,255,255),-1,"%d",compteurEau);

@@ -9,6 +9,7 @@
 
 #define impots 10
 #define banqueDep 500000
+#define CAPACITE_CHATEAU 5000
 
 //Structure habitation
 typedef struct habitation
@@ -20,6 +21,14 @@ typedef struct habitation
     time_t tempsCrea;
 
 }t_habitation;
+
+//Structure chateau d'eau
+typedef struct chateauEau
+{
+    int x;
+    int y;
+    int capaciteRestante;
+}t_chateauEau;
 
 //Structure Maillon
 typedef struct maillon
@@ -58,20 +67,28 @@ void affichageregles(BITMAP* bmpAffichage);
 //Fonctions pour la map
 void afficher_map(BITMAP* page, int map[35][45]);
 void creer_map(BITMAP* page, int map[35][45]);
-void afficherInterface(BITMAP* page,int map[35][45], time_t tempsdepart, int argent);
-int compterHab(int map[35][45]);
-int compterEau(int map[35][45]);
-int compterElec(int map[35][45]);
 void lireFichierMap(int matrice_a_remplir[35][45],char* nomFichier);
+void afficher_matrice_cases_vertes(BITMAP* page);
 
 //Constructions
 void route (BITMAP* page, int map[35][45],time_t tempsdepart, int* banque,t_habitation tab_hab[50], int nb_hab);
-void interfaceRoute(BITMAP* page,int type);
 void habitation (BITMAP* page, int map[35][45],time_t tempsdepart, int* banque, int* nb_hab, t_habitation* tab_hab);
-void chateau_eau(BITMAP* page, int map[35][45],time_t tempsdepart, int* banque,t_habitation tab_hab[50], int nb_hab);
+void chateau_eau(BITMAP* page, int map[35][45],time_t tempsdepart, int* banque,t_habitation tab_hab[50], int nb_hab, t_chateauEau tab_eau[20] , int* nb_chateau);
 void centrale(BITMAP* page, int map[35][45],time_t tempsdepart, int* banque, t_habitation tab_hab[50], int nb_hab);
 
 void test_temps(int map[35][45], t_habitation tab_hab[50], int* argent, int nb_hab);
+
+//Interfaces
+void afficherInterface(BITMAP* page,int map[35][45], time_t tempsdepart, int argent);
+void interfaceRoute(BITMAP* page, int type, time_t tempsdepart, int argent, int map[35][45]);
+void interfaceMaisons(BITMAP* page, time_t tempsdepart, int argent, int map[35][45]);
+void interfaceChateaux(BITMAP* page,time_t tempsdepart, int argent, int map[35][45]);
+void interfaceCentrales(BITMAP* page,time_t tempsdepart, int argent, int map[35][45]);
+void interfaceNiveau(BITMAP* page, int type);
+int compterHab(int map[35][45]);
+int compterEau(int map[35][45]);
+int compterElec(int map[35][45]);
+
 
 //Sauvegarde
 int testSauvegarde();
@@ -88,6 +105,12 @@ void chercherCheminPlusCourtEau(int maisonRefX,int maisonRefY,int chateauEauRefX
 int* defiler(t_file * ptAlignement);
 void enfiler(t_file * ptAlignement, int valeurX,int valeurY);
 int estVide(t_file* fAttente);
+
+//Niveau
+void canalisations (BITMAP* page, int map[35][45]);
+void lignes(BITMAP* page, int map[35][45]);
+void afficher_niveau(BITMAP* page, int map[35][45],int test);
+
 /*typedef struct batiment
 {
     char nom[15];
