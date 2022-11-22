@@ -162,8 +162,8 @@ void habitation (BITMAP* page, int map[35][45],time_t tempsdepart, int* banque, 
             testclic=1;
 
         }
-        if((testclic==1 && *banque>1000
-            && map[y][x]==0 && map[y][x+1]==0 && map[y][x+2]==0
+        if((testclic==1 && *banque>1000 && y>1 && x<43
+        && map[y][x]==0 && map[y][x+1]==0 && map[y][x+2]==0
             && map[y-1][x]==0 && map[y-1][x+1]==0 && map[y-1][x+2]==0
             && map[y-2][x]==0 && map[y-2][x+1]==0 && map[y-2][x+2]==0)
            && ((map[y+1][x]==1 || map[y+1][x+1]==1 || map[y+1][x+2]==1 ||
@@ -254,7 +254,7 @@ void chateau_eau(BITMAP* page, int map[35][45],time_t tempsdepart, int* banque, 
             masked_blit(chateauEau, page, 0, 0, mouse_x, mouse_y-120, chateauEau->w, chateauEau->h);
             blit(page,screen,0,0,0,0,900,700);
         }
-        if((testclic==1 && *banque>=100000 &&
+        if((testclic==1 && *banque>=100000 && y>4 && x<42 &&
             map[y][x]==0&&(map[y-1][x] == 0)&&(map[y-2][x] == 0)&&(map[y-3][x] == 0)&&(map[y-4][x] == 0)&&(map[y-5][x] == 0)&&
             (map[y][x+1]==0)&&(map[y-1][x+1]==0)&&(map[y-2][x+1]==0)&&(map[y-3][x+1]==0)&&(map[y-4][x+1]==0)&&(map[y-5][x+1]==0)&&
             (map[y][x+2]==0)&&(map[y-1][x+2]==0)&&(map[y-2][x+2]==0)&&(map[y-3][x+2]==0)&&(map[y-4][x+2]==0)&&(map[y-5][x+2]==0)&&
@@ -355,8 +355,8 @@ void centrale(BITMAP* page, int map[35][45],time_t tempsdepart, int* banque, t_h
             blit(page,screen,0,0,0,0,900,700);
         }
 
-        if(testclic==1 && *banque>=100000 &&
-           map[y][x]==0&&(map[y-1][x] == 0)&&(map[y-2][x] == 0)&&(map[y-3][x] == 0)&&(map[y][x+4] == 0)&&(map[y][x+5] == 0)&&
+        if(testclic==1 && *banque>=100000 && y>2 && x<40 &&
+            map[y][x]==0&&(map[y-1][x] == 0)&&(map[y-2][x] == 0)&&(map[y-3][x] == 0)&&(map[y][x+4] == 0)&&(map[y][x+5] == 0)&&
            (map[y][x+1]==0)&&(map[y-1][x+1]==0)&&(map[y-2][x+1]==0)&&(map[y-3][x+1]==0)&&(map[y-1][x+4]==0)&&(map[y-1][x+5]==0)&&
            (map[y][x+2]==0)&&(map[y-1][x+2]==0)&&(map[y-2][x+2]==0)&&(map[y-3][x+2]==0)&&(map[y-2][x+4]==0)&&(map[y-2][x+5]==0)&&
            (map[y][x+3]==0)&&(map[y-1][x+3]==0)&&(map[y-2][x+3]==0)&&(map[y-3][x+3]==0)&&(map[y-3][x+4]==0)&&(map[y-3][x+5]==0)&&
