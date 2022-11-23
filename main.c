@@ -61,10 +61,6 @@ int main()
             }
             while(sortie==0)
             {
-                for(int z=0;z<nb_hab;z++)
-                {
-                    printf("%d : XRef : %d \n",nb_hab,tab_hab[nb_hab].YRef);
-                }
                 afficher_matrice_cases_vertes(page);
                 afficher_map(page,map);
                 afficherInterface(page,map,tempsdep, banque);
@@ -75,12 +71,18 @@ int main()
                 }
                 if (((mouse_x >= (920) && mouse_x <= (920 + 100)) && (mouse_y) >= (200) && mouse_y <= (200 + 100)) && (mouse_b & 1))
                 {
+                    printf("%d %d 1\n",tab_hab[0].XRef,tab_hab[0].YRef);
+                    printf("%d %d 1\n",tab_hab[1].XRef,tab_hab[1].YRef);
+                    printf("%d %d 1\n",tab_hab[2].XRef,tab_hab[2].YRef);
                     habitation(page,map,tempsdep,&banque,&nb_hab, tab_hab);
+                    printf("\n\n%d %d 2\n",tab_hab[0].XRef,tab_hab[0].YRef);
+                    printf("%d %d 2\n",tab_hab[1].XRef,tab_hab[1].YRef);
+                    printf("%d %d 2\n",tab_hab[2].XRef,tab_hab[2].YRef);
                 }
                 if (((mouse_x >= (920) && mouse_x <= (920 + 75)) && (mouse_y) >= (270) && mouse_y <= (270 + 100)) &&
                     (mouse_b & 1)) {
                     chateau_eau(page, map,tempsdep,&banque, tab_hab, nb_hab,  tab_eau, &nb_chateau);
-                    //creerMatriceEau(tab_hab,nb_hab,tab_eau,1,map);
+                    creerMatriceEau(tab_hab,nb_hab,tab_eau,1,map);
                 }
                 if (((mouse_x >= (920) && mouse_x <= (920 + 75)) && (mouse_y) >= (380) && mouse_y <= (380 + 100)) &&
                     (mouse_b & 1)) {
