@@ -194,6 +194,7 @@ void habitation (BITMAP* page, int map[35][45],time_t tempsdepart, int* banque, 
             tab_hab[0].niveau=0;
             tab_hab[0].tempsCrea=time(NULL);*/
 
+
             for (int h=x; h<x+3;h++)
             {
                 for(int k=y; k<y+3; k++)

@@ -187,7 +187,7 @@ int** creerMatriceEau(t_habitation* tableauHabitation, int nombreHabitation, t_c
     int* cmtChatEau = (int*) calloc(nombreChateauEau,sizeof(int));
     int index,tmpX,tmpY,tmpDist,tmpNumM,saturationChateau = 0,compteur = 0,test = 0;
 
-    printf("ok");
+
     for(int i = 0; i < nombreChateauEau; i++)
     {
         distanceChateauEau[i] = (t_kase*) malloc((nombreHabitation)*sizeof(t_kase));
