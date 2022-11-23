@@ -18,6 +18,7 @@ typedef struct habitation
     int nb_habitants;
     int x;
     int y;
+    int quantiteeEau;
     time_t tempsCrea;
 
 }t_habitation;
@@ -29,6 +30,7 @@ typedef struct chateauEau
     int y;
     int capaciteRestante;
 }t_chateauEau;
+
 
 //Structure Maillon
 typedef struct maillon
@@ -43,6 +45,8 @@ typedef struct kase
 {
     int coordX;
     int coordY;
+    int distance; //utilisé pour eau;
+    int numMaison; //utilisé pour eau;
 }t_kase;
 
 //Structure file
@@ -55,7 +59,7 @@ typedef struct file
 ///Prototype des fonctions
 void initialisationAllegro();
 void AffichageBouton(BITMAP* bouton,BITMAP* boutonInv, BITMAP* page,int sourcex,int sourcey,int destx,int desty,int longueur, int hauteur);
-void AffichageIcone(BITMAP* bouton,BITMAP* boutonInv,BITMAP* infos, BITMAP* page,int sourcex,int sourcey,int destx,int desty,int destxi, int destyi,int longueur,int hauteur,int longueurinfos,int hauteurinfos);
+void AffichageIcone(BITMAP* bouton,BITMAP* boutonInv,BITMAP* infos, BITMAP* page,int sourcex,int sourcey,int destx,int desty,int longueur,int hauteur,int longueurinfos,int hauteurinfos);
 
 
 //Fonctions pour le menu
@@ -84,7 +88,6 @@ void interfaceRoute(BITMAP* page, int type, time_t tempsdepart, int argent, int 
 void interfaceMaisons(BITMAP* page, time_t tempsdepart, int argent, int map[35][45]);
 void interfaceChateaux(BITMAP* page,time_t tempsdepart, int argent, int map[35][45]);
 void interfaceCentrales(BITMAP* page,time_t tempsdepart, int argent, int map[35][45]);
-void interfaceNiveau(BITMAP* page, int type);
 int compterHab(int map[35][45]);
 int compterEau(int map[35][45]);
 int compterElec(int map[35][45]);
@@ -101,15 +104,12 @@ void sauvegarderTableauBatiment(char* nomFichier, t_habitation tableau[],int nom
 void affichagecasefree(BITMAP* page,int map[35][45],int type);
 
 //Gestion Eau
-void chercherCheminPlusCourtEau(int maisonRefX,int maisonRefY,int chateauEauRefX, int chateauEauRefY,int matriceMap[35][45]);
+t_kase** chercherCheminPlusCourtEau(int chateauEauRefX, int chateauEauRefY,int matriceMap[35][45]);
+int tailleChemin(t_kase** matriceAnalyse, int maisonX, int maisonY,int chateauEauX, int chateauEauY);
+int** creerMatriceEau(t_habitation* tableauHabitation, int nombreHabitation, t_chateauEau* tableauChateauEau,int nombreChateauEau,int map[35][45]);
 int* defiler(t_file * ptAlignement);
 void enfiler(t_file * ptAlignement, int valeurX,int valeurY);
 int estVide(t_file* fAttente);
-
-//Niveau
-void canalisations (BITMAP* page, int map[35][45]);
-void lignes(BITMAP* page, int map[35][45]);
-void afficher_niveau(BITMAP* page, int map[35][45],int test);
 
 /*typedef struct batiment
 {

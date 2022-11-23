@@ -88,33 +88,24 @@ int* defiler(t_file * ptAlignement)
         return tableauCo;
     }
 }
-void chercherCheminPlusCourtEau(int maisonRefX,int maisonRefY,int chateauEauRefX, int chateauEauRefY,int matriceMap[35][45])
+
+t_kase** chercherCheminPlusCourtEau(int chateauEauRefX, int chateauEauRefY,int matriceMap[35][45])
 {
     //Déclaration des variables
     int matriceCouleur[35][45];
-    int sommetArrivee = 0;
-    printf("1");
     int xFile = 0, yFile= 0;
-    printf("2");
     int* tableauCoordonnee = NULL;
-    printf("3");
     t_kase** tableauPred = (t_kase**)malloc(35 * sizeof(t_kase*));
-    printf("4");
-    for(int i = 0 ; i<35 ; i++)
-    {
-        tableauPred[i] = (t_kase*)malloc(45 * sizeof(t_kase));
-    }
-    printf("5");
     t_file fileBfs;
-    printf("6");
+
     //Initialisation de la file
     fileBfs.queueFile = fileBfs.tete = NULL;
-    printf("7");
 
-    //On met toutes les cases de la matrice à 0 (pas découvert)ù
+    //On met toutes les cases de la matrice à 0 (pas découvert)
     //On met tout les prédécesseur sur -1
     for(int y = 0 ; y < 35 ; y++)
     {
+        tableauPred[y] = (t_kase*)malloc(45 * sizeof(t_kase));
         for(int x = 0 ; x < 45 ; x++)
         {
             matriceCouleur[y][x] = 0;
@@ -122,109 +113,201 @@ void chercherCheminPlusCourtEau(int maisonRefX,int maisonRefY,int chateauEauRefX
             tableauPred[y][x].coordY = -1;
         }
     }
-    printf("8");
 
     //On met la case du chateau d'eau de départ à 1 : découverte
     matriceCouleur[chateauEauRefY][chateauEauRefX] = 1;
-    printf("9");
+
     //On enfile le premier élement dans la file
     enfiler(&fileBfs,chateauEauRefX,chateauEauRefY);
-    printf("10");
+
 
     //On va faire une boucle dans que la file n'est pas vide
-    while(fileBfs.tete != NULL && sommetArrivee == 0)
+    while(fileBfs.tete != NULL)
     {
-        printf("11");
         //On défile le numéro du sommet suivant
         tableauCoordonnee = defiler(&fileBfs);
         xFile = tableauCoordonnee[0];
         yFile = tableauCoordonnee[1];
-        printf("defiler : %d %d ||\n", xFile ,yFile);
-        printf("12\n");
+
         //On recherche les cases à coté
         if(matriceCouleur[yFile+1][xFile] == 0 && matriceMap[yFile + 1][xFile] == 1)
         {
-            printf("enfiler : %d %d ||\n", xFile ,yFile  +1);
             enfiler(&fileBfs,xFile,yFile + 1);
             matriceCouleur[yFile + 1][xFile] = 1;
             tableauPred[yFile + 1][xFile].coordY = yFile;
             tableauPred[yFile + 1][xFile].coordX = xFile;
-            if(xFile == maisonRefX && yFile + 1 == maisonRefY)
-            {
-                sommetArrivee = 1;
-            }
         }
         if(matriceCouleur[yFile-1][xFile] == 0 && matriceMap[yFile - 1][xFile] == 1)
         {
-            printf("enfiler : %d %d ||\n", xFile ,yFile -1);
             enfiler(&fileBfs,xFile,yFile - 1);
             matriceCouleur[yFile - 1][xFile] = 1;
             tableauPred[yFile - 1][xFile].coordY = yFile;
             tableauPred[yFile - 1][xFile].coordX = xFile;
-
-            if(xFile == maisonRefX && yFile - 1 == maisonRefY)
-            {
-                sommetArrivee = 1;
-            }
         }
         if(matriceCouleur[yFile][xFile+1] == 0 && matriceMap[yFile][xFile+1] == 1)
         {
-            printf("enfiler : %d %d ||\n", xFile + 1 ,yFile);
             enfiler(&fileBfs,xFile + 1,yFile);
             matriceCouleur[yFile][xFile + 1] = 1;
             tableauPred[yFile][xFile + 1].coordY = yFile;
             tableauPred[yFile][xFile + 1].coordX = xFile;
-
-            if(xFile + 1 == maisonRefX && yFile == maisonRefY)
-            {
-                sommetArrivee = 1;
-            }
         }
         if(matriceCouleur[yFile][xFile-1] == 0 && matriceMap[yFile][xFile-1] == 1)
         {
-            printf("enfiler : %d %d ||\n", xFile - 1 ,yFile);
             enfiler(&fileBfs,xFile - 1,yFile);
             matriceCouleur[yFile][xFile - 1] = 1;
             tableauPred[yFile][xFile - 1].coordY = yFile;
             tableauPred[yFile][xFile - 1].coordX = xFile;
-            if(xFile - 1 == maisonRefX && yFile == maisonRefY)
-            {
-                sommetArrivee = 1;
-            }
-
         }
+    }
+    return tableauPred;
+}
 
+int tailleChemin(t_kase** matriceAnalyse, int maisonX, int maisonY,int chateauEauX, int chateauEauY)
+{
+    //Déclaration des variables
+    int tailleChemin = 1, xTmp = maisonX , yTmp = maisonY;
 
+    //Trouver la taille du chemin
+    while(xTmp != chateauEauX && yTmp != chateauEauY)
+    {
+        xTmp = matriceAnalyse[yTmp][xTmp].coordX;
+        yTmp = matriceAnalyse[yTmp][xTmp].coordY;
+        tailleChemin ++;
+    }
+    return tailleChemin;
+}
 
+int** creerMatriceEau(t_habitation* tableauHabitation, int nombreHabitation, t_chateauEau* tableauChateauEau,int nombreChateauEau,int map[35][45])
+{
+    //déclaration des variables
+    t_kase*** tableauCheminPlusCourtChateauEau = (t_kase***) malloc(nombreChateauEau * sizeof(t_kase**));
+    t_kase ** distanceChateauEau = (t_kase**)malloc(nombreChateauEau * sizeof(t_kase*));
+    int** matriceEau = (int**)malloc(35*sizeof(int*));
+    int* minChateauEau = (int*) malloc(nombreChateauEau * sizeof(int));
+    int* cmtChatEau = (int*) calloc(nombreChateauEau,sizeof(int));
+    int index,tmpX,tmpY,tmpDist,tmpNumM,saturationChateau = 0,compteur = 0,test = 0;
+
+    printf("ok");
+    for(int i = 0; i < nombreChateauEau; i++)
+    {
+        distanceChateauEau[i] = (t_kase*) malloc((nombreHabitation)*sizeof(t_kase));
+        minChateauEau[i] = 500;
+        tableauCheminPlusCourtChateauEau[i] = chercherCheminPlusCourtEau(tableauChateauEau[i].x,tableauChateauEau[i].y,map);
     }
 
-    /*while(!key[KEY_ESC])
+    for(int i = 0 ; i<35 ; i++)
     {
-        for(int y = 0 ; y < 35 ; y++)
+        matriceEau[i] = (int*)malloc(45*sizeof(int));
+        for(int j = 0 ; j<45 ; j++)
         {
-            for(int x = 0 ; x < 45 ; x++)
-            {
-               if(tableauPred[y][x].coordX < 10)
-               {
-                   printf("%d  ",tableauPred[y][x].coordX);
-               }
-               else
-               {
-                   printf("%d ",tableauPred[y][x].coordX);
-               }
+            matriceEau[i][j] = 0;
+        }
+    }
 
-                if(tableauPred[y][x].coordY < 10)
+    for(int i=0 ; i<nombreChateauEau ; i++)
+    {
+        for(int j=0 ; j<nombreHabitation ; j++)
+        {
+            distanceChateauEau[i][j].distance = tailleChemin(tableauCheminPlusCourtChateauEau[i],tableauHabitation[j].x,tableauHabitation[j].x,tableauChateauEau[i].x,tableauChateauEau[i].y);
+            distanceChateauEau[i][j].coordX = tableauHabitation[j].x;
+            distanceChateauEau[i][j].coordY = tableauHabitation[j].y;
+            distanceChateauEau[i][j].numMaison = j;
+        }
+    }
+
+    for(int z=0 ; z < nombreChateauEau ; z++)
+    {
+        for(int i=0 ; i< (nombreHabitation-1) ; i++)
+        {
+            index = i;
+            for(int j=(i+1) ; j < nombreHabitation ; j++)
+            {
+                if (distanceChateauEau[z][index].distance > distanceChateauEau[z][j].distance)
                 {
-                    printf("%d |",tableauPred[y][x].coordY);
-                }
-                else
-                {
-                    printf("%d|",tableauPred[y][x].coordY);
+                    index = j;
                 }
             }
-            printf("\n NOUVELLE LIGNE \n");
+            if (index != i)
+            {
+                tmpDist= distanceChateauEau[z][i].distance;
+                tmpX= distanceChateauEau[z][i].coordX;
+                tmpY= distanceChateauEau[z][i].coordY;
+                tmpNumM = distanceChateauEau[z][i].numMaison;
+
+                distanceChateauEau[z][i].distance = distanceChateauEau[z][index].distance;
+                distanceChateauEau[z][i].coordX = distanceChateauEau[z][index].coordX;
+                distanceChateauEau[z][i].coordY = distanceChateauEau[z][index].coordY;
+                distanceChateauEau[z][i].numMaison = distanceChateauEau[z][index].numMaison;
+
+                distanceChateauEau[z][index].distance = tmpDist;
+                distanceChateauEau[z][index].coordX = tmpX;
+                distanceChateauEau[z][index].coordY = tmpY;
+                distanceChateauEau[z][index].numMaison = tmpNumM;
+            }
+        }
+    }
+
+    while(saturationChateau == 0)
+    {
+        test = 0;
+        for(int i = 0 ; i<nombreChateauEau ; i++)
+        {
+            if(i != compteur)
+            {
+                if((distanceChateauEau[compteur][cmtChatEau[compteur]].numMaison != distanceChateauEau[i][cmtChatEau[i]].numMaison) || ((distanceChateauEau[compteur][cmtChatEau[compteur]].numMaison != distanceChateauEau[i][cmtChatEau[i]].numMaison) && (distanceChateauEau[compteur][cmtChatEau[compteur]].distance <= distanceChateauEau[i][cmtChatEau[i]].distance)))
+                {
+                    test = 1;
+                }
+            }
         }
 
-    }*/
+        if(test == 1 && tableauChateauEau[compteur].capaciteRestante > 0 && tableauHabitation[distanceChateauEau[compteur][cmtChatEau[compteur]].numMaison].quantiteeEau < tableauHabitation[distanceChateauEau[compteur][cmtChatEau[compteur]].numMaison].nb_habitants)
+        {
+            matriceEau[distanceChateauEau[compteur][cmtChatEau[compteur]].coordY][distanceChateauEau[compteur][cmtChatEau[compteur]].coordX] = 1;
+            tmpX = distanceChateauEau[compteur][cmtChatEau[compteur]].coordX;
+            tmpY = distanceChateauEau[compteur][cmtChatEau[compteur]].coordY;
 
+            while(tmpX != tableauChateauEau[compteur].x && tmpY != tableauChateauEau[compteur].y)
+            {
+                tmpX = tableauCheminPlusCourtChateauEau[compteur][tmpY][tmpX].coordX;
+                tmpY = tableauCheminPlusCourtChateauEau[compteur][tmpY][tmpX].coordY;
+
+                matriceEau[tmpY][tmpX] = 1;
+            }
+
+            if(cmtChatEau[compteur] < nombreHabitation)
+            {
+                cmtChatEau[compteur] ++;
+            }
+        }
+
+        compteur ++;
+        if(compteur == nombreChateauEau)
+        {
+            compteur = 0;
+        }
+
+        //Test de sortie de boucle
+        for(int i=0 ; i<nombreChateauEau ; i++)
+        {
+            if(tableauChateauEau[i].capaciteRestante == 0 || cmtChatEau[i] == nombreHabitation)
+            {
+                saturationChateau = 1;
+            }
+            else
+            {
+                saturationChateau = 0;
+            }
+        }
+    }
+
+    for(int i = 0 ; i < 35 ; i++)
+    {
+        for(int j=0; j<45 ; j++)
+        {
+            printf("%d ",matriceEau[i][j]);
+        }
+        printf("\n");
+    }
+    return matriceEau;
 }
