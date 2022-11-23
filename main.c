@@ -61,6 +61,10 @@ int main()
             }
             while(sortie==0)
             {
+                for(int z=0;z<nb_hab;z++)
+                {
+                    printf("%d : XRef : %d \n",nb_hab,tab_hab[nb_hab].YRef);
+                }
                 afficher_matrice_cases_vertes(page);
                 afficher_map(page,map);
                 afficherInterface(page,map,tempsdep, banque);

@@ -198,25 +198,25 @@ void habitation (BITMAP* page, int map[35][45],time_t tempsdepart, int* banque, 
             {
                 for(int k=y; k<y+3; k++)
                 {
-                    if((map[k+1][h]==1)&&(test_ref==0))
+                    if(((map[k+1][h]==1)||(map[k+1][h]==2))&&(test_ref==0))
                     {
                         tab_hab[*nb_hab].XRef=h;
                         tab_hab[*nb_hab].YRef=k+1;
                         test_ref++;
                     }
-                    if((map[k-1][h]==1)&&(test_ref==0))
+                    if(((map[k-1][h]==1)||(map[k-1][h]==2))&&(test_ref==0))
                     {
                         tab_hab[*nb_hab].XRef=h;
                         tab_hab[*nb_hab].YRef=k-1;
                         test_ref++;
                     }
-                    if((map[k][h+1]==1)&&(test_ref==0))
+                    if(((map[k][h+1]==1)||(map[k][h+1]==2))&&(test_ref==0))
                     {
                         tab_hab[*nb_hab].XRef=h+1;
                         tab_hab[*nb_hab].YRef=k;
                         test_ref++;
                     }
-                    if((map[k][h-1]==1)&&(test_ref==0))
+                    if(((map[k][h-1]==1)||(map[k][h-1]==2))&&(test_ref==0))
                     {
                         tab_hab[*nb_hab].XRef=h-1;
                         tab_hab[*nb_hab].YRef=k;
