@@ -18,6 +18,8 @@ typedef struct habitation
     int nb_habitants;
     int x;
     int y;
+    int XRef;
+    int YRef;
     int quantiteeEau;
     time_t tempsCrea;
 
@@ -56,10 +58,11 @@ typedef struct file
     t_maillon* queueFile;
 }t_file;
 
+
 ///Prototype des fonctions
 void initialisationAllegro();
 void AffichageBouton(BITMAP* bouton,BITMAP* boutonInv, BITMAP* page,int sourcex,int sourcey,int destx,int desty,int longueur, int hauteur);
-void AffichageIcone(BITMAP* bouton,BITMAP* boutonInv,BITMAP* infos, BITMAP* page,int sourcex,int sourcey,int destx,int desty,int longueur,int hauteur,int longueurinfos,int hauteurinfos);
+void AffichageIcone(BITMAP* bouton,BITMAP* boutonInv,BITMAP* infos, BITMAP* page,int sourcex,int sourcey,int destx,int desty,int destxi, int destyi,int longueur,int hauteur,int longueurinfos,int hauteurinfos);
 
 
 //Fonctions pour le menu
@@ -88,6 +91,7 @@ void interfaceRoute(BITMAP* page, int type, time_t tempsdepart, int argent, int 
 void interfaceMaisons(BITMAP* page, time_t tempsdepart, int argent, int map[35][45]);
 void interfaceChateaux(BITMAP* page,time_t tempsdepart, int argent, int map[35][45]);
 void interfaceCentrales(BITMAP* page,time_t tempsdepart, int argent, int map[35][45]);
+void interfaceNiveau(BITMAP* page, int type);
 int compterHab(int map[35][45]);
 int compterEau(int map[35][45]);
 int compterElec(int map[35][45]);
@@ -110,6 +114,11 @@ int** creerMatriceEau(t_habitation* tableauHabitation, int nombreHabitation, t_c
 int* defiler(t_file * ptAlignement);
 void enfiler(t_file * ptAlignement, int valeurX,int valeurY);
 int estVide(t_file* fAttente);
+
+//Niveau
+void canalisations (BITMAP* page, int map[35][45]);
+void lignes(BITMAP* page, int map[35][45]);
+void afficher_niveau(BITMAP* page, int map[35][45],int test);
 
 /*typedef struct batiment
 {
