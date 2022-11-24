@@ -96,7 +96,7 @@ void affichagecasefree(BITMAP* page,int map[35][45],int type)
                       map[i][j+6]==1 || map[i-1][j+6]==1 || map[i-2][j+6]==1 || map[i-3][j+6]==1 ||
                       map[i-4][j+5]==1 || map[i-4][j+4]==1 || map[i-4][j+3]==1 || map[i-4][j+2]==1 || map[i-4][j+1]==1 || map[i-4][j]==1 ||
                       map[i-3][j-1]==1 || map[i-2][j-1]==1 || map[i-1][j-1]==1 || map[i][j-1]==1)||
-                   (map[i+1][j]==2 || map[i+1][j+1]==2 || map[i+1][j+2]==2 || map[i+1][j+3]==2 || map[i+1][j+4]==2 || map[i+1][j+5]==2 ||
+                    (map[i+1][j]==2 || map[i+1][j+1]==2 || map[i+1][j+2]==2 || map[i+1][j+3]==2 || map[i+1][j+4]==2 || map[i+1][j+5]==2 ||
                      map[i][j+6]==2 || map[i-1][j+6]==2 || map[i-2][j+6]==2 || map[i-3][j+6]==2 ||
                      map[i-4][j+5]==2 || map[i-4][j+4]==2 || map[i-4][j+3]==2 || map[i-4][j+2]==2 || map[i-4][j+1]==2 || map[i-4][j]==2 ||
                      map[i-3][j-1]==2 || map[i-2][j-1]==2 || map[i-1][j-1]==2 || map[i][j-1]==2)))

@@ -122,7 +122,7 @@ void habitation (BITMAP* page, int map[35][45],time_t tempsdepart, int* banque, 
     BITMAP* maison = load_bitmap("Constructions/maison.bmp", NULL);
     BITMAP* buffer2 =create_bitmap(1024,768);
 
-
+    int test_ref = 0;
     int x,y;
     int clic=0;
     int testclic=0;
@@ -160,10 +160,9 @@ void habitation (BITMAP* page, int map[35][45],time_t tempsdepart, int* banque, 
             x=mouse_x/20;
             y=mouse_y/20;
             testclic=1;
-
         }
         if((testclic==1 && *banque>1000 && y>1 && x<43
-        && map[y][x]==0 && map[y][x+1]==0 && map[y][x+2]==0
+            && map[y][x]==0 && map[y][x+1]==0 && map[y][x+2]==0
             && map[y-1][x]==0 && map[y-1][x+1]==0 && map[y-1][x+2]==0
             && map[y-2][x]==0 && map[y-2][x+1]==0 && map[y-2][x+2]==0)
            && ((map[y+1][x]==1 || map[y+1][x+1]==1 || map[y+1][x+2]==1 ||
@@ -187,12 +186,47 @@ void habitation (BITMAP* page, int map[35][45],time_t tempsdepart, int* banque, 
             afficher_matrice_cases_vertes(buffer2);
             afficher_map(buffer2,map);
             *banque-=1000;
+            test_ref=0;
             /* *nb_hab++;
             tab_hab=(t_habitation*)realloc(tab_hab, *nb_hab * sizeof(t_habitation));
 
             tab_hab[0].nb_hab=0;
             tab_hab[0].niveau=0;
             tab_hab[0].tempsCrea=time(NULL);*/
+
+
+            y = y - 2;
+            for (int h=x; h<x+3;h++)
+            {
+                for(int k=y; k<y+3; k++)
+                {
+                    if(((map[k+1][h]==1)||(map[k+1][h]==2))&&(test_ref==0))
+                    {
+                        tab_hab[*nb_hab].XRef=h;
+                        tab_hab[*nb_hab].YRef=k+1;
+                        test_ref++;
+                    }
+                    if(((map[k-1][h]==1)||(map[k-1][h]==2))&&(test_ref==0))
+                    {
+                        tab_hab[*nb_hab].XRef=h;
+                        tab_hab[*nb_hab].YRef=k-1;
+                        test_ref++;
+                    }
+                    if(((map[k][h+1]==1)||(map[k][h+1]==2))&&(test_ref==0))
+                    {
+                        tab_hab[*nb_hab].XRef=h+1;
+                        tab_hab[*nb_hab].YRef=k;
+                        test_ref++;
+                    }
+                    if(((map[k][h-1]==1)||(map[k][h-1]==2))&&(test_ref==0))
+                    {
+                        tab_hab[*nb_hab].XRef=h-1;
+                        tab_hab[*nb_hab].YRef=k;
+                        test_ref++;
+                    }
+                }
+            }
+            y = y + 2;
 
             tab_hab[*nb_hab].nb_habitants=0;
             tab_hab[*nb_hab].niveau=0;
@@ -223,7 +257,7 @@ void chateau_eau(BITMAP* page, int map[35][45],time_t tempsdepart, int* banque, 
 
 
 
-    int x,y;
+    int x,y,test_ref = 0;
     int clic=0;
     int testclic=0;
 
@@ -298,8 +332,43 @@ void chateau_eau(BITMAP* page, int map[35][45],time_t tempsdepart, int* banque, 
             map[y-5][x+3] =16;
             *banque-=100000;
 
+            test_ref = 0;
+            y = y-5;
+            for (int h=x; h<x+4;h++)
+            {
+                for(int k=y; k<y+6; k++)
+                {
+                    if(((map[k+1][h]==1)||(map[k+1][h]==2))&&(test_ref==0))
+                    {
+                        tab_eau[*nb_chateau].XRef=h;
+                        tab_eau[*nb_chateau].YRef=k+1;
+                        test_ref++;
+                    }
+                    if(((map[k-1][h]==1)||(map[k-1][h]==2))&&(test_ref==0))
+                    {
+                        tab_eau[*nb_chateau].XRef=h;
+                        tab_eau[*nb_chateau].YRef=k-1;
+                        test_ref++;
+                    }
+                    if(((map[k][h+1]==1)||(map[k][h+1]==2))&&(test_ref==0))
+                    {
+                        tab_eau[*nb_chateau].XRef=h+1;
+                        tab_eau[*nb_chateau].YRef=k;
+                        test_ref++;
+                    }
+                    if(((map[k][h-1]==1)||(map[k][h-1]==2))&&(test_ref==0))
+                    {
+                        tab_eau[*nb_chateau].XRef=h-1;
+                        tab_eau[*nb_chateau].YRef=k;
+                        test_ref++;
+                    }
+                }
+            }
+
+            y=y+5;
+
             tab_eau[*nb_chateau].x=x;
-            tab_eau[*nb_chateau].y=y-6;
+            tab_eau[*nb_chateau].y=y-5;
             *nb_chateau+=1;
 
 
@@ -356,18 +425,18 @@ void centrale(BITMAP* page, int map[35][45],time_t tempsdepart, int* banque, t_h
         }
 
         if(testclic==1 && *banque>=100000 && y>2 && x<40 &&
-            map[y][x]==0&&(map[y-1][x] == 0)&&(map[y-2][x] == 0)&&(map[y-3][x] == 0)&&(map[y][x+4] == 0)&&(map[y][x+5] == 0)&&
+           map[y][x]==0&&(map[y-1][x] == 0)&&(map[y-2][x] == 0)&&(map[y-3][x] == 0)&&(map[y][x+4] == 0)&&(map[y][x+5] == 0)&&
            (map[y][x+1]==0)&&(map[y-1][x+1]==0)&&(map[y-2][x+1]==0)&&(map[y-3][x+1]==0)&&(map[y-1][x+4]==0)&&(map[y-1][x+5]==0)&&
            (map[y][x+2]==0)&&(map[y-1][x+2]==0)&&(map[y-2][x+2]==0)&&(map[y-3][x+2]==0)&&(map[y-2][x+4]==0)&&(map[y-2][x+5]==0)&&
            (map[y][x+3]==0)&&(map[y-1][x+3]==0)&&(map[y-2][x+3]==0)&&(map[y-3][x+3]==0)&&(map[y-3][x+4]==0)&&(map[y-3][x+5]==0)&&
            ((map[y+1][x]==1 || map[y+1][x+1]==1 || map[y+1][x+2]==1 || map[y+1][x+3]==1 || map[y+1][x+4]==1 || map[y+1][x+5]==1 ||
-           map[y][x+6]==1 || map[y-1][x+6]==1 || map[y-2][x+6]==1 || map[y-3][x+6]==1 ||
-           map[y-4][x+5]==1 || map[y-4][x+4]==1 || map[y-4][x+3]==1 || map[y-4][x+2]==1 || map[y-4][x+1]==1 || map[y-4][x]==1 ||
-           map[y-3][x-1]==1 || map[y-2][x-1]==1 || map[y-1][x-1]==1 || map[y][x-1]==1)||
-           (map[y+1][x]==2 || map[y+1][x+1]==2 || map[y+1][x+2]==2 || map[y+1][x+3]==2 || map[y+1][x+4]==2 || map[y+1][x+5]==2 ||
-           map[y][x+6]==2 || map[y-1][x+6]==2 || map[y-2][x+6]==2 || map[y-3][x+6]==2 ||
-           map[y-4][x+5]==2 || map[y-4][x+4]==2 || map[y-4][x+3]==2 || map[y-4][x+2]==2 || map[y-4][x+1]==2 || map[y-4][x]==2 ||
-           map[y-3][x-1]==2 || map[y-2][x-1]==2 || map[y-1][x-1]==2 || map[y][x-1]==2)))
+             map[y][x+6]==1 || map[y-1][x+6]==1 || map[y-2][x+6]==1 || map[y-3][x+6]==1 ||
+             map[y-4][x+5]==1 || map[y-4][x+4]==1 || map[y-4][x+3]==1 || map[y-4][x+2]==1 || map[y-4][x+1]==1 || map[y-4][x]==1 ||
+             map[y-3][x-1]==1 || map[y-2][x-1]==1 || map[y-1][x-1]==1 || map[y][x-1]==1)||
+            (map[y+1][x]==2 || map[y+1][x+1]==2 || map[y+1][x+2]==2 || map[y+1][x+3]==2 || map[y+1][x+4]==2 || map[y+1][x+5]==2 ||
+             map[y][x+6]==2 || map[y-1][x+6]==2 || map[y-2][x+6]==2 || map[y-3][x+6]==2 ||
+             map[y-4][x+5]==2 || map[y-4][x+4]==2 || map[y-4][x+3]==2 || map[y-4][x+2]==2 || map[y-4][x+1]==2 || map[y-4][x]==2 ||
+             map[y-3][x-1]==2 || map[y-2][x-1]==2 || map[y-1][x-1]==2 || map[y][x-1]==2)))
         {
             map[y][x] = 17;
             map[y-1][x] =17;
