@@ -195,6 +195,7 @@ void habitation (BITMAP* page, int map[35][45],time_t tempsdepart, int* banque, 
             tab_hab[0].tempsCrea=time(NULL);*/
 
 
+            y = y - 2;
             for (int h=x; h<x+3;h++)
             {
                 for(int k=y; k<y+3; k++)
@@ -225,7 +226,7 @@ void habitation (BITMAP* page, int map[35][45],time_t tempsdepart, int* banque, 
                     }
                 }
             }
-
+            y = y + 2;
 
             tab_hab[*nb_hab].nb_habitants=0;
             tab_hab[*nb_hab].niveau=0;
@@ -256,7 +257,7 @@ void chateau_eau(BITMAP* page, int map[35][45],time_t tempsdepart, int* banque, 
 
 
 
-    int x,y;
+    int x,y,test_ref = 0;
     int clic=0;
     int testclic=0;
 
@@ -331,8 +332,43 @@ void chateau_eau(BITMAP* page, int map[35][45],time_t tempsdepart, int* banque, 
             map[y-5][x+3] =16;
             *banque-=100000;
 
+            test_ref = 0;
+            y = y-5;
+            for (int h=x; h<x+4;h++)
+            {
+                for(int k=y; k<y+6; k++)
+                {
+                    if(((map[k+1][h]==1)||(map[k+1][h]==2))&&(test_ref==0))
+                    {
+                        tab_eau[*nb_chateau].XRef=h;
+                        tab_eau[*nb_chateau].YRef=k+1;
+                        test_ref++;
+                    }
+                    if(((map[k-1][h]==1)||(map[k-1][h]==2))&&(test_ref==0))
+                    {
+                        tab_eau[*nb_chateau].XRef=h;
+                        tab_eau[*nb_chateau].YRef=k-1;
+                        test_ref++;
+                    }
+                    if(((map[k][h+1]==1)||(map[k][h+1]==2))&&(test_ref==0))
+                    {
+                        tab_eau[*nb_chateau].XRef=h+1;
+                        tab_eau[*nb_chateau].YRef=k;
+                        test_ref++;
+                    }
+                    if(((map[k][h-1]==1)||(map[k][h-1]==2))&&(test_ref==0))
+                    {
+                        tab_eau[*nb_chateau].XRef=h-1;
+                        tab_eau[*nb_chateau].YRef=k;
+                        test_ref++;
+                    }
+                }
+            }
+
+            y=y+5;
+
             tab_eau[*nb_chateau].x=x;
-            tab_eau[*nb_chateau].y=y-6;
+            tab_eau[*nb_chateau].y=y-5;
             *nb_chateau+=1;
 
 
