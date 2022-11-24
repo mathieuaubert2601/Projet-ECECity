@@ -1,7 +1,7 @@
 #include "header.h"
 
 
-void route (BITMAP* page, int map[35][45],time_t tempsdepart, int* banque, t_habitation tab_hab[50], int nb_hab)
+void route (BITMAP* page, int map[35][45],time_t tempsdepart, int* banque, t_habitation tab_hab[50], int nb_hab, int nb_elec, t_centrales tab_elec[20])
 {
     BITMAP* routeTran = load_bitmap("Constructions/routeTran.bmp", NULL);
     BITMAP* buffer2 =create_bitmap(1024,768);
@@ -23,7 +23,7 @@ void route (BITMAP* page, int map[35][45],time_t tempsdepart, int* banque, t_hab
         show_mouse(page);
         blit(page,screen,0,0,0,0,1024,768);
         //afficherInterface(page,map,tempsdepart,*banque);
-        test_temps(map,tab_hab,banque,nb_hab);
+        test_temps(map,tab_hab,banque,nb_hab,nb_elec,tab_elec);
         type=0;
         clic2=0;
         clic3=0;
@@ -117,7 +117,7 @@ void route (BITMAP* page, int map[35][45],time_t tempsdepart, int* banque, t_hab
     blit(page,screen,0,0,0,0,1024,768);
 }
 
-void habitation (BITMAP* page, int map[35][45],time_t tempsdepart, int* banque, int* nb_hab, t_habitation tab_hab[50])
+void habitation (BITMAP* page, int map[35][45],time_t tempsdepart, int* banque, int* nb_hab, t_habitation tab_hab[50], t_centrales tab_elec[20], int nb_elec)
 {
     BITMAP* maison = load_bitmap("Constructions/maison.bmp", NULL);
     BITMAP* buffer2 =create_bitmap(1024,768);
@@ -235,7 +235,7 @@ void habitation (BITMAP* page, int map[35][45],time_t tempsdepart, int* banque, 
             tab_hab[*nb_hab].y=y-2;
             *nb_hab+=1;
 
-
+            distribution(nb_elec,*nb_hab,tab_elec,tab_hab);
             blit(buffer2,page,0,0,0,0,900,700);
         }
 
@@ -243,13 +243,13 @@ void habitation (BITMAP* page, int map[35][45],time_t tempsdepart, int* banque, 
         if(mouse_b&2)
             clic=1;
 
-        test_temps(map,tab_hab,banque,*nb_hab);
+        test_temps(map,tab_hab,banque,*nb_hab,nb_elec,tab_elec);
         interfaceMaisons(page,tempsdepart,*banque,map);
         blit(page,screen,0,0,0,0,900,700);
     }
 }
 
-void chateau_eau(BITMAP* page, int map[35][45],time_t tempsdepart, int* banque, t_habitation tab_hab[50], int nb_hab, t_chateauEau tab_eau[20], int* nb_chateau)
+void chateau_eau(BITMAP* page, int map[35][45],time_t tempsdepart, int* banque, t_habitation tab_hab[50], int nb_hab, t_chateauEau tab_eau[20], int* nb_chateau, int nb_elec, t_centrales tab_elec[20])
 {
     BITMAP* chateauEauTran = load_bitmap("Constructions/routeTran.bmp", NULL);
     BITMAP* buffer2 =create_bitmap(1024,768);
@@ -273,7 +273,7 @@ void chateau_eau(BITMAP* page, int map[35][45],time_t tempsdepart, int* banque, 
             y=mouse_y/20;
             testclic=1;
         }
-        test_temps(map,tab_hab,banque,nb_hab);
+        test_temps(map,tab_hab,banque,nb_hab,nb_elec,tab_elec);
         afficher_matrice_cases_vertes(buffer2);
         afficher_map(buffer2,map);
         affichagecasefree(buffer2,map,14);
@@ -408,7 +408,7 @@ void centrale(BITMAP* page, int map[35][45],time_t tempsdepart, int* banque, t_h
             y=mouse_y/20;
             testclic=1;
         }
-        test_temps(map,tab_hab,banque,nb_hab);
+        test_temps(map,tab_hab,banque,nb_hab,*nb_elec,tab_elec);
         afficher_matrice_cases_vertes(buffer2);
         afficher_map(buffer2,map);
         affichagecasefree(buffer2,map,15);
