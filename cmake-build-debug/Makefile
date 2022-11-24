@@ -275,6 +275,30 @@ gestionEau.c.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles\Projet_ECECity.dir\build.make CMakeFiles/Projet_ECECity.dir/gestionEau.c.s
 .PHONY : gestionEau.c.s
 
+gestionElec.obj: gestionElec.c.obj
+.PHONY : gestionElec.obj
+
+# target to build an object file
+gestionElec.c.obj:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\Projet_ECECity.dir\build.make CMakeFiles/Projet_ECECity.dir/gestionElec.c.obj
+.PHONY : gestionElec.c.obj
+
+gestionElec.i: gestionElec.c.i
+.PHONY : gestionElec.i
+
+# target to preprocess a source file
+gestionElec.c.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\Projet_ECECity.dir\build.make CMakeFiles/Projet_ECECity.dir/gestionElec.c.i
+.PHONY : gestionElec.c.i
+
+gestionElec.s: gestionElec.c.s
+.PHONY : gestionElec.s
+
+# target to generate assembly for a file
+gestionElec.c.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\Projet_ECECity.dir\build.make CMakeFiles/Projet_ECECity.dir/gestionElec.c.s
+.PHONY : gestionElec.c.s
+
 gestion_cycles.obj: gestion_cycles.c.obj
 .PHONY : gestion_cycles.obj
 
@@ -395,6 +419,30 @@ map.c.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles\Projet_ECECity.dir\build.make CMakeFiles/Projet_ECECity.dir/map.c.s
 .PHONY : map.c.s
 
+niveau.obj: niveau.c.obj
+.PHONY : niveau.obj
+
+# target to build an object file
+niveau.c.obj:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\Projet_ECECity.dir\build.make CMakeFiles/Projet_ECECity.dir/niveau.c.obj
+.PHONY : niveau.c.obj
+
+niveau.i: niveau.c.i
+.PHONY : niveau.i
+
+# target to preprocess a source file
+niveau.c.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\Projet_ECECity.dir\build.make CMakeFiles/Projet_ECECity.dir/niveau.c.i
+.PHONY : niveau.c.i
+
+niveau.s: niveau.c.s
+.PHONY : niveau.s
+
+# target to generate assembly for a file
+niveau.c.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\Projet_ECECity.dir\build.make CMakeFiles/Projet_ECECity.dir/niveau.c.s
+.PHONY : niveau.c.s
+
 sauvegarde.obj: sauvegarde.c.obj
 .PHONY : sauvegarde.obj
 
@@ -446,6 +494,9 @@ help:
 	@echo ... gestionEau.obj
 	@echo ... gestionEau.i
 	@echo ... gestionEau.s
+	@echo ... gestionElec.obj
+	@echo ... gestionElec.i
+	@echo ... gestionElec.s
 	@echo ... gestion_cycles.obj
 	@echo ... gestion_cycles.i
 	@echo ... gestion_cycles.s
@@ -461,6 +512,9 @@ help:
 	@echo ... map.obj
 	@echo ... map.i
 	@echo ... map.s
+	@echo ... niveau.obj
+	@echo ... niveau.i
+	@echo ... niveau.s
 	@echo ... sauvegarde.obj
 	@echo ... sauvegarde.i
 	@echo ... sauvegarde.s

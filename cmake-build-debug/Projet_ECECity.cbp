@@ -98,6 +98,9 @@
 		<Unit filename="C:/Users/maube/CLionProjects/Projet-ECECity/gestionEau.c">
 			<Option target="Projet_ECECity"/>
 		</Unit>
+		<Unit filename="C:/Users/maube/CLionProjects/Projet-ECECity/gestionElec.c">
+			<Option target="Projet_ECECity"/>
+		</Unit>
 		<Unit filename="C:/Users/maube/CLionProjects/Projet-ECECity/gestion_cycles.c">
 			<Option target="Projet_ECECity"/>
 		</Unit>
@@ -114,6 +117,9 @@
 			<Option target="Projet_ECECity"/>
 		</Unit>
 		<Unit filename="C:/Users/maube/CLionProjects/Projet-ECECity/map.c">
+			<Option target="Projet_ECECity"/>
+		</Unit>
+		<Unit filename="C:/Users/maube/CLionProjects/Projet-ECECity/niveau.c">
 			<Option target="Projet_ECECity"/>
 		</Unit>
 		<Unit filename="C:/Users/maube/CLionProjects/Projet-ECECity/sauvegarde.c">

@@ -21,6 +21,9 @@ typedef struct habitation
     int XRef;
     int YRef;
     int quantiteeEau;
+    int chateau_Eau_Affilie;
+    int distance;
+    int numero;
     int elec;
     time_t tempsCrea;
 
@@ -118,9 +121,8 @@ void sauvegarderTableauBatiment(char* nomFichier, t_habitation tableau[],int nom
 void affichagecasefree(BITMAP* page,int map[35][45],int type);
 
 //Gestion Eau
-t_kase** chercherCheminPlusCourtEau(int chateauEauRefX, int chateauEauRefY,int matriceMap[35][45]);
-int tailleChemin(t_kase** matriceAnalyse, int maisonX, int maisonY,int chateauEauX, int chateauEauY);
-int** creerMatriceEau(t_habitation* tableauHabitation, int nombreHabitation, t_chateauEau* tableauChateauEau,int nombreChateauEau,int map[35][45]);
+
+int** chercherCheminPlusCourtEau(int matriceMap[35][45],int nombreHabitation,t_habitation* tabHab,t_chateauEau* tabEau,int nombreChateauEau);
 int* defiler(t_file * ptAlignement);
 void enfiler(t_file * ptAlignement, int valeurX,int valeurY);
 int estVide(t_file* fAttente);

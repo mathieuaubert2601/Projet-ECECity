@@ -251,6 +251,36 @@ CMakeFiles/Projet_ECECity.dir/gestionEau.c.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling C source to assembly CMakeFiles/Projet_ECECity.dir/gestionEau.c.s"
 	C:\PROGRA~1\CODEBL~1\MinGW\bin\gcc.exe $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S C:\Users\maube\CLionProjects\Projet-ECECity\gestionEau.c -o CMakeFiles\Projet_ECECity.dir\gestionEau.c.s
 
+CMakeFiles/Projet_ECECity.dir/gestionElec.c.obj: CMakeFiles/Projet_ECECity.dir/flags.make
+CMakeFiles/Projet_ECECity.dir/gestionElec.c.obj: CMakeFiles/Projet_ECECity.dir/includes_C.rsp
+CMakeFiles/Projet_ECECity.dir/gestionElec.c.obj: ../gestionElec.c
+CMakeFiles/Projet_ECECity.dir/gestionElec.c.obj: CMakeFiles/Projet_ECECity.dir/compiler_depend.ts
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=C:\Users\maube\CLionProjects\Projet-ECECity\cmake-build-debug\CMakeFiles --progress-num=$(CMAKE_PROGRESS_13) "Building C object CMakeFiles/Projet_ECECity.dir/gestionElec.c.obj"
+	C:\PROGRA~1\CODEBL~1\MinGW\bin\gcc.exe $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/Projet_ECECity.dir/gestionElec.c.obj -MF CMakeFiles\Projet_ECECity.dir\gestionElec.c.obj.d -o CMakeFiles\Projet_ECECity.dir\gestionElec.c.obj -c C:\Users\maube\CLionProjects\Projet-ECECity\gestionElec.c
+
+CMakeFiles/Projet_ECECity.dir/gestionElec.c.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing C source to CMakeFiles/Projet_ECECity.dir/gestionElec.c.i"
+	C:\PROGRA~1\CODEBL~1\MinGW\bin\gcc.exe $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E C:\Users\maube\CLionProjects\Projet-ECECity\gestionElec.c > CMakeFiles\Projet_ECECity.dir\gestionElec.c.i
+
+CMakeFiles/Projet_ECECity.dir/gestionElec.c.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling C source to assembly CMakeFiles/Projet_ECECity.dir/gestionElec.c.s"
+	C:\PROGRA~1\CODEBL~1\MinGW\bin\gcc.exe $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S C:\Users\maube\CLionProjects\Projet-ECECity\gestionElec.c -o CMakeFiles\Projet_ECECity.dir\gestionElec.c.s
+
+CMakeFiles/Projet_ECECity.dir/niveau.c.obj: CMakeFiles/Projet_ECECity.dir/flags.make
+CMakeFiles/Projet_ECECity.dir/niveau.c.obj: CMakeFiles/Projet_ECECity.dir/includes_C.rsp
+CMakeFiles/Projet_ECECity.dir/niveau.c.obj: ../niveau.c
+CMakeFiles/Projet_ECECity.dir/niveau.c.obj: CMakeFiles/Projet_ECECity.dir/compiler_depend.ts
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=C:\Users\maube\CLionProjects\Projet-ECECity\cmake-build-debug\CMakeFiles --progress-num=$(CMAKE_PROGRESS_14) "Building C object CMakeFiles/Projet_ECECity.dir/niveau.c.obj"
+	C:\PROGRA~1\CODEBL~1\MinGW\bin\gcc.exe $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/Projet_ECECity.dir/niveau.c.obj -MF CMakeFiles\Projet_ECECity.dir\niveau.c.obj.d -o CMakeFiles\Projet_ECECity.dir\niveau.c.obj -c C:\Users\maube\CLionProjects\Projet-ECECity\niveau.c
+
+CMakeFiles/Projet_ECECity.dir/niveau.c.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing C source to CMakeFiles/Projet_ECECity.dir/niveau.c.i"
+	C:\PROGRA~1\CODEBL~1\MinGW\bin\gcc.exe $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E C:\Users\maube\CLionProjects\Projet-ECECity\niveau.c > CMakeFiles\Projet_ECECity.dir\niveau.c.i
+
+CMakeFiles/Projet_ECECity.dir/niveau.c.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling C source to assembly CMakeFiles/Projet_ECECity.dir/niveau.c.s"
+	C:\PROGRA~1\CODEBL~1\MinGW\bin\gcc.exe $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S C:\Users\maube\CLionProjects\Projet-ECECity\niveau.c -o CMakeFiles\Projet_ECECity.dir\niveau.c.s
+
 # Object files for target Projet_ECECity
 Projet_ECECity_OBJECTS = \
 "CMakeFiles/Projet_ECECity.dir/main.c.obj" \
@@ -264,7 +294,9 @@ Projet_ECECity_OBJECTS = \
 "CMakeFiles/Projet_ECECity.dir/gestion_cycles.c.obj" \
 "CMakeFiles/Projet_ECECity.dir/compterHabEauElec.c.obj" \
 "CMakeFiles/Projet_ECECity.dir/case.c.obj" \
-"CMakeFiles/Projet_ECECity.dir/gestionEau.c.obj"
+"CMakeFiles/Projet_ECECity.dir/gestionEau.c.obj" \
+"CMakeFiles/Projet_ECECity.dir/gestionElec.c.obj" \
+"CMakeFiles/Projet_ECECity.dir/niveau.c.obj"
 
 # External object files for target Projet_ECECity
 Projet_ECECity_EXTERNAL_OBJECTS =
@@ -281,11 +313,13 @@ Projet_ECECity.exe: CMakeFiles/Projet_ECECity.dir/gestion_cycles.c.obj
 Projet_ECECity.exe: CMakeFiles/Projet_ECECity.dir/compterHabEauElec.c.obj
 Projet_ECECity.exe: CMakeFiles/Projet_ECECity.dir/case.c.obj
 Projet_ECECity.exe: CMakeFiles/Projet_ECECity.dir/gestionEau.c.obj
+Projet_ECECity.exe: CMakeFiles/Projet_ECECity.dir/gestionElec.c.obj
+Projet_ECECity.exe: CMakeFiles/Projet_ECECity.dir/niveau.c.obj
 Projet_ECECity.exe: CMakeFiles/Projet_ECECity.dir/build.make
 Projet_ECECity.exe: CMakeFiles/Projet_ECECity.dir/linklibs.rsp
 Projet_ECECity.exe: CMakeFiles/Projet_ECECity.dir/objects1.rsp
 Projet_ECECity.exe: CMakeFiles/Projet_ECECity.dir/link.txt
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=C:\Users\maube\CLionProjects\Projet-ECECity\cmake-build-debug\CMakeFiles --progress-num=$(CMAKE_PROGRESS_13) "Linking C executable Projet_ECECity.exe"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=C:\Users\maube\CLionProjects\Projet-ECECity\cmake-build-debug\CMakeFiles --progress-num=$(CMAKE_PROGRESS_15) "Linking C executable Projet_ECECity.exe"
 	$(CMAKE_COMMAND) -E cmake_link_script CMakeFiles\Projet_ECECity.dir\link.txt --verbose=$(VERBOSE)
 
 # Rule to build all files generated by this target.

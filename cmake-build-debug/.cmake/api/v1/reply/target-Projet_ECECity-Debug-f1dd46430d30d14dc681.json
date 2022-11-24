@@ -76,7 +76,7 @@
 			[
 				{
 					"backtrace" : 4,
-					"path" : "C:/Users/Lea/CLionProjects/Projet-ECECity/."
+					"path" : "C:/Users/maube/CLionProjects/Projet-ECECity/."
 				},
 				{
 					"backtrace" : 5,
@@ -84,7 +84,7 @@
 				},
 				{
 					"backtrace" : 5,
-					"path" : "C:/Users/Lea/CLionProjects/Projet-ECECity/Files/CodeBlocks/MinGW/x86_64-w64-mingw32/include"
+					"path" : "C:/Users/maube/CLionProjects/Projet-ECECity/Files/CodeBlocks/MinGW/x86_64-w64-mingw32/include"
 				}
 			],
 			"language" : "C",
@@ -135,7 +135,7 @@
 			},
 			{
 				"backtrace" : 2,
-				"fragment" : "-LC:\\Users\\Lea\\CLionProjects\\Projet-ECECity\\Files\\CodeBlocks\\MinGW\\x86_64-w64-mingw32\\lib",
+				"fragment" : "-LC:\\Users\\maube\\CLionProjects\\Projet-ECECity\\Files\\CodeBlocks\\MinGW\\x86_64-w64-mingw32\\lib",
 				"role" : "libraryPath"
 			},
 			{
