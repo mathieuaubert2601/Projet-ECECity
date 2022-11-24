@@ -127,8 +127,7 @@ int estVide(t_file* fAttente);
 
 //Gestion Elec
 int calculCapaciteElec(int nb_elec);
-void distribution(int nb_elec, int nb_hab, t_centrales tab_elec[20], t_habitation tab_hab[50]);
-int test_distribution(int nb_elec, int nb_hab, t_centrales tab_elec[20], t_habitation tab_hab[50]);
+int distribution(int nb_elec, int nb_hab, t_centrales tab_elec[20], t_habitation tab_hab[50]);
 
 //Niveau
 void canalisations (BITMAP* page, int map[35][45]);

@@ -22,7 +22,6 @@ void test_temps(int map[35][45], t_habitation tab_hab[50], int* argent, int nb_h
             tab_hab[i].tempsCrea=time(NULL);
             if(tab_hab[i].elec==1)
             {
-                avant= test_distribution(nb_elec,nb_hab,tab_elec,tab_hab);
                 if(tab_hab[i].niveau<4)
                 {
                     tab_hab[i].niveau++;
@@ -36,7 +35,7 @@ void test_temps(int map[35][45], t_habitation tab_hab[50], int* argent, int nb_h
                     tab_hab[i].nb_habitants=100;
                 if(tab_hab[i].niveau==4)
                     tab_hab[i].nb_habitants=1000;
-                apres=test_distribution(nb_elec,nb_hab,tab_elec,tab_hab);
+                apres=distribution(nb_elec,nb_hab,tab_elec,tab_hab);
                 if (tab_hab[i].elec!=1)
                 {
                     if(tab_hab[i].niveau>0)
@@ -55,6 +54,24 @@ void test_temps(int map[35][45], t_habitation tab_hab[50], int* argent, int nb_h
                     if(tab_hab[i].niveau==4)
                         tab_hab[i].nb_habitants=1000;
                 }
+            }
+            if (tab_hab[i].elec==0)
+            {
+                if(tab_hab[i].niveau>0)
+                {
+                    tab_hab[i].niveau--;
+                    map[y][x]--;
+                }
+                if(tab_hab[i].niveau==0)
+                    tab_hab[i].nb_habitants=0;
+                if(tab_hab[i].niveau==1)
+                    tab_hab[i].nb_habitants=10;
+                if(tab_hab[i].niveau==2)
+                    tab_hab[i].nb_habitants=50;
+                if(tab_hab[i].niveau==3)
+                    tab_hab[i].nb_habitants=100;
+                if(tab_hab[i].niveau==4)
+                    tab_hab[i].nb_habitants=1000;
             }
             distribution(nb_elec,nb_hab,tab_elec,tab_hab);
             *argent+= impots*tab_hab[i].nb_habitants;
