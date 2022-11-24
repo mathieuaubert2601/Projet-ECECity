@@ -385,7 +385,7 @@ void chateau_eau(BITMAP* page, int map[35][45],time_t tempsdepart, int* banque, 
 }
 
 
-void centrale(BITMAP* page, int map[35][45],time_t tempsdepart, int* banque, t_habitation tab_hab[50], int nb_hab)
+void centrale(BITMAP* page, int map[35][45],time_t tempsdepart, int* banque, t_habitation tab_hab[50], int nb_hab, int* nb_elec, t_centrales tab_elec[20])
 {
     BITMAP* chateauEauTran = load_bitmap("Constructions/routeTran.bmp", NULL);
     BITMAP* buffer2 =create_bitmap(1024,768);
@@ -468,8 +468,17 @@ void centrale(BITMAP* page, int map[35][45],time_t tempsdepart, int* banque, t_h
             map[y-2][x+5] =17;
             map[y-3][x+5] =17;
             *banque-=100000;
+
+            tab_elec[*nb_elec].x=x;
+            tab_elec[*nb_elec].y=y-3;
+            tab_elec[*nb_elec].capaciteRestante=5000;
+            *nb_elec+=1;
+
+            distribution(*nb_elec,nb_hab,tab_elec,tab_hab);
+
             afficher_matrice_cases_vertes(buffer2);
             afficher_map(buffer2,map);
+
         }
         if(mouse_b&2)
             clic=1;

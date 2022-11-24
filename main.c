@@ -22,11 +22,13 @@ int main()
     int banque=banqueDep;
     int nb_hab=0;
     int nb_chateau=0;
+    int nb_centrales=0;
     int play_musique=0;
     //t_habitation* tab_hab = NULL;
     //tab_hab=(t_habitation*)malloc(nb_hab*sizeof (t_habitation));
     t_habitation tab_hab[50];
     t_chateauEau tab_eau[20];
+    t_centrales tab_elec[20];
 
 
     while(!key[KEY_ESC])
@@ -57,7 +59,7 @@ int main()
             {
                 sortie = 0;
                 creer_map(page,map);
-                map[20][1]=1;
+                //map[20][1]=1;
             }
             while(sortie==0)
             {
@@ -86,7 +88,7 @@ int main()
                 }
                 if (((mouse_x >= (920) && mouse_x <= (920 + 75)) && (mouse_y) >= (380) && mouse_y <= (380 + 100)) &&
                     (mouse_b & 1)) {
-                    centrale(page, map,tempsdep,&banque, tab_hab, nb_hab);
+                    centrale(page, map,tempsdep,&banque, tab_hab, nb_hab,&nb_centrales,tab_elec);
                 }
                 if (((mouse_x >= (920) && mouse_x <= (920 + 40)) && (mouse_y) >= (25) && mouse_y <= (25 + 40)) &&
                     (mouse_b & 1)) {

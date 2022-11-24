@@ -14,12 +14,11 @@ void test_temps(int map[35][45], t_habitation tab_hab[50], int* argent, int nb_h
     for (int i=0; i<nb_hab; i++)
     {
         diff=difftime(tempsact,tab_hab[i].tempsCrea);
-        if (diff>=15 )
+        if (diff>=15 && tab_hab[i].elec==1)
         {
             x=tab_hab[i].x;
             y=tab_hab[i].y;
             tab_hab[i].tempsCrea=time(NULL);
-
             if(tab_hab[i].niveau<4)
             {
                 tab_hab[i].niveau++;
