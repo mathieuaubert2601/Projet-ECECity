@@ -29,6 +29,7 @@ int main()
     t_habitation tab_hab[50];
     t_chateauEau tab_eau[20];
     t_centrales tab_elec[20];
+    int** matriceEau ;
 
 
     while(!key[KEY_ESC])
@@ -46,7 +47,7 @@ int main()
         {
             clear_bitmap(page);
             time_t tempsdep = time(NULL);
-            play_sample(ambiance,15,0,1000,1);
+            //play_sample(ambiance,15,0,1000,1);
 
 
             if(choixMenu==2)
@@ -77,7 +78,7 @@ int main()
                     habitation(page,map,tempsdep,&banque,&nb_hab, tab_hab,tab_elec,nb_centrales);
 
                 }
-                if (((mouse_x >= (920) && mouse_x <= (920 + 75)) && (mouse_y) >= (270) && mouse_y <= (270 + 100)) &&
+                if (((mouse_x >= (930) && mouse_x <= (930 + 75)) && (mouse_y) >= (280) && mouse_y <= (270 + 100)) &&
                     (mouse_b & 1)) {
                     chateau_eau(page, map,tempsdep,&banque, tab_hab, nb_hab,  tab_eau, &nb_chateau,nb_centrales,tab_elec);
                 }
@@ -97,11 +98,12 @@ int main()
                 }
                 if(((mouse_x>=(920)&& mouse_x<=(920+50))&& ((mouse_y)>=(550)&& mouse_y<=(550+50)))&&(mouse_b &1))
                 {
-                    canalisations(page,map);
+                    /*matriceEau = chercherCheminPlusCourtEau(map,nb_hab,tab_hab,tab_eau,nb_chateau);
+                    canalisations(page,map,tab_hab,matriceEau);*/
                 }
                 if(((mouse_x>=(920)&& mouse_x<=(920+50))&& ((mouse_y)>=(620)&& mouse_y<=(620+50)))&&(mouse_b &1))
                 {
-                    lignes(page,map);
+                    lignes(page,map,tab_hab,nb_hab,tab_elec,nb_centrales);
                 }
                 show_mouse(page);
                 blit(page,screen,0,0,0,0,1024,768);

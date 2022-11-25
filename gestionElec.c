@@ -45,12 +45,3 @@ int distribution(int nb_elec, int nb_hab, t_centrales tab_elec[20], t_habitation
     printf("\nSomme : %d\n",somme);
     return somme;
 }
-
-
-
-//(tab_elec[i].capaciteRestante>tab_hab[j].nb_habitants)
-
-
-//Comparer la capacité des centrales et le nombre d'habitants
-//!\ Détails précis de la capacité fournie par une centrale
-//Si capacité nouvelle construction > capacité centrale => pas alimentée
