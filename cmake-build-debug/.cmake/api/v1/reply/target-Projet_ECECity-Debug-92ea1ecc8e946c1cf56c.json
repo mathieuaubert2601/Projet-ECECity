@@ -43,7 +43,7 @@
 			{
 				"command" : 2,
 				"file" : 0,
-				"line" : 27,
+				"line" : 29,
 				"parent" : 0
 			},
 			{
@@ -109,7 +109,9 @@
 				9,
 				10,
 				11,
-				12
+				12,
+				13,
+				14
 			]
 		}
 	],
@@ -184,7 +186,9 @@
 				9,
 				10,
 				11,
-				12
+				12,
+				13,
+				14
 			]
 		}
 	],
@@ -265,6 +269,18 @@
 			"backtrace" : 1,
 			"compileGroupIndex" : 0,
 			"path" : "gestionEau.c",
+			"sourceGroupIndex" : 1
+		},
+		{
+			"backtrace" : 1,
+			"compileGroupIndex" : 0,
+			"path" : "gestionElec.c",
+			"sourceGroupIndex" : 1
+		},
+		{
+			"backtrace" : 1,
+			"compileGroupIndex" : 0,
+			"path" : "niveau.c",
 			"sourceGroupIndex" : 1
 		}
 	],

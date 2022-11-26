@@ -21,9 +21,9 @@ void affichagecasefree(BITMAP* page,int map[35][45],int type)
 
     if(type==1)
     {
-        for (int i=0 ; i<35; i++)
+        for (int i=1 ; i<34; i++)
         {
-            for(int j=0;j<45; j++)
+            for(int j=1;j<44; j++)
             {
                 if(matricelibre[i][j]==0 &&
                    ((map[i+1][j]==1 || map[i-1][j]==1 || map[i][j+1]==1 || map[i][j-1]==1) || (map[i+1][j]==2 || map[i-1][j]==2 || map[i][j+1]==2 || map[i][j-1]==2) ))
@@ -35,9 +35,9 @@ void affichagecasefree(BITMAP* page,int map[35][45],int type)
     }
     if(type==3)
     {
-        for (int i=2 ; i<35; i++)
+        for (int i=3 ; i<34; i++)
         {
-            for(int j=0;j<43; j++)
+            for(int j=3;j<45; j++)
             {
                 if((matricelibre[i][j]==0 && matricelibre[i][j+1]==0 && matricelibre[i][j+2]==0 &&
                     matricelibre[i-1][j]==0 && matricelibre[i-1][j+1]==0 && matricelibre[i-1][j+2]==0 &&
@@ -58,7 +58,7 @@ void affichagecasefree(BITMAP* page,int map[35][45],int type)
     }
     if(type==14)
     {
-        for (int i=5 ; i<35; i++)
+        for (int i=6 ; i<34; i++)
         {
             for(int j=0;j<42; j++)
             {
@@ -84,7 +84,7 @@ void affichagecasefree(BITMAP* page,int map[35][45],int type)
     }
     if(type==15)
     {
-        for (int i=3 ; i<35; i++)
+        for (int i=4 ; i<34; i++)
         {
             for(int j=0;j<40; j++)
             {
