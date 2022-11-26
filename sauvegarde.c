@@ -441,7 +441,7 @@ void chargementTempsChrono(unsigned long* tempsChrono,unsigned long* tempsPause)
     fread(tempsPause,sizeof(unsigned long),1,fichier);
     fread(&tempsChronoFichier,sizeof(unsigned long),1,fichier);
 
-    *tempsChrono = tempsChronoFichier + diff;
+    *tempsChrono = diff;
 
     //Fermeture du fichier
     fclose(fichier);
