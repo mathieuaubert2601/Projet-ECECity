@@ -408,6 +408,7 @@ void sauvegardeChrono(time_t tempsdepart,unsigned long tempsPause, unsigned long
 
     //Ouverture du fichier
     FILE* fichier = fopen("Sauvegarde/fichierTempsChrono.txt","wb+");
+    printf("%d %d \n",tempsPause,tempsChrono);
 
     //test ouverture fichier
     if(fichier == NULL)
@@ -438,10 +439,11 @@ void chargementTempsChrono(unsigned long* tempsChrono,unsigned long* tempsPause)
     }
 
     fread(&diff,sizeof(unsigned long),1,fichier);
-    fread(tempsPause,sizeof(unsigned long),1,fichier);
+    //fread(tempsPause,sizeof(unsigned long),1,fichier);
     fread(&tempsChronoFichier,sizeof(unsigned long),1,fichier);
 
     *tempsChrono = diff;
+
 
     //Fermeture du fichier
     fclose(fichier);
