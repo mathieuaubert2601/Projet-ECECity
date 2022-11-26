@@ -37,6 +37,8 @@ int main()
 
     while(!key[KEY_ESC])
     {
+        tempsPause=0;
+        tempsChrono=0;
         clear_bitmap(page);
         if (play_musique==0)
         {
@@ -50,23 +52,26 @@ int main()
         {
             clear_bitmap(page);
             time_t tempsdep = time(NULL);
-            tempsdep= modificationTemps(tempsdep,0,tempsPause);
+            //tempsdep= modificationTemps(tempsdep,0,tempsPause);
             tempsdep= modificationTemps(tempsdep,1,tempsChrono);
 
 
             if(choixMenu==2)
             {
+
+                chargementTempsChrono(&tempsChrono,&tempsPause);
+                tempsPause=0;
                 lireFichierMap(map,"Sauvegarde/fichierCarte.txt");
                 nb_hab = chargerTableauHabitation(tab_hab,"Sauvegarde/tableauHabitation.bin");
                 nb_centrales = chargerTableauCentrale(tab_elec,"Sauvegarde/tableauCentrale.bin");
                 nb_chateau = chargerTableauChateauEau(tab_eau,"Sauvegarde/tableauChateauEau.bin");
-                for(int i = 0 ; i<nb_hab ;i++)
-                {
-                    tab_hab[i].tempsCrea = time(NULL);
-                }
+                chargementTempsCycle(nb_hab,tab_hab,tempsPause,tempsChrono);
                 distribution(nb_centrales,nb_hab,tab_elec,tab_hab);
                 chercherCheminPlusCourtEau(map,nb_hab,tab_hab,tab_eau,nb_chateau);
                 sortie = 0;
+                time_t tempsdep = time(NULL);
+                tempsdep= modificationTemps(tempsdep,0,tempsPause);
+                tempsdep= modificationTemps(tempsdep,1,tempsChrono);
             }
             if(choixMenu==1)
             {
@@ -98,14 +103,17 @@ int main()
                     centrale(page, map,tempsdep,&banque, tab_hab, nb_hab,&nb_centrales,tab_elec,nb_chateau,tab_eau,tempsDebutPause,pause, tempsPause,tempsChrono);
                 }
                 if (((mouse_x >= (920) && mouse_x <= (920 + 40)) && (mouse_y) >= (25) && mouse_y <= (25 + 40)) &&
-                    (mouse_b & 1)) {
+                    (mouse_b & 1) && pause == 0) {
                     sauvegarderTableauHabitation("Sauvegarde/tableauHabitation.bin",tab_hab,nb_hab);
                     sauvegarderTableauCentrale("Sauvegarde/tableauCentrale.bin",tab_elec,nb_centrales);
                     sauvegarderTableauChateauEau("Sauvegarde/tableauChateauEau.bin",tab_eau,nb_chateau);
                     sauvegarderMatriceFichier(map,"Sauvegarde/fichierCarte.txt");
+                    sauvegardeTempsCycle(nb_hab,tab_hab,tempsPause,tempsChrono);
+                    sauvegardeChrono(tempsdep,tempsPause,tempsChrono);
                 }
                 if(((mouse_x>=(945)&& mouse_x<=(945+40))&& ((mouse_y)>=(70)&& mouse_y<=(70+40)))&&(mouse_b &1)&&(pause==0)) //bouton pause
                 {
+                    //tempsPause=0;
                     tempsDebutPause = time(NULL);
                     tempsDebutPause= modificationTemps(tempsDebutPause,0,tempsPause);
                     tempsDebutPause= modificationTemps(tempsDebutPause,1,tempsChrono);
@@ -115,6 +123,8 @@ int main()
                 if(((mouse_x>=(945)&& mouse_x<=(945+40))&& ((mouse_y)>=(70)&& mouse_y<=(70+40)))&&(mouse_b &1)&&(pause==1)) //bouton pause
                 {
                     tempsFinPause = time(NULL);
+                    //tempsFinPause= modificationTemps(tempsFinPause,0,tempsPause);
+                    tempsFinPause= modificationTemps(tempsFinPause,1,tempsChrono);
                     pause=0;
                     tempsPause= difftime(tempsFinPause,tempsDebutPause);
                     rest(300);

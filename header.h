@@ -127,7 +127,10 @@ int chargerTableauCentrale(t_centrales tableauHabitation[], char* nomFichier);
 int chargerTableauChateauEau(t_chateauEau tableauHabitation[], char* nomFichier);
 void sauvegarderTableauCentrale(char* nomFichier, t_centrales tableau[],int nombreBatiments);
 void sauvegarderTableauChateauEau(char* nomFichier, t_chateauEau tableau[],int nombreBatiments);
-
+void chargementTempsCycle(int nombreMaison,t_habitation tableauHab[],unsigned long tempsPause, unsigned long tempsChrono);
+void sauvegardeTempsCycle(int nombreHabitation, t_habitation tableauHab[],unsigned long tempsPause, unsigned long tempsChrono);
+void sauvegardeChrono(time_t tempsdepart,unsigned long tempsPause, unsigned long tempsChrono);
+void chargementTempsChrono(unsigned long* tempsChrono,unsigned long* tempsPause);
 //Case
 void affichagecasefree(BITMAP* page,int map[35][45],int type);
 

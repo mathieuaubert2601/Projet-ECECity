@@ -37,8 +37,8 @@ time_t modificationTemps(time_t tempsAModifier,int ajouterEnlever,int nombreSeco
             }
             else
             {
-                tempsModification->tm_sec  = tempsModification->tm_sec + nombreS;
-                tempsModification->tm_min = tempsModification->tm_min + nombreM;
+                tempsModification->tm_sec  = nombreS;
+                tempsModification->tm_min =  tempsModification->tm_min + nombreM;
                 tempsModification->tm_hour = tempsModification->tm_hour + nombreH;
             }
         }
@@ -57,7 +57,7 @@ time_t modificationTemps(time_t tempsAModifier,int ajouterEnlever,int nombreSeco
             nombreS = 60 -(nombreS - tempsModification->tm_sec);
             nombreM ++;
 
-            if(nombreM >= (nombreM - tempsModification->tm_min))
+            if(nombreM >= (tempsModification->tm_min))
             {
                 nombreM = 60 - (nombreM - tempsModification->tm_min);
                 nombreH ++;
@@ -67,7 +67,7 @@ time_t modificationTemps(time_t tempsAModifier,int ajouterEnlever,int nombreSeco
             }
             else
             {
-                tempsModification->tm_sec  = tempsModification->tm_sec - nombreS;
+                tempsModification->tm_sec  = nombreS;
                 tempsModification->tm_min = tempsModification->tm_min - nombreM;
                 tempsModification->tm_hour = tempsModification->tm_hour - nombreH;
             }

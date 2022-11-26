@@ -343,3 +343,109 @@ int chargerTableauCentrale(t_centrales tableauHabitation[], char* nomFichier)
 
     return nombreBatiment;
 }
+
+void sauvegardeTempsCycle(int nombreHabitation, t_habitation tableauHab[],unsigned long tempsPause, unsigned long tempsChrono)
+{
+    //Calcul du temps actuel
+    unsigned long diff;
+    time_t tempsact = time(NULL);//On récupere le temps actuel
+    tempsact= modificationTemps(tempsact,0,tempsPause);
+    tempsact= modificationTemps(tempsact,1,tempsChrono);
+
+    //Ouverture du fichier
+    FILE* fichier = fopen("Sauvegarde/fichierTemps.txt","wb+");
+
+    //test ouverture fichier
+    if(fichier == NULL)
+    {
+        printf("Erreur ouverture fichier : temps");
+    }
+
+    for(int i=0 ; i<nombreHabitation ; i++)
+    {
+        diff = difftime(tempsact,tableauHab[i].tempsCrea);
+        fwrite(&diff,sizeof(unsigned long),1,fichier);
+    }
+
+    //Fermeture du fichier
+    fclose(fichier);
+}
+
+void chargementTempsCycle(int nombreMaison,t_habitation tableauHab[],unsigned long tempsPause, unsigned long tempsChrono)
+{
+    //Calcul du temps Actuel
+    unsigned long diff;
+    time_t tempsdep = time(NULL);
+    tempsdep= modificationTemps(tempsdep,0,tempsPause);
+    tempsdep= modificationTemps(tempsdep,1,tempsChrono);
+
+    //Ouverture fichier
+    FILE* fichier = fopen("Sauvegarde/fichierTemps.txt","rb+");
+
+    //test ouverture fichier
+    if(fichier == NULL)
+    {
+        printf("Erreur ouverture fichier : temps");
+    }
+
+    //Chargement des temps de cycle
+    for(int i=0 ; i<nombreMaison ;i++)
+    {
+        fread(&diff,sizeof(unsigned long),1,fichier);
+        tableauHab[i].tempsCrea = modificationTemps(tempsdep,0,diff);
+    }
+
+    //Fermeture du fichier
+    fclose(fichier);
+}
+
+void sauvegardeChrono(time_t tempsdepart,unsigned long tempsPause, unsigned long tempsChrono)
+{
+    time_t tempsact = time(NULL);
+    tempsact= modificationTemps(tempsact,0,tempsPause);
+    tempsact= modificationTemps(tempsact,1,tempsChrono);
+    unsigned long diff=difftime(tempsact,tempsdepart);
+
+    //Ouverture du fichier
+    FILE* fichier = fopen("Sauvegarde/fichierTempsChrono.txt","wb+");
+    printf("%d %d \n",tempsPause,tempsChrono);
+
+    //test ouverture fichier
+    if(fichier == NULL)
+    {
+        printf("Erreur ouverture fichier : tempsChrono");
+    }
+
+    //Enregistement du temps
+    fwrite(&diff,sizeof(unsigned long),1,fichier);
+    fwrite(&tempsPause,sizeof(unsigned long),1,fichier);
+    fwrite(&tempsChrono,sizeof(unsigned long),1,fichier);
+
+    //fermeture du fichier
+    fclose(fichier);
+}
+
+void chargementTempsChrono(unsigned long* tempsChrono,unsigned long* tempsPause)
+{
+    //Déclaration variables
+    unsigned long diff,tempsChronoFichier ;
+    //Ouverture du fichier
+    FILE* fichier = fopen("Sauvegarde/fichierTempsChrono.txt","rb+");
+
+    //test ouverture fichier
+    if(fichier == NULL)
+    {
+        printf("Erreur ouverture fichier : tempsChrono");
+    }
+
+    fread(&diff,sizeof(unsigned long),1,fichier);
+    //fread(tempsPause,sizeof(unsigned long),1,fichier);
+    fread(&tempsChronoFichier,sizeof(unsigned long),1,fichier);
+
+    *tempsChrono = diff;
+
+
+    //Fermeture du fichier
+    fclose(fichier);
+
+}
