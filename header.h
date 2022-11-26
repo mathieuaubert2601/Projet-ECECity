@@ -96,21 +96,21 @@ void lireFichierMap(int matrice_a_remplir[35][45],char* nomFichier);
 void afficher_matrice_cases_vertes(BITMAP* page);
 
 //Constructions
-void route (BITMAP* page, int map[35][45],time_t tempsdepart, int* banque, t_habitation tab_hab[50], int nb_hab, int nb_elec, t_centrales tab_elec[20],int nbChateau,t_chateauEau*  tabEau);
-void habitation (BITMAP* page, int map[35][45],time_t tempsdepart, int* banque, int* nb_hab, t_habitation tab_hab[50], t_centrales tab_elec[20], int nb_elec,int nbChateau,t_chateauEau* tabEau);
-void chateau_eau(BITMAP* page, int map[35][45],time_t tempsdepart, int* banque, t_habitation tab_hab[50], int nb_hab, t_chateauEau tab_eau[20], int* nb_chateau, int nb_elec, t_centrales tab_elec[20]);
-void centrale(BITMAP* page, int map[35][45],time_t tempsdepart, int* banque, t_habitation tab_hab[50], int nb_hab, int* nb_elec, t_centrales tab_elec[20],int nbChateau,t_chateauEau* tabEau);
+void route (BITMAP* page, int map[35][45],time_t tempsdepart, int* banque, t_habitation tab_hab[50], int nb_hab, int nb_elec, t_centrales tab_elec[20],int nbChateau,t_chateauEau*  tabEau,time_t tempsDepartPause, int pause, unsigned long tempsPause, unsigned long tempsChrono);
+void habitation (BITMAP* page, int map[35][45],time_t tempsdepart, int* banque, int* nb_hab, t_habitation tab_hab[50], t_centrales tab_elec[20], int nb_elec,int nbChateau,t_chateauEau* tabEau,time_t tempsDepartPause, int pause, unsigned long tempsPause, unsigned long tempsChrono);
+void chateau_eau(BITMAP* page, int map[35][45],time_t tempsdepart, int* banque, t_habitation tab_hab[50], int nb_hab, t_chateauEau tab_eau[20], int* nb_chateau, int nb_elec, t_centrales tab_elec[20],time_t tempsDepartPause, int pause, unsigned long tempsPause, unsigned long tempsChrono);
+void centrale(BITMAP* page, int map[35][45],time_t tempsdepart, int* banque, t_habitation tab_hab[50], int nb_hab, int* nb_elec, t_centrales tab_elec[20],int nbChateau,t_chateauEau* tabEau,time_t tempsDepartPause, int pause, unsigned long tempsPause, unsigned long tempsChrono);
 void caserne(BITMAP* page, int map[35][45],time_t tempsdepart, int* banque, int* nb_hab, t_habitation tab_hab[50], t_centrales tab_elec[20], int nb_elec,int nbChateau,t_chateauEau* tabEau);
 
-void test_temps(int map[35][45], t_habitation tab_hab[50], int* argent, int nb_hab, int nb_elec, t_centrales tab_elec[20],int nbchateau,t_chateauEau* tabEau);
+void test_temps(int map[35][45], t_habitation tab_hab[50], int* argent, int nb_hab, int nb_elec, t_centrales tab_elec[20],int nbchateau,t_chateauEau* tabEau, int pause, unsigned long tempsPause, unsigned long tempsChrono);
 
 
 //Interfaces
-void afficherInterface(BITMAP* page,int map[35][45], time_t tempsdepart, int argent);
-void interfaceRoute(BITMAP* page, int type, time_t tempsdepart, int argent, int map[35][45]);
-void interfaceMaisons(BITMAP* page, time_t tempsdepart, int argent, int map[35][45]);
-void interfaceChateaux(BITMAP* page,time_t tempsdepart, int argent, int map[35][45]);
-void interfaceCentrales(BITMAP* page,time_t tempsdepart, int argent, int map[35][45]);
+void afficherInterface(BITMAP* page,int map[35][45], time_t tempsdepart, int argent,time_t tempsDepartPause, int pause, unsigned long tempsPause, unsigned long tempsChrono);
+void interfaceRoute(BITMAP* page, int type, time_t tempsdepart, int argent, int map[35][45],time_t tempsDepartPause, int pause, unsigned long tempsPause, unsigned long tempsChrono);
+void interfaceMaisons(BITMAP* page, time_t tempsdepart, int argent, int map[35][45],time_t tempsDepartPause, int pause, unsigned long tempsPause, unsigned long tempsChrono);
+void interfaceChateaux(BITMAP* page,time_t tempsdepart, int argent, int map[35][45],time_t tempsDepartPause, int pause, unsigned long tempsPause, unsigned long tempsChrono);
+void interfaceCentrales(BITMAP* page,time_t tempsdepart, int argent, int map[35][45],time_t tempsDepartPause, int pause, unsigned long tempsPause, unsigned long tempsChrono);
 void interfaceNiveau(BITMAP* page, int type);
 int compterHab(int map[35][45]);
 int compterEau(int map[35][45]);
@@ -132,7 +132,7 @@ void sauvegarderTableauChateauEau(char* nomFichier, t_chateauEau tableau[],int n
 void affichagecasefree(BITMAP* page,int map[35][45],int type);
 
 //Gestion Eau
-
+int** creerMatriceEau(t_habitation* tableauHabitation, int nombreHabitation, t_chateauEau* tableauChateauEau,int nombreChateauEau,int map[35][45]);
 int** chercherCheminPlusCourtEau(int matriceMap[35][45],int nombreHabitation,t_habitation* tabHab,t_chateauEau* tabEau,int nombreChateauEau);
 int* defiler(t_file * ptAlignement);
 void enfiler(t_file * ptAlignement, int valeurX,int valeurY);
@@ -148,21 +148,7 @@ void lignes(BITMAP* page, int map[35][45],t_habitation maison[50], int nb_maison
 void afficher_niveau(BITMAP* page, int map[35][45],int test,t_habitation maison[50]);
 void afficher_niveau2(BITMAP* page, int map[35][45],t_habitation maison[50], int nb_maison, t_centrales tab_elec[20], int nb_centrales);
 
-/*typedef struct batiment
-{
-    char nom[15];
-    int prix;
-    int num_bat;
-    int capacite_eau;
-    int capacite_elec;
-    int nb_hab;
-    time_t tempsCrea;
-    BITMAP* bouton;
-    BITMAP* boutonInv;
-    BITMAP* imageCarte;
-    SAMPLE* sonBat;
-
-}t_batiment;*/
-
+//Pause
+time_t modificationTemps(time_t tempsAModifier,int ajouterEnlever,int nombreSecondes);
 
 #endif //PROJET_ECECITY_HEADER_H
