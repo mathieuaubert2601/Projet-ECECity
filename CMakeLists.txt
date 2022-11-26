@@ -24,7 +24,7 @@ add_executable(Projet_ECECity
         case.c
         gestionEau.c
         gestionElec.c
-        niveau.c pompier.c)
+        niveau.c pompier.c pause.c)
 
 
 target_link_libraries(Projet_ECECity -lmingw32 -lalleg44)

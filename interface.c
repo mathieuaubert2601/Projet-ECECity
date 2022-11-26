@@ -1,6 +1,6 @@
 #include "header.h"
 
-void afficherInterface(BITMAP* page,int map[35][45], time_t tempsdepart, int argent)
+void afficherInterface(BITMAP* page,int map[35][45], time_t tempsdepart, int argent,time_t tempsDepartPause, int pause, unsigned long tempsPause, unsigned long tempsChrono)
 {
     int compteurEau=0;
     int compteurElec=0;
@@ -61,8 +61,15 @@ void afficherInterface(BITMAP* page,int map[35][45], time_t tempsdepart, int arg
 
 
     time_t tempsact = time(NULL);
+    tempsact= modificationTemps(tempsact,0,tempsPause);
+    tempsact= modificationTemps(tempsact,1,tempsChrono);
     unsigned long diff=difftime(tempsact,tempsdepart);
-    textprintf_ex(page,font,980,720,makecol(255,255,255),-1,"%d",diff);
+    unsigned long diffP=difftime(tempsDepartPause,tempsdepart);
+
+    if(pause==0)
+        textprintf_ex(page,font,980,720,makecol(255,255,255),-1,"%d",diff);
+    if(pause==1)
+        textprintf_ex(page,font,980,720,makecol(255,255,255),-1,"%d",diffP);
 
     textprintf_ex(page,font,80,720,makecol(255,255,255),-1,"%d",argent);
 
@@ -84,7 +91,7 @@ void afficherInterface(BITMAP* page,int map[35][45], time_t tempsdepart, int arg
 
 }
 
-void interfaceRoute(BITMAP* page, int type, time_t tempsdepart, int argent, int map[35][45])
+void interfaceRoute(BITMAP* page, int type, time_t tempsdepart, int argent, int map[35][45],time_t tempsDepartPause, int pause, unsigned long tempsPause, unsigned long tempsChrono)
 {
     int compteurEau=0;
     int compteurElec=0;
@@ -121,8 +128,15 @@ void interfaceRoute(BITMAP* page, int type, time_t tempsdepart, int argent, int 
         blit(routeVertiTran,page,0,0,930,280,routeVertiTran->w,routeVertiTran->h);
 
     time_t tempsact = time(NULL);
+    tempsact= modificationTemps(tempsact,0,tempsPause);
+    tempsact= modificationTemps(tempsact,1,tempsChrono);
     unsigned long diff=difftime(tempsact,tempsdepart);
-    textprintf_ex(page,font,980,720,makecol(255,255,255),-1,"%d",diff);
+    unsigned long diffP=difftime(tempsDepartPause,tempsdepart);
+
+    if(pause==0)
+        textprintf_ex(page,font,980,720,makecol(255,255,255),-1,"%d",diff);
+    if(pause==1)
+        textprintf_ex(page,font,980,720,makecol(255,255,255),-1,"%d",diffP);
 
     textprintf_ex(page,font,80,720,makecol(255,255,255),-1,"%d",argent);
 
@@ -136,7 +150,7 @@ void interfaceRoute(BITMAP* page, int type, time_t tempsdepart, int argent, int 
 }
 
 
-void interfaceMaisons(BITMAP* page,time_t tempsdepart, int argent, int map[35][45])
+void interfaceMaisons(BITMAP* page,time_t tempsdepart, int argent, int map[35][45],time_t tempsDepartPause, int pause, unsigned long tempsPause, unsigned long tempsChrono)
 {
     int compteurEau=0;
     int compteurElec=0;
@@ -164,8 +178,15 @@ void interfaceMaisons(BITMAP* page,time_t tempsdepart, int argent, int map[35][4
     AffichageBouton(iconeMaison, iconeMaisonInv, page, 0,0, 920, 200, iconeMaison->w, iconeMaison->h);
 
     time_t tempsact = time(NULL);
+    tempsact= modificationTemps(tempsact,0,tempsPause);
+    tempsact= modificationTemps(tempsact,1,tempsChrono);
     unsigned long diff=difftime(tempsact,tempsdepart);
-    textprintf_ex(page,font,980,720,makecol(255,255,255),-1,"%d",diff);
+    unsigned long diffP=difftime(tempsDepartPause,tempsdepart);
+
+    if(pause==0)
+        textprintf_ex(page,font,980,720,makecol(255,255,255),-1,"%d",diff);
+    if(pause==1)
+        textprintf_ex(page,font,980,720,makecol(255,255,255),-1,"%d",diffP);
 
     textprintf_ex(page,font,80,720,makecol(255,255,255),-1,"%d",argent);
 
@@ -181,7 +202,7 @@ void interfaceMaisons(BITMAP* page,time_t tempsdepart, int argent, int map[35][4
 }
 
 
-void interfaceChateaux(BITMAP* page,time_t tempsdepart, int argent, int map[35][45])
+void interfaceChateaux(BITMAP* page,time_t tempsdepart, int argent, int map[35][45],time_t tempsDepartPause, int pause, unsigned long tempsPause, unsigned long tempsChrono)
 {
     int compteurEau=0;
     int compteurElec=0;
@@ -208,8 +229,15 @@ void interfaceChateaux(BITMAP* page,time_t tempsdepart, int argent, int map[35][
     AffichageBouton(iconeChateauEau, iconeChateauEauInv,page,0,0,920,270,iconeChateauEau->w,iconeChateauEau->h);
 
     time_t tempsact = time(NULL);
+    tempsact= modificationTemps(tempsact,0,tempsPause);
+    tempsact= modificationTemps(tempsact,1,tempsChrono);
     unsigned long diff=difftime(tempsact,tempsdepart);
-    textprintf_ex(page,font,980,720,makecol(255,255,255),-1,"%d",diff);
+    unsigned long diffP=difftime(tempsDepartPause,tempsdepart);
+
+    if(pause==0)
+        textprintf_ex(page,font,980,720,makecol(255,255,255),-1,"%d",diff);
+    if(pause==1)
+        textprintf_ex(page,font,980,720,makecol(255,255,255),-1,"%d",diffP);
 
     textprintf_ex(page,font,80,720,makecol(255,255,255),-1,"%d",argent);
 
@@ -225,7 +253,7 @@ void interfaceChateaux(BITMAP* page,time_t tempsdepart, int argent, int map[35][
 }
 
 
-void interfaceCentrales(BITMAP* page,time_t tempsdepart, int argent, int map[35][45])
+void interfaceCentrales(BITMAP* page,time_t tempsdepart, int argent, int map[35][45],time_t tempsDepartPause, int pause, unsigned long tempsPause, unsigned long tempsChrono)
 {
     int compteurEau=0;
     int compteurElec=0;
@@ -254,8 +282,15 @@ void interfaceCentrales(BITMAP* page,time_t tempsdepart, int argent, int map[35]
     AffichageBouton(iconeCentrale, iconeCentraleInv, page, 0, 0, 920, 380,iconeCentrale->w,iconeCentrale->h);
 
     time_t tempsact = time(NULL);
+    tempsact= modificationTemps(tempsact,0,tempsPause);
+    tempsact= modificationTemps(tempsact,1,tempsChrono);
     unsigned long diff=difftime(tempsact,tempsdepart);
-    textprintf_ex(page,font,980,720,makecol(255,255,255),-1,"%d",diff);
+    unsigned long diffP=difftime(tempsDepartPause,tempsdepart);
+
+    if(pause==0)
+        textprintf_ex(page,font,980,720,makecol(255,255,255),-1,"%d",diff);
+    if(pause==1)
+        textprintf_ex(page,font,980,720,makecol(255,255,255),-1,"%d",diffP);
 
     textprintf_ex(page,font,80,720,makecol(255,255,255),-1,"%d",argent);
 
