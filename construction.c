@@ -240,6 +240,8 @@ void habitation (BITMAP* page, int map[35][45],time_t tempsdepart, int* banque, 
             }
 
             distribution(nb_elec,*nb_hab,tab_elec,tab_hab);
+            if(nbChateau > 0)
+                chercherCheminPlusCourtEau(map,nb_hab,tab_hab,tabEau,nbChateau);
             blit(buffer2,page,0,0,0,0,900,700);
         }
 
@@ -375,7 +377,8 @@ void chateau_eau(BITMAP* page, int map[35][45],time_t tempsdepart, int* banque, 
             tab_eau[*nb_chateau].y=y-5;
             *nb_chateau+=1;
 
-
+            if(nb_chateau > 0)
+                chercherCheminPlusCourtEau(map,nb_hab,tab_hab,tab_eau,*nb_chateau);
 
             afficher_matrice_cases_vertes(buffer2);
             afficher_map(buffer2,map);

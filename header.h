@@ -118,7 +118,11 @@ int testSauvegarde();
 void indiquerSauvegarde(int ouvertureOuNon);
 void sauvegarderMatriceFichier(int matrice[35][45], char* nomFichier);
 int chargerTableauHabitation(t_habitation tableauHabitation[], char* nomFichier);
-void sauvegarderTableauBatiment(char* nomFichier, t_habitation tableau[],int nombreBatiments);
+void sauvegarderTableauHabitation(char* nomFichier, t_habitation tableau[],int nombreBatiments);
+int chargerTableauCentrale(t_centrales tableauHabitation[], char* nomFichier);
+int chargerTableauChateauEau(t_chateauEau tableauHabitation[], char* nomFichier);
+void sauvegarderTableauCentrale(char* nomFichier, t_centrales tableau[],int nombreBatiments);
+void sauvegarderTableauChateauEau(char* nomFichier, t_chateauEau tableau[],int nombreBatiments);
 
 //Case
 void affichagecasefree(BITMAP* page,int map[35][45],int type);

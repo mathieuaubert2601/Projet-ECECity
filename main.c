@@ -53,7 +53,15 @@ int main()
             if(choixMenu==2)
             {
                 lireFichierMap(map,"Sauvegarde/fichierCarte.txt");
-                nb_hab = chargerTableauHabitation(tab_hab,"Sauvegarde/tableauBatiment.bin");
+                nb_hab = chargerTableauHabitation(tab_hab,"Sauvegarde/tableauHabitation.bin");
+                nb_centrales = chargerTableauCentrale(tab_elec,"Sauvegarde/tableauCentrale.bin");
+                nb_chateau = chargerTableauChateauEau(tab_eau,"Sauvegarde/tableauChateauEau.bin");
+                for(int i = 0 ; i<nb_hab ;i++)
+                {
+                    tab_hab[i].tempsCrea = time(NULL);
+                }
+                distribution(nb_centrales,nb_hab,tab_elec,tab_hab);
+                chercherCheminPlusCourtEau(map,nb_hab,tab_hab,tab_eau,nb_chateau);
                 sortie = 0;
             }
             if(choixMenu==1)
@@ -88,7 +96,9 @@ int main()
                 }
                 if (((mouse_x >= (920) && mouse_x <= (920 + 40)) && (mouse_y) >= (25) && mouse_y <= (25 + 40)) &&
                     (mouse_b & 1)) {
-                    sauvegarderTableauBatiment("Sauvegarde/tableauBatiment.bin",tab_hab,nb_hab);
+                    sauvegarderTableauHabitation("Sauvegarde/tableauHabitation.bin",tab_hab,nb_hab);
+                    sauvegarderTableauCentrale("Sauvegarde/tableauCentrale.bin",tab_elec,nb_centrales);
+                    sauvegarderTableauChateauEau("Sauvegarde/tableauChateauEau.bin",tab_eau,nb_chateau);
                     sauvegarderMatriceFichier(map,"Sauvegarde/fichierCarte.txt");
                 }
                 if (((mouse_x >= (970) && mouse_x <= (970 + 40)) && (mouse_y) >= (25) && mouse_y <= (25 + 40)) &&

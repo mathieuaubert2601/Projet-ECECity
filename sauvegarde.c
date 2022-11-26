@@ -189,7 +189,7 @@ void sauvegarderMatriceFichier(int matrice[35][45], char* nomFichier)
     indiquerSauvegarde(1);
 }
 
-void sauvegarderTableauBatiment(char* nomFichier, t_habitation tableau[],int nombreBatiments)
+void sauvegarderTableauHabitation(char* nomFichier, t_habitation tableau[],int nombreBatiments)
 {
     FILE* fichier = fopen(nomFichier,"wb+");
 
@@ -212,6 +212,51 @@ void sauvegarderTableauBatiment(char* nomFichier, t_habitation tableau[],int nom
     fclose(fichier);
 }
 
+void sauvegarderTableauChateauEau(char* nomFichier, t_chateauEau tableau[],int nombreBatiments)
+{
+    FILE* fichier = fopen(nomFichier,"wb+");
+
+    //test ouverture fichier
+    if(fichier == NULL)
+    {
+        printf("Erreur ouverture fichier : %s",nomFichier);
+    }
+
+    //Enregistrement du nombre de batiment
+    fwrite(&nombreBatiments,sizeof(int),1,fichier);
+
+    //Enregistrement des habitations
+    for(int i = 0 ; i<nombreBatiments ; i++)
+    {
+        fwrite(&tableau[i],sizeof(t_chateauEau),1,fichier);
+    }
+
+    //Fermeture du fichier
+    fclose(fichier);
+}
+
+void sauvegarderTableauCentrale(char* nomFichier, t_centrales tableau[],int nombreBatiments)
+{
+    FILE* fichier = fopen(nomFichier,"wb+");
+
+    //test ouverture fichier
+    if(fichier == NULL)
+    {
+        printf("Erreur ouverture fichier : %s",nomFichier);
+    }
+
+    //Enregistrement du nombre de batiment
+    fwrite(&nombreBatiments,sizeof(int),1,fichier);
+
+    //Enregistrement des habitations
+    for(int i = 0 ; i<nombreBatiments ; i++)
+    {
+        fwrite(&tableau[i],sizeof(t_centrales),1,fichier);
+    }
+
+    //Fermeture du fichier
+    fclose(fichier);
+}
 int chargerTableauHabitation(t_habitation tableauHabitation[], char* nomFichier)
 {
     //Déclaration des variables
@@ -231,6 +276,66 @@ int chargerTableauHabitation(t_habitation tableauHabitation[], char* nomFichier)
     for(int i = 0 ; i<nombreBatiment ; i++)
     {
         fread(&tableauHabitation[i],sizeof(t_habitation),1,fichier);
+        //printf("%d %d %d %d\n",i,tableauHabitation[i].nb_habitants,tableauHabitation[i].niveau,tableauHabitation[i].numero);
+    }
+
+    /*for(int i=0 ; i<nombreBatiment ; i++)
+    {
+        printf("%d %d %d %d\n",i,tableauHabitation[i].nb_habitants,tableauHabitation[i].niveau,tableauHabitation[i].numero);
+    }*/
+
+    //Fermeture du fichier
+    fclose(fichier);
+
+    return nombreBatiment;
+}
+
+int chargerTableauChateauEau(t_chateauEau tableauHabitation[], char* nomFichier)
+{
+    //Déclaration des variables
+    int nombreBatiment = 0;
+    FILE* fichier = fopen(nomFichier,"rb+");
+
+    //test ouverture fichier
+    if(fichier == NULL)
+    {
+        printf("Erreur ouverture fichier : %s",nomFichier);
+    }
+
+    //Lecture du nombre de batiment
+    fread(&nombreBatiment,sizeof(int),1,fichier);
+
+    //Lecture des structure
+    for(int i = 0 ; i<nombreBatiment ; i++)
+    {
+        fread(&tableauHabitation[i],sizeof(t_chateauEau),1,fichier);
+    }
+
+    //Fermeture du fichier
+    fclose(fichier);
+
+    return nombreBatiment;
+}
+
+int chargerTableauCentrale(t_centrales tableauHabitation[], char* nomFichier)
+{
+    //Déclaration des variables
+    int nombreBatiment = 0;
+    FILE* fichier = fopen(nomFichier,"rb+");
+
+    //test ouverture fichier
+    if(fichier == NULL)
+    {
+        printf("Erreur ouverture fichier : %s",nomFichier);
+    }
+
+    //Lecture du nombre de batiment
+    fread(&nombreBatiment,sizeof(int),1,fichier);
+
+    //Lecture des structure
+    for(int i = 0 ; i<nombreBatiment ; i++)
+    {
+        fread(&tableauHabitation[i],sizeof(t_centrales),1,fichier);
     }
 
     //Fermeture du fichier
