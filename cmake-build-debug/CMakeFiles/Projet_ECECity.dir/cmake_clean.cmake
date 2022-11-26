@@ -25,6 +25,8 @@ file(REMOVE_RECURSE
   "CMakeFiles/Projet_ECECity.dir/map.c.obj.d"
   "CMakeFiles/Projet_ECECity.dir/niveau.c.obj"
   "CMakeFiles/Projet_ECECity.dir/niveau.c.obj.d"
+  "CMakeFiles/Projet_ECECity.dir/pompier.c.obj"
+  "CMakeFiles/Projet_ECECity.dir/pompier.c.obj.d"
   "CMakeFiles/Projet_ECECity.dir/sauvegarde.c.obj"
   "CMakeFiles/Projet_ECECity.dir/sauvegarde.c.obj.d"
   "Projet_ECECity.exe"

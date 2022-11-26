@@ -18,12 +18,13 @@ add_executable(Projet_ECECity
         sauvegarde.c
         interface.c
         construction.c
+        pompier.c
         gestion_cycles.c
         compterHabEauElec.c
         case.c
         gestionEau.c
         gestionElec.c
-        niveau.c)
+        niveau.c pompier.c)
 
 
 target_link_libraries(Projet_ECECity -lmingw32 -lalleg44)

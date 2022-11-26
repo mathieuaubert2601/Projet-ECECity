@@ -1,5 +1,5 @@
-CMakeFiles/Projet_ECECity.dir/gestionElec.c.obj: \
- C:\Users\m28wa\CLionProjects\Projet-ECECity\gestionElec.c \
+CMakeFiles/Projet_ECECity.dir/pompier.c.obj: \
+ C:\Users\m28wa\CLionProjects\Projet-ECECity\pompier.c \
  C:\Users\m28wa\CLionProjects\Projet-ECECity\header.h \
  C:/PROGRA~1/CODEBL~1/MinGW/x86_64-w64-mingw32/include/allegro.h \
  C:/PROGRA~1/CODEBL~1/MinGW/x86_64-w64-mingw32/include/allegro/base.h \
