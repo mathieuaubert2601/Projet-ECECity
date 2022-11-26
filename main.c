@@ -24,6 +24,7 @@ int main()
     int nb_centrales=0;
     int play_musique=0;
     int pause=0;
+    int** matriceEau;
     //t_habitation* tab_hab = NULL;
     //tab_hab=(t_habitation*)malloc(nb_hab*sizeof (t_habitation));
     t_habitation tab_hab[50];
@@ -136,11 +137,12 @@ int main()
                 }
                 if(((mouse_x>=(920)&& mouse_x<=(920+50))&& ((mouse_y)>=(550)&& mouse_y<=(550+50)))&&(mouse_b &1))
                 {
-                    canalisations(page,map,tab_hab);
+                    matriceEau = chercherCheminPlusCourtEau(map,nb_hab,tab_hab,tab_eau,nb_chateau);
+                    canalisations(page,map,tab_hab,nb_hab,matriceEau,nb_chateau,tab_eau,tab_elec,nb_centrales);
                 }
                 if(((mouse_x>=(920)&& mouse_x<=(920+50))&& ((mouse_y)>=(620)&& mouse_y<=(620+50)))&&(mouse_b &1))
                 {
-                    lignes(page,map,tab_hab,nb_hab,tab_elec,nb_centrales);
+                    lignes(page,map,tab_hab,nb_hab,nb_chateau,tab_eau,tab_elec,nb_centrales);
                 }
                 show_mouse(page);
                 blit(page,screen,0,0,0,0,1024,768);

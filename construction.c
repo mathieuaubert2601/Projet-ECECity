@@ -236,6 +236,7 @@ void habitation (BITMAP* page, int map[35][45],time_t tempsdepart, int* banque, 
             tab_hab[*nb_hab].x=x;
             tab_hab[*nb_hab].y=y-2;
             *nb_hab+=1;
+            tab_hab[*nb_hab].numero=*nb_hab;
             for(int i = 0 ;i<15 ;i++)
             {
                 tab_hab[*nb_hab].chateauEauNCR[i][0]= -1;
@@ -263,7 +264,7 @@ void chateau_eau(BITMAP* page, int map[35][45],time_t tempsdepart, int* banque, 
     BITMAP* chateauEauTran = load_bitmap("Constructions/routeTran.bmp", NULL);
     BITMAP* buffer2 =create_bitmap(1024,768);
     BITMAP* chateauEau = load_bitmap("Constructions/ChateauEau.bmp", NULL);
-    //SAMPLE* sonEau = load_sample("sons/sonEau.wav");
+    SAMPLE* sonEau = load_sample("sons/sonEau.wav");
 
 
 
@@ -344,7 +345,7 @@ void chateau_eau(BITMAP* page, int map[35][45],time_t tempsdepart, int* banque, 
 
             test_ref = 0;
             y = y-5;
-            //play_sample(sonEau,15,0,1000,0);
+            play_sample(sonEau,15,0,1000,0);
 
             for (int h=x; h<x+4;h++)
             {
@@ -403,7 +404,7 @@ void centrale(BITMAP* page, int map[35][45],time_t tempsdepart, int* banque, t_h
     BITMAP* chateauEauTran = load_bitmap("Constructions/routeTran.bmp", NULL);
     BITMAP* buffer2 =create_bitmap(1024,768);
     BITMAP* centrale = load_bitmap("Constructions/centrale.bmp", NULL);
-    //SAMPLE* sonElec = load_sample("sons/sonElec.wav");
+    SAMPLE* sonElec = load_sample("sons/sonElec.wav");
 
 
     int x,y;
@@ -482,7 +483,7 @@ void centrale(BITMAP* page, int map[35][45],time_t tempsdepart, int* banque, t_h
             map[y-1][x+5] =17;
             map[y-2][x+5] =17;
             map[y-3][x+5] =17;
-           // play_sample(sonElec,15,0,1000,0);
+            play_sample(sonElec,15,0,1000,0);
             *banque-=100000;
 
             tab_elec[*nb_elec].x=x;

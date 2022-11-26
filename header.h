@@ -146,10 +146,10 @@ int calculCapaciteElec(int nb_elec);
 int distribution(int nb_elec, int nb_hab, t_centrales tab_elec[20], t_habitation tab_hab[50]);
 
 //Niveau
-void canalisations (BITMAP* page, int map[35][45],t_habitation maison[50]);
-void lignes(BITMAP* page, int map[35][45],t_habitation maison[50], int nb_maison, t_centrales tab_elec[20], int nb_centrales);
-void afficher_niveau(BITMAP* page, int map[35][45],int test,t_habitation maison[50]);
-void afficher_niveau2(BITMAP* page, int map[35][45],t_habitation maison[50], int nb_maison, t_centrales tab_elec[20], int nb_centrales);
+void canalisations (BITMAP* page, int map[35][45],t_habitation maison[50],int nb_maison,int** matriceEau,int nb_chateauEau,t_chateauEau tab_eau[20],t_centrales tab_elec[20], int nb_centrales);
+void lignes(BITMAP* page, int map[35][45],t_habitation maison[50], int nb_maison,int nb_chateauEau,t_chateauEau *tab_eau, t_centrales tab_elec[20], int nb_centrales);
+void afficher_niveau(BITMAP* page, int map[35][45],t_habitation habitation[50],int nb_maison,int** matriceEau,int nb_chateauEau,t_chateauEau tab_eau[20],t_centrales tab_elec[20], int nb_centrales);
+void afficher_niveau2(BITMAP* page, int map[35][45],t_habitation maison[50], int nb_maison,int nb_chateauEau,t_chateauEau *tab_eau,t_centrales tab_elec[20], int nb_centrales);
 
 //Pause
 time_t modificationTemps(time_t tempsAModifier,int ajouterEnlever,int nombreSecondes);
