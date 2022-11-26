@@ -76,6 +76,14 @@ int main()
                 {
 
                     habitation(page,map,tempsdep,&banque,&nb_hab, tab_hab,tab_elec,nb_centrales);
+                    chercherCheminPlusCourtEau(map,nb_hab,tab_hab,tab_eau,nb_chateau);
+                    for(int i = 0 ; i<nb_hab ; i++)
+                    {
+                        for(int j=0 ; j<15 ; j++)
+                        {
+                            printf("\n%d ",tab_hab[i].chateauEauNCR[j]);
+                        }
+                    }
 
                 }
                 if (((mouse_x >= (930) && mouse_x <= (930 + 75)) && (mouse_y) >= (280) && mouse_y <= (270 + 100)) &&

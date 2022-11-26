@@ -95,7 +95,7 @@ int** chercherCheminPlusCourtEau(int matriceMap[35][45],int nombreHabitation,t_h
     int matriceCouleur[35][45];
     int** matriceEau = malloc(35*sizeof(int*));
     int index,XtriTmp,YtriTmp,distanceTriTmp,nbHabTriTmp,chatEauAffTriTmp,numeroTriTmp;
-    int xFile = 0, yFile= 0,cmpt = 0,calculX,calculXtmp,calculY,distanceM = 0;
+    int xFile = 0, yFile= 0,cmpt = 0,calculX,calculXtmp,calculY,distanceM = 0,testChateauEauNcr;
     int* tableauCoordonnee = NULL;
     t_habitation* tabHabChatEau = (t_habitation*)malloc((nombreHabitation*nombreChateauEau) * sizeof(t_habitation));
     t_kase*** tableauPred = (t_kase***)malloc(nombreChateauEau * sizeof(t_kase**));
@@ -262,15 +262,32 @@ int** chercherCheminPlusCourtEau(int matriceMap[35][45],int nombreHabitation,t_h
     {
         if(tabHab[tabHabChatEau[i].numero].quantiteeEau < tabHab[tabHabChatEau[i].numero].nb_habitants && tabEau[tabHabChatEau[i].chateau_Eau_Affilie].capaciteRestante > 0)
         {
+            testChateauEauNcr = 0;
             if(((tabHab[tabHabChatEau[i].numero].nb_habitants - tabHab[tabHabChatEau[i].numero].quantiteeEau) <= tabEau[tabHabChatEau[i].chateau_Eau_Affilie].capaciteRestante) && tabEau[tabHabChatEau[i].chateau_Eau_Affilie].capaciteRestante>0 )
             {
                 tabEau[tabHabChatEau[i].chateau_Eau_Affilie].capaciteRestante = tabEau[tabHabChatEau[i].chateau_Eau_Affilie].capaciteRestante - (tabHab[tabHabChatEau[i].numero].nb_habitants - tabHab[tabHabChatEau[i].numero].quantiteeEau);
                 tabHab[tabHabChatEau[i].numero].quantiteeEau = tabHab[tabHabChatEau[i].numero].nb_habitants;
+                for(int h = 0 ; h<15 ; h++)
+                {
+                    if(tabHab[tabHabChatEau[i].numero].chateauEauNCR[h] == -1 && testChateauEauNcr == 0)
+                    {
+                        tabHab[tabHabChatEau[i].numero].chateauEauNCR[h] = tabHabChatEau[i].chateau_Eau_Affilie;
+                        testChateauEauNcr =  1;
+                    }
+                }
             }
             else
             {
                 tabEau[tabHabChatEau[i].chateau_Eau_Affilie].capaciteRestante = 0;
                 tabHab[tabHabChatEau[i].numero].quantiteeEau = tabHab[tabHabChatEau[i].numero].quantiteeEau + tabEau[tabHabChatEau[i].chateau_Eau_Affilie].capaciteRestante;
+                for(int h = 0 ; h<15 ; h++)
+                {
+                    if(tabHab[tabHabChatEau[i].numero].chateauEauNCR[h] == -1 && testChateauEauNcr == 0)
+                    {
+                        tabHab[tabHabChatEau[i].numero].chateauEauNCR[h] = tabHabChatEau[i].chateau_Eau_Affilie;
+                        testChateauEauNcr =  1;
+                    }
+                }
             }
 
             calculY = tabHabChatEau[i].YRef;
