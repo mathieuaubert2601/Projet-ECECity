@@ -234,6 +234,10 @@ void habitation (BITMAP* page, int map[35][45],time_t tempsdepart, int* banque, 
             tab_hab[*nb_hab].x=x;
             tab_hab[*nb_hab].y=y-2;
             *nb_hab+=1;
+            for(int i = 0 ;i<15 ;i++)
+            {
+                tab_hab[*nb_hab].chateauEauNCR[i] = -1;
+            }
 
             distribution(nb_elec,*nb_hab,tab_elec,tab_hab);
             blit(buffer2,page,0,0,0,0,900,700);
