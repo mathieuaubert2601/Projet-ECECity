@@ -50,19 +50,19 @@ cmake_force:
 SHELL = cmd.exe
 
 # The CMake executable.
-CMAKE_COMMAND = "C:\Program Files\JetBrains\CLion 2022.2.4\bin\cmake\win\bin\cmake.exe"
+CMAKE_COMMAND = "C:\Program Files\JetBrains\CLion 2022.2.1\bin\cmake\win\bin\cmake.exe"
 
 # The command to remove a file.
-RM = "C:\Program Files\JetBrains\CLion 2022.2.4\bin\cmake\win\bin\cmake.exe" -E rm -f
+RM = "C:\Program Files\JetBrains\CLion 2022.2.1\bin\cmake\win\bin\cmake.exe" -E rm -f
 
 # Escaping for special characters.
 EQUALS = =
 
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = C:\Users\maube\CLionProjects\Projet-ECECity
+CMAKE_SOURCE_DIR = C:\Users\Lea\CLionProjects\Projet-ECECity
 
 # The top-level build directory on which CMake was run.
-CMAKE_BINARY_DIR = C:\Users\maube\CLionProjects\Projet-ECECity\cmake-build-debug
+CMAKE_BINARY_DIR = C:\Users\Lea\CLionProjects\Projet-ECECity\cmake-build-debug
 
 #=============================================================================
 # Targets provided globally by CMake.
@@ -70,7 +70,7 @@ CMAKE_BINARY_DIR = C:\Users\maube\CLionProjects\Projet-ECECity\cmake-build-debug
 # Special rule for the target edit_cache
 edit_cache:
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "No interactive CMake dialog available..."
-	"C:\Program Files\JetBrains\CLion 2022.2.4\bin\cmake\win\bin\cmake.exe" -E echo "No interactive CMake dialog available."
+	"C:\Program Files\JetBrains\CLion 2022.2.1\bin\cmake\win\bin\cmake.exe" -E echo "No interactive CMake dialog available."
 .PHONY : edit_cache
 
 # Special rule for the target edit_cache
@@ -80,7 +80,7 @@ edit_cache/fast: edit_cache
 # Special rule for the target rebuild_cache
 rebuild_cache:
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "Running CMake to regenerate build system..."
-	"C:\Program Files\JetBrains\CLion 2022.2.4\bin\cmake\win\bin\cmake.exe" --regenerate-during-build -S$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR)
+	"C:\Program Files\JetBrains\CLion 2022.2.1\bin\cmake\win\bin\cmake.exe" --regenerate-during-build -S$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR)
 .PHONY : rebuild_cache
 
 # Special rule for the target rebuild_cache
@@ -89,9 +89,9 @@ rebuild_cache/fast: rebuild_cache
 
 # The main all target
 all: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start C:\Users\maube\CLionProjects\Projet-ECECity\cmake-build-debug\CMakeFiles C:\Users\maube\CLionProjects\Projet-ECECity\cmake-build-debug\\CMakeFiles\progress.marks
+	$(CMAKE_COMMAND) -E cmake_progress_start C:\Users\Lea\CLionProjects\Projet-ECECity\cmake-build-debug\CMakeFiles C:\Users\Lea\CLionProjects\Projet-ECECity\cmake-build-debug\\CMakeFiles\progress.marks
 	$(MAKE) $(MAKESILENT) -f CMakeFiles\Makefile2 all
-	$(CMAKE_COMMAND) -E cmake_progress_start C:\Users\maube\CLionProjects\Projet-ECECity\cmake-build-debug\CMakeFiles 0
+	$(CMAKE_COMMAND) -E cmake_progress_start C:\Users\Lea\CLionProjects\Projet-ECECity\cmake-build-debug\CMakeFiles 0
 .PHONY : all
 
 # The main clean target
@@ -275,6 +275,30 @@ gestionEau.c.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles\Projet_ECECity.dir\build.make CMakeFiles/Projet_ECECity.dir/gestionEau.c.s
 .PHONY : gestionEau.c.s
 
+gestionElec.obj: gestionElec.c.obj
+.PHONY : gestionElec.obj
+
+# target to build an object file
+gestionElec.c.obj:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\Projet_ECECity.dir\build.make CMakeFiles/Projet_ECECity.dir/gestionElec.c.obj
+.PHONY : gestionElec.c.obj
+
+gestionElec.i: gestionElec.c.i
+.PHONY : gestionElec.i
+
+# target to preprocess a source file
+gestionElec.c.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\Projet_ECECity.dir\build.make CMakeFiles/Projet_ECECity.dir/gestionElec.c.i
+.PHONY : gestionElec.c.i
+
+gestionElec.s: gestionElec.c.s
+.PHONY : gestionElec.s
+
+# target to generate assembly for a file
+gestionElec.c.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\Projet_ECECity.dir\build.make CMakeFiles/Projet_ECECity.dir/gestionElec.c.s
+.PHONY : gestionElec.c.s
+
 gestion_cycles.obj: gestion_cycles.c.obj
 .PHONY : gestion_cycles.obj
 
@@ -395,6 +419,30 @@ map.c.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles\Projet_ECECity.dir\build.make CMakeFiles/Projet_ECECity.dir/map.c.s
 .PHONY : map.c.s
 
+niveau.obj: niveau.c.obj
+.PHONY : niveau.obj
+
+# target to build an object file
+niveau.c.obj:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\Projet_ECECity.dir\build.make CMakeFiles/Projet_ECECity.dir/niveau.c.obj
+.PHONY : niveau.c.obj
+
+niveau.i: niveau.c.i
+.PHONY : niveau.i
+
+# target to preprocess a source file
+niveau.c.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\Projet_ECECity.dir\build.make CMakeFiles/Projet_ECECity.dir/niveau.c.i
+.PHONY : niveau.c.i
+
+niveau.s: niveau.c.s
+.PHONY : niveau.s
+
+# target to generate assembly for a file
+niveau.c.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\Projet_ECECity.dir\build.make CMakeFiles/Projet_ECECity.dir/niveau.c.s
+.PHONY : niveau.c.s
+
 sauvegarde.obj: sauvegarde.c.obj
 .PHONY : sauvegarde.obj
 
@@ -446,6 +494,9 @@ help:
 	@echo ... gestionEau.obj
 	@echo ... gestionEau.i
 	@echo ... gestionEau.s
+	@echo ... gestionElec.obj
+	@echo ... gestionElec.i
+	@echo ... gestionElec.s
 	@echo ... gestion_cycles.obj
 	@echo ... gestion_cycles.i
 	@echo ... gestion_cycles.s
@@ -461,6 +512,9 @@ help:
 	@echo ... map.obj
 	@echo ... map.i
 	@echo ... map.s
+	@echo ... niveau.obj
+	@echo ... niveau.i
+	@echo ... niveau.s
 	@echo ... sauvegarde.obj
 	@echo ... sauvegarde.i
 	@echo ... sauvegarde.s

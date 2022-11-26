@@ -21,6 +21,11 @@ typedef struct habitation
     int XRef;
     int YRef;
     int quantiteeEau;
+    int chateau_Eau_Affilie;
+    int chateauEauNCR[15];
+    int distance;
+    int numero;
+    int elec;
     time_t tempsCrea;
 
 }t_habitation;
@@ -30,8 +35,19 @@ typedef struct chateauEau
 {
     int x;
     int y;
+    int XRef;
+    int YRef;
     int capaciteRestante;
+    int num;
 }t_chateauEau;
+
+typedef struct centrales
+{
+    int x;
+    int y;
+    int capaciteRestante;
+    int num;
+}t_centrales;
 
 
 //Structure Maillon
@@ -78,12 +94,12 @@ void lireFichierMap(int matrice_a_remplir[35][45],char* nomFichier);
 void afficher_matrice_cases_vertes(BITMAP* page);
 
 //Constructions
-void route (BITMAP* page, int map[35][45],time_t tempsdepart, int* banque,t_habitation tab_hab[50], int nb_hab);
-void habitation (BITMAP* page, int map[35][45],time_t tempsdepart, int* banque, int* nb_hab, t_habitation* tab_hab);
-void chateau_eau(BITMAP* page, int map[35][45],time_t tempsdepart, int* banque,t_habitation tab_hab[50], int nb_hab, t_chateauEau tab_eau[20] , int* nb_chateau);
-void centrale(BITMAP* page, int map[35][45],time_t tempsdepart, int* banque, t_habitation tab_hab[50], int nb_hab);
+void route (BITMAP* page, int map[35][45],time_t tempsdepart, int* banque, t_habitation tab_hab[50], int nb_hab, int nb_elec, t_centrales tab_elec[20],int nbChateau,t_chateauEau*  tabEau);
+void habitation (BITMAP* page, int map[35][45],time_t tempsdepart, int* banque, int* nb_hab, t_habitation tab_hab[50], t_centrales tab_elec[20], int nb_elec,int nbChateau,t_chateauEau* tabEau);
+void chateau_eau(BITMAP* page, int map[35][45],time_t tempsdepart, int* banque, t_habitation tab_hab[50], int nb_hab, t_chateauEau tab_eau[20], int* nb_chateau, int nb_elec, t_centrales tab_elec[20]);
+void centrale(BITMAP* page, int map[35][45],time_t tempsdepart, int* banque, t_habitation tab_hab[50], int nb_hab, int* nb_elec, t_centrales tab_elec[20],int nbChateau,t_chateauEau* tabEau);
 
-void test_temps(int map[35][45], t_habitation tab_hab[50], int* argent, int nb_hab);
+void test_temps(int map[35][45], t_habitation tab_hab[50], int* argent, int nb_hab, int nb_elec, t_centrales tab_elec[20],int nbchateau,t_chateauEau* tabEau);
 
 //Interfaces
 void afficherInterface(BITMAP* page,int map[35][45], time_t tempsdepart, int argent);
@@ -108,17 +124,21 @@ void sauvegarderTableauBatiment(char* nomFichier, t_habitation tableau[],int nom
 void affichagecasefree(BITMAP* page,int map[35][45],int type);
 
 //Gestion Eau
-t_kase** chercherCheminPlusCourtEau(int chateauEauRefX, int chateauEauRefY,int matriceMap[35][45]);
-int tailleChemin(t_kase** matriceAnalyse, int maisonX, int maisonY,int chateauEauX, int chateauEauY);
-int** creerMatriceEau(t_habitation* tableauHabitation, int nombreHabitation, t_chateauEau* tableauChateauEau,int nombreChateauEau,int map[35][45]);
+
+int** chercherCheminPlusCourtEau(int matriceMap[35][45],int nombreHabitation,t_habitation* tabHab,t_chateauEau* tabEau,int nombreChateauEau);
 int* defiler(t_file * ptAlignement);
 void enfiler(t_file * ptAlignement, int valeurX,int valeurY);
 int estVide(t_file* fAttente);
 
+//Gestion Elec
+int calculCapaciteElec(int nb_elec);
+int distribution(int nb_elec, int nb_hab, t_centrales tab_elec[20], t_habitation tab_hab[50]);
+
 //Niveau
-void canalisations (BITMAP* page, int map[35][45]);
-void lignes(BITMAP* page, int map[35][45]);
-void afficher_niveau(BITMAP* page, int map[35][45],int test);
+void canalisations (BITMAP* page, int map[35][45],t_habitation maison[50]);
+void lignes(BITMAP* page, int map[35][45],t_habitation maison[50], int nb_maison, t_centrales tab_elec[20], int nb_centrales);
+void afficher_niveau(BITMAP* page, int map[35][45],int test,t_habitation maison[50]);
+void afficher_niveau2(BITMAP* page, int map[35][45],t_habitation maison[50], int nb_maison, t_centrales tab_elec[20], int nb_centrales);
 
 /*typedef struct batiment
 {

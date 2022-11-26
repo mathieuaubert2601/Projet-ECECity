@@ -22,11 +22,14 @@ int main()
     int banque=banqueDep;
     int nb_hab=0;
     int nb_chateau=0;
+    int nb_centrales=0;
     int play_musique=0;
     //t_habitation* tab_hab = NULL;
     //tab_hab=(t_habitation*)malloc(nb_hab*sizeof (t_habitation));
     t_habitation tab_hab[50];
     t_chateauEau tab_eau[20];
+    t_centrales tab_elec[20];
+    int** matriceEau ;
 
 
     while(!key[KEY_ESC])
@@ -44,7 +47,7 @@ int main()
         {
             clear_bitmap(page);
             time_t tempsdep = time(NULL);
-            play_sample(ambiance,15,0,1000,1);
+            //play_sample(ambiance,15,0,1000,1);
 
 
             if(choixMenu==2)
@@ -57,36 +60,31 @@ int main()
             {
                 sortie = 0;
                 creer_map(page,map);
-                map[20][1]=1;
+                //map[20][1]=1;
             }
             while(sortie==0)
             {
                 afficher_matrice_cases_vertes(page);
                 afficher_map(page,map);
                 afficherInterface(page,map,tempsdep, banque);
-                test_temps(map,tab_hab,&banque,nb_hab);
+                test_temps(map,tab_hab,&banque,nb_hab,nb_centrales,tab_elec,nb_chateau,tab_eau);
                 if (((mouse_x >= (920) && mouse_x <= (920 + 90)) && (mouse_y) >= (130) && mouse_y <= (130 + 65)) &&
                     (mouse_b & 1)) {
-                    route(page, map, tempsdep,&banque,tab_hab,nb_hab);
+                    route(page, map, tempsdep,&banque,tab_hab,nb_hab,nb_centrales,tab_elec,nb_chateau,tab_eau);
                 }
                 if (((mouse_x >= (920) && mouse_x <= (920 + 100)) && (mouse_y) >= (200) && mouse_y <= (200 + 100)) && (mouse_b & 1))
                 {
-                    printf("%d %d 1\n",tab_hab[0].XRef,tab_hab[0].YRef);
-                    printf("%d %d 1\n",tab_hab[1].XRef,tab_hab[1].YRef);
-                    printf("%d %d 1\n",tab_hab[2].XRef,tab_hab[2].YRef);
-                    habitation(page,map,tempsdep,&banque,&nb_hab, tab_hab);
-                    printf("\n\n%d %d 2\n",tab_hab[0].XRef,tab_hab[0].YRef);
-                    printf("%d %d 2\n",tab_hab[1].XRef,tab_hab[1].YRef);
-                    printf("%d %d 2\n",tab_hab[2].XRef,tab_hab[2].YRef);
+
+                    habitation(page,map,tempsdep,&banque,&nb_hab, tab_hab,tab_elec,nb_centrales,nb_chateau,tab_eau);
+
                 }
-                if (((mouse_x >= (920) && mouse_x <= (920 + 75)) && (mouse_y) >= (270) && mouse_y <= (270 + 100)) &&
+                if (((mouse_x >= (930) && mouse_x <= (930 + 75)) && (mouse_y) >= (280) && mouse_y <= (270 + 100)) &&
                     (mouse_b & 1)) {
-                    chateau_eau(page, map,tempsdep,&banque, tab_hab, nb_hab,  tab_eau, &nb_chateau);
-                    creerMatriceEau(tab_hab,nb_hab,tab_eau,1,map);
+                    chateau_eau(page, map,tempsdep,&banque, tab_hab, nb_hab,  tab_eau, &nb_chateau,nb_centrales,tab_elec);
                 }
                 if (((mouse_x >= (920) && mouse_x <= (920 + 75)) && (mouse_y) >= (380) && mouse_y <= (380 + 100)) &&
                     (mouse_b & 1)) {
-                    centrale(page, map,tempsdep,&banque, tab_hab, nb_hab);
+                    centrale(page, map,tempsdep,&banque, tab_hab, nb_hab,&nb_centrales,tab_elec,nb_chateau,tab_eau);
                 }
                 if (((mouse_x >= (920) && mouse_x <= (920 + 40)) && (mouse_y) >= (25) && mouse_y <= (25 + 40)) &&
                     (mouse_b & 1)) {
@@ -100,11 +98,12 @@ int main()
                 }
                 if(((mouse_x>=(920)&& mouse_x<=(920+50))&& ((mouse_y)>=(550)&& mouse_y<=(550+50)))&&(mouse_b &1))
                 {
-                    canalisations(page,map);
+                    /*matriceEau = chercherCheminPlusCourtEau(map,nb_hab,tab_hab,tab_eau,nb_chateau);
+                    canalisations(page,map,tab_hab,matriceEau);*/
                 }
                 if(((mouse_x>=(920)&& mouse_x<=(920+50))&& ((mouse_y)>=(620)&& mouse_y<=(620+50)))&&(mouse_b &1))
                 {
-                    lignes(page,map);
+                    lignes(page,map,tab_hab,nb_hab,tab_elec,nb_centrales);
                 }
                 show_mouse(page);
                 blit(page,screen,0,0,0,0,1024,768);

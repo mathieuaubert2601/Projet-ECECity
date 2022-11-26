@@ -1,7 +1,7 @@
 #include "header.h"
 
 
-void route (BITMAP* page, int map[35][45],time_t tempsdepart, int* banque, t_habitation tab_hab[50], int nb_hab)
+void route (BITMAP* page, int map[35][45],time_t tempsdepart, int* banque, t_habitation tab_hab[50], int nb_hab, int nb_elec, t_centrales tab_elec[20],int nbChateau,t_chateauEau*  tabEau)
 {
     BITMAP* routeTran = load_bitmap("Constructions/routeTran.bmp", NULL);
     BITMAP* buffer2 =create_bitmap(1024,768);
@@ -23,7 +23,7 @@ void route (BITMAP* page, int map[35][45],time_t tempsdepart, int* banque, t_hab
         show_mouse(page);
         blit(page,screen,0,0,0,0,1024,768);
         //afficherInterface(page,map,tempsdepart,*banque);
-        test_temps(map,tab_hab,banque,nb_hab);
+        test_temps(map,tab_hab,banque,nb_hab,nb_elec,tab_elec,nbChateau,tabEau);
         type=0;
         clic2=0;
         clic3=0;
@@ -117,7 +117,7 @@ void route (BITMAP* page, int map[35][45],time_t tempsdepart, int* banque, t_hab
     blit(page,screen,0,0,0,0,1024,768);
 }
 
-void habitation (BITMAP* page, int map[35][45],time_t tempsdepart, int* banque, int* nb_hab, t_habitation tab_hab[50])
+void habitation (BITMAP* page, int map[35][45],time_t tempsdepart, int* banque, int* nb_hab, t_habitation tab_hab[50], t_centrales tab_elec[20], int nb_elec,int nbChateau,t_chateauEau*  tabEau)
 {
     BITMAP* maison = load_bitmap("Constructions/maison.bmp", NULL);
     BITMAP* buffer2 =create_bitmap(1024,768);
@@ -234,8 +234,12 @@ void habitation (BITMAP* page, int map[35][45],time_t tempsdepart, int* banque, 
             tab_hab[*nb_hab].x=x;
             tab_hab[*nb_hab].y=y-2;
             *nb_hab+=1;
+            for(int i = 0 ;i<15 ;i++)
+            {
+                tab_hab[*nb_hab].chateauEauNCR[i] = -1;
+            }
 
-
+            distribution(nb_elec,*nb_hab,tab_elec,tab_hab);
             blit(buffer2,page,0,0,0,0,900,700);
         }
 
@@ -243,13 +247,13 @@ void habitation (BITMAP* page, int map[35][45],time_t tempsdepart, int* banque, 
         if(mouse_b&2)
             clic=1;
 
-        test_temps(map,tab_hab,banque,*nb_hab);
+        test_temps(map,tab_hab,banque,*nb_hab,nb_elec,tab_elec,nbChateau,tabEau);
         interfaceMaisons(page,tempsdepart,*banque,map);
         blit(page,screen,0,0,0,0,900,700);
     }
 }
 
-void chateau_eau(BITMAP* page, int map[35][45],time_t tempsdepart, int* banque, t_habitation tab_hab[50], int nb_hab, t_chateauEau tab_eau[20], int* nb_chateau)
+void chateau_eau(BITMAP* page, int map[35][45],time_t tempsdepart, int* banque, t_habitation tab_hab[50], int nb_hab, t_chateauEau tab_eau[20], int* nb_chateau, int nb_elec, t_centrales tab_elec[20])
 {
     BITMAP* chateauEauTran = load_bitmap("Constructions/routeTran.bmp", NULL);
     BITMAP* buffer2 =create_bitmap(1024,768);
@@ -273,7 +277,7 @@ void chateau_eau(BITMAP* page, int map[35][45],time_t tempsdepart, int* banque, 
             y=mouse_y/20;
             testclic=1;
         }
-        test_temps(map,tab_hab,banque,nb_hab);
+        test_temps(map,tab_hab,banque,nb_hab,nb_elec,tab_elec,*nb_chateau,tab_eau);
         afficher_matrice_cases_vertes(buffer2);
         afficher_map(buffer2,map);
         affichagecasefree(buffer2,map,14);
@@ -385,7 +389,7 @@ void chateau_eau(BITMAP* page, int map[35][45],time_t tempsdepart, int* banque, 
 }
 
 
-void centrale(BITMAP* page, int map[35][45],time_t tempsdepart, int* banque, t_habitation tab_hab[50], int nb_hab)
+void centrale(BITMAP* page, int map[35][45],time_t tempsdepart, int* banque, t_habitation tab_hab[50], int nb_hab, int* nb_elec, t_centrales tab_elec[20],int nbChateau,t_chateauEau*  tabEau)
 {
     BITMAP* chateauEauTran = load_bitmap("Constructions/routeTran.bmp", NULL);
     BITMAP* buffer2 =create_bitmap(1024,768);
@@ -395,6 +399,7 @@ void centrale(BITMAP* page, int map[35][45],time_t tempsdepart, int* banque, t_h
     int x,y;
     int clic=0;
     int testclic=0;
+    int num;
 
     while(clic!=1)
     {
@@ -408,7 +413,7 @@ void centrale(BITMAP* page, int map[35][45],time_t tempsdepart, int* banque, t_h
             y=mouse_y/20;
             testclic=1;
         }
-        test_temps(map,tab_hab,banque,nb_hab);
+        test_temps(map,tab_hab,banque,nb_hab,*nb_elec,tab_elec,nbChateau,tabEau);
         afficher_matrice_cases_vertes(buffer2);
         afficher_map(buffer2,map);
         affichagecasefree(buffer2,map,15);
@@ -468,8 +473,18 @@ void centrale(BITMAP* page, int map[35][45],time_t tempsdepart, int* banque, t_h
             map[y-2][x+5] =17;
             map[y-3][x+5] =17;
             *banque-=100000;
+
+            tab_elec[*nb_elec].x=x;
+            tab_elec[*nb_elec].y=y-3;
+            tab_elec[*nb_elec].capaciteRestante=5000;
+            tab_elec[*nb_elec].num=+1;
+            *nb_elec+=1;
+            printf("num centrale : %d", tab_elec[*nb_elec].num);
+            distribution(*nb_elec,nb_hab,tab_elec,tab_hab);
+
             afficher_matrice_cases_vertes(buffer2);
             afficher_map(buffer2,map);
+
         }
         if(mouse_b&2)
             clic=1;

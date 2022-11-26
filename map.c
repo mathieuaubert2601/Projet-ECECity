@@ -53,7 +53,7 @@ void afficher_map(BITMAP* page, int map[35][45])
             }
             else if(map[i][j] == 3)
             {
-                blit(terrain_vague,page,0,0,j*20,i*20,terrain_vague->w,terrain_vague->h);
+                masked_blit(terrain_vague,page,0,0,j*20,i*20,terrain_vague->w,terrain_vague->h);
             }
                 //Affichage cabane
             else if(map[i][j] == 4)
@@ -104,12 +104,12 @@ void afficher_map(BITMAP* page, int map[35][45])
                 //Afficher chateau d'eau
             else if(map[i][j] == 14)
             {
-                blit(chateauEau,page,0,0,j*20,i*20,chateauEau->w,chateauEau->h);
+                masked_blit(chateauEau,page,0,0,j*20,i*20,chateauEau->w,chateauEau->h);
             }
                 //Afficher centrale
             else if(map[i][j] == 15)
             {
-                blit(centrale,page,0,0,j*20,i*20,centrale->w,centrale->h);
+                masked_blit(centrale,page,0,0,j*20,i*20,centrale->w,centrale->h);
             }
                 //Case libre pour affichage chateau d'eau
             else if(map[i][j] == 16)

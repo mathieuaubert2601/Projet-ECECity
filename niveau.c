@@ -1,14 +1,12 @@
-//
-// Created by Lea on 20/11/2022.
-//
 #include "header.h"
 
 
-void afficher_niveau(BITMAP* page, int map[35][45],int test)
+void afficher_niveau(BITMAP* page, int map[35][45],int test,t_habitation maison[50])
 {
     BITMAP* tuile = load_bitmap("Niveau/tuile_blanche.bmp",NULL);
     BITMAP* maisonGrise = load_bitmap("Niveau/maisonGrise.bmp",NULL);
     BITMAP* maisonBleue = load_bitmap("Niveau/maisonBleue.bmp",NULL);
+    BITMAP* maisonJaune = load_bitmap("Niveau/maisonJaune.bmp",NULL);
     BITMAP* canalisations = load_bitmap("Niveau/canalisation.bmp",NULL);
     BITMAP* lignes = load_bitmap("Niveau/lignes.bmp",NULL);
     BITMAP* chateauBleu = load_bitmap("Niveau/ChateauBleu.bmp", NULL);
@@ -18,7 +16,6 @@ void afficher_niveau(BITMAP* page, int map[35][45],int test)
 
     for (int i = 0; i<35; i++) {
         for (int j = 0; j < 45; j++) {
-            //Affichage cases vertes
             if (map[i][j] == 0) {
                 blit(tuile, page, 0, 0, j*20, i*20, 20, 20);
             }
@@ -28,9 +25,17 @@ void afficher_niveau(BITMAP* page, int map[35][45],int test)
             if ((map[i][j] == 1 || map[i][j] == 2) && test==2) {
                 blit(lignes, page, 0, 0, j*20, i*20, 20, 20);
             }
-            if (map[i][j] == 3 || map[i][j] == 4 || map[i][j] == 5 || map[i][j] == 6 || map[i][j] == 7)
+            if (map[i][j]==3 && test==2)
+            {
+                blit(maisonGrise,page,0,0,j*20,i*20,60,60);
+            }
+            if (test==1)
             {
                 blit(maisonBleue,page,0,0,j*20,i*20,60,60);
+            }
+            if ((map[i][j] == 4 || map[i][j] == 5 || map[i][j] == 6 || map[i][j] == 7) && test==2)
+            {
+                blit(maisonJaune,page,0,0,j*20,i*20,60,60);
             }
             if (map[i][j] == 14 && test==1) {
                 blit(chateauBleu, page, 0, 0, j*20, i*20, chateauBleu->w, chateauBleu->h);
@@ -51,8 +56,45 @@ void afficher_niveau(BITMAP* page, int map[35][45],int test)
     show_mouse(page);
 }
 
+void afficher_niveau2(BITMAP* page, int map[35][45],t_habitation maison[50], int nb_maison, t_centrales tab_elec[20], int nb_centrales)
+{
+    BITMAP* tuile = load_bitmap("Niveau/tuile_blanche.bmp",NULL);
+    BITMAP* maisonGrise = load_bitmap("Niveau/maisonGrise.bmp",NULL);
+    BITMAP* maisonBleue = load_bitmap("Niveau/maisonBleue.bmp",NULL);
+    BITMAP* maisonJaune = load_bitmap("Niveau/maisonJaune.bmp",NULL);
+    BITMAP* canalisations = load_bitmap("Niveau/canalisation.bmp",NULL);
+    BITMAP* lignes = load_bitmap("Niveau/lignes.bmp",NULL);
+    BITMAP* chateauBleu = load_bitmap("Niveau/ChateauBleu.bmp", NULL);
+    BITMAP* chateauGris = load_bitmap("Niveau/chateauGris.bmp", NULL);
+    BITMAP* centraleJaune = load_bitmap("Niveau/CentraleJaune.bmp", NULL);
+    BITMAP* centraleGrise = load_bitmap("Niveau/CentraleGrise.bmp", NULL);
 
-void canalisations (BITMAP* page, int map[35][45])
+    for (int i = 0; i<35; i++) {
+        for (int j = 0; j < 45; j++) {
+            if (map[i][j] == 0) {
+                blit(tuile, page, 0, 0, j*20, i*20, 20, 20);
+            }
+            if (map[i][j] == 1 || map[i][j] == 2) {
+                blit(lignes, page, 0, 0, j*20, i*20, 20, 20);
+            }
+            for(int k=0; k<nb_maison; k++)
+            {
+                if(maison[k].elec==1)
+                    blit(maisonJaune,page,0,0,maison[k].x,maison[k].y,maisonJaune->w,maisonJaune->h);
+                else
+                    blit(maisonGrise,page,0,0,maison[k].x,maison[k].y,maisonGrise->w,maisonGrise->h);
+            }
+            for(int l=0; l<nb_centrales; l++)
+            {
+                blit(centraleJaune,page,0,0,tab_elec[l].y,tab_elec[l].x,centraleJaune->w,centraleJaune->h);
+            }
+        }
+    }
+
+    show_mouse(page);
+}
+
+void canalisations (BITMAP* page, int map[35][45],t_habitation maison[50])
 {
     BITMAP* boutonQuitter = load_bitmap("Constructions/boutonQuitter.bmp", NULL);
     BITMAP* boutonQuitterInv = load_bitmap("Constructions/boutonQuitterInv.bmp", NULL);
@@ -65,7 +107,7 @@ void canalisations (BITMAP* page, int map[35][45])
     {
         clear_bitmap(page);
         interfaceNiveau(page,type);
-        afficher_niveau(page,map,test);
+        afficher_niveau(page,map,test,maison);
         blit(page,screen,0,0,0,0,1024,768);
 
         if((((mouse_x>=(970)&& mouse_x<=(970+30))&& ((mouse_y)>=(25)&& mouse_y<=(25+30)))&&(mouse_b&1))||(mouse_b &2)) {
@@ -76,7 +118,7 @@ void canalisations (BITMAP* page, int map[35][45])
 
 }
 
-void lignes(BITMAP* page, int map[35][45])
+void lignes(BITMAP* page, int map[35][45],t_habitation maison[50], int nb_maison, t_centrales tab_elec[20], int nb_centrales)
 {
     BITMAP* boutonQuitter = load_bitmap("Constructions/boutonQuitter.bmp", NULL);
     BITMAP* boutonQuitterInv = load_bitmap("Constructions/boutonQuitterInv.bmp", NULL);
@@ -89,7 +131,7 @@ void lignes(BITMAP* page, int map[35][45])
     {
         clear_bitmap(page);
         interfaceNiveau(page,type);
-        afficher_niveau(page,map,test);
+        afficher_niveau2(page,map,maison,nb_maison,tab_elec,nb_centrales);
         blit(page,screen,0,0,0,0,1024,768);
 
         if((((mouse_x>=(970)&& mouse_x<=(970+30))&& ((mouse_y)>=(25)&& mouse_y<=(25+30)))&&(mouse_b&1))||(mouse_b &2)) {

@@ -47,7 +47,7 @@ void afficherInterface(BITMAP* page,int map[35][45], time_t tempsdepart, int arg
     //Affichage des boutons pour les concentrations
     AffichageBouton(iconeRoute, iconeRouteInv, page, 0, 0, 920, 130, iconeRoute->w, iconeRoute->h);
     AffichageBouton(iconeMaison, iconeMaisonInv, page, 0,0, 920, 200, iconeMaison->w, iconeMaison->h);
-    AffichageBouton(iconeChateauEau, iconeChateauEauInv,page,0,0,920,270,iconeChateauEau->w,iconeChateauEau->h);
+    AffichageBouton(iconeChateauEau, iconeChateauEauInv,page,0,0,930,280,iconeChateauEau->w,iconeChateauEau->h);
     AffichageBouton(iconeCentrale, iconeCentraleInv, page, 0, 0, 920, 380,iconeCentrale->w,iconeCentrale->h);
 
     //Affichage des boutons
