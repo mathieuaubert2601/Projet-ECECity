@@ -22,7 +22,7 @@ typedef struct habitation
     int YRef;
     int quantiteeEau;
     int chateau_Eau_Affilie;
-    int chateauEauNCR[15];
+    int chateauEauNCR[15][2];
     int distance;
     int numero;
     int elec;
@@ -148,6 +148,7 @@ void lignes(BITMAP* page, int map[35][45],t_habitation maison[50], int nb_maison
 void afficher_niveau(BITMAP* page, int map[35][45],int test,t_habitation maison[50]);
 void afficher_niveau2(BITMAP* page, int map[35][45],t_habitation maison[50], int nb_maison, t_centrales tab_elec[20], int nb_centrales);
 
+time_t modificationTemps(time_t tempsAModifier,int ajouterEnlever,int nombreSecondes);
 /*typedef struct batiment
 {
     char nom[15];

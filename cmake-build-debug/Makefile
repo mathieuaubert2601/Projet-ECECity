@@ -419,6 +419,30 @@ map.c.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles\Projet_ECECity.dir\build.make CMakeFiles/Projet_ECECity.dir/map.c.s
 .PHONY : map.c.s
 
+modificationTemps.obj: modificationTemps.c.obj
+.PHONY : modificationTemps.obj
+
+# target to build an object file
+modificationTemps.c.obj:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\Projet_ECECity.dir\build.make CMakeFiles/Projet_ECECity.dir/modificationTemps.c.obj
+.PHONY : modificationTemps.c.obj
+
+modificationTemps.i: modificationTemps.c.i
+.PHONY : modificationTemps.i
+
+# target to preprocess a source file
+modificationTemps.c.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\Projet_ECECity.dir\build.make CMakeFiles/Projet_ECECity.dir/modificationTemps.c.i
+.PHONY : modificationTemps.c.i
+
+modificationTemps.s: modificationTemps.c.s
+.PHONY : modificationTemps.s
+
+# target to generate assembly for a file
+modificationTemps.c.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\Projet_ECECity.dir\build.make CMakeFiles/Projet_ECECity.dir/modificationTemps.c.s
+.PHONY : modificationTemps.c.s
+
 niveau.obj: niveau.c.obj
 .PHONY : niveau.obj
 
@@ -536,6 +560,9 @@ help:
 	@echo ... map.obj
 	@echo ... map.i
 	@echo ... map.s
+	@echo ... modificationTemps.obj
+	@echo ... modificationTemps.i
+	@echo ... modificationTemps.s
 	@echo ... niveau.obj
 	@echo ... niveau.i
 	@echo ... niveau.s

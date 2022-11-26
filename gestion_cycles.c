@@ -15,7 +15,7 @@ void test_temps(int map[35][45], t_habitation tab_hab[50], int* argent, int nb_h
     {
         int avant=0,apres=0;
         diff=difftime(tempsact,tab_hab[i].tempsCrea); //On calcule le temps depuis la création ou depuis la derniere evolution
-        if (diff>=15) //Si le temps est sup ou egal a 15
+        if (diff>=15 && nbchateau > 0 && nb_hab > 0) //Si le temps est sup ou egal a 15
         {
             x=tab_hab[i].x;
             y=tab_hab[i].y;
