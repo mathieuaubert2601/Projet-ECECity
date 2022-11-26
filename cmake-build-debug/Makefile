@@ -419,30 +419,6 @@ map.c.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles\Projet_ECECity.dir\build.make CMakeFiles/Projet_ECECity.dir/map.c.s
 .PHONY : map.c.s
 
-modificationTemps.obj: modificationTemps.c.obj
-.PHONY : modificationTemps.obj
-
-# target to build an object file
-modificationTemps.c.obj:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles\Projet_ECECity.dir\build.make CMakeFiles/Projet_ECECity.dir/modificationTemps.c.obj
-.PHONY : modificationTemps.c.obj
-
-modificationTemps.i: modificationTemps.c.i
-.PHONY : modificationTemps.i
-
-# target to preprocess a source file
-modificationTemps.c.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles\Projet_ECECity.dir\build.make CMakeFiles/Projet_ECECity.dir/modificationTemps.c.i
-.PHONY : modificationTemps.c.i
-
-modificationTemps.s: modificationTemps.c.s
-.PHONY : modificationTemps.s
-
-# target to generate assembly for a file
-modificationTemps.c.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles\Projet_ECECity.dir\build.make CMakeFiles/Projet_ECECity.dir/modificationTemps.c.s
-.PHONY : modificationTemps.c.s
-
 niveau.obj: niveau.c.obj
 .PHONY : niveau.obj
 
@@ -466,6 +442,30 @@ niveau.s: niveau.c.s
 niveau.c.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles\Projet_ECECity.dir\build.make CMakeFiles/Projet_ECECity.dir/niveau.c.s
 .PHONY : niveau.c.s
+
+pause.obj: pause.c.obj
+.PHONY : pause.obj
+
+# target to build an object file
+pause.c.obj:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\Projet_ECECity.dir\build.make CMakeFiles/Projet_ECECity.dir/pause.c.obj
+.PHONY : pause.c.obj
+
+pause.i: pause.c.i
+.PHONY : pause.i
+
+# target to preprocess a source file
+pause.c.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\Projet_ECECity.dir\build.make CMakeFiles/Projet_ECECity.dir/pause.c.i
+.PHONY : pause.c.i
+
+pause.s: pause.c.s
+.PHONY : pause.s
+
+# target to generate assembly for a file
+pause.c.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\Projet_ECECity.dir\build.make CMakeFiles/Projet_ECECity.dir/pause.c.s
+.PHONY : pause.c.s
 
 pompier.obj: pompier.c.obj
 .PHONY : pompier.obj
@@ -560,12 +560,12 @@ help:
 	@echo ... map.obj
 	@echo ... map.i
 	@echo ... map.s
-	@echo ... modificationTemps.obj
-	@echo ... modificationTemps.i
-	@echo ... modificationTemps.s
 	@echo ... niveau.obj
 	@echo ... niveau.i
 	@echo ... niveau.s
+	@echo ... pause.obj
+	@echo ... pause.i
+	@echo ... pause.s
 	@echo ... pompier.obj
 	@echo ... pompier.i
 	@echo ... pompier.s

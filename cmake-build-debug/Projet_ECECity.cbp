@@ -119,10 +119,10 @@
 		<Unit filename="C:/Users/maube/CLionProjects/Projet-ECECity/map.c">
 			<Option target="Projet_ECECity"/>
 		</Unit>
-		<Unit filename="C:/Users/maube/CLionProjects/Projet-ECECity/modificationTemps.c">
+		<Unit filename="C:/Users/maube/CLionProjects/Projet-ECECity/niveau.c">
 			<Option target="Projet_ECECity"/>
 		</Unit>
-		<Unit filename="C:/Users/maube/CLionProjects/Projet-ECECity/niveau.c">
+		<Unit filename="C:/Users/maube/CLionProjects/Projet-ECECity/pause.c">
 			<Option target="Projet_ECECity"/>
 		</Unit>
 		<Unit filename="C:/Users/maube/CLionProjects/Projet-ECECity/pompier.c">
