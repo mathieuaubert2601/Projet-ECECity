@@ -22,7 +22,7 @@ typedef struct habitation
     int YRef;
     int quantiteeEau;
     int chateau_Eau_Affilie;
-    int chateauEauNCR[15];
+    int chateauEauNCR[15][2];
     int distance;
     int numero;
     int elec;
