@@ -9,7 +9,6 @@ int main()
     install_sound(DIGI_AUTODETECT,MIDI_AUTODETECT,"A");
     time_t tempsdep = time(NULL);
 
-
     //Création et déclaration des bitmaps
     BITMAP* page=create_bitmap(1024,768);
     SAMPLE* musiqueFond = load_sample("musique/musique_fond.wav");

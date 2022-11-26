@@ -108,7 +108,8 @@ int** chercherCheminPlusCourtEau(int matriceMap[35][45],int nombreHabitation,t_h
     {
         for(int j = 0 ; j < 15 ; j++)
         {
-            tabHab[i].chateauEauNCR[j] = -1;
+            tabHab[i].chateauEauNCR[j][0]= -1;
+            tabHab[i].chateauEauNCR[j][1]= -1;
         }
     }
     for(int z = 0 ; z<nombreChateauEau ; z++)
@@ -272,29 +273,32 @@ int** chercherCheminPlusCourtEau(int matriceMap[35][45],int nombreHabitation,t_h
             testChateauEauNcr = 0;
             if(((tabHab[tabHabChatEau[i].numero].nb_habitants - tabHab[tabHabChatEau[i].numero].quantiteeEau) <= tabEau[tabHabChatEau[i].chateau_Eau_Affilie].capaciteRestante) && tabEau[tabHabChatEau[i].chateau_Eau_Affilie].capaciteRestante>0 )
             {
-                tabEau[tabHabChatEau[i].chateau_Eau_Affilie].capaciteRestante = tabEau[tabHabChatEau[i].chateau_Eau_Affilie].capaciteRestante - (tabHab[tabHabChatEau[i].numero].nb_habitants - tabHab[tabHabChatEau[i].numero].quantiteeEau);
-                tabHab[tabHabChatEau[i].numero].quantiteeEau = tabHab[tabHabChatEau[i].numero].nb_habitants;
                 for(int h = 0 ; h<15 ; h++)
                 {
-                    if(tabHab[tabHabChatEau[i].numero].chateauEauNCR[h] == -1 && testChateauEauNcr == 0)
+                    if(tabHab[tabHabChatEau[i].numero].chateauEauNCR[h][0] == -1 && testChateauEauNcr == 0)
                     {
-                        tabHab[tabHabChatEau[i].numero].chateauEauNCR[h] = tabHabChatEau[i].chateau_Eau_Affilie;
+                        tabHab[tabHabChatEau[i].numero].chateauEauNCR[h][0] = tabHabChatEau[i].chateau_Eau_Affilie;
+                        tabHab[tabHabChatEau[i].numero].chateauEauNCR[h][1] = tabHab[tabHabChatEau[i].numero].nb_habitants - tabHab[tabHabChatEau[i].numero].quantiteeEau;
                         testChateauEauNcr =  1;
                     }
                 }
+                tabEau[tabHabChatEau[i].chateau_Eau_Affilie].capaciteRestante = tabEau[tabHabChatEau[i].chateau_Eau_Affilie].capaciteRestante - (tabHab[tabHabChatEau[i].numero].nb_habitants - tabHab[tabHabChatEau[i].numero].quantiteeEau);
+                tabHab[tabHabChatEau[i].numero].quantiteeEau = tabHab[tabHabChatEau[i].numero].nb_habitants;
             }
             else
             {
-                tabEau[tabHabChatEau[i].chateau_Eau_Affilie].capaciteRestante = 0;
-                tabHab[tabHabChatEau[i].numero].quantiteeEau = tabHab[tabHabChatEau[i].numero].quantiteeEau + tabEau[tabHabChatEau[i].chateau_Eau_Affilie].capaciteRestante;
                 for(int h = 0 ; h<15 ; h++)
                 {
-                    if(tabHab[tabHabChatEau[i].numero].chateauEauNCR[h] == -1 && testChateauEauNcr == 0)
+                    if(tabHab[tabHabChatEau[i].numero].chateauEauNCR[h][0] == -1 && testChateauEauNcr == 0)
                     {
-                        tabHab[tabHabChatEau[i].numero].chateauEauNCR[h] = tabHabChatEau[i].chateau_Eau_Affilie;
+                        tabHab[tabHabChatEau[i].numero].chateauEauNCR[h][0] = tabHabChatEau[i].chateau_Eau_Affilie;
+                        tabHab[tabHabChatEau[i].numero].chateauEauNCR[h][1] = tabEau[tabHabChatEau[i].chateau_Eau_Affilie].capaciteRestante;
                         testChateauEauNcr =  1;
                     }
                 }
+                tabEau[tabHabChatEau[i].chateau_Eau_Affilie].capaciteRestante = 0;
+                tabHab[tabHabChatEau[i].numero].quantiteeEau = tabHab[tabHabChatEau[i].numero].quantiteeEau + tabEau[tabHabChatEau[i].chateau_Eau_Affilie].capaciteRestante;
+
             }
 
             calculY = tabHabChatEau[i].YRef;
@@ -338,8 +342,13 @@ int** chercherCheminPlusCourtEau(int matriceMap[35][45],int nombreHabitation,t_h
 
     for(int i= 0 ; i<nombreHabitation ; i++)
     {
-        printf("\nNombre Habitant : %d Eau recu : %d",tabHab[i].nb_habitants,tabHab[i].quantiteeEau);
+        for(int j=0 ;j<15 ;j++)
+        {
+            printf("\nNombre Habitant : %d Eau recu : %d Chateau Eau : %d QUE : %d",tabHab[i].nb_habitants,tabHab[i].quantiteeEau,tabHab[i].chateauEauNCR[j][0],tabHab[i].chateauEauNCR[j][1]);
+        }
+        printf("\n\n");
     }
+
 
     return matriceEau;
 }
