@@ -5,7 +5,7 @@
 
 #include "header.h"
 ///Test si evolution ou regression///
-void test_temps(int map[35][45], t_habitation tab_hab[50], int* argent, int nb_hab, int nb_elec, t_centrales tab_elec[20])
+void test_temps(int map[35][45], t_habitation tab_hab[50], int* argent, int nb_hab, int nb_elec, t_centrales tab_elec[20],int nbchateau,t_chateauEau* tabEau)
 {
     time_t tempsact = time(NULL);//On récupere le temps actuel
     unsigned long diff;
@@ -17,10 +17,11 @@ void test_temps(int map[35][45], t_habitation tab_hab[50], int* argent, int nb_h
         diff=difftime(tempsact,tab_hab[i].tempsCrea); //On calcule le temps depuis la création ou depuis la derniere evolution
         if (diff>=15) //Si le temps est sup ou egal a 15
         {
+            chercherCheminPlusCourtEau(map,nb_hab,tab_hab,tabEau,nbchateau);
             x=tab_hab[i].x;
             y=tab_hab[i].y;
             tab_hab[i].tempsCrea=time(NULL);  //On remet le temps actuel comme nouveau temps pour l'habitation
-            if(tab_hab[i].elec==1) //Si la maison est alimentée, on augmente de niveau
+            if(tab_hab[i].elec==1 && tab_hab[i].quantiteeEau == tab_hab[i].nb_habitants) //Si la maison est alimentée, on augmente de niveau
             {
                 if(tab_hab[i].niveau<4)
                 {
@@ -36,7 +37,8 @@ void test_temps(int map[35][45], t_habitation tab_hab[50], int* argent, int nb_h
                 if(tab_hab[i].niveau==4)
                     tab_hab[i].nb_habitants=1000;
                 apres=distribution(nb_elec,nb_hab,tab_elec,tab_hab); //On lance une distribution electrique pour réactualiser les valeurs
-                if (tab_hab[i].elec!=1) //Si apres amelioration, la maison n'est plus alimentée on la remet comme elle était, car cela signifie qu'on ne dispose pas d'assez de ressources pour evoluer
+                chercherCheminPlusCourtEau(map,nb_hab,tab_hab,tabEau,nbchateau);
+                if (tab_hab[i].elec!=1 || tab_hab[i].quantiteeEau < tab_hab[i].nb_habitants) //Si apres amelioration, la maison n'est plus alimentée on la remet comme elle était, car cela signifie qu'on ne dispose pas d'assez de ressources pour evoluer
                 {
                     if(tab_hab[i].niveau>0)
                     {
@@ -55,7 +57,7 @@ void test_temps(int map[35][45], t_habitation tab_hab[50], int* argent, int nb_h
                         tab_hab[i].nb_habitants=1000;
                 }
             }
-            if (tab_hab[i].elec==0)//Si la maison n'est pas alimentée,on régresse
+            else if(tab_hab[i].elec==0 || tab_hab[i].quantiteeEau < tab_hab[i].nb_habitants)//Si la maison n'est pas alimentée,on régresse
             {
                 if(tab_hab[i].niveau>0)
                 {
@@ -74,6 +76,7 @@ void test_temps(int map[35][45], t_habitation tab_hab[50], int* argent, int nb_h
                     tab_hab[i].nb_habitants=1000;
             }
             distribution(nb_elec,nb_hab,tab_elec,tab_hab);// On réactualise la distribution
+            chercherCheminPlusCourtEau(map,nb_hab,tab_hab,tabEau,nbchateau);
             *argent+= impots*tab_hab[i].nb_habitants;// on paie les impots
         }
     }

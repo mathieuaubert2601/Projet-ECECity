@@ -336,5 +336,10 @@ int** chercherCheminPlusCourtEau(int matriceMap[35][45],int nombreHabitation,t_h
     free(tableauCoordonnee);
     free(tabHabChatEau);
 
+    for(int i= 0 ; i<nombreHabitation ; i++)
+    {
+        printf("\nNombre Habitant : %d Eau recu : %d",tabHab[i].nb_habitants,tabHab[i].quantiteeEau);
+    }
+
     return matriceEau;
 }
