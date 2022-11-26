@@ -1103,7 +1103,7 @@ CMakeFiles/Projet_ECECity.dir/map.c.obj: ../map.c \
   C:/Program\ Files/CodeBlocks/MinGW/x86_64-w64-mingw32/include/sec_api/stdio_s.h \
   C:/Program\ Files/CodeBlocks/MinGW/x86_64-w64-mingw32/include/_mingw_print_pop.h
 
-CMakeFiles/Projet_ECECity.dir/modificationTemps.c.obj: ../modificationTemps.c \
+CMakeFiles/Projet_ECECity.dir/niveau.c.obj: ../niveau.c \
   ../header.h \
   C:/Program\ Files/CodeBlocks/MinGW/x86_64-w64-mingw32/include/allegro.h \
   C:/Program\ Files/CodeBlocks/MinGW/x86_64-w64-mingw32/include/allegro/base.h \
@@ -1203,7 +1203,7 @@ CMakeFiles/Projet_ECECity.dir/modificationTemps.c.obj: ../modificationTemps.c \
   C:/Program\ Files/CodeBlocks/MinGW/x86_64-w64-mingw32/include/sec_api/stdio_s.h \
   C:/Program\ Files/CodeBlocks/MinGW/x86_64-w64-mingw32/include/_mingw_print_pop.h
 
-CMakeFiles/Projet_ECECity.dir/niveau.c.obj: ../niveau.c \
+CMakeFiles/Projet_ECECity.dir/pause.c.obj: ../pause.c \
   ../header.h \
   C:/Program\ Files/CodeBlocks/MinGW/x86_64-w64-mingw32/include/allegro.h \
   C:/Program\ Files/CodeBlocks/MinGW/x86_64-w64-mingw32/include/allegro/base.h \
@@ -1702,8 +1702,8 @@ C:/Program\ Files/CodeBlocks/MinGW/x86_64-w64-mingw32/include/sec_api/stdio_s.h:
 
 ../map.c:
 
-../modificationTemps.c:
-
 ../niveau.c:
+
+../pause.c:
 
 ../pompier.c:
