@@ -104,6 +104,13 @@ int** chercherCheminPlusCourtEau(int matriceMap[35][45],int nombreHabitation,t_h
     //Initialisation de la file
     fileBfs.queueFile = fileBfs.tete = NULL;
 
+    for(int i = 0 ; i<nombreHabitation ;i++)
+    {
+        for(int j = 0 ; j < 15 ; j++)
+        {
+            tabHab[i].chateauEauNCR[j] = -1;
+        }
+    }
     for(int z = 0 ; z<nombreChateauEau ; z++)
     {
         tableauPred[z] = (t_kase**)malloc(35 * sizeof(t_kase*));
