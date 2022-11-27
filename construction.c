@@ -72,9 +72,9 @@ void route (BITMAP* page, int map[35][45],time_t tempsdepart, int* banque, t_hab
                             if(map[y + 1][x] == 1 || map[y + 1][x] == 2)
                             {
                                 map[y][x] = 1;
-                            *banque -= 10;
-                            afficher_matrice_cases_vertes(buffer2);
-                            afficher_map(buffer2, map);
+                                *banque -= 10;
+                                afficher_matrice_cases_vertes(buffer2);
+                                afficher_map(buffer2, map);
 
                             }
                         }
@@ -83,9 +83,9 @@ void route (BITMAP* page, int map[35][45],time_t tempsdepart, int* banque, t_hab
                             if(map[y - 1][x] == 1 || map[y - 1][x] == 2)
                             {
                                 map[y][x] = 1;
-                            *banque -= 10;
-                            afficher_matrice_cases_vertes(buffer2);
-                            afficher_map(buffer2, map);
+                                *banque -= 10;
+                                afficher_matrice_cases_vertes(buffer2);
+                                afficher_map(buffer2, map);
 
                             }
                         }
@@ -94,9 +94,9 @@ void route (BITMAP* page, int map[35][45],time_t tempsdepart, int* banque, t_hab
                             if(map[y][x+1] == 1 || map[y][x+1] == 2)
                             {
                                 map[y][x] = 1;
-                            *banque -= 10;
-                            afficher_matrice_cases_vertes(buffer2);
-                            afficher_map(buffer2, map);
+                                *banque -= 10;
+                                afficher_matrice_cases_vertes(buffer2);
+                                afficher_map(buffer2, map);
 
                             }
                         }
@@ -105,9 +105,9 @@ void route (BITMAP* page, int map[35][45],time_t tempsdepart, int* banque, t_hab
                             if(map[y][x-1] == 1 || map[y][x-1] == 2)
                             {
                                 map[y][x] = 1;
-                            *banque -= 10;
-                            afficher_matrice_cases_vertes(buffer2);
-                            afficher_map(buffer2, map);
+                                *banque -= 10;
+                                afficher_matrice_cases_vertes(buffer2);
+                                afficher_map(buffer2, map);
 
                             }
                         }

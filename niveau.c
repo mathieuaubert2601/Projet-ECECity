@@ -8,6 +8,8 @@ void afficher_niveau(BITMAP* page, int map[35][45],t_habitation habitation[50],i
     BITMAP* maisonGrise = load_bitmap("Niveau/maisonGrise.bmp",NULL);
     BITMAP* maisonBleue = load_bitmap("Niveau/maisonBleue.bmp",NULL);
     BITMAP* canalisations = load_bitmap("Niveau/canalisation.bmp",NULL);
+    BITMAP* canalisationGrise = load_bitmap("Niveau/canalisationGrise.bmp",NULL);
+    BITMAP* canalisationBleue = load_bitmap("Niveau/canalisationBleue.bmp",NULL);
     BITMAP* chateauBleu = load_bitmap("Niveau/ChateauBleu.bmp", NULL);
     BITMAP* centraleGrise = load_bitmap("Niveau/CentraleGrise.bmp", NULL);
     BITMAP* infos = load_bitmap("Interface/infos.bmp",NULL);
@@ -18,16 +20,20 @@ void afficher_niveau(BITMAP* page, int map[35][45],t_habitation habitation[50],i
     for (int i = 0; i<35; i++) {
         for (int j = 0; j < 45; j++) {
             //tuile grise du fond
-            if (matriceEau[i][j] == 0) {
+            if (map[i][j] == 0) {
                 blit(tuile, page, 0, 0, j*20, i*20, 20, 20);
             }
             //route alimentés => canalisations
             if (matriceEau[i][j]==1) {
                 blit(canalisations, page, 0, 0, j*20, i*20, 20, 20);
             }
+            if (matriceEau[i][j]==0 && (map[i][j]==1 || map[i][j]==2)) {
+                blit(canalisationGrise, page, 0, 0, j*20, i*20, 20, 20);
+            }
             //chateauEau
             for (int k=0; k<nb_chateauEau; k++) {
                 blit(chateauBleu, page, 0, 0, tab_eau[k].x * 20, tab_eau[k].y * 20, chateauBleu->w, chateauBleu->h);
+                blit(canalisationBleue, page, 0, 0, tab_eau[k].XRef * 20, tab_eau[k].YRef * 20, canalisationBleue->w, canalisationBleue->h);
                 if ((mouse_x >= (tab_eau[k].x * 20) && mouse_x <= (tab_eau[k].x * 20 + 80)) && (mouse_y) >= (tab_eau[k].y*20) && mouse_y <= (tab_eau[k].y*20 + 120))
                 {
                     blit(infos,page,0,0,(tab_eau[k].x * 20+10),(tab_eau[k].y * 20+10),infos->w,infos->h);
@@ -46,6 +52,7 @@ void afficher_niveau(BITMAP* page, int map[35][45],t_habitation habitation[50],i
                 //maison bleue, alimentées
                 if (habitation[m].quantiteeEau == habitation[m].nb_habitants && habitation[m].niveau!=0) {
                     blit(maisonBleue, page, 0, 0, habitation[m].x * 20, habitation[m].y * 20, 60, 60);
+                    blit(canalisationBleue, page, 0, 0, habitation[m].XRef * 20, habitation[m].YRef * 20, 20, 20);
                     if ((mouse_x >= (habitation[m].x * 20) && mouse_x <= (habitation[m].x * 20 + 60)) && (mouse_y) >= (habitation[m].y*20) && mouse_y <= (habitation[m].y*20 + 60))
                     {
                         stretch_blit(infos,page,0,0,infos->w,infos->h,(habitation[m].x * 20+10),(habitation[m].y * 20+10),infos->w+40,infos->h);
@@ -147,7 +154,7 @@ void afficher_niveau2(BITMAP* page, int map[35][45],t_habitation maison[50], int
                     if ((mouse_x >= (maison[k].x * 20) && mouse_x <= (maison[k].x * 20 + 80)) && (mouse_y) >= (maison[k].y*20) && mouse_y <= (maison[k].y*20 + 120))
                     {
                         blit(infos,page,0,0,(maison[k].x * 20+10),(maison[k].y * 20+10),infos->w,infos->h);
-                        textprintf_ex(page,font,maison[k].x * 20+20,maison[k].y * 20+20,makecol(0,122,122),-1,"Maison %d:",maison[k].numero+1);
+                        textprintf_ex(page,font,maison[k].x * 20+20,maison[k].y * 20+20,makecol(0,122,122),-1,"Maison :");
                         textprintf_ex(page,font,maison[k].x * 20+20,maison[k].y * 20+35,makecol(0,122,122),-1,"%d/%d",maison[k].nb_habitants,maison[k].nb_habitants);
                     }
                 }
