@@ -156,6 +156,24 @@ void route (BITMAP* page, int map[35][45],time_t tempsdepart, int* banque, t_hab
                 if (((mouse_x >= (0) && mouse_x <= (900)) && ((mouse_y) >= (0) && mouse_y <= (700))) && (mouse_b & 1)) {
                     x = mouse_x / 20;
                     y = mouse_y / 20;
+
+                    //On blinde les bords de map
+                    if(x > 44)
+                    {
+                        x =44;
+                    }
+                    if(x<0)
+                    {
+                        x =0;
+                    }
+                    if(y > 34)
+                    {
+                        y=34;
+                    }
+                    if(y<0)
+                    {
+                        y = 0;
+                    }
                     affichagecasefree(page, map, 2);
                     if ((map[y + 1][x] == 1 || map[y - 1][x] == 1 || map[y][x + 1] == 1 || map[y][x - 1] == 1)|| (map[y + 1][x] == 2 || map[y - 1][x] == 2 || map[y][x + 1] == 2 || map[y][x - 1] == 2)){
                         if (*banque > 10 && map[y][x] == 0) {
