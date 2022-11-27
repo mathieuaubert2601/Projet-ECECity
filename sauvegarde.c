@@ -340,7 +340,6 @@ void sauvegardeChrono(time_t tempsdepart,unsigned long tempsPause, unsigned long
 
     //Ouverture du fichier
     FILE* fichier = fopen("Sauvegarde/fichierTempsChrono.bin","wb+");
-    printf("%d %d \n",tempsPause,tempsChrono);
 
     //test ouverture fichier
     if(fichier == NULL)
@@ -380,13 +379,7 @@ int chargerTableauHabitation(t_habitation tableauHabitation[], char* nomFichier)
     for(int i = 0 ; i<nombreBatiment ; i++)
     {
         fread(&tableauHabitation[i],sizeof(t_habitation),1,fichier);
-        //printf("%d %d %d %d\n",i,tableauHabitation[i].nb_habitants,tableauHabitation[i].niveau,tableauHabitation[i].numero);
     }
-
-    /*for(int i=0 ; i<nombreBatiment ; i++)
-    {
-        printf("%d %d %d %d\n",i,tableauHabitation[i].nb_habitants,tableauHabitation[i].niveau,tableauHabitation[i].numero);
-    }*/
 
     //Fermeture du fichier
     fclose(fichier);
@@ -506,7 +499,6 @@ void chargementTempsChrono(unsigned long* tempsChrono,unsigned long* tempsPause)
     }
 
     fread(&diff,sizeof(unsigned long),1,fichier);
-    //fread(tempsPause,sizeof(unsigned long),1,fichier);
     fread(&tempsChronoFichier,sizeof(unsigned long),1,fichier);
 
     *tempsChrono = diff;
