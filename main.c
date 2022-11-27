@@ -56,38 +56,42 @@ int main()
             //tempsdep= modificationTemps(tempsdep,0,tempsPause);
             tempsdep= modificationTemps(tempsdep,1,tempsChrono);
 
-            if(choixMenu == 1)
+            if(choixMenu==2)
             {
+
+                if(testSauvegarde())
+                {
+                    chargementTempsChrono(&tempsChrono,&tempsPause);
+                    tempsPause=0;
+                    banque = chargementArgent();
+                    lireFichierMap(map,"Sauvegarde/fichierCarte.txt");
+                    nb_hab = chargerTableauHabitation(tab_hab,"Sauvegarde/tableauHabitation.bin");
+                    nb_centrales = chargerTableauCentrale(tab_elec,"Sauvegarde/tableauCentrale.bin");
+                    nb_chateau = chargerTableauChateauEau(tab_eau,"Sauvegarde/tableauChateauEau.bin");
+                    chargementTempsCycle(nb_hab,tab_hab,tempsPause,tempsChrono);
+                    distribution(nb_centrales,nb_hab,tab_elec,tab_hab);
+                    if(nb_chateau > 0 && nb_hab >0)
+                        chercherCheminPlusCourtEau(map,nb_hab,tab_hab,tab_eau,nb_chateau);
+                    time_t tempsdep = time(NULL);
+                    tempsdep= modificationTemps(tempsdep,0,tempsPause);
+                    tempsdep= modificationTemps(tempsdep,1,tempsChrono);
+                    sortie = 0;
+                }
+                else
+                {
+                    sortie = 1;
+                }
+            }
+            if(choixMenu==1)
+            {
+                sortie = 0;
+                creer_map(page,map);
                 banque = banqueDep;
                 nb_hab=0;
                 nb_chateau=0;
                 nb_centrales=0;
                 play_musique=0;
                 pause=0;
-            }
-            if(choixMenu==2)
-            {
-
-                chargementTempsChrono(&tempsChrono,&tempsPause);
-                tempsPause=0;
-                banque = chargementArgent();
-                lireFichierMap(map,"Sauvegarde/fichierCarte.txt");
-                nb_hab = chargerTableauHabitation(tab_hab,"Sauvegarde/tableauHabitation.bin");
-                nb_centrales = chargerTableauCentrale(tab_elec,"Sauvegarde/tableauCentrale.bin");
-                nb_chateau = chargerTableauChateauEau(tab_eau,"Sauvegarde/tableauChateauEau.bin");
-                chargementTempsCycle(nb_hab,tab_hab,tempsPause,tempsChrono);
-                distribution(nb_centrales,nb_hab,tab_elec,tab_hab);
-                if(nb_chateau > 0 && nb_hab >0)
-                    chercherCheminPlusCourtEau(map,nb_hab,tab_hab,tab_eau,nb_chateau);
-                sortie = 0;
-                time_t tempsdep = time(NULL);
-                tempsdep= modificationTemps(tempsdep,0,tempsPause);
-                tempsdep= modificationTemps(tempsdep,1,tempsChrono);
-            }
-            if(choixMenu==1)
-            {
-                sortie = 0;
-                creer_map(page,map);
                 //map[20][1]=1;
             }
             while(sortie==0)
