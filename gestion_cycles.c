@@ -20,12 +20,12 @@ void test_temps(int map[35][45], t_habitation tab_hab[50], int* argent, int nb_h
         diff = difftime(tempsact,
                         tab_hab[i].tempsCrea); //On calcule le temps depuis la création ou depuis la derniere evolution
         if (pause == 0) {
-            if (diff >= 15 && nb_hab > 0 ) //Si le temps est sup ou egal a 15
-            {
-                x = tab_hab[i].x;
-                y = tab_hab[i].y;
-                tab_hab[i].tempsCrea = tempsact;  //On remet le temps actuel comme nouveau temps pour l'habitation
-                if(mode==1) {         //Mode communiste
+            if (mode == 1) { //mode communiste
+                if (diff >= 15 && nb_hab > 0 && nbchateau > 0) //Si le temps est sup ou egal a 15
+                {
+                    x = tab_hab[i].x;
+                    y = tab_hab[i].y;
+                    tab_hab[i].tempsCrea = tempsact;  //On remet le temps actuel comme nouveau temps pour l'habitation
                     if (tab_hab[i].elec == 1 && tab_hab[i].quantiteeEau ==
                                                 tab_hab[i].nb_habitants) //Si la maison est alimentée, on augmente de niveau
                     {
@@ -80,8 +80,17 @@ void test_temps(int map[35][45], t_habitation tab_hab[50], int* argent, int nb_h
                         if (tab_hab[i].niveau == 4)
                             tab_hab[i].nb_habitants = 1000;
                     }
+
+                    distribution(nb_elec, nb_hab, tab_elec, tab_hab);// On réactualise la distribution
+                    chercherCheminPlusCourtEau(map, nb_hab, tab_hab, tabEau, nbchateau);
+                    *argent += impots * tab_hab[i].nb_habitants;// on paie les impots
                 }
-                if(mode==2){            //Mode capitaliste
+            }
+            if (mode == 2) { //mode communiste
+                if (diff >= 15 && nb_hab > 0){
+                    x = tab_hab[i].x;
+                    y = tab_hab[i].y;
+                    tab_hab[i].tempsCrea = tempsact;  //On remet le temps actuel comme nouveau temps pour l'habitation
                     if (tab_hab[i].niveau < 4) {
                         tab_hab[i].niveau++;
                         map[y][x]++;
@@ -94,11 +103,13 @@ void test_temps(int map[35][45], t_habitation tab_hab[50], int* argent, int nb_h
                         tab_hab[i].nb_habitants = 100;
                     if (tab_hab[i].niveau == 4)
                         tab_hab[i].nb_habitants = 1000;
+
+                    distribution(nb_elec, nb_hab, tab_elec, tab_hab);// On réactualise la distribution
+                    chercherCheminPlusCourtEau(map, nb_hab, tab_hab, tabEau, nbchateau);
+                    *argent += impots * tab_hab[i].nb_habitants;// on paie les impots
                 }
-                distribution(nb_elec, nb_hab, tab_elec, tab_hab);// On réactualise la distribution
-                chercherCheminPlusCourtEau(map, nb_hab, tab_hab, tabEau, nbchateau);
-                *argent += impots * tab_hab[i].nb_habitants;// on paie les impots
             }
+
         }
     }
 }

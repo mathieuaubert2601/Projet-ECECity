@@ -127,12 +127,12 @@ int choixModeJeu(BITMAP* bmpAffichage)
         if(((mouse_x>=(340)&& mouse_x<=(340+330))&& (mouse_y)>=(250)&& mouse_y<=(250 + 95))&&(mouse_b & 1))
         {
             rest(100);
-            return 1;
+            return 2;
         }
         if(((mouse_x>=(340)&& mouse_x<=(340+330))&& (mouse_y)>=(370)&& mouse_y<=(370 + 95))&&(mouse_b & 1))
         {
             rest(100);
-            return 2;
+            return 1;
         }
     }
 }

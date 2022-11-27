@@ -24,7 +24,7 @@ int main()
     int nb_centrales=0;
     int play_musique=0;
     int pause=0;
-    int mode=1;
+    int mode=0;
     int** matriceEau;
     //t_habitation* tab_hab = NULL;
     //tab_hab=(t_habitation*)malloc(nb_hab*sizeof (t_habitation));
@@ -95,7 +95,6 @@ int main()
                 nb_hab=0;
                 nb_chateau=0;
                 nb_centrales=0;
-                play_musique=0;
                 pause=0;
 
             }
@@ -153,7 +152,7 @@ int main()
                 }
                 if (((mouse_x >= (970) && mouse_x <= (970 + 40)) && (mouse_y) >= (25) && mouse_y <= (25 + 40)) &&
                     (mouse_b & 1)) {
-                    //stop_sample(ambiance);
+                    //stop_sample(musiqueFond);
                     sortie = 1;
                 }
                 if(((mouse_x>=(920)&& mouse_x<=(920+50))&& ((mouse_y)>=(550)&& mouse_y<=(550+50)))&&(mouse_b &1))
