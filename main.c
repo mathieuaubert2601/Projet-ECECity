@@ -68,7 +68,8 @@ int main()
                 nb_chateau = chargerTableauChateauEau(tab_eau,"Sauvegarde/tableauChateauEau.bin");
                 chargementTempsCycle(nb_hab,tab_hab,tempsPause,tempsChrono);
                 distribution(nb_centrales,nb_hab,tab_elec,tab_hab);
-                chercherCheminPlusCourtEau(map,nb_hab,tab_hab,tab_eau,nb_chateau);
+                if(nb_chateau > 0 && nb_hab >0)
+                    chercherCheminPlusCourtEau(map,nb_hab,tab_hab,tab_eau,nb_chateau);
                 sortie = 0;
                 time_t tempsdep = time(NULL);
                 tempsdep= modificationTemps(tempsdep,0,tempsPause);

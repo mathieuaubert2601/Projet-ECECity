@@ -101,6 +101,7 @@ int** chercherCheminPlusCourtEau(int matriceMap[35][45],int nombreHabitation,t_h
     t_kase*** tableauPred = (t_kase***)malloc(nombreChateauEau * sizeof(t_kase**));
     t_file fileBfs;
 
+
     //Initialisation de la file
     fileBfs.queueFile = fileBfs.tete = NULL;
 
@@ -121,6 +122,7 @@ int** chercherCheminPlusCourtEau(int matriceMap[35][45],int nombreHabitation,t_h
         }
     }
 
+
     //On met toutes les cases de la matrice à 0 (pas découvert)
     //On met tout les prédécesseur sur -1
     for(int z=0 ; z<nombreChateauEau ; z++)
@@ -138,6 +140,10 @@ int** chercherCheminPlusCourtEau(int matriceMap[35][45],int nombreHabitation,t_h
         }
     }
     cmpt = 0;
+    for(int i = 0 ; i<nombreHabitation ; i++)
+    {
+        printf("INFO HAB %d %d %d %d\n",tabHab[i].XRef,tabHab[i].YRef,tabHab[i].x,tabHab[i].y);
+    }
     for(int c = 0 ; c<nombreChateauEau ; c++)
     {
         //On met la case du chateau d'eau de départ à 1 : découverte
@@ -180,29 +186,30 @@ int** chercherCheminPlusCourtEau(int matriceMap[35][45],int nombreHabitation,t_h
                     cmpt ++;
                 }
             }
+
             //On recherche les cases à coté
-            if(matriceCouleur[yFile+1][xFile] == 0 && (matriceMap[yFile + 1][xFile] == 1 || matriceMap[yFile + 1][xFile] == 2))
+            if(matriceCouleur[yFile+1][xFile] == 0 && (matriceMap[yFile + 1][xFile] == 1 || matriceMap[yFile + 1][xFile] == 2) && (yFile + 1) < 35)
             {
                 enfiler(&fileBfs,xFile,yFile + 1);
                 matriceCouleur[yFile + 1][xFile] = 1;
                 tableauPred[c][yFile + 1][xFile].coordY = yFile;
                 tableauPred[c][yFile + 1][xFile].coordX = xFile;
             }
-            if(matriceCouleur[yFile-1][xFile] == 0 && (matriceMap[yFile - 1][xFile] == 1 || matriceMap[yFile - 1][xFile] == 2))
+            if(matriceCouleur[yFile-1][xFile] == 0 && (matriceMap[yFile - 1][xFile] == 1 || matriceMap[yFile - 1][xFile] == 2) && (yFile - 1) > 0)
             {
                 enfiler(&fileBfs,xFile,yFile - 1);
                 matriceCouleur[yFile - 1][xFile] = 1;
                 tableauPred[c][yFile - 1][xFile].coordY = yFile;
                 tableauPred[c][yFile - 1][xFile].coordX = xFile;
             }
-            if(matriceCouleur[yFile][xFile+1] == 0 && (matriceMap[yFile][xFile+1] == 1 || matriceMap[yFile][xFile+1] == 2))
+            if(matriceCouleur[yFile][xFile+1] == 0 && (matriceMap[yFile][xFile+1] == 1 || matriceMap[yFile][xFile+1] == 2) && (xFile + 1) < 45)
             {
                 enfiler(&fileBfs,xFile + 1,yFile);
                 matriceCouleur[yFile][xFile + 1] = 1;
                 tableauPred[c][yFile][xFile + 1].coordY = yFile;
                 tableauPred[c][yFile][xFile + 1].coordX = xFile;
             }
-            if(matriceCouleur[yFile][xFile-1] == 0 && (matriceMap[yFile][xFile-1] == 1 || matriceMap[yFile][xFile-1] == 2 ))
+            if(matriceCouleur[yFile][xFile-1] == 0 && (matriceMap[yFile][xFile-1] == 1 || matriceMap[yFile][xFile-1] == 2 ) && (xFile - 1 ) > 0)
             {
                 enfiler(&fileBfs,xFile - 1,yFile);
                 matriceCouleur[yFile][xFile - 1] = 1;
@@ -219,7 +226,6 @@ int** chercherCheminPlusCourtEau(int matriceMap[35][45],int nombreHabitation,t_h
         }
 
     }
-
 
     for(int i=0 ; i < (cmpt - 1) ; i++)
     {
@@ -255,7 +261,9 @@ int** chercherCheminPlusCourtEau(int matriceMap[35][45],int nombreHabitation,t_h
             tabHabChatEau[index].chateau_Eau_Affilie =chatEauAffTriTmp;
             tabHabChatEau[index].numero = numeroTriTmp;
         }
+
     }
+
 
     for(int m=0 ; m<nombreHabitation ; m++)
     {

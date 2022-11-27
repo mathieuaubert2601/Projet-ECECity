@@ -226,6 +226,7 @@ void habitation (BITMAP* page, int map[35][45],time_t tempsdepart, int* banque, 
                     }
                 }
             }
+            printf("%d Xref , %d YRef \n",tab_hab[*nb_hab].XRef,tab_hab[*nb_hab].YRef);
             y = y + 2;
 
             tab_hab[*nb_hab].nb_habitants=0;
