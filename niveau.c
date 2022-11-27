@@ -147,7 +147,7 @@ void afficher_niveau2(BITMAP* page, int map[35][45],t_habitation maison[50], int
                     if ((mouse_x >= (maison[k].x * 20) && mouse_x <= (maison[k].x * 20 + 80)) && (mouse_y) >= (maison[k].y*20) && mouse_y <= (maison[k].y*20 + 120))
                     {
                         blit(infos,page,0,0,(maison[k].x * 20+10),(maison[k].y * 20+10),infos->w,infos->h);
-                        textprintf_ex(page,font,maison[k].x * 20+20,maison[k].y * 20+20,makecol(0,122,122),-1,"Maison :");
+                        textprintf_ex(page,font,maison[k].x * 20+20,maison[k].y * 20+20,makecol(0,122,122),-1,"Maison %d:",maison[k].numero+1);
                         textprintf_ex(page,font,maison[k].x * 20+20,maison[k].y * 20+35,makecol(0,122,122),-1,"%d/%d",maison[k].nb_habitants,maison[k].nb_habitants);
                     }
                 }
