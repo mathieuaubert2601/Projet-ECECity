@@ -38,5 +38,10 @@ int distribution(int nb_elec, int nb_hab, t_centrales tab_elec[20], t_habitation
         }
 
     }
+    for(int p=0;p<nb_elec;p++)
+    {
+        printf("\n\n%d : %d ",p,tab_elec[p].capaciteRestante);
+    }
+    printf("\nSomme : %d\n",somme);
     return somme;
 }
