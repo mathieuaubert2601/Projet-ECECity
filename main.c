@@ -37,8 +37,6 @@ int main()
     unsigned long tempsPause=0;
     unsigned long tempsChrono=0;
 
-
-
     while(!key[KEY_ESC])
     {
         tempsPause=0;
@@ -49,20 +47,16 @@ int main()
             play_sample(musiqueFond,15,0,1000,1);
             play_musique++;
         }
-
         choixMenu = menuJeu(page);
         mode = actionChoixMenu(choixMenu,page);
-
         if(choixMenu == 1 || choixMenu==2)
         {
             clear_bitmap(page);
             time_t tempsdep = time(NULL);
             //tempsdep= modificationTemps(tempsdep,0,tempsPause);
             tempsdep= modificationTemps(tempsdep,1,tempsChrono);
-
             if(choixMenu==2)
             {
-
                 if(testSauvegarde())
                 {
                     chargementTempsChrono(&tempsChrono,&tempsPause);
@@ -97,7 +91,6 @@ int main()
                 nb_chateau=0;
                 nb_centrales=0;
                 pause=0;
-
             }
             while(sortie==0)
             {
@@ -135,7 +128,6 @@ int main()
                 }
                 if(((mouse_x>=(945)&& mouse_x<=(945+40))&& ((mouse_y)>=(70)&& mouse_y<=(70+40)))&&(mouse_b &1)&&(pause==0)) //bouton pause
                 {
-                    //tempsPause=0;
                     tempsDebutPause = time(NULL);
                     tempsDebutPause= modificationTemps(tempsDebutPause,0,tempsPause);
                     tempsDebutPause= modificationTemps(tempsDebutPause,1,tempsChrono);
@@ -184,7 +176,6 @@ int main()
                         }
                         canalisations(page,map,tab_hab,nb_hab,matriceEauPasChateau,nb_chateau,tab_eau,tab_elec,nb_centrales);
                     }
-
                 }
                 if(((mouse_x>=(920)&& mouse_x<=(920+50))&& ((mouse_y)>=(620)&& mouse_y<=(620+50)))&&(mouse_b &1))
                 {

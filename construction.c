@@ -1,7 +1,7 @@
 #include "header.h"
 
 
-void route (BITMAP* page, int map[35][45],time_t tempsdepart, int* banque, t_habitation tab_hab[50], int nb_hab, int nb_elec, t_centrales tab_elec[20],int nbChateau,t_chateauEau*  tabEau,time_t tempsDepartPause, int pause, unsigned long tempsPause, unsigned long tempsChrono)
+void route (BITMAP* page, int map[35][45],time_t tempsdepart, int* banque, t_habitation tab_hab[50], int nb_hab, int nb_elec, t_centrales tab_elec[20],int nbChateau,t_chateauEau*  tabEau,time_t tempsDepartPause, int pause, unsigned long tempsPause, unsigned long tempsChrono,int mode)
 {
     BITMAP* routeTran = load_bitmap("Constructions/routeTran.bmp", NULL);
     BITMAP* buffer2 =create_bitmap(1024,768);
@@ -12,8 +12,6 @@ void route (BITMAP* page, int map[35][45],time_t tempsdepart, int* banque, t_hab
     int clic=0;
     int clic2=0;
     int clic3=0;
-    int testclic=0;
-    int testclic1=0;
     int type;
 
 
@@ -23,7 +21,7 @@ void route (BITMAP* page, int map[35][45],time_t tempsdepart, int* banque, t_hab
         show_mouse(page);
         blit(page,screen,0,0,0,0,1024,768);
         //afficherInterface(page,map,tempsdepart,*banque);
-        test_temps(map,tab_hab,banque,nb_hab,nb_elec,tab_elec,nbChateau,tabEau,pause, tempsPause,tempsChrono);
+        test_temps(map,tab_hab,banque,nb_hab,nb_elec,tab_elec,nbChateau,tabEau,pause, tempsPause,tempsChrono,mode);
         type=0;
         clic2=0;
         clic3=0;
@@ -51,16 +49,72 @@ void route (BITMAP* page, int map[35][45],time_t tempsdepart, int* banque, t_hab
                 if (((mouse_x >= (0) && mouse_x <= (900)) && ((mouse_y) >= (0) && mouse_y <= (700))) && (mouse_b & 1)) {
                     x = mouse_x / 20;
                     y = mouse_y / 20;
-                    if ((map[y + 1][x] == 1 || map[y - 1][x] == 1 || map[y][x + 1] == 1 || map[y][x - 1] == 1) || (map[y + 1][x] == 2 || map[y - 1][x] == 2 || map[y][x + 1] == 2 || map[y][x - 1] == 2)){
-                        if (*banque > 10 && map[y][x] == 0) {
-                            map[y][x] = 1;
+                    if(x > 44)
+                    {
+                        x =44;
+                    }
+                    if(x<0)
+                    {
+                        x =0;
+                    }
+                    if(y > 34)
+                    {
+                        y=34;
+                    }
+                    if(y<0)
+                    {
+                        y = 0;
+                    }
+                    if(*banque > 10 && map[y][x] == 0)
+                    {
+                        if((y + 1) <35)
+                        {
+                            if(map[y + 1][x] == 1 || map[y + 1][x] == 2)
+                            {
+                                map[y][x] = 1;
                             *banque -= 10;
                             afficher_matrice_cases_vertes(buffer2);
                             afficher_map(buffer2, map);
+
+                            }
                         }
+                        if((y - 1 )>= 0)
+                        {
+                            if(map[y - 1][x] == 1 || map[y - 1][x] == 2)
+                            {
+                                map[y][x] = 1;
+                            *banque -= 10;
+                            afficher_matrice_cases_vertes(buffer2);
+                            afficher_map(buffer2, map);
+
+                            }
+                        }
+                        if((x + 1) < 45)
+                        {
+                            if(map[y][x+1] == 1 || map[y][x+1] == 2)
+                            {
+                                map[y][x] = 1;
+                            *banque -= 10;
+                            afficher_matrice_cases_vertes(buffer2);
+                            afficher_map(buffer2, map);
+
+                            }
+                        }
+                        if((x - 1 )>= 0)
+                        {
+                            if(map[y][x-1] == 1 || map[y][x-1] == 2)
+                            {
+                                map[y][x] = 1;
+                            *banque -= 10;
+                            afficher_matrice_cases_vertes(buffer2);
+                            afficher_map(buffer2, map);
+
+                            }
+                        }
+
                     }
                 }
-                if((((mouse_x>=(970)&& mouse_x<=(970+30))&& ((mouse_y)>=(25)&& mouse_y<=(25+30)))&&(mouse_b&1))||(mouse_b &2))
+                if((((mouse_x>=(970)&& mouse_x<=(970+30))&& ((mouse_y)>=(25)&& mouse_y<=(25+30)))&&(mouse_b&1))||(mouse_b &2) ||(key[KEY_ESC]))
                 {
                     clic2 = 1;
                     rest(300);
@@ -99,7 +153,7 @@ void route (BITMAP* page, int map[35][45],time_t tempsdepart, int* banque, t_hab
                         }
                     }
                 }
-                if((((mouse_x>=(970)&& mouse_x<=(970+30))&& ((mouse_y)>=(25)&& mouse_y<=(25+30)))&&(mouse_b&1))||(mouse_b &2)){
+                if((((mouse_x>=(970)&& mouse_x<=(970+30))&& ((mouse_y)>=(25)&& mouse_y<=(25+30)))&&(mouse_b&1))||(mouse_b &2) || (key[KEY_ESC])){
                     clic3 = 1;
                     rest(300);
                 }
@@ -108,7 +162,7 @@ void route (BITMAP* page, int map[35][45],time_t tempsdepart, int* banque, t_hab
             }
 
         }
-        if((((mouse_x>=(970)&& mouse_x<=(970+30))&& ((mouse_y)>=(25)&& mouse_y<=(25+30)))&&(mouse_b&1))||(mouse_b &2)) {
+        if((((mouse_x>=(970)&& mouse_x<=(970+30))&& ((mouse_y)>=(25)&& mouse_y<=(25+30)))&&(mouse_b&1))||(mouse_b &2) || (key[KEY_ESC])) {
             clic = 1;
             rest(300);
         }
@@ -117,10 +171,11 @@ void route (BITMAP* page, int map[35][45],time_t tempsdepart, int* banque, t_hab
     blit(page,screen,0,0,0,0,1024,768);
 }
 
-void habitation (BITMAP* page, int map[35][45],time_t tempsdepart, int* banque, int* nb_hab, t_habitation tab_hab[50], t_centrales tab_elec[20], int nb_elec,int nbChateau,t_chateauEau*  tabEau,time_t tempsDepartPause, int pause, unsigned long tempsPause, unsigned long tempsChrono)
+void habitation (BITMAP* page, int map[35][45],time_t tempsdepart, int* banque, int* nb_hab, t_habitation tab_hab[50], t_centrales tab_elec[20], int nb_elec,int nbChateau,t_chateauEau*  tabEau,time_t tempsDepartPause, int pause, unsigned long tempsPause, unsigned long tempsChrono,int mode)
 {
     BITMAP* maison = load_bitmap("Constructions/maison.bmp", NULL);
     BITMAP* buffer2 =create_bitmap(1024,768);
+    SAMPLE* sonMaison = load_sample("sons/sonMaison.wav");
 
     int test_ref = 0;
     int x,y;
@@ -174,6 +229,7 @@ void habitation (BITMAP* page, int map[35][45],time_t tempsdepart, int* banque, 
                      map[y-3][x+2]==2 || map[y-3][x+1]==2 || map[y-3][x]==2 ||
                      map[y-2][x-1]==2 || map[y-1][x-1]==2 || map[y][x-1]==2)))
         {
+            play_sample(sonMaison,15,0,1000,0);
             map[y][x]=9;
             map[y][x+1]=9;
             map[y][x+2]=9;
@@ -226,7 +282,6 @@ void habitation (BITMAP* page, int map[35][45],time_t tempsdepart, int* banque, 
                     }
                 }
             }
-            printf("%d Xref , %d YRef \n",tab_hab[*nb_hab].XRef,tab_hab[*nb_hab].YRef);
             y = y + 2;
 
             tab_hab[*nb_hab].nb_habitants=0;
@@ -243,7 +298,6 @@ void habitation (BITMAP* page, int map[35][45],time_t tempsdepart, int* banque, 
                 tab_hab[*nb_hab].chateauEauNCR[i][0]= -1;
                 tab_hab[*nb_hab].chateauEauNCR[i][1]= -1;
             }
-
             distribution(nb_elec,*nb_hab,tab_elec,tab_hab);
             if(nbChateau > 0 && *nb_hab > 0)
                 chercherCheminPlusCourtEau(map,*nb_hab,tab_hab,tabEau,nbChateau);
@@ -251,16 +305,17 @@ void habitation (BITMAP* page, int map[35][45],time_t tempsdepart, int* banque, 
         }
 
 
-        if(mouse_b&2)
-            clic=1;
-
-        test_temps(map,tab_hab,banque,*nb_hab,nb_elec,tab_elec,nbChateau,tabEau,pause, tempsPause,tempsChrono);
+        if((mouse_b&2 || ((mouse_x>=(970)&& mouse_x<=(970+30))&& ((mouse_y)>=(25)&& mouse_y<=(25+30)))&&(mouse_b&1)) || (key[KEY_ESC])) {
+            clic = 1;
+            rest(300);
+        }
+        test_temps(map,tab_hab,banque,*nb_hab,nb_elec,tab_elec,nbChateau,tabEau,pause, tempsPause,tempsChrono,mode);
         interfaceMaisons(page,tempsdepart,*banque,map,tempsDepartPause,pause, tempsPause,tempsChrono);
         blit(page,screen,0,0,0,0,900,700);
     }
 }
 
-void chateau_eau(BITMAP* page, int map[35][45],time_t tempsdepart, int* banque, t_habitation tab_hab[50], int nb_hab, t_chateauEau tab_eau[20], int* nb_chateau, int nb_elec, t_centrales tab_elec[20],time_t tempsDepartPause, int pause, unsigned long tempsPause, unsigned long tempsChrono)
+void chateau_eau(BITMAP* page, int map[35][45],time_t tempsdepart, int* banque, t_habitation tab_hab[50], int nb_hab, t_chateauEau tab_eau[20], int* nb_chateau, int nb_elec, t_centrales tab_elec[20],time_t tempsDepartPause, int pause, unsigned long tempsPause, unsigned long tempsChrono,int mode)
 {
     BITMAP* chateauEauTran = load_bitmap("Constructions/routeTran.bmp", NULL);
     BITMAP* buffer2 =create_bitmap(1024,768);
@@ -285,7 +340,7 @@ void chateau_eau(BITMAP* page, int map[35][45],time_t tempsdepart, int* banque, 
             y=mouse_y/20;
             testclic=1;
         }
-        test_temps(map,tab_hab,banque,nb_hab,nb_elec,tab_elec,*nb_chateau,tab_eau,pause, tempsPause,tempsChrono);
+        test_temps(map,tab_hab,banque,nb_hab,nb_elec,tab_elec,*nb_chateau,tab_eau,pause, tempsPause,tempsChrono,mode);
         afficher_matrice_cases_vertes(buffer2);
         afficher_map(buffer2,map);
         affichagecasefree(buffer2,map,14);
@@ -391,8 +446,10 @@ void chateau_eau(BITMAP* page, int map[35][45],time_t tempsdepart, int* banque, 
             afficher_matrice_cases_vertes(buffer2);
             afficher_map(buffer2,map);
         }
-        if(mouse_b&2)
-            clic=1;
+        if((mouse_b&2 || ((mouse_x>=(970)&& mouse_x<=(970+30))&& ((mouse_y)>=(25)&& mouse_y<=(25+30)))&&(mouse_b&1)) || (key[KEY_ESC])){
+            clic = 1;
+            rest(300);
+        }
 
         show_mouse(page);
         blit(page,screen,0,0,0,0,900,700);
@@ -400,7 +457,7 @@ void chateau_eau(BITMAP* page, int map[35][45],time_t tempsdepart, int* banque, 
 }
 
 
-void centrale(BITMAP* page, int map[35][45],time_t tempsdepart, int* banque, t_habitation tab_hab[50], int nb_hab, int* nb_elec, t_centrales tab_elec[20],int nbChateau,t_chateauEau*  tabEau,time_t tempsDepartPause, int pause, unsigned long tempsPause, unsigned long tempsChrono)
+void centrale(BITMAP* page, int map[35][45],time_t tempsdepart, int* banque, t_habitation tab_hab[50], int nb_hab, int* nb_elec, t_centrales tab_elec[20],int nbChateau,t_chateauEau*  tabEau,time_t tempsDepartPause, int pause, unsigned long tempsPause, unsigned long tempsChrono,int mode)
 {
     BITMAP* chateauEauTran = load_bitmap("Constructions/routeTran.bmp", NULL);
     BITMAP* buffer2 =create_bitmap(1024,768);
@@ -425,7 +482,7 @@ void centrale(BITMAP* page, int map[35][45],time_t tempsdepart, int* banque, t_h
             y=mouse_y/20;
             testclic=1;
         }
-        test_temps(map,tab_hab,banque,nb_hab,*nb_elec,tab_elec,nbChateau,tabEau,pause, tempsPause,tempsChrono);
+        test_temps(map,tab_hab,banque,nb_hab,*nb_elec,tab_elec,nbChateau,tabEau,pause, tempsPause,tempsChrono,mode);
         afficher_matrice_cases_vertes(buffer2);
         afficher_map(buffer2,map);
         affichagecasefree(buffer2,map,15);
@@ -490,17 +547,18 @@ void centrale(BITMAP* page, int map[35][45],time_t tempsdepart, int* banque, t_h
             tab_elec[*nb_elec].x=x;
             tab_elec[*nb_elec].y=y-3;
             tab_elec[*nb_elec].capaciteRestante=5000;
-            tab_elec[*nb_elec].num=+1;
+            tab_elec[*nb_elec].num=*nb_elec+1;
             *nb_elec+=1;
-            printf("num centrale : %d", tab_elec[*nb_elec].num);
             distribution(*nb_elec,nb_hab,tab_elec,tab_hab);
 
             afficher_matrice_cases_vertes(buffer2);
             afficher_map(buffer2,map);
 
         }
-        if(mouse_b&2)
-            clic=1;
+        if((mouse_b&2 || ((mouse_x>=(970)&& mouse_x<=(970+30))&& ((mouse_y)>=(25)&& mouse_y<=(25+30)))&&(mouse_b&1)) || (key[KEY_ESC])){
+            clic = 1;
+            rest(300);
+        }
 
         show_mouse(buffer2);
         blit(page,screen,0,0,0,0,900,700);

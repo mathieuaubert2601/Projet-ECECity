@@ -49,7 +49,7 @@ void afficher_niveau(BITMAP* page, int map[35][45],t_habitation habitation[50],i
                     if ((mouse_x >= (habitation[m].x * 20) && mouse_x <= (habitation[m].x * 20 + 60)) && (mouse_y) >= (habitation[m].y*20) && mouse_y <= (habitation[m].y*20 + 60))
                     {
                         stretch_blit(infos,page,0,0,infos->w,infos->h,(habitation[m].x * 20+10),(habitation[m].y * 20+10),infos->w+40,infos->h);
-                        textprintf_ex(page,font,habitation[m].x * 20+20,habitation[m].y * 20+20,makecol(0,122,122),-1,"Maison %d:",habitation[m].numero);
+                        textprintf_ex(page,font,habitation[m].x * 20+20,habitation[m].y * 20+20,makecol(0,122,122),-1,"Maison %d:",habitation[m].numero+1);
                         textprintf_ex(page,font,habitation[m].x * 20+20,habitation[m].y * 20+30,makecol(0,122,122),-1,"%d/%d",habitation[m].quantiteeEau,habitation[m].nb_habitants);
                         for (int o=0; o<15; o++)
                         {
@@ -57,7 +57,7 @@ void afficher_niveau(BITMAP* page, int map[35][45],t_habitation habitation[50],i
                             {
                                 nb_chateau_maison+=1;
                                 printf("%d",nb_chateau_maison);
-                                textprintf_ex(page,font,habitation[m].x * 20+20,habitation[m].y * 20+40+(5*nb_chateau_maison),makecol(0,122,122),-1,"Chateau %d :%d/%d",nb_chateau_maison,habitation[m].chateauEauNCR[o][1],habitation[m].chateauEauNCR[o][1]);
+                                textprintf_ex(page,font,habitation[m].x * 20+20,habitation[m].y * 20+40+(5*nb_chateau_maison),makecol(0,122,122),-1,"Chateau %d :%d/%d",habitation[m].chateauEauNCR[o][0]+1,habitation[m].chateauEauNCR[o][1],habitation[m].chateauEauNCR[o][1]);
                             }
                         }
                     }
@@ -129,7 +129,7 @@ void afficher_niveau2(BITMAP* page, int map[35][45],t_habitation maison[50], int
                 if ((mouse_x >= (tab_elec[l].x * 20) && mouse_x <= (tab_elec[l].x * 20 + 80)) && (mouse_y) >= (tab_elec[l].y*20) && mouse_y <= (tab_elec[l].y*20 + 120))
                 {
                     blit(infos,page,0,0,(tab_elec[l].x * 20+10),(tab_elec[l].y * 20+10),infos->w,infos->h);
-                    textprintf_ex(page,font,tab_elec[l].x * 20+20,tab_elec[l].y * 20+20,makecol(0,122,122),-1,"Centrale %d :",l);
+                    textprintf_ex(page,font,tab_elec[l].x * 20+20,tab_elec[l].y * 20+20,makecol(0,122,122),-1,"Centrale %d :",l+1);
                     textprintf_ex(page,font,tab_elec[l].x * 20+20,tab_elec[l].y * 20+35,makecol(0,122,122),-1,"%d/%d",tab_elec[l].capaciteRestante,5000);
                 }
             }

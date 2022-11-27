@@ -8,8 +8,8 @@
 void test_temps(int map[35][45], t_habitation tab_hab[50], int* argent, int nb_hab, int nb_elec, t_centrales tab_elec[20],int nbchateau,t_chateauEau* tabEau, int pause, unsigned long tempsPause, unsigned long tempsChrono, int mode)
 {
     time_t tempsact = time(NULL);//On récupere le temps actuel
-    tempsact= modificationTemps(tempsact,0,tempsPause);
-    tempsact= modificationTemps(tempsact,1,tempsChrono);
+    tempsact= modificationTemps(tempsact,0,tempsPause);//On enleve le temps des differentes pauses
+    tempsact= modificationTemps(tempsact,1,tempsChrono);//On rajoute le temps lié a un possible ancien chrono
 
     unsigned long diff;
     int x;
@@ -26,8 +26,7 @@ void test_temps(int map[35][45], t_habitation tab_hab[50], int* argent, int nb_h
                     x = tab_hab[i].x;
                     y = tab_hab[i].y;
                     tab_hab[i].tempsCrea = tempsact;  //On remet le temps actuel comme nouveau temps pour l'habitation
-                    if (tab_hab[i].elec == 1 && tab_hab[i].quantiteeEau ==
-                                                tab_hab[i].nb_habitants) //Si la maison est alimentée, on augmente de niveau
+                    if (tab_hab[i].elec == 1 && tab_hab[i].quantiteeEau == tab_hab[i].nb_habitants) //Si la maison est alimentée, on augmente de niveau
                     {
                         if (tab_hab[i].niveau < 4) {
                             tab_hab[i].niveau++;
@@ -41,11 +40,9 @@ void test_temps(int map[35][45], t_habitation tab_hab[50], int* argent, int nb_h
                             tab_hab[i].nb_habitants = 100;
                         if (tab_hab[i].niveau == 4)
                             tab_hab[i].nb_habitants = 1000;
-                        apres = distribution(nb_elec, nb_hab, tab_elec,
-                                             tab_hab); //On lance une distribution electrique pour réactualiser les valeurs
-                        chercherCheminPlusCourtEau(map, nb_hab, tab_hab, tabEau, nbchateau);
-                        if (tab_hab[i].elec != 1 || tab_hab[i].quantiteeEau <
-                                                    tab_hab[i].nb_habitants) //Si apres amelioration, la maison n'est plus alimentée on la remet comme elle était, car cela signifie qu'on ne dispose pas d'assez de ressources pour evoluer
+                        distribution(nb_elec, nb_hab, tab_elec,tab_hab); //On lance une distribution electrique pour réactualiser les valeurs
+                        chercherCheminPlusCourtEau(map, nb_hab, tab_hab, tabEau, nbchateau);//On lance une distribution d'eau pour réactualiser les valeurs
+                        if (tab_hab[i].elec != 1 || tab_hab[i].quantiteeEau <tab_hab[i].nb_habitants) //Si apres amelioration, la maison n'est plus alimentée on la remet comme elle était, car cela signifie qu'on ne dispose pas d'assez de ressources pour evoluer
                         {
                             if (tab_hab[i].niveau > 0) {
                                 tab_hab[i].niveau--;
@@ -62,8 +59,7 @@ void test_temps(int map[35][45], t_habitation tab_hab[50], int* argent, int nb_h
                             if (tab_hab[i].niveau == 4)
                                 tab_hab[i].nb_habitants = 1000;
                         }
-                    } else if (tab_hab[i].elec == 0 || tab_hab[i].quantiteeEau <
-                                                       tab_hab[i].nb_habitants)//Si la maison n'est pas alimentée,on régresse
+                    } else if (tab_hab[i].elec == 0 || tab_hab[i].quantiteeEau < tab_hab[i].nb_habitants)//Si la maison n'est pas alimentée,on régresse
                     {
                         if (tab_hab[i].niveau > 0) {
                             tab_hab[i].niveau--;
@@ -86,7 +82,7 @@ void test_temps(int map[35][45], t_habitation tab_hab[50], int* argent, int nb_h
                     *argent += impots * tab_hab[i].nb_habitants;// on paie les impots
                 }
             }
-            if (mode == 2) { //mode communiste
+            if (mode == 2) { //mode capitaliste
                 if (diff >= 15 && nb_hab > 0){
                     x = tab_hab[i].x;
                     y = tab_hab[i].y;
