@@ -188,33 +188,45 @@ int** chercherCheminPlusCourtEau(int matriceMap[35][45],int nombreHabitation,t_h
             }
 
             //On recherche les cases à coté
-            if(matriceCouleur[yFile+1][xFile] == 0 && (matriceMap[yFile + 1][xFile] == 1 || matriceMap[yFile + 1][xFile] == 2) && (yFile + 1) < 35)
+            if(yFile + 1 < 35)
             {
-                enfiler(&fileBfs,xFile,yFile + 1);
-                matriceCouleur[yFile + 1][xFile] = 1;
-                tableauPred[c][yFile + 1][xFile].coordY = yFile;
-                tableauPred[c][yFile + 1][xFile].coordX = xFile;
+                if(matriceCouleur[yFile+1][xFile] == 0 && (matriceMap[yFile + 1][xFile] == 1 || matriceMap[yFile + 1][xFile] == 2))
+                {
+                    enfiler(&fileBfs,xFile,yFile + 1);
+                    matriceCouleur[yFile + 1][xFile] = 1;
+                    tableauPred[c][yFile + 1][xFile].coordY = yFile;
+                    tableauPred[c][yFile + 1][xFile].coordX = xFile;
+                }
             }
-            if(matriceCouleur[yFile-1][xFile] == 0 && (matriceMap[yFile - 1][xFile] == 1 || matriceMap[yFile - 1][xFile] == 2) && (yFile - 1) > 0)
+            if(yFile - 1 > 0)
             {
-                enfiler(&fileBfs,xFile,yFile - 1);
-                matriceCouleur[yFile - 1][xFile] = 1;
-                tableauPred[c][yFile - 1][xFile].coordY = yFile;
-                tableauPred[c][yFile - 1][xFile].coordX = xFile;
+                if(matriceCouleur[yFile-1][xFile] == 0 && (matriceMap[yFile - 1][xFile] == 1 || matriceMap[yFile - 1][xFile] == 2) )
+                {
+                    enfiler(&fileBfs,xFile,yFile - 1);
+                    matriceCouleur[yFile - 1][xFile] = 1;
+                    tableauPred[c][yFile - 1][xFile].coordY = yFile;
+                    tableauPred[c][yFile - 1][xFile].coordX = xFile;
+                }
             }
-            if(matriceCouleur[yFile][xFile+1] == 0 && (matriceMap[yFile][xFile+1] == 1 || matriceMap[yFile][xFile+1] == 2) && (xFile + 1) < 45)
+            if(xFile + 1 < 45)
             {
-                enfiler(&fileBfs,xFile + 1,yFile);
-                matriceCouleur[yFile][xFile + 1] = 1;
-                tableauPred[c][yFile][xFile + 1].coordY = yFile;
-                tableauPred[c][yFile][xFile + 1].coordX = xFile;
+                if(matriceCouleur[yFile][xFile+1] == 0 && (matriceMap[yFile][xFile+1] == 1 || matriceMap[yFile][xFile+1] == 2))
+                {
+                    enfiler(&fileBfs,xFile + 1,yFile);
+                    matriceCouleur[yFile][xFile + 1] = 1;
+                    tableauPred[c][yFile][xFile + 1].coordY = yFile;
+                    tableauPred[c][yFile][xFile + 1].coordX = xFile;
+                }
             }
-            if(matriceCouleur[yFile][xFile-1] == 0 && (matriceMap[yFile][xFile-1] == 1 || matriceMap[yFile][xFile-1] == 2 ) && (xFile - 1 ) > 0)
+            if(xFile - 1 > 0)
             {
-                enfiler(&fileBfs,xFile - 1,yFile);
-                matriceCouleur[yFile][xFile - 1] = 1;
-                tableauPred[c][yFile][xFile - 1].coordY = yFile;
-                tableauPred[c][yFile][xFile - 1].coordX = xFile;
+                if(matriceCouleur[yFile][xFile-1] == 0 && (matriceMap[yFile][xFile-1] == 1 || matriceMap[yFile][xFile-1] == 2 ) && (xFile - 1 ) > 0)
+                {
+                    enfiler(&fileBfs,xFile - 1,yFile);
+                    matriceCouleur[yFile][xFile - 1] = 1;
+                    tableauPred[c][yFile][xFile - 1].coordY = yFile;
+                    tableauPred[c][yFile][xFile - 1].coordX = xFile;
+                }
             }
         }
         for(int i=0 ; i<35 ; i++)
