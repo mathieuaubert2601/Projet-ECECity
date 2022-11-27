@@ -143,8 +143,6 @@ int** chercherCheminPlusCourtEau(int matriceMap[35][45],int nombreHabitation,t_h
             }
         }
     }
-
-    printf("\n\n\nFIN\n\n\n");
     cmpt = 0;
 
     if(nombreChateauEau > 0 && nombreHabitation > 0)

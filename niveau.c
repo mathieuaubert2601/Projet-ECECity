@@ -57,7 +57,6 @@ void afficher_niveau(BITMAP* page, int map[35][45],t_habitation habitation[50],i
                             if(habitation[m].chateauEauNCR[o][0]!=-1)
                             {
                                 nb_chateau_maison+=1;
-                                printf("%d",nb_chateau_maison);
                                 textprintf_ex(page,font,habitation[m].x * 20+20,habitation[m].y * 20+40+(5*nb_chateau_maison),makecol(0,122,122),-1,"Chateau %d :%d/%d",nb_chateau_maison,habitation[m].chateauEauNCR[o][1],habitation[m].chateauEauNCR[o][1]);
                             }
                         }
