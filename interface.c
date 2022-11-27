@@ -43,7 +43,7 @@ void afficherInterface(BITMAP* page,int map[35][45], time_t tempsdepart, int arg
     BITMAP* nbHabInfos = load_bitmap("Interface/nbHabInfos.bmp", NULL);
     BITMAP* nbArgent = load_bitmap("Interface/nbArgent.bmp", NULL);
     BITMAP* nbArgentInfos = load_bitmap("Interface/nbArgentInfos.bmp", NULL);
-
+    FONT * maPolice = load_font("submariner.pcx",NULL,NULL);
     //Affichage du fond
     blit(fondCote, page, 0, 0, 900, 0, page->w, page->h);
     blit(fondBas, page, 0, 0, 0, 700, page->w, page->h);
@@ -85,12 +85,11 @@ void afficherInterface(BITMAP* page,int map[35][45], time_t tempsdepart, int arg
     unsigned long diffP=difftime(tempsDepartPause,tempsdepart);
 
     if(pause==0)
-        textprintf_ex(page,font,980,720,makecol(255,255,255),-1,"%d",diff);
+        textprintf_ex(page,maPolice,980,720,makecol(255,255,255),-1,"%d",diff);
     if(pause==1)
-        textprintf_ex(page,font,980,720,makecol(255,255,255),-1,"%d",diffP);
+        textprintf_ex(page,maPolice,980,720,makecol(255,255,255),-1,"%d",diffP);
 
-    textprintf_ex(page,font,80,720,makecol(255,255,255),-1,"%d",argent);
-
+    textprintf_ex(page,maPolice,80,720,makecol(255,255,255),-1,"%d",argent);
     compteurHab = compterHab(map);
     compteurEau = compterEau(map);
     compteurElec = compterElec(map);
@@ -100,9 +99,9 @@ void afficherInterface(BITMAP* page,int map[35][45], time_t tempsdepart, int arg
     AffichageIcone(nbHab,nbHab,nbHabInfos,page,0,0,150,715,0,10,nbHab->w,nbHab->h,nbHabInfos->w,nbHabInfos->h);
     AffichageIcone(nbArgent,nbArgent,nbArgentInfos,page,0,0,50,715,0,10,nbHab->w,nbHab->h,nbHabInfos->w,nbHabInfos->h);
 
-    textprintf_ex(page,font,180,720,makecol(255,255,255),-1,"%d",compteurHab);
-    textprintf_ex(page,font,280,720,makecol(255,255,255),-1,"%d",compteurEau);
-    textprintf_ex(page,font,380,720,makecol(255,255,255),-1,"%d",compteurElec);
+    textprintf_ex(page,maPolice,180,720,makecol(255,255,255),-1,"%d",compteurHab);
+    textprintf_ex(page,maPolice,280,720,makecol(255,255,255),-1,"%d",compteurEau);
+    textprintf_ex(page,maPolice,380,720,makecol(255,255,255),-1,"%d",compteurElec);
 
     show_mouse(page);
     blit(page, screen, 0, 0, 0, 0, 1024, 768);
@@ -114,6 +113,7 @@ void interfaceRoute(BITMAP* page, int type, time_t tempsdepart, int argent, int 
     int compteurEau=0;
     int compteurElec=0;
     int compteurHab=0;
+    FONT * maPolice = load_font("submariner.pcx",NULL,NULL);
 
     //Declaration des BITMAP
     BITMAP* fondCote = load_bitmap("Interface/fondCote.bmp",NULL);
@@ -178,11 +178,11 @@ void interfaceRoute(BITMAP* page, int type, time_t tempsdepart, int argent, int 
     unsigned long diffP=difftime(tempsDepartPause,tempsdepart);
 
     if(pause==0)
-        textprintf_ex(page,font,980,720,makecol(255,255,255),-1,"%d",diff);
+        textprintf_ex(page,maPolice,980,720,makecol(255,255,255),-1,"%d",diff);
     if(pause==1)
-        textprintf_ex(page,font,980,720,makecol(255,255,255),-1,"%d",diffP);
+        textprintf_ex(page,maPolice,980,720,makecol(255,255,255),-1,"%d",diffP);
 
-    textprintf_ex(page,font,80,720,makecol(255,255,255),-1,"%d",argent);
+    textprintf_ex(page,maPolice,80,720,makecol(255,255,255),-1,"%d",argent);
 
     compteurHab = compterHab(map);
     compteurEau = compterEau(map);
@@ -194,9 +194,9 @@ void interfaceRoute(BITMAP* page, int type, time_t tempsdepart, int argent, int 
     AffichageIcone(nbArgent,nbArgent,nbArgentInfos,page,0,0,50,715,0,10,nbHab->w,nbHab->h,nbHabInfos->w,nbHabInfos->h);
 
 
-    textprintf_ex(page,font,180,720,makecol(255,255,255),-1,"%d",compteurHab);
-    textprintf_ex(page,font,280,720,makecol(255,255,255),-1,"%d",compteurEau);
-    textprintf_ex(page,font,380,720,makecol(255,255,255),-1,"%d",compteurElec);
+    textprintf_ex(page,maPolice,180,720,makecol(255,255,255),-1,"%d",compteurHab);
+    textprintf_ex(page,maPolice,280,720,makecol(255,255,255),-1,"%d",compteurEau);
+    textprintf_ex(page,maPolice,380,720,makecol(255,255,255),-1,"%d",compteurElec);
 }
 
 
@@ -205,6 +205,7 @@ void interfaceMaisons(BITMAP* page,time_t tempsdepart, int argent, int map[35][4
     int compteurEau=0;
     int compteurElec=0;
     int compteurHab=0;
+    FONT * maPolice = load_font("submariner.pcx",NULL,NULL);
 
     //Declaration des BITMAP
     BITMAP* fondCote = load_bitmap("Interface/fondCote.bmp",NULL);
@@ -243,9 +244,9 @@ void interfaceMaisons(BITMAP* page,time_t tempsdepart, int argent, int map[35][4
     unsigned long diffP=difftime(tempsDepartPause,tempsdepart);
 
     if(pause==0)
-        textprintf_ex(page,font,980,720,makecol(255,255,255),-1,"%d",diff);
+        textprintf_ex(page,maPolice,980,720,makecol(255,255,255),-1,"%d",diff);
     if(pause==1)
-        textprintf_ex(page,font,980,720,makecol(255,255,255),-1,"%d",diffP);
+        textprintf_ex(page,maPolice,980,720,makecol(255,255,255),-1,"%d",diffP);
 
     if(mode==1)
     {
@@ -256,7 +257,7 @@ void interfaceMaisons(BITMAP* page,time_t tempsdepart, int argent, int map[35][4
         masked_blit(capitaliste,page,0,0,920,710,capitaliste->w,capitaliste->h);
     }
 
-    textprintf_ex(page,font,80,720,makecol(255,255,255),-1,"%d",argent);
+    textprintf_ex(page,maPolice,80,720,makecol(255,255,255),-1,"%d",argent);
 
     compteurHab = compterHab(map);
     compteurEau = compterEau(map);
@@ -268,9 +269,9 @@ void interfaceMaisons(BITMAP* page,time_t tempsdepart, int argent, int map[35][4
     AffichageIcone(nbArgent,nbArgent,nbArgentInfos,page,0,0,50,715,0,10,nbHab->w,nbHab->h,nbHabInfos->w,nbHabInfos->h);
 
 
-    textprintf_ex(page,font,180,720,makecol(255,255,255),-1,"%d",compteurHab);
-    textprintf_ex(page,font,280,720,makecol(255,255,255),-1,"%d",compteurEau);
-    textprintf_ex(page,font,380,720,makecol(255,255,255),-1,"%d",compteurElec);
+    textprintf_ex(page,maPolice,180,720,makecol(255,255,255),-1,"%d",compteurHab);
+    textprintf_ex(page,maPolice,280,720,makecol(255,255,255),-1,"%d",compteurEau);
+    textprintf_ex(page,maPolice,380,720,makecol(255,255,255),-1,"%d",compteurElec);
 
 
 }
@@ -281,6 +282,7 @@ void interfaceChateaux(BITMAP* page,time_t tempsdepart, int argent, int map[35][
     int compteurEau=0;
     int compteurElec=0;
     int compteurHab=0;
+    FONT * maPolice = load_font("submariner.pcx",NULL,NULL);
 
     //Declaration des BITMAP
     BITMAP* fondCote = load_bitmap("Interface/fondCote.bmp",NULL);
@@ -317,9 +319,9 @@ void interfaceChateaux(BITMAP* page,time_t tempsdepart, int argent, int map[35][
     unsigned long diffP=difftime(tempsDepartPause,tempsdepart);
 
     if(pause==0)
-        textprintf_ex(page,font,980,720,makecol(255,255,255),-1,"%d",diff);
+        textprintf_ex(page,maPolice,980,720,makecol(255,255,255),-1,"%d",diff);
     if(pause==1)
-        textprintf_ex(page,font,980,720,makecol(255,255,255),-1,"%d",diffP);
+        textprintf_ex(page,maPolice,980,720,makecol(255,255,255),-1,"%d",diffP);
 
     if(mode==1)
     {
@@ -330,7 +332,7 @@ void interfaceChateaux(BITMAP* page,time_t tempsdepart, int argent, int map[35][
         masked_blit(capitaliste,page,0,0,920,710,capitaliste->w,capitaliste->h);
     }
 
-    textprintf_ex(page,font,80,720,makecol(255,255,255),-1,"%d",argent);
+    textprintf_ex(page,maPolice,80,720,makecol(255,255,255),-1,"%d",argent);
 
     compteurHab = compterHab(map);
     compteurEau = compterEau(map);
@@ -342,9 +344,9 @@ void interfaceChateaux(BITMAP* page,time_t tempsdepart, int argent, int map[35][
     AffichageIcone(nbArgent,nbArgent,nbArgentInfos,page,0,0,50,715,0,10,nbHab->w,nbHab->h,nbHabInfos->w,nbHabInfos->h);
 
 
-    textprintf_ex(page,font,180,720,makecol(255,255,255),-1,"%d",compteurHab);
-    textprintf_ex(page,font,280,720,makecol(255,255,255),-1,"%d",compteurEau);
-    textprintf_ex(page,font,380,720,makecol(255,255,255),-1,"%d",compteurElec);
+    textprintf_ex(page,maPolice,180,720,makecol(255,255,255),-1,"%d",compteurHab);
+    textprintf_ex(page,maPolice,280,720,makecol(255,255,255),-1,"%d",compteurEau);
+    textprintf_ex(page,maPolice,380,720,makecol(255,255,255),-1,"%d",compteurElec);
 
 
 }
@@ -355,7 +357,7 @@ void interfaceCentrales(BITMAP* page,time_t tempsdepart, int argent, int map[35]
     int compteurEau=0;
     int compteurElec=0;
     int compteurHab=0;
-
+    FONT * maPolice = load_font("submariner.pcx",NULL,NULL);
     //Declaration des BITMAP
     BITMAP* fondCote = load_bitmap("Interface/fondCote.bmp",NULL);
     BITMAP* fondBas = load_bitmap("Interface/fondBas.bmp", NULL);
@@ -391,9 +393,9 @@ void interfaceCentrales(BITMAP* page,time_t tempsdepart, int argent, int map[35]
     unsigned long diffP=difftime(tempsDepartPause,tempsdepart);
 
     if(pause==0)
-        textprintf_ex(page,font,980,720,makecol(255,255,255),-1,"%d",diff);
+        textprintf_ex(page,maPolice,980,720,makecol(255,255,255),-1,"%d",diff);
     if(pause==1)
-        textprintf_ex(page,font,980,720,makecol(255,255,255),-1,"%d",diffP);
+        textprintf_ex(page,maPolice,980,720,makecol(255,255,255),-1,"%d",diffP);
 
     if(mode==1)
     {
@@ -404,7 +406,7 @@ void interfaceCentrales(BITMAP* page,time_t tempsdepart, int argent, int map[35]
         masked_blit(capitaliste,page,0,0,920,710,capitaliste->w,capitaliste->h);
     }
 
-    textprintf_ex(page,font,80,720,makecol(255,255,255),-1,"%d",argent);
+    textprintf_ex(page,maPolice,80,720,makecol(255,255,255),-1,"%d",argent);
 
     compteurHab = compterHab(map);
     compteurEau = compterEau(map);
@@ -416,9 +418,9 @@ void interfaceCentrales(BITMAP* page,time_t tempsdepart, int argent, int map[35]
     AffichageIcone(nbArgent,nbArgent,nbArgentInfos,page,0,0,50,715,0,10,nbHab->w,nbHab->h,nbHabInfos->w,nbHabInfos->h);
 
 
-    textprintf_ex(page,font,180,720,makecol(255,255,255),-1,"%d",compteurHab);
-    textprintf_ex(page,font,280,720,makecol(255,255,255),-1,"%d",compteurEau);
-    textprintf_ex(page,font,380,720,makecol(255,255,255),-1,"%d",compteurElec);
+    textprintf_ex(page,maPolice,180,720,makecol(255,255,255),-1,"%d",compteurHab);
+    textprintf_ex(page,maPolice,280,720,makecol(255,255,255),-1,"%d",compteurEau);
+    textprintf_ex(page,maPolice,380,720,makecol(255,255,255),-1,"%d",compteurElec);
 
 
 }

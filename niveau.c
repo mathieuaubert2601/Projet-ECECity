@@ -13,7 +13,7 @@ void afficher_niveau(BITMAP* page, int map[35][45],t_habitation habitation[50],i
     BITMAP* chateauBleu = load_bitmap("Niveau/ChateauBleu.bmp", NULL);
     BITMAP* centraleGrise = load_bitmap("Niveau/CentraleGrise.bmp", NULL);
     BITMAP* infos = load_bitmap("Interface/infos.bmp",NULL);
-
+    FONT * maPolice = load_font("submariner.pcx",NULL,NULL);
     int nb_chateau_maison=0;
 
     //Affichage des bitmaps liés au niveau -1
@@ -37,8 +37,8 @@ void afficher_niveau(BITMAP* page, int map[35][45],t_habitation habitation[50],i
                 if ((mouse_x >= (tab_eau[k].x * 20) && mouse_x <= (tab_eau[k].x * 20 + 80)) && (mouse_y) >= (tab_eau[k].y*20) && mouse_y <= (tab_eau[k].y*20 + 120))
                 {
                     blit(infos,page,0,0,(tab_eau[k].x * 20+10),(tab_eau[k].y * 20+10),infos->w,infos->h);
-                    textprintf_ex(page,font,tab_eau[k].x * 20+20,tab_eau[k].y * 20+20,makecol(0,122,122),-1,"Chateau %d :",k+1);
-                    textprintf_ex(page,font,tab_eau[k].x * 20+20,tab_eau[k].y * 20+35,makecol(0,122,122),-1,"%d/%d",tab_eau[k].capaciteRestante,5000);
+                    textprintf_ex(page,maPolice,tab_eau[k].x * 20+20,tab_eau[k].y * 20+20,makecol(0,122,122),-1,"Chateau %d :",k+1);
+                    textprintf_ex(page,maPolice,tab_eau[k].x * 20+20,tab_eau[k].y * 20+35,makecol(0,122,122),-1,"%d/%d",tab_eau[k].capaciteRestante,5000);
                 }
             }
             //centrale grise (pas bon niveau)
@@ -56,14 +56,14 @@ void afficher_niveau(BITMAP* page, int map[35][45],t_habitation habitation[50],i
                     if ((mouse_x >= (habitation[m].x * 20) && mouse_x <= (habitation[m].x * 20 + 60)) && (mouse_y) >= (habitation[m].y*20) && mouse_y <= (habitation[m].y*20 + 60))
                     {
                         stretch_blit(infos,page,0,0,infos->w,infos->h,(habitation[m].x * 20+10),(habitation[m].y * 20+10),infos->w+40,infos->h);
-                        textprintf_ex(page,font,habitation[m].x * 20+20,habitation[m].y * 20+20,makecol(0,122,122),-1,"Maison %d:",habitation[m].numero+1);
-                        textprintf_ex(page,font,habitation[m].x * 20+20,habitation[m].y * 20+30,makecol(0,122,122),-1,"%d/%d",habitation[m].quantiteeEau,habitation[m].nb_habitants);
+                        textprintf_ex(page,maPolice,habitation[m].x * 20+20,habitation[m].y * 20+20,makecol(0,122,122),-1,"Maison %d:",habitation[m].numero+1);
+                        textprintf_ex(page,maPolice,habitation[m].x * 20+20,habitation[m].y * 20+30,makecol(0,122,122),-1,"%d/%d",habitation[m].quantiteeEau,habitation[m].nb_habitants);
                         for (int o=0; o<15; o++)
                         {
                             if(habitation[m].chateauEauNCR[o][0]!=-1)
                             {
                                 nb_chateau_maison+=1;
-                                textprintf_ex(page,font,habitation[m].x * 20+20,habitation[m].y * 20+40+(5*nb_chateau_maison),makecol(0,122,122),-1,"Chateau %d :%d/%d",habitation[m].chateauEauNCR[o][0]+1,habitation[m].chateauEauNCR[o][1],habitation[m].chateauEauNCR[o][1]);
+                                textprintf_ex(page,maPolice,habitation[m].x * 20+20,habitation[m].y * 20+40+(5*nb_chateau_maison),makecol(0,122,122),-1,"Chateau %d :%d/%d",habitation[m].chateauEauNCR[o][0]+1,habitation[m].chateauEauNCR[o][1],habitation[m].chateauEauNCR[o][1]);
                             }
                         }
                     }
@@ -75,14 +75,14 @@ void afficher_niveau(BITMAP* page, int map[35][45],t_habitation habitation[50],i
                     if ((mouse_x >= (habitation[m].x * 20) && mouse_x <= (habitation[m].x * 20 + 60)) && (mouse_y) >= (habitation[m].y*20) && mouse_y <= (habitation[m].y*20 + 60))
                     {
                         stretch_blit(infos,page,0,0,infos->w,infos->h,(habitation[m].x * 20+10),(habitation[m].y * 20+10),infos->w+40,infos->h);
-                        textprintf_ex(page,font,habitation[m].x * 20+20,habitation[m].y * 20+20,makecol(0,122,122),-1,"Maison %d:",habitation[m].numero+1);
-                        textprintf_ex(page,font,habitation[m].x * 20+20,habitation[m].y * 20+30,makecol(0,122,122),-1,"%d/%d",habitation[m].quantiteeEau,habitation[m].nb_habitants);
+                        textprintf_ex(page,maPolice,habitation[m].x * 20+20,habitation[m].y * 20+20,makecol(0,122,122),-1,"Maison %d:",habitation[m].numero+1);
+                        textprintf_ex(page,maPolice,habitation[m].x * 20+20,habitation[m].y * 20+30,makecol(0,122,122),-1,"%d/%d",habitation[m].quantiteeEau,habitation[m].nb_habitants);
                         for (int o=0; o<15; o++)
                         {
                             if(habitation[m].chateauEauNCR[o][0]!=-1)
                             {
                                 nb_chateau_maison+=1;
-                                textprintf_ex(page,font,habitation[m].x * 20+20,habitation[m].y * 20+40+(5*nb_chateau_maison),makecol(0,122,122),-1,"Chateau %d :%d/%d",habitation[m].chateauEauNCR[o][0]+1,habitation[m].chateauEauNCR[o][1],habitation[m].chateauEauNCR[o][1]);
+                                textprintf_ex(page,maPolice,habitation[m].x * 20+20,habitation[m].y * 20+40+(5*nb_chateau_maison),makecol(0,122,122),-1,"Chateau %d :%d/%d",habitation[m].chateauEauNCR[o][0]+1,habitation[m].chateauEauNCR[o][1],habitation[m].chateauEauNCR[o][1]);
                             }
                         }
                     }
@@ -131,7 +131,7 @@ void afficher_niveau2(BITMAP* page, int map[35][45],t_habitation maison[50], int
     BITMAP* chateauGris = load_bitmap("Niveau/chateauGris.bmp", NULL);
     BITMAP* centraleJaune = load_bitmap("Niveau/CentraleJaune.bmp", NULL);
     BITMAP* infos = load_bitmap("Interface/infos.bmp",NULL);
-
+    FONT * maPolice = load_font("submariner.pcx",NULL,NULL);
     //boucle pour créer l'affichage du niveau elec
     for (int i = 0; i<35; i++) {
         for (int j = 0; j < 45; j++) {
@@ -224,7 +224,7 @@ void interfaceNiveau(BITMAP* page, int type, int map[35][45])
     int compteurEau=0;
     int compteurElec=0;
     int compteurHab=0;
-
+    FONT * maPolice = load_font("submariner.pcx",NULL,NULL);
     compteurHab = compterHab(map);
     compteurEau = compterEau(map);
     compteurElec = compterElec(map);
@@ -254,11 +254,11 @@ void interfaceNiveau(BITMAP* page, int type, int map[35][45])
     AffichageIcone(nbHab,nbHab,nbHabInfos,page,0,0,150,715,0,10,nbHab->w,nbHab->h,nbHabInfos->w,nbHabInfos->h);
 
 
-    textprintf_ex(page,font,180,720,makecol(255,255,255),-1,"%d",compteurHab);
+    textprintf_ex(page,maPolice,180,720,makecol(255,255,255),-1,"%d",compteurHab);
     if (type==1)
-        textprintf_ex(page,font,280,720,makecol(255,255,255),-1,"%d",compteurEau);
+        textprintf_ex(page,maPolice,280,720,makecol(255,255,255),-1,"%d",compteurEau);
     if (type==2)
-        textprintf_ex(page,font,280,720,makecol(255,255,255),-1,"%d",compteurElec);
+        textprintf_ex(page,maPolice,280,720,makecol(255,255,255),-1,"%d",compteurElec);
 
     AffichageBouton(boutonQuitter,boutonQuitterInv,page,0,0,970,25,boutonQuitter->w,boutonQuitter->h);
 }
