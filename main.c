@@ -37,6 +37,7 @@ int main()
     unsigned long tempsChrono=0;
 
 
+
     while(!key[KEY_ESC])
     {
         tempsPause=0;
@@ -49,7 +50,8 @@ int main()
         }
 
         choixMenu = menuJeu(page);
-        actionChoixMenu(choixMenu,page);
+        mode = actionChoixMenu(choixMenu,page);
+
         if(choixMenu == 1 || choixMenu==2)
         {
             clear_bitmap(page);
@@ -65,6 +67,8 @@ int main()
                     chargementTempsChrono(&tempsChrono,&tempsPause);
                     tempsPause=0;
                     banque = chargementArgent();
+                    mode = chargementModeJeu();
+                    printf("%d\n",mode);
                     lireFichierMap(map,"Sauvegarde/fichierCarte.txt");
                     nb_hab = chargerTableauHabitation(tab_hab,"Sauvegarde/tableauHabitation.bin");
                     nb_centrales = chargerTableauCentrale(tab_elec,"Sauvegarde/tableauCentrale.bin");
@@ -127,6 +131,7 @@ int main()
                     sauvegardeTempsCycle(nb_hab,tab_hab,tempsPause,tempsChrono);
                     sauvegardeChrono(tempsdep,tempsPause,tempsChrono);
                     sauvegardeArgent(banque);
+                    sauvegardeModeJeu(mode);
                 }
                 if(((mouse_x>=(945)&& mouse_x<=(945+40))&& ((mouse_y)>=(70)&& mouse_y<=(70+40)))&&(mouse_b &1)&&(pause==0)) //bouton pause
                 {

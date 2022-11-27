@@ -355,7 +355,26 @@ void sauvegardeChrono(time_t tempsdepart,unsigned long tempsPause, unsigned long
     //fermeture du fichier
     fclose(fichier);
 }
+/// ///////////////////////////////////////// ///
+/////Sous programme pour sauvegarder Mode Jeu ///
+/// ///////////////////////////////////////// ///
 
+void sauvegardeModeJeu(int modeJeu)
+{
+    //Ouverture du fichier
+    FILE* fichier = fopen("Sauvegarde/fichierModeJeu.bin","wb+");
+
+    //test ouverture fichier
+    if(fichier == NULL)
+    {
+        printf("Erreur ouverture fichier : ModeJeu");
+    }
+
+    fwrite(&modeJeu,sizeof(int),1,fichier);
+
+    //Fermeture du fichier
+    fclose(fichier);
+}
 /// /////////////////////////////////////////////// ///
 /////Sous programme pour charger tableau habitation ///
 /// /////////////////////////////////////////////// ///
@@ -530,4 +549,27 @@ int chargementArgent()
     //Fermeture du fichier
     fclose(fichier);
     return argent;
+}
+
+/// //////////////////////////////////////// ///
+/////Sous programme pour charger Mode de jeu ///
+/// //////////////////////////////////////// ///
+int chargementModeJeu()
+{
+    //Déclaration des variables
+    int ModeJeu;
+    //Ouverture du fichier
+    FILE* fichier = fopen("Sauvegarde/fichierModeJeu.bin","rb+");
+
+    //test ouverture fichier
+    if(fichier == NULL)
+    {
+        printf("Erreur ouverture fichier : ModeJeu");
+    }
+
+    fread(&ModeJeu,sizeof(int),1,fichier);
+
+    //Fermeture du fichier
+    fclose(fichier);
+    return ModeJeu;
 }
