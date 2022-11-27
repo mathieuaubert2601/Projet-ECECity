@@ -163,7 +163,7 @@ void affichagecasefree(BITMAP* page,int map[35][45],int type)
     {
         for (int i=0 ; i<35; i++)
         {
-            for(int j=0;j<45; j++)
+            for(int j=0;j<42; j++)
             {
                 if(matricelibre[i][j]==0 && matricelibre[i][j+1]==0 && matricelibre[i][j+2]==0 && matricelibre[i][j+3]==0 &&
                    matricelibre[i-1][j]==0 && matricelibre[i-1][j+1]==0 && matricelibre[i-1][j+2]==0 && matricelibre[i-1][j+3]==0 &&
