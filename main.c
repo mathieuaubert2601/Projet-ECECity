@@ -158,13 +158,16 @@ int main()
                 }
                 if(((mouse_x>=(920)&& mouse_x<=(920+50))&& ((mouse_y)>=(550)&& mouse_y<=(550+50)))&&(mouse_b &1))
                 {
+                    //Si le nombre de chateau d'eau est supérieur à 0
                     if(nb_chateau > 0)
                     {
+                        //On cherche le plus court chemin pour l'eau et on l'affiche dans le bon niveau
                         matriceEau = chercherCheminPlusCourtEau(map,nb_hab,tab_hab,tab_eau,nb_chateau);
                         canalisations(page,map,tab_hab,nb_hab,matriceEau,nb_chateau,tab_eau,tab_elec,nb_centrales);
                     }
-                    else
+                    else //Dans le cas où le nombre de chateau d'eau est 0
                     {
+                        //On remplit une matrice de 0 car il n'y a pas d'eau
                         for(int i = 0 ; i<35 ; i++)
                         {
                             matriceEauPasChateau[i] = malloc(45 * sizeof(int));
@@ -173,6 +176,7 @@ int main()
                                 matriceEauPasChateau[i][j] = 0;
                             }
                         }
+                        //On initialise les informations des maisons à -1 pour le tableau de chateau d'eau car elles ne sont pas alimentées
                         for(int i = 0 ; i<nb_hab ; i++)
                         {
                             for(int j = 0 ; j<15 ; j++)
@@ -182,11 +186,13 @@ int main()
                                 tab_hab[i].quantiteeEau = 0;
                             }
                         }
+                        //On appelle le sous programme pour afficher le niveau adéquat
                         canalisations(page,map,tab_hab,nb_hab,matriceEauPasChateau,nb_chateau,tab_eau,tab_elec,nb_centrales);
                     }
                 }
                 if(((mouse_x>=(920)&& mouse_x<=(920+50))&& ((mouse_y)>=(620)&& mouse_y<=(620+50)))&&(mouse_b &1))
                 {
+                    //On affiche les lignes electrique dans le niveau adéquat
                     lignes(page,map,tab_hab,nb_hab,nb_chateau,tab_eau,tab_elec,nb_centrales);
                 }
                 show_mouse(page);
