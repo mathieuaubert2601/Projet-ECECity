@@ -121,6 +121,7 @@ void habitation (BITMAP* page, int map[35][45],time_t tempsdepart, int* banque, 
 {
     BITMAP* maison = load_bitmap("Constructions/maison.bmp", NULL);
     BITMAP* buffer2 =create_bitmap(1024,768);
+    SAMPLE* sonMaison = load_sample("sons/sonMaison.wav");
 
     int test_ref = 0;
     int x,y;
@@ -226,7 +227,6 @@ void habitation (BITMAP* page, int map[35][45],time_t tempsdepart, int* banque, 
                     }
                 }
             }
-            printf("%d Xref , %d YRef \n",tab_hab[*nb_hab].XRef,tab_hab[*nb_hab].YRef);
             y = y + 2;
 
             tab_hab[*nb_hab].nb_habitants=0;
@@ -243,7 +243,7 @@ void habitation (BITMAP* page, int map[35][45],time_t tempsdepart, int* banque, 
                 tab_hab[*nb_hab].chateauEauNCR[i][0]= -1;
                 tab_hab[*nb_hab].chateauEauNCR[i][1]= -1;
             }
-
+            play_sample(sonMaison,15,0,1000,0);
             distribution(nb_elec,*nb_hab,tab_elec,tab_hab);
             if(nbChateau > 0 && *nb_hab > 0)
                 chercherCheminPlusCourtEau(map,*nb_hab,tab_hab,tabEau,nbChateau);
