@@ -175,6 +175,7 @@ void habitation (BITMAP* page, int map[35][45],time_t tempsdepart, int* banque, 
                      map[y-3][x+2]==2 || map[y-3][x+1]==2 || map[y-3][x]==2 ||
                      map[y-2][x-1]==2 || map[y-1][x-1]==2 || map[y][x-1]==2)))
         {
+            play_sample(sonMaison,15,0,1000,0);
             map[y][x]=9;
             map[y][x+1]=9;
             map[y][x+2]=9;
@@ -243,7 +244,6 @@ void habitation (BITMAP* page, int map[35][45],time_t tempsdepart, int* banque, 
                 tab_hab[*nb_hab].chateauEauNCR[i][0]= -1;
                 tab_hab[*nb_hab].chateauEauNCR[i][1]= -1;
             }
-            play_sample(sonMaison,15,0,1000,0);
             distribution(nb_elec,*nb_hab,tab_elec,tab_hab);
             if(nbChateau > 0 && *nb_hab > 0)
                 chercherCheminPlusCourtEau(map,*nb_hab,tab_hab,tabEau,nbChateau);
