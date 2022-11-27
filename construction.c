@@ -493,9 +493,8 @@ void centrale(BITMAP* page, int map[35][45],time_t tempsdepart, int* banque, t_h
             tab_elec[*nb_elec].x=x;
             tab_elec[*nb_elec].y=y-3;
             tab_elec[*nb_elec].capaciteRestante=5000;
-            tab_elec[*nb_elec].num=+1;
+            tab_elec[*nb_elec].num=*nb_elec+1;
             *nb_elec+=1;
-            printf("num centrale : %d", tab_elec[*nb_elec].num);
             distribution(*nb_elec,nb_hab,tab_elec,tab_hab);
 
             afficher_matrice_cases_vertes(buffer2);
