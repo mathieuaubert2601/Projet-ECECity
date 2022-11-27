@@ -131,6 +131,8 @@ void chargementTempsCycle(int nombreMaison,t_habitation tableauHab[],unsigned lo
 void sauvegardeTempsCycle(int nombreHabitation, t_habitation tableauHab[],unsigned long tempsPause, unsigned long tempsChrono);
 void sauvegardeChrono(time_t tempsdepart,unsigned long tempsPause, unsigned long tempsChrono);
 void chargementTempsChrono(unsigned long* tempsChrono,unsigned long* tempsPause);
+int chargementArgent();
+void sauvegardeArgent(int argent);
 //Case
 void affichagecasefree(BITMAP* page,int map[35][45],int type);
 

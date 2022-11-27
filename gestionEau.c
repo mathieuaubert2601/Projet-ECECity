@@ -89,6 +89,7 @@ int* defiler(t_file * ptAlignement)
     }
 }
 
+//Sous programme pour créer la matrice d'eau
 int** chercherCheminPlusCourtEau(int matriceMap[35][45],int nombreHabitation,t_habitation* tabHab,t_chateauEau* tabEau,int nombreChateauEau)
 {
     //Déclaration des variables
@@ -105,6 +106,7 @@ int** chercherCheminPlusCourtEau(int matriceMap[35][45],int nombreHabitation,t_h
     //Initialisation de la file
     fileBfs.queueFile = fileBfs.tete = NULL;
 
+    //Initialisation des chateau d'eau servant les maison
     for(int i = 0 ; i<nombreHabitation ;i++)
     {
         for(int j = 0 ; j < 15 ; j++)
@@ -113,6 +115,8 @@ int** chercherCheminPlusCourtEau(int matriceMap[35][45],int nombreHabitation,t_h
             tabHab[i].chateauEauNCR[j][1]= -1;
         }
     }
+
+    //Allocation du tableau de predecesseur
     for(int z = 0 ; z<nombreChateauEau ; z++)
     {
         tableauPred[z] = (t_kase**)malloc(35 * sizeof(t_kase*));
@@ -140,10 +144,8 @@ int** chercherCheminPlusCourtEau(int matriceMap[35][45],int nombreHabitation,t_h
         }
     }
     cmpt = 0;
-    for(int i = 0 ; i<nombreHabitation ; i++)
-    {
-        printf("INFO HAB %d %d %d %d\n",tabHab[i].XRef,tabHab[i].YRef,tabHab[i].x,tabHab[i].y);
-    }
+
+    //Boucle qui parcourt tout les chateau d'eau
     for(int c = 0 ; c<nombreChateauEau ; c++)
     {
         //On met la case du chateau d'eau de départ à 1 : découverte
@@ -160,6 +162,7 @@ int** chercherCheminPlusCourtEau(int matriceMap[35][45],int nombreHabitation,t_h
             xFile = tableauCoordonnee[0];
             yFile = tableauCoordonnee[1];
 
+            //On parcourt tout le tableau d'habitation pour voir si xFile et yFile correspondent à un Xref et Yref d'une maison
             for(int i=0 ; i<nombreHabitation ;i++)
             {
                 if(tabHab[i].XRef == xFile && tabHab[i].YRef == yFile)
@@ -173,21 +176,22 @@ int** chercherCheminPlusCourtEau(int matriceMap[35][45],int nombreHabitation,t_h
                     calculX = xFile;
                     calculY = yFile;
 
+                    //On calcul la distance entre le chateau d'eau et la maison
                     while(calculX != tabEau[c].XRef || calculY != tabEau[c].YRef)
                     {
                         calculXtmp = calculX;
                         calculX = tableauPred[c][calculY][calculX].coordX;
                         calculY = tableauPred[c][calculY][calculXtmp].coordY;
-
                         distanceM ++;
                     }
 
+                    //On actualise la distance et le compteur
                     tabHabChatEau[cmpt].distance = distanceM;
                     cmpt ++;
                 }
             }
 
-            //On recherche les cases à coté
+            //On recherche les cases à coté pour voir s'il y a une route
             if(yFile + 1 < 35)
             {
                 if(matriceCouleur[yFile+1][xFile] == 0 && (matriceMap[yFile + 1][xFile] == 1 || matriceMap[yFile + 1][xFile] == 2))
@@ -229,6 +233,7 @@ int** chercherCheminPlusCourtEau(int matriceMap[35][45],int nombreHabitation,t_h
                 }
             }
         }
+        //On réinistialise la matrice de couleur
         for(int i=0 ; i<35 ; i++)
         {
             for(int j=0 ; j<45 ; j++)
@@ -239,6 +244,7 @@ int** chercherCheminPlusCourtEau(int matriceMap[35][45],int nombreHabitation,t_h
 
     }
 
+    //On trie le tableau crée par distance croissante
     for(int i=0 ; i < (cmpt - 1) ; i++)
     {
         index = i;
@@ -276,7 +282,7 @@ int** chercherCheminPlusCourtEau(int matriceMap[35][45],int nombreHabitation,t_h
 
     }
 
-
+    //On initialise la quantitée d'eau des maison et des chateaux d'eau
     for(int m=0 ; m<nombreHabitation ; m++)
     {
         tabHab[m].quantiteeEau = 0;
@@ -286,6 +292,7 @@ int** chercherCheminPlusCourtEau(int matriceMap[35][45],int nombreHabitation,t_h
         tabEau[k].capaciteRestante = 5000;
     }
 
+    //On distribue l'eau
     for(int i=0 ; i<cmpt ; i++)
     {
         if(tabHab[tabHabChatEau[i].numero].quantiteeEau < tabHab[tabHabChatEau[i].numero].nb_habitants && tabEau[tabHabChatEau[i].chateau_Eau_Affilie].capaciteRestante > 0)
@@ -337,17 +344,6 @@ int** chercherCheminPlusCourtEau(int matriceMap[35][45],int nombreHabitation,t_h
         }
     }
 
-    /*printf("\n\n\n");
-    for(int i = 0 ; i < 35 ; i++)
-    {
-        for(int j = 0 ; j<45 ; j++)
-        {
-            printf("%d ",matriceEau[i][j]);
-        }
-        printf("\n");
-    }
-    printf("\n\n\n");*/
-
     //Libération de la mémoire
     for(int z = 0 ; z<nombreChateauEau ; z++)
     {
@@ -359,16 +355,6 @@ int** chercherCheminPlusCourtEau(int matriceMap[35][45],int nombreHabitation,t_h
     free(tableauPred);
     free(tableauCoordonnee);
     free(tabHabChatEau);
-
-    for(int i= 0 ; i<nombreHabitation ; i++)
-    {
-        for(int j=0 ;j<15 ;j++)
-        {
-            printf("\nNombre Habitant : %d Eau recu : %d Chateau Eau : %d QUE : %d",tabHab[i].nb_habitants,tabHab[i].quantiteeEau,tabHab[i].chateauEauNCR[j][0],tabHab[i].chateauEauNCR[j][1]);
-        }
-        printf("\n\n");
-    }
-
 
     return matriceEau;
 }

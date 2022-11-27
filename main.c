@@ -56,12 +56,21 @@ int main()
             //tempsdep= modificationTemps(tempsdep,0,tempsPause);
             tempsdep= modificationTemps(tempsdep,1,tempsChrono);
 
-
+            if(choixMenu == 1)
+            {
+                banque = banqueDep;
+                nb_hab=0;
+                nb_chateau=0;
+                nb_centrales=0;
+                play_musique=0;
+                pause=0;
+            }
             if(choixMenu==2)
             {
 
                 chargementTempsChrono(&tempsChrono,&tempsPause);
                 tempsPause=0;
+                banque = chargementArgent();
                 lireFichierMap(map,"Sauvegarde/fichierCarte.txt");
                 nb_hab = chargerTableauHabitation(tab_hab,"Sauvegarde/tableauHabitation.bin");
                 nb_centrales = chargerTableauCentrale(tab_elec,"Sauvegarde/tableauCentrale.bin");
@@ -98,7 +107,6 @@ int main()
                 if (((mouse_x >= (920) && mouse_x <= (920 + 75)) && (mouse_y) >= (270) && mouse_y <= (270 + 100)) &&
                     (mouse_b & 1)) {
                     chateau_eau(page, map,tempsdep,&banque, tab_hab, nb_hab,  tab_eau, &nb_chateau,nb_centrales,tab_elec,tempsDebutPause,pause, tempsPause,tempsChrono);
-                    //creerMatriceEau(tab_hab,nb_hab,tab_eau,1,map);
                 }
                 if (((mouse_x >= (920) && mouse_x <= (920 + 75)) && (mouse_y) >= (380) && mouse_y <= (380 + 100)) &&
                     (mouse_b & 1)) {
@@ -112,6 +120,7 @@ int main()
                     sauvegarderMatriceFichier(map,"Sauvegarde/fichierCarte.txt");
                     sauvegardeTempsCycle(nb_hab,tab_hab,tempsPause,tempsChrono);
                     sauvegardeChrono(tempsdep,tempsPause,tempsChrono);
+                    sauvegardeArgent(banque);
                 }
                 if(((mouse_x>=(945)&& mouse_x<=(945+40))&& ((mouse_y)>=(70)&& mouse_y<=(70+40)))&&(mouse_b &1)&&(pause==0)) //bouton pause
                 {
@@ -150,8 +159,6 @@ int main()
             }
         }
     }
-    //free(tab_hab);
-    //tab_hab=NULL;
     return 0;
 }
 END_OF_MAIN();

@@ -353,7 +353,7 @@ void sauvegardeTempsCycle(int nombreHabitation, t_habitation tableauHab[],unsign
     tempsact= modificationTemps(tempsact,1,tempsChrono);
 
     //Ouverture du fichier
-    FILE* fichier = fopen("Sauvegarde/fichierTemps.txt","wb+");
+    FILE* fichier = fopen("Sauvegarde/fichierTemps.bin","wb+");
 
     //test ouverture fichier
     if(fichier == NULL)
@@ -380,7 +380,7 @@ void chargementTempsCycle(int nombreMaison,t_habitation tableauHab[],unsigned lo
     tempsdep= modificationTemps(tempsdep,1,tempsChrono);
 
     //Ouverture fichier
-    FILE* fichier = fopen("Sauvegarde/fichierTemps.txt","rb+");
+    FILE* fichier = fopen("Sauvegarde/fichierTemps.bin","rb+");
 
     //test ouverture fichier
     if(fichier == NULL)
@@ -407,7 +407,7 @@ void sauvegardeChrono(time_t tempsdepart,unsigned long tempsPause, unsigned long
     unsigned long diff=difftime(tempsact,tempsdepart);
 
     //Ouverture du fichier
-    FILE* fichier = fopen("Sauvegarde/fichierTempsChrono.txt","wb+");
+    FILE* fichier = fopen("Sauvegarde/fichierTempsChrono.bin","wb+");
     printf("%d %d \n",tempsPause,tempsChrono);
 
     //test ouverture fichier
@@ -430,7 +430,7 @@ void chargementTempsChrono(unsigned long* tempsChrono,unsigned long* tempsPause)
     //Déclaration variables
     unsigned long diff,tempsChronoFichier ;
     //Ouverture du fichier
-    FILE* fichier = fopen("Sauvegarde/fichierTempsChrono.txt","rb+");
+    FILE* fichier = fopen("Sauvegarde/fichierTempsChrono.bin","rb+");
 
     //test ouverture fichier
     if(fichier == NULL)
@@ -448,4 +448,43 @@ void chargementTempsChrono(unsigned long* tempsChrono,unsigned long* tempsPause)
     //Fermeture du fichier
     fclose(fichier);
 
+}
+
+void sauvegardeArgent(int argent)
+{
+    //Ouverture du fichier
+    FILE* fichier = fopen("Sauvegarde/fichierArgent.bin","wb+");
+
+    //test ouverture fichier
+    if(fichier == NULL)
+    {
+        printf("Erreur ouverture fichier : argent");
+    }
+
+    printf("%d \n",argent);
+    fwrite(&argent,sizeof(int),1,fichier);
+
+    //Fermeture du fichier
+    fclose(fichier);
+}
+
+int chargementArgent()
+{
+    //Déclaration des variables
+    int argent;
+    //Ouverture du fichier
+    FILE* fichier = fopen("Sauvegarde/fichierArgent.bin","rb+");
+
+    //test ouverture fichier
+    if(fichier == NULL)
+    {
+        printf("Erreur ouverture fichier : argent");
+    }
+
+    fread(&argent,sizeof(int),1,fichier);
+
+    //Fermeture du fichier
+    fclose(fichier);
+    printf("%d \n",argent);
+    return argent;
 }
