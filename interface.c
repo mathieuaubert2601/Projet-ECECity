@@ -1,6 +1,6 @@
 #include "header.h"
 
-void afficherInterface(BITMAP* page,int map[35][45], time_t tempsdepart, int argent,time_t tempsDepartPause, int pause, unsigned long tempsPause, unsigned long tempsChrono)
+void afficherInterface(BITMAP* page,int map[35][45], time_t tempsdepart, int argent,time_t tempsDepartPause, int pause, unsigned long tempsPause, unsigned long tempsChrono, int mode)
 {
     int compteurEau=0;
     int compteurElec=0;
@@ -17,6 +17,8 @@ void afficherInterface(BITMAP* page,int map[35][45], time_t tempsdepart, int arg
     BITMAP* iconeCentraleInv = load_bitmap("Interface/iconeCentraleInv.bmp", NULL);
     BITMAP* iconeMaison = load_bitmap("Interface/iconeMaison.bmp", NULL);
     BITMAP* iconeMaisonInv = load_bitmap("Interface/iconeMaisonInv.bmp", NULL);
+    BITMAP* communiste = load_bitmap("Interface/communiste.bmp", NULL);
+    BITMAP* capitaliste = load_bitmap("Interface/capitaliste.bmp", NULL);
 
     //Déclaration des BITMAP pour les boutons
     BITMAP* boutonQuitter = load_bitmap("Interface/boutonQuitter.bmp", NULL);
@@ -62,6 +64,14 @@ void afficherInterface(BITMAP* page,int map[35][45], time_t tempsdepart, int arg
     if(pause==1)
         AffichageBouton(boutonPlay,boutonPlayInv,page,0,0,945,70,boutonPlay->w,boutonPlay->h);
 
+    if(mode==1)
+    {
+        masked_blit(communiste,page,0,0,920,710,communiste->w,communiste->h);
+    }
+    if(mode==2)
+    {
+        masked_blit(capitaliste,page,0,0,920,710,capitaliste->w,capitaliste->h);
+    }
 
     //Affichage des boutons de niveaux
     AffichageBouton(boutonEau,boutonEauInv,page,0,0, 920, 550, boutonEau->w, boutonEau->h);
@@ -99,7 +109,7 @@ void afficherInterface(BITMAP* page,int map[35][45], time_t tempsdepart, int arg
 
 }
 
-void interfaceRoute(BITMAP* page, int type, time_t tempsdepart, int argent, int map[35][45],time_t tempsDepartPause, int pause, unsigned long tempsPause, unsigned long tempsChrono)
+void interfaceRoute(BITMAP* page, int type, time_t tempsdepart, int argent, int map[35][45],time_t tempsDepartPause, int pause, unsigned long tempsPause, unsigned long tempsChrono, int mode)
 {
     int compteurEau=0;
     int compteurElec=0;
@@ -112,6 +122,8 @@ void interfaceRoute(BITMAP* page, int type, time_t tempsdepart, int argent, int 
     BITMAP* boutonQuitter = load_bitmap("Constructions/boutonQuitter.bmp", NULL);
     BITMAP* boutonQuitterInv = load_bitmap("Constructions/boutonQuitterInv.bmp", NULL);
 
+    BITMAP* communiste = load_bitmap("Interface/communiste.bmp", NULL);
+    BITMAP* capitaliste = load_bitmap("Interface/capitaliste.bmp", NULL);
     BITMAP* infosRoute = load_bitmap("Constructions/infosRoute.bmp", NULL);
     BITMAP* routeIcone = load_bitmap("Constructions/routeIcone.bmp", NULL);
     BITMAP* routeVertiIcone = load_bitmap("Constructions/routeVertiIcone.bmp", NULL);
@@ -140,6 +152,14 @@ void interfaceRoute(BITMAP* page, int type, time_t tempsdepart, int argent, int 
         blit(routeVertiIcone,page,0,0,930,280,routeVertiIcone->w,routeVertiIcone->h);
     }
 
+    if(mode==1)
+    {
+        masked_blit(communiste,page,0,0,920,710,communiste->w,communiste->h);
+    }
+    if(mode==2)
+    {
+        masked_blit(capitaliste,page,0,0,920,710,capitaliste->w,capitaliste->h);
+    }
 
     if(type==1)
         blit(routeTran,page,0,0,930,220,routeTran->w,routeTran->h);
@@ -180,7 +200,7 @@ void interfaceRoute(BITMAP* page, int type, time_t tempsdepart, int argent, int 
 }
 
 
-void interfaceMaisons(BITMAP* page,time_t tempsdepart, int argent, int map[35][45],time_t tempsDepartPause, int pause, unsigned long tempsPause, unsigned long tempsChrono)
+void interfaceMaisons(BITMAP* page,time_t tempsdepart, int argent, int map[35][45],time_t tempsDepartPause, int pause, unsigned long tempsPause, unsigned long tempsChrono, int mode)
 {
     int compteurEau=0;
     int compteurElec=0;
@@ -197,6 +217,8 @@ void interfaceMaisons(BITMAP* page,time_t tempsdepart, int argent, int map[35][4
     BITMAP* iconeMaison = load_bitmap("Interface/iconeMaison.bmp", NULL);
     BITMAP* iconeMaisonInv = load_bitmap("Interface/iconeMaisonInv.bmp", NULL);
 
+    BITMAP* communiste = load_bitmap("Interface/communiste.bmp", NULL);
+    BITMAP* capitaliste = load_bitmap("Interface/capitaliste.bmp", NULL);
     BITMAP* nbEau = load_bitmap("Interface/nbEau.bmp", NULL);
     BITMAP* nbEauInfos = load_bitmap("Interface/nbEauInfos.bmp", NULL);
     BITMAP* nbElec = load_bitmap("Interface/nbElec.bmp", NULL);
@@ -225,6 +247,15 @@ void interfaceMaisons(BITMAP* page,time_t tempsdepart, int argent, int map[35][4
     if(pause==1)
         textprintf_ex(page,font,980,720,makecol(255,255,255),-1,"%d",diffP);
 
+    if(mode==1)
+    {
+        masked_blit(communiste,page,0,0,920,710,communiste->w,communiste->h);
+    }
+    if(mode==2)
+    {
+        masked_blit(capitaliste,page,0,0,920,710,capitaliste->w,capitaliste->h);
+    }
+
     textprintf_ex(page,font,80,720,makecol(255,255,255),-1,"%d",argent);
 
     compteurHab = compterHab(map);
@@ -245,7 +276,7 @@ void interfaceMaisons(BITMAP* page,time_t tempsdepart, int argent, int map[35][4
 }
 
 
-void interfaceChateaux(BITMAP* page,time_t tempsdepart, int argent, int map[35][45],time_t tempsDepartPause, int pause, unsigned long tempsPause, unsigned long tempsChrono)
+void interfaceChateaux(BITMAP* page,time_t tempsdepart, int argent, int map[35][45],time_t tempsDepartPause, int pause, unsigned long tempsPause, unsigned long tempsChrono, int mode)
 {
     int compteurEau=0;
     int compteurElec=0;
@@ -261,6 +292,8 @@ void interfaceChateaux(BITMAP* page,time_t tempsdepart, int argent, int map[35][
     BITMAP* iconeChateauEau = load_bitmap("Interface/iconeChateauEau.bmp", NULL);
     BITMAP* iconeChateauEauInv = load_bitmap("Interface/iconeChateauEauInv.bmp",NULL);
 
+    BITMAP* communiste = load_bitmap("Interface/communiste.bmp", NULL);
+    BITMAP* capitaliste = load_bitmap("Interface/capitaliste.bmp", NULL);
     BITMAP* nbEau = load_bitmap("Interface/nbEau.bmp", NULL);
     BITMAP* nbEauInfos = load_bitmap("Interface/nbEauInfos.bmp", NULL);
     BITMAP* nbElec = load_bitmap("Interface/nbElec.bmp", NULL);
@@ -288,6 +321,15 @@ void interfaceChateaux(BITMAP* page,time_t tempsdepart, int argent, int map[35][
     if(pause==1)
         textprintf_ex(page,font,980,720,makecol(255,255,255),-1,"%d",diffP);
 
+    if(mode==1)
+    {
+        masked_blit(communiste,page,0,0,920,710,communiste->w,communiste->h);
+    }
+    if(mode==2)
+    {
+        masked_blit(capitaliste,page,0,0,920,710,capitaliste->w,capitaliste->h);
+    }
+
     textprintf_ex(page,font,80,720,makecol(255,255,255),-1,"%d",argent);
 
     compteurHab = compterHab(map);
@@ -308,7 +350,7 @@ void interfaceChateaux(BITMAP* page,time_t tempsdepart, int argent, int map[35][
 }
 
 
-void interfaceCentrales(BITMAP* page,time_t tempsdepart, int argent, int map[35][45],time_t tempsDepartPause, int pause, unsigned long tempsPause, unsigned long tempsChrono)
+void interfaceCentrales(BITMAP* page,time_t tempsdepart, int argent, int map[35][45],time_t tempsDepartPause, int pause, unsigned long tempsPause, unsigned long tempsChrono, int mode)
 {
     int compteurEau=0;
     int compteurElec=0;
@@ -324,6 +366,8 @@ void interfaceCentrales(BITMAP* page,time_t tempsdepart, int argent, int map[35]
     BITMAP* iconeCentrale = load_bitmap("Interface/iconeCentrale.bmp", NULL);
     BITMAP* iconeCentraleInv = load_bitmap("Interface/iconeCentraleInv.bmp", NULL);
 
+    BITMAP* communiste = load_bitmap("Interface/communiste.bmp", NULL);
+    BITMAP* capitaliste = load_bitmap("Interface/capitaliste.bmp", NULL);
     BITMAP* nbEau = load_bitmap("Interface/nbEau.bmp", NULL);
     BITMAP* nbEauInfos = load_bitmap("Interface/nbEauInfos.bmp", NULL);
     BITMAP* nbElec = load_bitmap("Interface/nbElec.bmp", NULL);
@@ -350,6 +394,15 @@ void interfaceCentrales(BITMAP* page,time_t tempsdepart, int argent, int map[35]
         textprintf_ex(page,font,980,720,makecol(255,255,255),-1,"%d",diff);
     if(pause==1)
         textprintf_ex(page,font,980,720,makecol(255,255,255),-1,"%d",diffP);
+
+    if(mode==1)
+    {
+        masked_blit(communiste,page,0,0,920,710,communiste->w,communiste->h);
+    }
+    if(mode==2)
+    {
+        masked_blit(capitaliste,page,0,0,920,710,capitaliste->w,capitaliste->h);
+    }
 
     textprintf_ex(page,font,80,720,makecol(255,255,255),-1,"%d",argent);
 

@@ -106,11 +106,11 @@ void test_temps(int map[35][45], t_habitation tab_hab[50], int* argent, int nb_h
 
 
 //Interfaces
-void afficherInterface(BITMAP* page,int map[35][45], time_t tempsdepart, int argent,time_t tempsDepartPause, int pause, unsigned long tempsPause, unsigned long tempsChrono);
-void interfaceRoute(BITMAP* page, int type, time_t tempsdepart, int argent, int map[35][45],time_t tempsDepartPause, int pause, unsigned long tempsPause, unsigned long tempsChrono);
-void interfaceMaisons(BITMAP* page, time_t tempsdepart, int argent, int map[35][45],time_t tempsDepartPause, int pause, unsigned long tempsPause, unsigned long tempsChrono);
-void interfaceChateaux(BITMAP* page,time_t tempsdepart, int argent, int map[35][45],time_t tempsDepartPause, int pause, unsigned long tempsPause, unsigned long tempsChrono);
-void interfaceCentrales(BITMAP* page,time_t tempsdepart, int argent, int map[35][45],time_t tempsDepartPause, int pause, unsigned long tempsPause, unsigned long tempsChrono);
+void afficherInterface(BITMAP* page,int map[35][45], time_t tempsdepart, int argent,time_t tempsDepartPause, int pause, unsigned long tempsPause, unsigned long tempsChrono, int mode);
+void interfaceRoute(BITMAP* page, int type, time_t tempsdepart, int argent, int map[35][45],time_t tempsDepartPause, int pause, unsigned long tempsPause, unsigned long tempsChrono, int mode);
+void interfaceMaisons(BITMAP* page, time_t tempsdepart, int argent, int map[35][45],time_t tempsDepartPause, int pause, unsigned long tempsPause, unsigned long tempsChrono, int mode);
+void interfaceChateaux(BITMAP* page,time_t tempsdepart, int argent, int map[35][45],time_t tempsDepartPause, int pause, unsigned long tempsPause, unsigned long tempsChrono, int mode);
+void interfaceCentrales(BITMAP* page,time_t tempsdepart, int argent, int map[35][45],time_t tempsDepartPause, int pause, unsigned long tempsPause, unsigned long tempsChrono, int mode);
 void interfaceNiveau(BITMAP* page, int type, int map[35][45]);
 int compterHab(int map[35][45]);
 int compterEau(int map[35][45]);

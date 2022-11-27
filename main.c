@@ -95,7 +95,7 @@ int main()
             {
                 afficher_matrice_cases_vertes(page);
                 afficher_map(page,map);
-                afficherInterface(page,map,tempsdep, banque,tempsDebutPause,pause, tempsPause,tempsChrono);
+                afficherInterface(page,map,tempsdep, banque,tempsDebutPause,pause, tempsPause,tempsChrono,mode);
                 test_temps(map,tab_hab,&banque,nb_hab,nb_centrales,tab_elec,nb_chateau,tab_eau,pause, tempsPause,tempsChrono,mode);
                 if (((mouse_x >= (920) && mouse_x <= (920 + 90)) && (mouse_y) >= (130) && mouse_y <= (130 + 65)) &&
                     (mouse_b & 1)) {
