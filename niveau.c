@@ -99,13 +99,13 @@ void canalisations (BITMAP* page, int map[35][45],t_habitation maison[50],int nb
 {
     //Initialisation
     int clic=0;
-    int type=0;
+    int type=1;
 
     //boucle tant qu'on reste dans le niveau -1
     while(clic!=1)
     {
         clear_bitmap(page);
-        interfaceNiveau(page,type);
+        interfaceNiveau(page,type, map);
         //Affichage de tout ce qui est relatif au niveau eau
         afficher_niveau(page,map,maison,nb_maison,matriceEau,nb_chateauEau,tab_eau,tab_elec,nb_centrales);
         blit(page,screen,0,0,0,0,1024,768);
@@ -198,13 +198,13 @@ void lignes(BITMAP* page, int map[35][45],t_habitation maison[50], int nb_maison
 {
     //Initialisation
     int clic=0;
-    int type=0;
+    int type=2;
 
     //boucle tant qu'on est dans le niveau -2
     while(clic!=1)
     {
         clear_bitmap(page);
-        interfaceNiveau(page,type);
+        interfaceNiveau(page,type, map);
         //affichage de tout ce qui est nécessaire pour le niveau elec
         afficher_niveau2(page,map,maison,nb_maison,nb_chateauEau,tab_eau,tab_elec,nb_centrales);
         blit(page,screen,0,0,0,0,1024,768);
@@ -219,8 +219,16 @@ void lignes(BITMAP* page, int map[35][45],t_habitation maison[50], int nb_maison
 }
 
 //Interface pour l'affichage des differents niveaux
-void interfaceNiveau(BITMAP* page, int type)
+void interfaceNiveau(BITMAP* page, int type, int map[35][45])
 {
+    int compteurEau=0;
+    int compteurElec=0;
+    int compteurHab=0;
+
+    compteurHab = compterHab(map);
+    compteurEau = compterEau(map);
+    compteurElec = compterElec(map);
+
     //Déclaration des BITMAP pour l'interface
     BITMAP* fondCote = load_bitmap("Interface/fondCote.bmp",NULL);
     BITMAP* fondBas = load_bitmap("Interface/fondBas.bmp", NULL);
@@ -228,9 +236,29 @@ void interfaceNiveau(BITMAP* page, int type)
     BITMAP* boutonQuitter = load_bitmap("Constructions/boutonQuitter.bmp", NULL);
     BITMAP* boutonQuitterInv = load_bitmap("Constructions/boutonQuitterInv.bmp", NULL);
 
+    BITMAP* nbEau = load_bitmap("Interface/nbEau.bmp", NULL);
+    BITMAP* nbEauInfos = load_bitmap("Interface/nbEauInfos.bmp", NULL);
+    BITMAP* nbElec = load_bitmap("Interface/nbElec.bmp", NULL);
+    BITMAP* nbElecInfos = load_bitmap("Interface/nbElecInfos.bmp", NULL);
+    BITMAP* nbHab = load_bitmap("Interface/nbHab.bmp", NULL);
+    BITMAP* nbHabInfos = load_bitmap("Interface/nbHabInfos.bmp", NULL);
+
     //Affichage de l'interface
     blit(fondCote, page, 0, 0, 900, 0, page->w, page->h);
     blit(fondBas, page, 0, 0, 0, 700, page->w, page->h);
+
+    if (type==1)
+        AffichageIcone(nbEau,nbEau,nbEauInfos,page,0,0,250,715,0,10,nbEau->w,nbEau->h,nbEauInfos->w,nbEauInfos->h);
+    if (type==2)
+        AffichageIcone(nbElec,nbElec,nbElecInfos,page,0,0,250,715,0,10,nbElec->w,nbElec->h,nbElecInfos->w,nbElecInfos->h);
+    AffichageIcone(nbHab,nbHab,nbHabInfos,page,0,0,150,715,0,10,nbHab->w,nbHab->h,nbHabInfos->w,nbHabInfos->h);
+
+
+    textprintf_ex(page,font,180,720,makecol(255,255,255),-1,"%d",compteurHab);
+    if (type==1)
+        textprintf_ex(page,font,280,720,makecol(255,255,255),-1,"%d",compteurEau);
+    if (type==2)
+        textprintf_ex(page,font,280,720,makecol(255,255,255),-1,"%d",compteurElec);
 
     AffichageBouton(boutonQuitter,boutonQuitterInv,page,0,0,970,25,boutonQuitter->w,boutonQuitter->h);
 }

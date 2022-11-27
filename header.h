@@ -111,7 +111,7 @@ void interfaceRoute(BITMAP* page, int type, time_t tempsdepart, int argent, int 
 void interfaceMaisons(BITMAP* page, time_t tempsdepart, int argent, int map[35][45],time_t tempsDepartPause, int pause, unsigned long tempsPause, unsigned long tempsChrono);
 void interfaceChateaux(BITMAP* page,time_t tempsdepart, int argent, int map[35][45],time_t tempsDepartPause, int pause, unsigned long tempsPause, unsigned long tempsChrono);
 void interfaceCentrales(BITMAP* page,time_t tempsdepart, int argent, int map[35][45],time_t tempsDepartPause, int pause, unsigned long tempsPause, unsigned long tempsChrono);
-void interfaceNiveau(BITMAP* page, int type);
+void interfaceNiveau(BITMAP* page, int type, int map[35][45]);
 int compterHab(int map[35][45]);
 int compterEau(int map[35][45]);
 int compterElec(int map[35][45]);

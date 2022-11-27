@@ -8,7 +8,10 @@ void creer_map(BITMAP* page, int map[35][45])
         }
     }
 
-    map[0][22]=2;
+    map[1][22]=2;
+    map[2][22]=2;
+    map[3][22]=2;
+    map[4][22]=2;
 }
 
 void afficher_matrice_cases_vertes(BITMAP* page)

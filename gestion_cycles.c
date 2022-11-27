@@ -17,8 +17,7 @@ void test_temps(int map[35][45], t_habitation tab_hab[50], int* argent, int nb_h
     for (int i=0; i<nb_hab; i++)    //On parcourt toutes les habitations crées
     {
         int apres = 0;
-        diff = difftime(tempsact,
-                        tab_hab[i].tempsCrea); //On calcule le temps depuis la création ou depuis la derniere evolution
+        diff = difftime(tempsact,tab_hab[i].tempsCrea); //On calcule le temps depuis la création ou depuis la derniere evolution
         if (pause == 0) {
             if (mode == 1) { //mode communiste
                 if (diff >= 15 && nb_hab > 0 && nbchateau > 0) //Si le temps est sup ou egal a 15

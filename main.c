@@ -63,7 +63,6 @@ int main()
                     tempsPause=0;
                     banque = chargementArgent();
                     mode = chargementModeJeu();
-                    printf("%d\n",mode);
                     lireFichierMap(map,"Sauvegarde/fichierCarte.txt");
                     nb_hab = chargerTableauHabitation(tab_hab,"Sauvegarde/tableauHabitation.bin");
                     nb_centrales = chargerTableauCentrale(tab_elec,"Sauvegarde/tableauCentrale.bin");
