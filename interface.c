@@ -25,6 +25,8 @@ void afficherInterface(BITMAP* page,int map[35][45], time_t tempsdepart, int arg
     BITMAP* boutonSauvegarderInv = load_bitmap("Interface/boutonSauvegarderInv.bmp", NULL);
     BITMAP* boutonPause = load_bitmap("Interface/boutonPause.bmp", NULL);
     BITMAP* boutonPauseInv = load_bitmap("Interface/boutonPauseInv.bmp", NULL);
+    BITMAP* boutonPlay = load_bitmap("Interface/boutonPlay.bmp", NULL);
+    BITMAP* boutonPlayInv = load_bitmap("Interface/boutonPlayInv.bmp", NULL);
 
     BITMAP* boutonElec = load_bitmap("Interface/boutonElec.bmp", NULL);
     BITMAP* boutonElecInv = load_bitmap("Interface/boutonElecInv.bmp", NULL);
@@ -53,7 +55,12 @@ void afficherInterface(BITMAP* page,int map[35][45], time_t tempsdepart, int arg
     //Affichage des boutons
     AffichageBouton(boutonQuitter,boutonQuitterInv,page,0,0,970,25,boutonQuitter->w,boutonQuitter->h);
     AffichageBouton(boutonSauvegarder,boutonSauvegarderInv,page,0,0,920,25,boutonSauvegarder->w,boutonSauvegarder->h);
-    AffichageBouton(boutonPause,boutonPauseInv,page,0,0,945,70,boutonPause->w,boutonPause->h);
+
+    if(pause==0)
+        AffichageBouton(boutonPause,boutonPauseInv,page,0,0,945,70,boutonPause->w,boutonPause->h);
+    if(pause==1)
+        AffichageBouton(boutonPlay,boutonPlayInv,page,0,0,945,70,boutonPlay->w,boutonPlay->h);
+
 
     //Affichage des boutons de niveaux
     AffichageBouton(boutonEau,boutonEauInv,page,0,0, 920, 550, boutonEau->w, boutonEau->h);
@@ -103,8 +110,6 @@ void interfaceRoute(BITMAP* page, int type, time_t tempsdepart, int argent, int 
 
     BITMAP* boutonQuitter = load_bitmap("Constructions/boutonQuitter.bmp", NULL);
     BITMAP* boutonQuitterInv = load_bitmap("Constructions/boutonQuitterInv.bmp", NULL);
-    BITMAP* boutonPause = load_bitmap("Interface/boutonPause.bmp", NULL);
-    BITMAP* boutonPauseInv = load_bitmap("Interface/boutonPauseInv.bmp", NULL);
 
     BITMAP* infosRoute = load_bitmap("Constructions/infosRoute.bmp", NULL);
     BITMAP* routeIcone = load_bitmap("Constructions/routeIcone.bmp", NULL);
@@ -112,20 +117,38 @@ void interfaceRoute(BITMAP* page, int type, time_t tempsdepart, int argent, int 
     BITMAP* routeTran = load_bitmap("Constructions/routeTran.bmp", NULL);
     BITMAP* routeVertiTran = load_bitmap("Constructions/routeVertiTran.bmp", NULL);
 
+    BITMAP* nbEau = load_bitmap("Interface/nbEau.bmp", NULL);
+    BITMAP* nbEauInfos = load_bitmap("Interface/nbEauInfos.bmp", NULL);
+    BITMAP* nbElec = load_bitmap("Interface/nbElec.bmp", NULL);
+    BITMAP* nbElecInfos = load_bitmap("Interface/nbElecInfos.bmp", NULL);
+    BITMAP* nbHab = load_bitmap("Interface/nbHab.bmp", NULL);
+    BITMAP* nbHabInfos = load_bitmap("Interface/nbHabInfos.bmp", NULL);
+    BITMAP* nbArgent = load_bitmap("Interface/nbArgent.bmp", NULL);
+    BITMAP* nbArgentInfos = load_bitmap("Interface/nbArgentInfos.bmp", NULL);
+
     blit(fondCote, page, 0, 0, 900, 0, page->w, page->h);
     blit(fondBas, page, 0, 0, 0, 700, page->w, page->h);
 
     AffichageBouton(boutonQuitter,boutonQuitterInv,page,0,0,970,25,boutonQuitter->w,boutonQuitter->h);
-    AffichageBouton(boutonPause,boutonPauseInv,page,0,0,945,70,boutonPause->w,boutonPause->h);
 
     blit(infosRoute, page, 0,0,910,120,infosRoute->w,infosRoute->h);
-    blit(routeIcone,page,0,0,930,220,routeIcone->w,routeIcone->h);
-    blit(routeVertiIcone,page,0,0,930,280,routeVertiIcone->w,routeVertiIcone->h);
+
+    if(type==0)
+    {
+        blit(routeIcone,page,0,0,930,220,routeIcone->w,routeIcone->h);
+        blit(routeVertiIcone,page,0,0,930,280,routeVertiIcone->w,routeVertiIcone->h);
+    }
+
 
     if(type==1)
         blit(routeTran,page,0,0,930,220,routeTran->w,routeTran->h);
+        blit(routeVertiIcone,page,0,0,930,280,routeVertiIcone->w,routeVertiIcone->h);
     if(type==2)
+    {
+        blit(routeIcone,page,0,0,930,220,routeIcone->w,routeIcone->h);
         blit(routeVertiTran,page,0,0,930,280,routeVertiTran->w,routeVertiTran->h);
+    }
+
 
     time_t tempsact = time(NULL);
     tempsact= modificationTemps(tempsact,0,tempsPause);
@@ -143,6 +166,12 @@ void interfaceRoute(BITMAP* page, int type, time_t tempsdepart, int argent, int 
     compteurHab = compterHab(map);
     compteurEau = compterEau(map);
     compteurElec = compterElec(map);
+
+    AffichageIcone(nbEau,nbEau,nbEauInfos,page,0,0,250,715,0,10,nbEau->w,nbEau->h,nbEauInfos->w,nbEauInfos->h);
+    AffichageIcone(nbElec,nbElec,nbElecInfos,page,0,0,350,715,0,10,nbElec->w,nbElec->h,nbElecInfos->w,nbElecInfos->h);
+    AffichageIcone(nbHab,nbHab,nbHabInfos,page,0,0,150,715,0,10,nbHab->w,nbHab->h,nbHabInfos->w,nbHabInfos->h);
+    AffichageIcone(nbArgent,nbArgent,nbArgentInfos,page,0,0,50,715,0,10,nbHab->w,nbHab->h,nbHabInfos->w,nbHabInfos->h);
+
 
     textprintf_ex(page,font,180,720,makecol(255,255,255),-1,"%d",compteurHab);
     textprintf_ex(page,font,280,720,makecol(255,255,255),-1,"%d",compteurEau);
@@ -162,18 +191,25 @@ void interfaceMaisons(BITMAP* page,time_t tempsdepart, int argent, int map[35][4
 
     BITMAP* boutonQuitter = load_bitmap("Constructions/boutonQuitter.bmp", NULL);
     BITMAP* boutonQuitterInv = load_bitmap("Constructions/boutonQuitterInv.bmp", NULL);
-    BITMAP* boutonPause = load_bitmap("Interface/boutonPause.bmp", NULL);
-    BITMAP* boutonPauseInv = load_bitmap("Interface/boutonPauseInv.bmp", NULL);
+
 
     BITMAP* iconeMaison = load_bitmap("Interface/iconeMaison.bmp", NULL);
     BITMAP* iconeMaisonInv = load_bitmap("Interface/iconeMaisonInv.bmp", NULL);
+
+    BITMAP* nbEau = load_bitmap("Interface/nbEau.bmp", NULL);
+    BITMAP* nbEauInfos = load_bitmap("Interface/nbEauInfos.bmp", NULL);
+    BITMAP* nbElec = load_bitmap("Interface/nbElec.bmp", NULL);
+    BITMAP* nbElecInfos = load_bitmap("Interface/nbElecInfos.bmp", NULL);
+    BITMAP* nbHab = load_bitmap("Interface/nbHab.bmp", NULL);
+    BITMAP* nbHabInfos = load_bitmap("Interface/nbHabInfos.bmp", NULL);
+    BITMAP* nbArgent = load_bitmap("Interface/nbArgent.bmp", NULL);
+    BITMAP* nbArgentInfos = load_bitmap("Interface/nbArgentInfos.bmp", NULL);
 
 
     blit(fondCote, page, 0, 0, 900, 0, page->w, page->h);
     blit(fondBas, page, 0, 0, 0, 700, page->w, page->h);
 
     AffichageBouton(boutonQuitter,boutonQuitterInv,page,0,0,970,25,boutonQuitter->w,boutonQuitter->h);
-    AffichageBouton(boutonPause,boutonPauseInv,page,0,0,945,70,boutonPause->w,boutonPause->h);
 
     AffichageBouton(iconeMaison, iconeMaisonInv, page, 0,0, 920, 200, iconeMaison->w, iconeMaison->h);
 
@@ -193,6 +229,12 @@ void interfaceMaisons(BITMAP* page,time_t tempsdepart, int argent, int map[35][4
     compteurHab = compterHab(map);
     compteurEau = compterEau(map);
     compteurElec = compterElec(map);
+
+    AffichageIcone(nbEau,nbEau,nbEauInfos,page,0,0,250,715,0,10,nbEau->w,nbEau->h,nbEauInfos->w,nbEauInfos->h);
+    AffichageIcone(nbElec,nbElec,nbElecInfos,page,0,0,350,715,0,10,nbElec->w,nbElec->h,nbElecInfos->w,nbElecInfos->h);
+    AffichageIcone(nbHab,nbHab,nbHabInfos,page,0,0,150,715,0,10,nbHab->w,nbHab->h,nbHabInfos->w,nbHabInfos->h);
+    AffichageIcone(nbArgent,nbArgent,nbArgentInfos,page,0,0,50,715,0,10,nbHab->w,nbHab->h,nbHabInfos->w,nbHabInfos->h);
+
 
     textprintf_ex(page,font,180,720,makecol(255,255,255),-1,"%d",compteurHab);
     textprintf_ex(page,font,280,720,makecol(255,255,255),-1,"%d",compteurEau);
@@ -214,17 +256,23 @@ void interfaceChateaux(BITMAP* page,time_t tempsdepart, int argent, int map[35][
 
     BITMAP* boutonQuitter = load_bitmap("Constructions/boutonQuitter.bmp", NULL);
     BITMAP* boutonQuitterInv = load_bitmap("Constructions/boutonQuitterInv.bmp", NULL);
-    BITMAP* boutonPause = load_bitmap("Interface/boutonPause.bmp", NULL);
-    BITMAP* boutonPauseInv = load_bitmap("Interface/boutonPauseInv.bmp", NULL);
 
     BITMAP* iconeChateauEau = load_bitmap("Interface/iconeChateauEau.bmp", NULL);
     BITMAP* iconeChateauEauInv = load_bitmap("Interface/iconeChateauEauInv.bmp",NULL);
+
+    BITMAP* nbEau = load_bitmap("Interface/nbEau.bmp", NULL);
+    BITMAP* nbEauInfos = load_bitmap("Interface/nbEauInfos.bmp", NULL);
+    BITMAP* nbElec = load_bitmap("Interface/nbElec.bmp", NULL);
+    BITMAP* nbElecInfos = load_bitmap("Interface/nbElecInfos.bmp", NULL);
+    BITMAP* nbHab = load_bitmap("Interface/nbHab.bmp", NULL);
+    BITMAP* nbHabInfos = load_bitmap("Interface/nbHabInfos.bmp", NULL);
+    BITMAP* nbArgent = load_bitmap("Interface/nbArgent.bmp", NULL);
+    BITMAP* nbArgentInfos = load_bitmap("Interface/nbArgentInfos.bmp", NULL);
 
     blit(fondCote, page, 0, 0, 900, 0, page->w, page->h);
     blit(fondBas, page, 0, 0, 0, 700, page->w, page->h);
 
     AffichageBouton(boutonQuitter,boutonQuitterInv,page,0,0,970,25,boutonQuitter->w,boutonQuitter->h);
-    AffichageBouton(boutonPause,boutonPauseInv,page,0,0,945,70,boutonPause->w,boutonPause->h);
 
     AffichageBouton(iconeChateauEau, iconeChateauEauInv,page,0,0,920,270,iconeChateauEau->w,iconeChateauEau->h);
 
@@ -244,6 +292,12 @@ void interfaceChateaux(BITMAP* page,time_t tempsdepart, int argent, int map[35][
     compteurHab = compterHab(map);
     compteurEau = compterEau(map);
     compteurElec = compterElec(map);
+
+    AffichageIcone(nbEau,nbEau,nbEauInfos,page,0,0,250,715,0,10,nbEau->w,nbEau->h,nbEauInfos->w,nbEauInfos->h);
+    AffichageIcone(nbElec,nbElec,nbElecInfos,page,0,0,350,715,0,10,nbElec->w,nbElec->h,nbElecInfos->w,nbElecInfos->h);
+    AffichageIcone(nbHab,nbHab,nbHabInfos,page,0,0,150,715,0,10,nbHab->w,nbHab->h,nbHabInfos->w,nbHabInfos->h);
+    AffichageIcone(nbArgent,nbArgent,nbArgentInfos,page,0,0,50,715,0,10,nbHab->w,nbHab->h,nbHabInfos->w,nbHabInfos->h);
+
 
     textprintf_ex(page,font,180,720,makecol(255,255,255),-1,"%d",compteurHab);
     textprintf_ex(page,font,280,720,makecol(255,255,255),-1,"%d",compteurEau);
@@ -265,19 +319,23 @@ void interfaceCentrales(BITMAP* page,time_t tempsdepart, int argent, int map[35]
 
     BITMAP* boutonQuitter = load_bitmap("Constructions/boutonQuitter.bmp", NULL);
     BITMAP* boutonQuitterInv = load_bitmap("Constructions/boutonQuitterInv.bmp", NULL);
-    BITMAP* boutonPause = load_bitmap("Interface/boutonPause.bmp", NULL);
-    BITMAP* boutonPauseInv = load_bitmap("Interface/boutonPauseInv.bmp", NULL);
 
     BITMAP* iconeCentrale = load_bitmap("Interface/iconeCentrale.bmp", NULL);
     BITMAP* iconeCentraleInv = load_bitmap("Interface/iconeCentraleInv.bmp", NULL);
 
-
+    BITMAP* nbEau = load_bitmap("Interface/nbEau.bmp", NULL);
+    BITMAP* nbEauInfos = load_bitmap("Interface/nbEauInfos.bmp", NULL);
+    BITMAP* nbElec = load_bitmap("Interface/nbElec.bmp", NULL);
+    BITMAP* nbElecInfos = load_bitmap("Interface/nbElecInfos.bmp", NULL);
+    BITMAP* nbHab = load_bitmap("Interface/nbHab.bmp", NULL);
+    BITMAP* nbHabInfos = load_bitmap("Interface/nbHabInfos.bmp", NULL);
+    BITMAP* nbArgent = load_bitmap("Interface/nbArgent.bmp", NULL);
+    BITMAP* nbArgentInfos = load_bitmap("Interface/nbArgentInfos.bmp", NULL);
 
     blit(fondCote, page, 0, 0, 900, 0, page->w, page->h);
     blit(fondBas, page, 0, 0, 0, 700, page->w, page->h);
 
     AffichageBouton(boutonQuitter,boutonQuitterInv,page,0,0,970,25,boutonQuitter->w,boutonQuitter->h);
-    AffichageBouton(boutonPause,boutonPauseInv,page,0,0,945,70,boutonPause->w,boutonPause->h);
 
     AffichageBouton(iconeCentrale, iconeCentraleInv, page, 0, 0, 920, 380,iconeCentrale->w,iconeCentrale->h);
 
@@ -297,6 +355,12 @@ void interfaceCentrales(BITMAP* page,time_t tempsdepart, int argent, int map[35]
     compteurHab = compterHab(map);
     compteurEau = compterEau(map);
     compteurElec = compterElec(map);
+
+    AffichageIcone(nbEau,nbEau,nbEauInfos,page,0,0,250,715,0,10,nbEau->w,nbEau->h,nbEauInfos->w,nbEauInfos->h);
+    AffichageIcone(nbElec,nbElec,nbElecInfos,page,0,0,350,715,0,10,nbElec->w,nbElec->h,nbElecInfos->w,nbElecInfos->h);
+    AffichageIcone(nbHab,nbHab,nbHabInfos,page,0,0,150,715,0,10,nbHab->w,nbHab->h,nbHabInfos->w,nbHabInfos->h);
+    AffichageIcone(nbArgent,nbArgent,nbArgentInfos,page,0,0,50,715,0,10,nbHab->w,nbHab->h,nbHabInfos->w,nbHabInfos->h);
+
 
     textprintf_ex(page,font,180,720,makecol(255,255,255),-1,"%d",compteurHab);
     textprintf_ex(page,font,280,720,makecol(255,255,255),-1,"%d",compteurEau);
