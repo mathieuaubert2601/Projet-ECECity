@@ -6,7 +6,7 @@ void affichageregles(BITMAP* bmpAffichage)
     BITMAP* fondMenu = load_bitmap("menuDepart/fond1.bmp",NULL);
     BITMAP* regle = load_bitmap("menuDepart/regle.bmp",NULL);
     BITMAP* logoEceCitySansFond2 = load_bitmap("menuDepart/logo3.bmp",NULL);
-    while(clic!=1)
+    while(clic!=1 && !key[KEY_ESC])
     {
         clear_bitmap(bmpAffichage);
         blit(fondMenu,bmpAffichage,0,0,0,0,bmpAffichage->w,bmpAffichage->h);
@@ -19,6 +19,7 @@ void affichageregles(BITMAP* bmpAffichage)
         }
 
     }
+    rest(350);
 
 }
 int menuJeu(BITMAP* bmpAffichage)
