@@ -51,13 +51,69 @@ void route (BITMAP* page, int map[35][45],time_t tempsdepart, int* banque, t_hab
                 if (((mouse_x >= (0) && mouse_x <= (900)) && ((mouse_y) >= (0) && mouse_y <= (700))) && (mouse_b & 1)) {
                     x = mouse_x / 20;
                     y = mouse_y / 20;
-                    if ((map[y + 1][x] == 1 || map[y - 1][x] == 1 || map[y][x + 1] == 1 || map[y][x - 1] == 1) || (map[y + 1][x] == 2 || map[y - 1][x] == 2 || map[y][x + 1] == 2 || map[y][x - 1] == 2)){
-                        if (*banque > 10 && map[y][x] == 0) {
-                            map[y][x] = 1;
+                    if(x > 44)
+                    {
+                        x =44;
+                    }
+                    if(x<0)
+                    {
+                        x =0;
+                    }
+                    if(y > 34)
+                    {
+                        y=34;
+                    }
+                    if(y<0)
+                    {
+                        y = 0;
+                    }
+                    if(*banque > 10 && map[y][x] == 0)
+                    {
+                        if((y + 1) <35)
+                        {
+                            if(map[y + 1][x] == 1 || map[y + 1][x] == 2)
+                            {
+                                map[y][x] = 1;
                             *banque -= 10;
                             afficher_matrice_cases_vertes(buffer2);
                             afficher_map(buffer2, map);
+
+                            }
                         }
+                        if((y - 1 )>= 0)
+                        {
+                            if(map[y - 1][x] == 1 || map[y - 1][x] == 2)
+                            {
+                                map[y][x] = 1;
+                            *banque -= 10;
+                            afficher_matrice_cases_vertes(buffer2);
+                            afficher_map(buffer2, map);
+
+                            }
+                        }
+                        if((x + 1) < 45)
+                        {
+                            if(map[y][x+1] == 1 || map[y][x+1] == 2)
+                            {
+                                map[y][x] = 1;
+                            *banque -= 10;
+                            afficher_matrice_cases_vertes(buffer2);
+                            afficher_map(buffer2, map);
+
+                            }
+                        }
+                        if((x - 1 )>= 0)
+                        {
+                            if(map[y][x-1] == 1 || map[y][x-1] == 2)
+                            {
+                                map[y][x] = 1;
+                            *banque -= 10;
+                            afficher_matrice_cases_vertes(buffer2);
+                            afficher_map(buffer2, map);
+
+                            }
+                        }
+
                     }
                 }
                 if((((mouse_x>=(970)&& mouse_x<=(970+30))&& ((mouse_y)>=(25)&& mouse_y<=(25+30)))&&(mouse_b&1))||(mouse_b &2) ||(key[KEY_ESC]))
