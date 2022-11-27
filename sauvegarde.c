@@ -1,5 +1,8 @@
 #include "header.h"
 
+/// ///////////////////////////////////////////////////////// ///
+/////Sous programme pour tester si une sauvegarde a été faite ///
+/// ///////////////////////////////////////////////////////// ///
 int testSauvegarde()
 {
     //Déclaration des variables
@@ -23,6 +26,9 @@ int testSauvegarde()
     return testOuverture;
 }
 
+/// //////////////////////////////////////////////////////////// ///
+/////Sous programme pour indiquer  qu'une sauvegarde a été faite ///
+/// //////////////////////////////////////////////////////////// ///
 void indiquerSauvegarde(int ouvertureOuNon)
 {
     //Déclaration d'ouverture
@@ -41,6 +47,10 @@ void indiquerSauvegarde(int ouvertureOuNon)
     //Fermeture Fichier
     fclose(indiquerEtatSauvegarde);
 }
+
+/// /////////////////////////////////////// ///
+/////Sous programme pour sauvegarder la map ///
+/// /////////////////////////////////////// ///
 void sauvegarderMatriceFichier(int matrice[35][45], char* nomFichier)
 {
     //Déclaration des variables
@@ -189,6 +199,9 @@ void sauvegarderMatriceFichier(int matrice[35][45], char* nomFichier)
     indiquerSauvegarde(1);
 }
 
+/// ///////////////////////////////////////////////////// ///
+/////Sous programme pour sauvegarder tableau d'habitation ///
+/// ///////////////////////////////////////////////////// ///
 void sauvegarderTableauHabitation(char* nomFichier, t_habitation tableau[],int nombreBatiments)
 {
     FILE* fichier = fopen(nomFichier,"wb+");
@@ -212,6 +225,9 @@ void sauvegarderTableauHabitation(char* nomFichier, t_habitation tableau[],int n
     fclose(fichier);
 }
 
+/// //////////////////////////////////////////////////// ///
+/////Sous programme pour sauvegarder tableau chateau eau ///
+/// //////////////////////////////////////////////////// ///
 void sauvegarderTableauChateauEau(char* nomFichier, t_chateauEau tableau[],int nombreBatiments)
 {
     FILE* fichier = fopen(nomFichier,"wb+");
@@ -235,6 +251,10 @@ void sauvegarderTableauChateauEau(char* nomFichier, t_chateauEau tableau[],int n
     fclose(fichier);
 }
 
+/// /////////////////////////////////////////////////// ///
+/////Sous programme pour sauvegarder tableau centrales  ///
+/// /////////////////////////////////////////////////// ///
+
 void sauvegarderTableauCentrale(char* nomFichier, t_centrales tableau[],int nombreBatiments)
 {
     FILE* fichier = fopen(nomFichier,"wb+");
@@ -257,6 +277,90 @@ void sauvegarderTableauCentrale(char* nomFichier, t_centrales tableau[],int nomb
     //Fermeture du fichier
     fclose(fichier);
 }
+
+/// /////////////////////////////////////// ///
+/////Sous programme pour sauvegarder argent ///
+/// /////////////////////////////////////// ///
+void sauvegardeArgent(int argent)
+{
+    //Ouverture du fichier
+    FILE* fichier = fopen("Sauvegarde/fichierArgent.bin","wb+");
+
+    //test ouverture fichier
+    if(fichier == NULL)
+    {
+        printf("Erreur ouverture fichier : argent");
+    }
+
+    fwrite(&argent,sizeof(int),1,fichier);
+
+    //Fermeture du fichier
+    fclose(fichier);
+}
+
+/// /////////////////////////////////////// ///
+/////Sous programme pour sauvegarder cycles ///
+/// /////////////////////////////////////// ///
+void sauvegardeTempsCycle(int nombreHabitation, t_habitation tableauHab[],unsigned long tempsPause, unsigned long tempsChrono)
+{
+    //Calcul du temps actuel
+    unsigned long diff;
+    time_t tempsact = time(NULL);//On récupere le temps actuel
+    tempsact= modificationTemps(tempsact,0,tempsPause);
+    tempsact= modificationTemps(tempsact,1,tempsChrono);
+
+    //Ouverture du fichier
+    FILE* fichier = fopen("Sauvegarde/fichierTemps.bin","wb+");
+
+    //test ouverture fichier
+    if(fichier == NULL)
+    {
+        printf("Erreur ouverture fichier : temps");
+    }
+
+    for(int i=0 ; i<nombreHabitation ; i++)
+    {
+        diff = difftime(tempsact,tableauHab[i].tempsCrea);
+        fwrite(&diff,sizeof(unsigned long),1,fichier);
+    }
+
+    //Fermeture du fichier
+    fclose(fichier);
+}
+
+/// /////////////////////////////////////// ///
+/////Sous programme pour sauvegarder chrono ///
+/// /////////////////////////////////////// ///
+void sauvegardeChrono(time_t tempsdepart,unsigned long tempsPause, unsigned long tempsChrono)
+{
+    time_t tempsact = time(NULL);
+    tempsact= modificationTemps(tempsact,0,tempsPause);
+    tempsact= modificationTemps(tempsact,1,tempsChrono);
+    unsigned long diff=difftime(tempsact,tempsdepart);
+
+    //Ouverture du fichier
+    FILE* fichier = fopen("Sauvegarde/fichierTempsChrono.bin","wb+");
+    printf("%d %d \n",tempsPause,tempsChrono);
+
+    //test ouverture fichier
+    if(fichier == NULL)
+    {
+        printf("Erreur ouverture fichier : tempsChrono");
+    }
+
+    //Enregistement du temps
+    fwrite(&diff,sizeof(unsigned long),1,fichier);
+    fwrite(&tempsPause,sizeof(unsigned long),1,fichier);
+    fwrite(&tempsChrono,sizeof(unsigned long),1,fichier);
+
+    //fermeture du fichier
+    fclose(fichier);
+}
+
+/// /////////////////////////////////////////////// ///
+/////Sous programme pour charger tableau habitation ///
+/// /////////////////////////////////////////////// ///
+
 int chargerTableauHabitation(t_habitation tableauHabitation[], char* nomFichier)
 {
     //Déclaration des variables
@@ -290,6 +394,10 @@ int chargerTableauHabitation(t_habitation tableauHabitation[], char* nomFichier)
     return nombreBatiment;
 }
 
+/// //////////////////////////////////////////////// ///
+/////Sous programme pour charger tableau Chateau Eau ///
+/// //////////////////////////////////////////////// ///
+
 int chargerTableauChateauEau(t_chateauEau tableauHabitation[], char* nomFichier)
 {
     //Déclaration des variables
@@ -316,6 +424,9 @@ int chargerTableauChateauEau(t_chateauEau tableauHabitation[], char* nomFichier)
 
     return nombreBatiment;
 }
+/// ////////////////////////////////////////////// ///
+/////Sous programme pour charger tableau centrales ///
+/// ////////////////////////////////////////////// ///
 
 int chargerTableauCentrale(t_centrales tableauHabitation[], char* nomFichier)
 {
@@ -344,33 +455,9 @@ int chargerTableauCentrale(t_centrales tableauHabitation[], char* nomFichier)
     return nombreBatiment;
 }
 
-void sauvegardeTempsCycle(int nombreHabitation, t_habitation tableauHab[],unsigned long tempsPause, unsigned long tempsChrono)
-{
-    //Calcul du temps actuel
-    unsigned long diff;
-    time_t tempsact = time(NULL);//On récupere le temps actuel
-    tempsact= modificationTemps(tempsact,0,tempsPause);
-    tempsact= modificationTemps(tempsact,1,tempsChrono);
-
-    //Ouverture du fichier
-    FILE* fichier = fopen("Sauvegarde/fichierTemps.bin","wb+");
-
-    //test ouverture fichier
-    if(fichier == NULL)
-    {
-        printf("Erreur ouverture fichier : temps");
-    }
-
-    for(int i=0 ; i<nombreHabitation ; i++)
-    {
-        diff = difftime(tempsact,tableauHab[i].tempsCrea);
-        fwrite(&diff,sizeof(unsigned long),1,fichier);
-    }
-
-    //Fermeture du fichier
-    fclose(fichier);
-}
-
+/// /////////////////////////////////// ///
+/////Sous programme pour charger cycles ///
+/// /////////////////////////////////// ///
 void chargementTempsCycle(int nombreMaison,t_habitation tableauHab[],unsigned long tempsPause, unsigned long tempsChrono)
 {
     //Calcul du temps Actuel
@@ -399,31 +486,11 @@ void chargementTempsCycle(int nombreMaison,t_habitation tableauHab[],unsigned lo
     fclose(fichier);
 }
 
-void sauvegardeChrono(time_t tempsdepart,unsigned long tempsPause, unsigned long tempsChrono)
-{
-    time_t tempsact = time(NULL);
-    tempsact= modificationTemps(tempsact,0,tempsPause);
-    tempsact= modificationTemps(tempsact,1,tempsChrono);
-    unsigned long diff=difftime(tempsact,tempsdepart);
 
-    //Ouverture du fichier
-    FILE* fichier = fopen("Sauvegarde/fichierTempsChrono.bin","wb+");
-    printf("%d %d \n",tempsPause,tempsChrono);
 
-    //test ouverture fichier
-    if(fichier == NULL)
-    {
-        printf("Erreur ouverture fichier : tempsChrono");
-    }
-
-    //Enregistement du temps
-    fwrite(&diff,sizeof(unsigned long),1,fichier);
-    fwrite(&tempsPause,sizeof(unsigned long),1,fichier);
-    fwrite(&tempsChrono,sizeof(unsigned long),1,fichier);
-
-    //fermeture du fichier
-    fclose(fichier);
-}
+/// /////////////////////////////////// ///
+/////Sous programme pour charger chrono ///
+/// /////////////////////////////////// ///
 
 void chargementTempsChrono(unsigned long* tempsChrono,unsigned long* tempsPause)
 {
@@ -450,24 +517,9 @@ void chargementTempsChrono(unsigned long* tempsChrono,unsigned long* tempsPause)
 
 }
 
-void sauvegardeArgent(int argent)
-{
-    //Ouverture du fichier
-    FILE* fichier = fopen("Sauvegarde/fichierArgent.bin","wb+");
-
-    //test ouverture fichier
-    if(fichier == NULL)
-    {
-        printf("Erreur ouverture fichier : argent");
-    }
-
-    printf("%d \n",argent);
-    fwrite(&argent,sizeof(int),1,fichier);
-
-    //Fermeture du fichier
-    fclose(fichier);
-}
-
+/// /////////////////////////////////// ///
+/////Sous programme pour charger argent ///
+/// /////////////////////////////////// ///
 int chargementArgent()
 {
     //Déclaration des variables
@@ -485,6 +537,5 @@ int chargementArgent()
 
     //Fermeture du fichier
     fclose(fichier);
-    printf("%d \n",argent);
     return argent;
 }

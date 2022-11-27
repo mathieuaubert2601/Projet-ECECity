@@ -118,6 +118,7 @@ int main()
                 }
                 if (((mouse_x >= (920) && mouse_x <= (920 + 40)) && (mouse_y) >= (25) && mouse_y <= (25 + 40)) &&
                     (mouse_b & 1) && pause == 0) {
+                    indiquerSauvegarde(1);
                     sauvegarderTableauHabitation("Sauvegarde/tableauHabitation.bin",tab_hab,nb_hab);
                     sauvegarderTableauCentrale("Sauvegarde/tableauCentrale.bin",tab_elec,nb_centrales);
                     sauvegarderTableauChateauEau("Sauvegarde/tableauChateauEau.bin",tab_eau,nb_chateau);
