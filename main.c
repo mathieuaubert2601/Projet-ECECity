@@ -17,6 +17,7 @@ int main()
     //Déclaration des variables
     int choixMenu;
     int map[35][45];
+    int** matriceEauPasChateau = malloc(35 * sizeof(int*));
     int sortie=0;
     int banque=banqueDep;
     int nb_hab=0;
@@ -158,8 +159,33 @@ int main()
                 }
                 if(((mouse_x>=(920)&& mouse_x<=(920+50))&& ((mouse_y)>=(550)&& mouse_y<=(550+50)))&&(mouse_b &1))
                 {
-                    matriceEau = chercherCheminPlusCourtEau(map,nb_hab,tab_hab,tab_eau,nb_chateau);
-                    canalisations(page,map,tab_hab,nb_hab,matriceEau,nb_chateau,tab_eau,tab_elec,nb_centrales);
+                    if(nb_chateau > 0)
+                    {
+                        matriceEau = chercherCheminPlusCourtEau(map,nb_hab,tab_hab,tab_eau,nb_chateau);
+                        canalisations(page,map,tab_hab,nb_hab,matriceEau,nb_chateau,tab_eau,tab_elec,nb_centrales);
+                    }
+                    else
+                    {
+                        for(int i = 0 ; i<35 ; i++)
+                        {
+                            matriceEauPasChateau[i] = malloc(45 * sizeof(int));
+                            for(int j = 0 ; j<45 ; j++)
+                            {
+                                matriceEauPasChateau[i][j] = 0;
+                            }
+                        }
+                        for(int i = 0 ; i<nb_hab ; i++)
+                        {
+                            for(int j = 0 ; j<15 ; j++)
+                            {
+                                tab_hab[i].chateauEauNCR[j][0] = -1;
+                                tab_hab[i].chateauEauNCR[j][1] = -1;
+                                tab_hab[i].quantiteeEau = 0;
+                            }
+                        }
+                        canalisations(page,map,tab_hab,nb_hab,matriceEauPasChateau,nb_chateau,tab_eau,tab_elec,nb_centrales);
+                    }
+
                 }
                 if(((mouse_x>=(920)&& mouse_x<=(920+50))&& ((mouse_y)>=(620)&& mouse_y<=(620+50)))&&(mouse_b &1))
                 {

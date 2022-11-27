@@ -143,206 +143,212 @@ int** chercherCheminPlusCourtEau(int matriceMap[35][45],int nombreHabitation,t_h
             }
         }
     }
+
+    printf("\n\n\nFIN\n\n\n");
     cmpt = 0;
 
-    //Boucle qui parcourt tout les chateau d'eau
-    for(int c = 0 ; c<nombreChateauEau ; c++)
+    if(nombreChateauEau > 0 && nombreHabitation > 0)
     {
-        //On met la case du chateau d'eau de départ à 1 : découverte
-        matriceCouleur[tabEau[c].YRef][tabEau[c].XRef] = 1;
-
-        //On enfile le premier élement dans la file
-        enfiler(&fileBfs,tabEau[c].XRef,tabEau[c].YRef);
-
-        //On va faire une boucle dans que la file n'est pas vide
-        while(fileBfs.tete != NULL && cmpt != (nombreChateauEau * nombreHabitation))
+        //Boucle qui parcourt tout les chateau d'eau
+        for(int c = 0 ; c<nombreChateauEau ; c++)
         {
-            //On défile le numéro du sommet suivant
-            tableauCoordonnee = defiler(&fileBfs);
-            xFile = tableauCoordonnee[0];
-            yFile = tableauCoordonnee[1];
+            //On met la case du chateau d'eau de départ à 1 : découverte
+            matriceCouleur[tabEau[c].YRef][tabEau[c].XRef] = 1;
 
-            //On parcourt tout le tableau d'habitation pour voir si xFile et yFile correspondent à un Xref et Yref d'une maison
-            for(int i=0 ; i<nombreHabitation ;i++)
+            //On enfile le premier élement dans la file
+            enfiler(&fileBfs,tabEau[c].XRef,tabEau[c].YRef);
+
+            //On va faire une boucle dans que la file n'est pas vide
+            while(fileBfs.tete != NULL && cmpt != (nombreChateauEau * nombreHabitation))
             {
-                if(tabHab[i].XRef == xFile && tabHab[i].YRef == yFile)
-                {
-                    distanceM = 1;
-                    tabHabChatEau[cmpt].XRef = xFile;
-                    tabHabChatEau[cmpt].YRef = yFile;
-                    tabHabChatEau[cmpt].chateau_Eau_Affilie = c;
-                    tabHabChatEau[cmpt].nb_habitants = tabHab[i].nb_habitants;
-                    tabHabChatEau[cmpt].numero = i;
-                    calculX = xFile;
-                    calculY = yFile;
+                //On défile le numéro du sommet suivant
+                tableauCoordonnee = defiler(&fileBfs);
+                xFile = tableauCoordonnee[0];
+                yFile = tableauCoordonnee[1];
 
-                    //On calcul la distance entre le chateau d'eau et la maison
-                    while(calculX != tabEau[c].XRef || calculY != tabEau[c].YRef)
+                //On parcourt tout le tableau d'habitation pour voir si xFile et yFile correspondent à un Xref et Yref d'une maison
+                for(int i=0 ; i<nombreHabitation ;i++)
+                {
+                    if(tabHab[i].XRef == xFile && tabHab[i].YRef == yFile)
                     {
-                        calculXtmp = calculX;
-                        calculX = tableauPred[c][calculY][calculX].coordX;
-                        calculY = tableauPred[c][calculY][calculXtmp].coordY;
-                        distanceM ++;
-                    }
+                        distanceM = 1;
+                        tabHabChatEau[cmpt].XRef = xFile;
+                        tabHabChatEau[cmpt].YRef = yFile;
+                        tabHabChatEau[cmpt].chateau_Eau_Affilie = c;
+                        tabHabChatEau[cmpt].nb_habitants = tabHab[i].nb_habitants;
+                        tabHabChatEau[cmpt].numero = i;
+                        calculX = xFile;
+                        calculY = yFile;
 
-                    //On actualise la distance et le compteur
-                    tabHabChatEau[cmpt].distance = distanceM;
-                    cmpt ++;
-                }
-            }
+                        //On calcul la distance entre le chateau d'eau et la maison
+                        while(calculX != tabEau[c].XRef || calculY != tabEau[c].YRef)
+                        {
+                            calculXtmp = calculX;
+                            calculX = tableauPred[c][calculY][calculX].coordX;
+                            calculY = tableauPred[c][calculY][calculXtmp].coordY;
+                            distanceM ++;
+                        }
 
-            //On recherche les cases à coté pour voir s'il y a une route
-            if(yFile + 1 < 35)
-            {
-                if(matriceCouleur[yFile+1][xFile] == 0 && (matriceMap[yFile + 1][xFile] == 1 || matriceMap[yFile + 1][xFile] == 2))
-                {
-                    enfiler(&fileBfs,xFile,yFile + 1);
-                    matriceCouleur[yFile + 1][xFile] = 1;
-                    tableauPred[c][yFile + 1][xFile].coordY = yFile;
-                    tableauPred[c][yFile + 1][xFile].coordX = xFile;
-                }
-            }
-            if(yFile - 1 > 0)
-            {
-                if(matriceCouleur[yFile-1][xFile] == 0 && (matriceMap[yFile - 1][xFile] == 1 || matriceMap[yFile - 1][xFile] == 2) )
-                {
-                    enfiler(&fileBfs,xFile,yFile - 1);
-                    matriceCouleur[yFile - 1][xFile] = 1;
-                    tableauPred[c][yFile - 1][xFile].coordY = yFile;
-                    tableauPred[c][yFile - 1][xFile].coordX = xFile;
-                }
-            }
-            if(xFile + 1 < 45)
-            {
-                if(matriceCouleur[yFile][xFile+1] == 0 && (matriceMap[yFile][xFile+1] == 1 || matriceMap[yFile][xFile+1] == 2))
-                {
-                    enfiler(&fileBfs,xFile + 1,yFile);
-                    matriceCouleur[yFile][xFile + 1] = 1;
-                    tableauPred[c][yFile][xFile + 1].coordY = yFile;
-                    tableauPred[c][yFile][xFile + 1].coordX = xFile;
-                }
-            }
-            if(xFile - 1 > 0)
-            {
-                if(matriceCouleur[yFile][xFile-1] == 0 && (matriceMap[yFile][xFile-1] == 1 || matriceMap[yFile][xFile-1] == 2 ) && (xFile - 1 ) > 0)
-                {
-                    enfiler(&fileBfs,xFile - 1,yFile);
-                    matriceCouleur[yFile][xFile - 1] = 1;
-                    tableauPred[c][yFile][xFile - 1].coordY = yFile;
-                    tableauPred[c][yFile][xFile - 1].coordX = xFile;
-                }
-            }
-        }
-        //On réinistialise la matrice de couleur
-        for(int i=0 ; i<35 ; i++)
-        {
-            for(int j=0 ; j<45 ; j++)
-            {
-                matriceCouleur[i][j] = 0;
-            }
-        }
-
-    }
-
-    //On trie le tableau crée par distance croissante
-    for(int i=0 ; i < (cmpt - 1) ; i++)
-    {
-        index = i;
-
-        for(int j=i + 1; j < cmpt ; j++)
-        {
-            if(tabHabChatEau[index].distance>tabHabChatEau[j].distance)
-            {
-                index = j;
-            }
-        }
-        if(index != i)
-        {
-            XtriTmp = tabHabChatEau[i].XRef;
-            YtriTmp = tabHabChatEau[i].YRef;
-            distanceTriTmp = tabHabChatEau[i].distance;
-            nbHabTriTmp = tabHabChatEau[i].nb_habitants;
-            chatEauAffTriTmp = tabHabChatEau[i].chateau_Eau_Affilie;
-            numeroTriTmp = tabHabChatEau[i].numero;
-
-            tabHabChatEau[i].numero = tabHabChatEau[index].numero;
-            tabHabChatEau[i].XRef = tabHabChatEau[index].XRef;
-            tabHabChatEau[i].YRef =tabHabChatEau[index].YRef;
-            tabHabChatEau[i].distance =tabHabChatEau[index].distance;
-            tabHabChatEau[i].nb_habitants = tabHabChatEau[index].nb_habitants;
-            tabHabChatEau[i].chateau_Eau_Affilie = tabHabChatEau[index].chateau_Eau_Affilie;
-
-            tabHabChatEau[index].XRef = XtriTmp;
-            tabHabChatEau[index].YRef = YtriTmp;
-            tabHabChatEau[index].distance =distanceTriTmp;
-            tabHabChatEau[index].nb_habitants =nbHabTriTmp;
-            tabHabChatEau[index].chateau_Eau_Affilie =chatEauAffTriTmp;
-            tabHabChatEau[index].numero = numeroTriTmp;
-        }
-
-    }
-
-    //On initialise la quantitée d'eau des maison et des chateaux d'eau
-    for(int m=0 ; m<nombreHabitation ; m++)
-    {
-        tabHab[m].quantiteeEau = 0;
-    }
-    for(int k=0 ; k<nombreChateauEau ; k++)
-    {
-        tabEau[k].capaciteRestante = 5000;
-    }
-
-    //On distribue l'eau
-    for(int i=0 ; i<cmpt ; i++)
-    {
-        if(tabHab[tabHabChatEau[i].numero].quantiteeEau < tabHab[tabHabChatEau[i].numero].nb_habitants && tabEau[tabHabChatEau[i].chateau_Eau_Affilie].capaciteRestante > 0)
-        {
-            testChateauEauNcr = 0;
-            if(((tabHab[tabHabChatEau[i].numero].nb_habitants - tabHab[tabHabChatEau[i].numero].quantiteeEau) <= tabEau[tabHabChatEau[i].chateau_Eau_Affilie].capaciteRestante) && tabEau[tabHabChatEau[i].chateau_Eau_Affilie].capaciteRestante>0 )
-            {
-                for(int h = 0 ; h<15 ; h++)
-                {
-                    if(tabHab[tabHabChatEau[i].numero].chateauEauNCR[h][0] == -1 && testChateauEauNcr == 0)
-                    {
-                        tabHab[tabHabChatEau[i].numero].chateauEauNCR[h][0] = tabHabChatEau[i].chateau_Eau_Affilie;
-                        tabHab[tabHabChatEau[i].numero].chateauEauNCR[h][1] = tabHab[tabHabChatEau[i].numero].nb_habitants - tabHab[tabHabChatEau[i].numero].quantiteeEau;
-                        testChateauEauNcr =  1;
+                        //On actualise la distance et le compteur
+                        tabHabChatEau[cmpt].distance = distanceM;
+                        cmpt ++;
                     }
                 }
-                tabEau[tabHabChatEau[i].chateau_Eau_Affilie].capaciteRestante = tabEau[tabHabChatEau[i].chateau_Eau_Affilie].capaciteRestante - (tabHab[tabHabChatEau[i].numero].nb_habitants - tabHab[tabHabChatEau[i].numero].quantiteeEau);
-                tabHab[tabHabChatEau[i].numero].quantiteeEau = tabHab[tabHabChatEau[i].numero].nb_habitants;
-            }
-            else
-            {
-                for(int h = 0 ; h<15 ; h++)
+
+                //On recherche les cases à coté pour voir s'il y a une route
+                if(yFile + 1 < 35)
                 {
-                    if(tabHab[tabHabChatEau[i].numero].chateauEauNCR[h][0] == -1 && testChateauEauNcr == 0)
+                    if(matriceCouleur[yFile+1][xFile] == 0 && (matriceMap[yFile + 1][xFile] == 1 || matriceMap[yFile + 1][xFile] == 2))
                     {
-                        tabHab[tabHabChatEau[i].numero].chateauEauNCR[h][0] = tabHabChatEau[i].chateau_Eau_Affilie;
-                        tabHab[tabHabChatEau[i].numero].chateauEauNCR[h][1] = tabEau[tabHabChatEau[i].chateau_Eau_Affilie].capaciteRestante;
-                        testChateauEauNcr =  1;
+                        enfiler(&fileBfs,xFile,yFile + 1);
+                        matriceCouleur[yFile + 1][xFile] = 1;
+                        tableauPred[c][yFile + 1][xFile].coordY = yFile;
+                        tableauPred[c][yFile + 1][xFile].coordX = xFile;
                     }
                 }
-                tabEau[tabHabChatEau[i].chateau_Eau_Affilie].capaciteRestante = 0;
-                tabHab[tabHabChatEau[i].numero].quantiteeEau = tabHab[tabHabChatEau[i].numero].quantiteeEau + tabEau[tabHabChatEau[i].chateau_Eau_Affilie].capaciteRestante;
-
+                if(yFile - 1 > 0)
+                {
+                    if(matriceCouleur[yFile-1][xFile] == 0 && (matriceMap[yFile - 1][xFile] == 1 || matriceMap[yFile - 1][xFile] == 2) )
+                    {
+                        enfiler(&fileBfs,xFile,yFile - 1);
+                        matriceCouleur[yFile - 1][xFile] = 1;
+                        tableauPred[c][yFile - 1][xFile].coordY = yFile;
+                        tableauPred[c][yFile - 1][xFile].coordX = xFile;
+                    }
+                }
+                if(xFile + 1 < 45)
+                {
+                    if(matriceCouleur[yFile][xFile+1] == 0 && (matriceMap[yFile][xFile+1] == 1 || matriceMap[yFile][xFile+1] == 2))
+                    {
+                        enfiler(&fileBfs,xFile + 1,yFile);
+                        matriceCouleur[yFile][xFile + 1] = 1;
+                        tableauPred[c][yFile][xFile + 1].coordY = yFile;
+                        tableauPred[c][yFile][xFile + 1].coordX = xFile;
+                    }
+                }
+                if(xFile - 1 > 0)
+                {
+                    if(matriceCouleur[yFile][xFile-1] == 0 && (matriceMap[yFile][xFile-1] == 1 || matriceMap[yFile][xFile-1] == 2 ) && (xFile - 1 ) > 0)
+                    {
+                        enfiler(&fileBfs,xFile - 1,yFile);
+                        matriceCouleur[yFile][xFile - 1] = 1;
+                        tableauPred[c][yFile][xFile - 1].coordY = yFile;
+                        tableauPred[c][yFile][xFile - 1].coordX = xFile;
+                    }
+                }
             }
-
-            calculY = tabHabChatEau[i].YRef;
-            calculX = tabHabChatEau[i].XRef;
-
-            while(calculY != tabEau[tabHabChatEau[i].chateau_Eau_Affilie].YRef || calculX != tabEau[tabHabChatEau[i].chateau_Eau_Affilie].XRef)
+            //On réinistialise la matrice de couleur
+            for(int i=0 ; i<35 ; i++)
             {
-                matriceEau[calculY][calculX] = 1;
-                calculXtmp = calculX;
-                calculX = tableauPred[tabHabChatEau[i].chateau_Eau_Affilie][calculY][calculX].coordX;
-                calculY = tableauPred[tabHabChatEau[i].chateau_Eau_Affilie][calculY][calculXtmp].coordY;
+                for(int j=0 ; j<45 ; j++)
+                {
+                    matriceCouleur[i][j] = 0;
+                }
             }
-            matriceEau[tabEau[tabHabChatEau[i].chateau_Eau_Affilie].YRef][tabEau[tabHabChatEau[i].chateau_Eau_Affilie].XRef] = 1;
-
 
         }
+
+        //On trie le tableau crée par distance croissante
+        for(int i=0 ; i < (cmpt - 1) ; i++)
+        {
+            index = i;
+
+            for(int j=i + 1; j < cmpt ; j++)
+            {
+                if(tabHabChatEau[index].distance>tabHabChatEau[j].distance)
+                {
+                    index = j;
+                }
+            }
+            if(index != i)
+            {
+                XtriTmp = tabHabChatEau[i].XRef;
+                YtriTmp = tabHabChatEau[i].YRef;
+                distanceTriTmp = tabHabChatEau[i].distance;
+                nbHabTriTmp = tabHabChatEau[i].nb_habitants;
+                chatEauAffTriTmp = tabHabChatEau[i].chateau_Eau_Affilie;
+                numeroTriTmp = tabHabChatEau[i].numero;
+
+                tabHabChatEau[i].numero = tabHabChatEau[index].numero;
+                tabHabChatEau[i].XRef = tabHabChatEau[index].XRef;
+                tabHabChatEau[i].YRef =tabHabChatEau[index].YRef;
+                tabHabChatEau[i].distance =tabHabChatEau[index].distance;
+                tabHabChatEau[i].nb_habitants = tabHabChatEau[index].nb_habitants;
+                tabHabChatEau[i].chateau_Eau_Affilie = tabHabChatEau[index].chateau_Eau_Affilie;
+
+                tabHabChatEau[index].XRef = XtriTmp;
+                tabHabChatEau[index].YRef = YtriTmp;
+                tabHabChatEau[index].distance =distanceTriTmp;
+                tabHabChatEau[index].nb_habitants =nbHabTriTmp;
+                tabHabChatEau[index].chateau_Eau_Affilie =chatEauAffTriTmp;
+                tabHabChatEau[index].numero = numeroTriTmp;
+            }
+
+        }
+
+        //On initialise la quantitée d'eau des maison et des chateaux d'eau
+        for(int m=0 ; m<nombreHabitation ; m++)
+        {
+            tabHab[m].quantiteeEau = 0;
+        }
+        for(int k=0 ; k<nombreChateauEau ; k++)
+        {
+            tabEau[k].capaciteRestante = 5000;
+        }
+
+        //On distribue l'eau
+        for(int i=0 ; i<cmpt ; i++)
+        {
+            if(tabHab[tabHabChatEau[i].numero].quantiteeEau < tabHab[tabHabChatEau[i].numero].nb_habitants && tabEau[tabHabChatEau[i].chateau_Eau_Affilie].capaciteRestante > 0)
+            {
+                testChateauEauNcr = 0;
+                if(((tabHab[tabHabChatEau[i].numero].nb_habitants - tabHab[tabHabChatEau[i].numero].quantiteeEau) <= tabEau[tabHabChatEau[i].chateau_Eau_Affilie].capaciteRestante) && tabEau[tabHabChatEau[i].chateau_Eau_Affilie].capaciteRestante>0 )
+                {
+                    for(int h = 0 ; h<15 ; h++)
+                    {
+                        if(tabHab[tabHabChatEau[i].numero].chateauEauNCR[h][0] == -1 && testChateauEauNcr == 0)
+                        {
+                            tabHab[tabHabChatEau[i].numero].chateauEauNCR[h][0] = tabHabChatEau[i].chateau_Eau_Affilie;
+                            tabHab[tabHabChatEau[i].numero].chateauEauNCR[h][1] = tabHab[tabHabChatEau[i].numero].nb_habitants - tabHab[tabHabChatEau[i].numero].quantiteeEau;
+                            testChateauEauNcr =  1;
+                        }
+                    }
+                    tabEau[tabHabChatEau[i].chateau_Eau_Affilie].capaciteRestante = tabEau[tabHabChatEau[i].chateau_Eau_Affilie].capaciteRestante - (tabHab[tabHabChatEau[i].numero].nb_habitants - tabHab[tabHabChatEau[i].numero].quantiteeEau);
+                    tabHab[tabHabChatEau[i].numero].quantiteeEau = tabHab[tabHabChatEau[i].numero].nb_habitants;
+                }
+                else
+                {
+                    for(int h = 0 ; h<15 ; h++)
+                    {
+                        if(tabHab[tabHabChatEau[i].numero].chateauEauNCR[h][0] == -1 && testChateauEauNcr == 0)
+                        {
+                            tabHab[tabHabChatEau[i].numero].chateauEauNCR[h][0] = tabHabChatEau[i].chateau_Eau_Affilie;
+                            tabHab[tabHabChatEau[i].numero].chateauEauNCR[h][1] = tabEau[tabHabChatEau[i].chateau_Eau_Affilie].capaciteRestante;
+                            testChateauEauNcr =  1;
+                        }
+                    }
+                    tabEau[tabHabChatEau[i].chateau_Eau_Affilie].capaciteRestante = 0;
+                    tabHab[tabHabChatEau[i].numero].quantiteeEau = tabHab[tabHabChatEau[i].numero].quantiteeEau + tabEau[tabHabChatEau[i].chateau_Eau_Affilie].capaciteRestante;
+
+                }
+
+                calculY = tabHabChatEau[i].YRef;
+                calculX = tabHabChatEau[i].XRef;
+
+                while(calculY != tabEau[tabHabChatEau[i].chateau_Eau_Affilie].YRef || calculX != tabEau[tabHabChatEau[i].chateau_Eau_Affilie].XRef)
+                {
+                    matriceEau[calculY][calculX] = 1;
+                    calculXtmp = calculX;
+                    calculX = tableauPred[tabHabChatEau[i].chateau_Eau_Affilie][calculY][calculX].coordX;
+                    calculY = tableauPred[tabHabChatEau[i].chateau_Eau_Affilie][calculY][calculXtmp].coordY;
+                }
+                matriceEau[tabEau[tabHabChatEau[i].chateau_Eau_Affilie].YRef][tabEau[tabHabChatEau[i].chateau_Eau_Affilie].XRef] = 1;
+
+
+            }
+        }
     }
+
 
     //Libération de la mémoire
     for(int z = 0 ; z<nombreChateauEau ; z++)
