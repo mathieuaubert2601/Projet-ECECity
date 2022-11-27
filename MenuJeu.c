@@ -75,12 +75,14 @@ int menuJeu(BITMAP* bmpAffichage)
 }
 
 //Action en cas de choix
-void actionChoixMenu(int choixDuMenu,BITMAP* bmpAffichage)
+int actionChoixMenu(int choixDuMenu,BITMAP* bmpAffichage)
 {
+    //Déclaration des variables
+    int modeDeJeu = 0;
     if(choixDuMenu == 1)
     {
         rest(200);
-        choixModeJeu(bmpAffichage);
+        modeDeJeu =  choixModeJeu(bmpAffichage);
     }
     else if(choixDuMenu == 2 && testSauvegarde())
     {
@@ -94,6 +96,7 @@ void actionChoixMenu(int choixDuMenu,BITMAP* bmpAffichage)
     {
         affichageregles(bmpAffichage);
     }
+    return modeDeJeu;
 }
 
 //Choix du mode de jeu
@@ -124,12 +127,12 @@ int choixModeJeu(BITMAP* bmpAffichage)
         if(((mouse_x>=(340)&& mouse_x<=(340+330))&& (mouse_y)>=(250)&& mouse_y<=(250 + 95))&&(mouse_b & 1))
         {
             rest(100);
-            return 1;
+            return 2;
         }
         if(((mouse_x>=(340)&& mouse_x<=(340+330))&& (mouse_y)>=(370)&& mouse_y<=(370 + 95))&&(mouse_b & 1))
         {
             rest(100);
-            return 2;
+            return 1;
         }
     }
 }

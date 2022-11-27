@@ -14,6 +14,7 @@ void afficher_niveau(BITMAP* page, int map[35][45],t_habitation habitation[50],i
 
     int nb_chateau_maison=0;
 
+
     //Affichage des bitmaps liés au niveau -1
     for (int i = 0; i<35; i++) {
         for (int j = 0; j < 45; j++) {
@@ -86,6 +87,7 @@ void canalisations (BITMAP* page, int map[35][45],t_habitation maison[50],int nb
     {
         clear_bitmap(page);
         interfaceNiveau(page,type);
+
         //Affichage de tout ce qui est relatif au niveau eau
         afficher_niveau(page,map,maison,nb_maison,matriceEau,nb_chateauEau,tab_eau,tab_elec,nb_centrales);
         blit(page,screen,0,0,0,0,1024,768);

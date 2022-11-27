@@ -85,7 +85,7 @@ void AffichageIcone(BITMAP* bouton,BITMAP* boutonInv,BITMAP* infos, BITMAP* page
 
 //Fonctions pour le menu
 int menuJeu(BITMAP* bmpAffichage);
-void actionChoixMenu(int choixDuMenu,BITMAP* bmpAffichage);
+int actionChoixMenu(int choixDuMenu,BITMAP* bmpAffichage);
 int choixModeJeu(BITMAP* bmpAffichage);
 void affichageregles(BITMAP* bmpAffichage);
 
@@ -133,6 +133,8 @@ void sauvegardeChrono(time_t tempsdepart,unsigned long tempsPause, unsigned long
 void chargementTempsChrono(unsigned long* tempsChrono,unsigned long* tempsPause);
 int chargementArgent();
 void sauvegardeArgent(int argent);
+int chargementModeJeu();
+void sauvegardeModeJeu(int modeJeu);
 //Case
 void affichagecasefree(BITMAP* page,int map[35][45],int type);
 
