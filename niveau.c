@@ -63,7 +63,6 @@ void afficher_niveau(BITMAP* page, int map[35][45],t_habitation habitation[50],i
                             if(habitation[m].chateauEauNCR[o][0]!=-1)
                             {
                                 nb_chateau_maison+=1;
-                                printf("%d",nb_chateau_maison);
                                 textprintf_ex(page,font,habitation[m].x * 20+20,habitation[m].y * 20+40+(5*nb_chateau_maison),makecol(0,122,122),-1,"Chateau %d :%d/%d",habitation[m].chateauEauNCR[o][0]+1,habitation[m].chateauEauNCR[o][1],habitation[m].chateauEauNCR[o][1]);
                             }
                         }
@@ -73,6 +72,20 @@ void afficher_niveau(BITMAP* page, int map[35][45],t_habitation habitation[50],i
                 else if ((habitation[m].quantiteeEau != habitation[m].nb_habitants) || habitation[m].niveau==0)
                 {
                     blit(maisonGrise,page,0,0,habitation[m].x*20,habitation[m].y*20,60,60);
+                    if ((mouse_x >= (habitation[m].x * 20) && mouse_x <= (habitation[m].x * 20 + 60)) && (mouse_y) >= (habitation[m].y*20) && mouse_y <= (habitation[m].y*20 + 60))
+                    {
+                        stretch_blit(infos,page,0,0,infos->w,infos->h,(habitation[m].x * 20+10),(habitation[m].y * 20+10),infos->w+40,infos->h);
+                        textprintf_ex(page,font,habitation[m].x * 20+20,habitation[m].y * 20+20,makecol(0,122,122),-1,"Maison %d:",habitation[m].numero+1);
+                        textprintf_ex(page,font,habitation[m].x * 20+20,habitation[m].y * 20+30,makecol(0,122,122),-1,"%d/%d",habitation[m].quantiteeEau,habitation[m].nb_habitants);
+                        for (int o=0; o<15; o++)
+                        {
+                            if(habitation[m].chateauEauNCR[o][0]!=-1)
+                            {
+                                nb_chateau_maison+=1;
+                                textprintf_ex(page,font,habitation[m].x * 20+20,habitation[m].y * 20+40+(5*nb_chateau_maison),makecol(0,122,122),-1,"Chateau %d :%d/%d",habitation[m].chateauEauNCR[o][0]+1,habitation[m].chateauEauNCR[o][1],habitation[m].chateauEauNCR[o][1]);
+                            }
+                        }
+                    }
                 }
             }
 
@@ -111,6 +124,7 @@ void afficher_niveau2(BITMAP* page, int map[35][45],t_habitation maison[50], int
 {
     //Declaration des bitmaps
     BITMAP* tuile = load_bitmap("Niveau/tuile_blanche.bmp",NULL);
+    BITMAP* canalisationGrise = load_bitmap("Niveau/canalisationGrise.bmp",NULL);
     BITMAP* maisonGrise = load_bitmap("Niveau/maisonGrise.bmp",NULL);
     BITMAP* maisonJaune = load_bitmap("Niveau/maisonJaune.bmp",NULL);
     BITMAP* lignes = load_bitmap("Niveau/lignes.bmp",NULL);
@@ -128,6 +142,12 @@ void afficher_niveau2(BITMAP* page, int map[35][45],t_habitation maison[50], int
             //Affichage des lignes électriques en fonction des routes
             if (map[i][j] == 1 || map[i][j] == 2) {
                 blit(lignes, page, 0, 0, j*20, i*20, 20, 20);
+            }
+            if (map[i][j] == 1 || map[i][j] == 2) {
+                if (nb_centrales==0)
+                    blit(canalisationGrise, page, 0, 0, j*20, i*20, 20, 20);
+                if (nb_centrales>0)
+                    blit(lignes, page, 0, 0, j*20, i*20, 20, 20);
             }
             //boucle pour afficher les centrales
             for(int l=0; l<nb_centrales; l++)
@@ -159,8 +179,15 @@ void afficher_niveau2(BITMAP* page, int map[35][45],t_habitation maison[50], int
                     }
                 }
                 //Grise pour les maisons pas alimentées
-                if(maison[k].elec==0 || maison[k].niveau==0)
-                    blit(maisonGrise,page,0,0,maison[k].x*20,maison[k].y*20,maisonGrise->w,maisonGrise->h);
+                if(maison[k].elec==0 || maison[k].niveau==0) {
+                    blit(maisonGrise, page, 0, 0, maison[k].x * 20, maison[k].y * 20, maisonGrise->w, maisonGrise->h);
+                    if ((mouse_x >= (maison[k].x * 20) && mouse_x <= (maison[k].x * 20 + 80)) && (mouse_y) >= (maison[k].y*20) && mouse_y <= (maison[k].y*20 + 120))
+                    {
+                        blit(infos,page,0,0,(maison[k].x * 20+10),(maison[k].y * 20+10),infos->w,infos->h);
+                        textprintf_ex(page,font,maison[k].x * 20+20,maison[k].y * 20+20,makecol(0,122,122),-1,"Maison :");
+                        textprintf_ex(page,font,maison[k].x * 20+20,maison[k].y * 20+35,makecol(0,122,122),-1,"%d/%d",maison[k].nb_habitants,maison[k].nb_habitants);
+                    }
+                }
             }
         }
     }
