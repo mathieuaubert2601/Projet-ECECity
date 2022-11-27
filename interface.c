@@ -59,11 +59,13 @@ void afficherInterface(BITMAP* page,int map[35][45], time_t tempsdepart, int arg
     if(pause==0)
         AffichageBouton(boutonSauvegarder,boutonSauvegarderInv,page,0,0,920,25,boutonSauvegarder->w,boutonSauvegarder->h);
 
+    //Affichage bouton play/pause
     if(pause==0)
         AffichageBouton(boutonPause,boutonPauseInv,page,0,0,945,70,boutonPause->w,boutonPause->h);
     if(pause==1)
         AffichageBouton(boutonPlay,boutonPlayInv,page,0,0,945,70,boutonPlay->w,boutonPlay->h);
 
+    //Affichage mode de jeu
     if(mode==1)
     {
         masked_blit(communiste,page,0,0,920,710,communiste->w,communiste->h);
@@ -78,18 +80,22 @@ void afficherInterface(BITMAP* page,int map[35][45], time_t tempsdepart, int arg
     AffichageBouton(boutonElec, boutonElecInv, page, 0,0,920, 620, boutonElec->w,boutonElec->h);
 
 
+    //Calcul du chrono
     time_t tempsact = time(NULL);
     tempsact= modificationTemps(tempsact,0,tempsPause);
     tempsact= modificationTemps(tempsact,1,tempsChrono);
     unsigned long diff=difftime(tempsact,tempsdepart);
     unsigned long diffP=difftime(tempsDepartPause,tempsdepart);
 
+    //Affichage du chrono selon si on est en pause ou non
     if(pause==0)
         textprintf_ex(page,maPolice,980,720,makecol(255,255,255),-1,"%d",diff);
     if(pause==1)
         textprintf_ex(page,maPolice,980,720,makecol(255,255,255),-1,"%d",diffP);
 
     textprintf_ex(page,maPolice,80,720,makecol(255,255,255),-1,"%d",argent);
+
+    //On compte le nombre d'habitants, d'eau disponible et d'elec disponible et on l'affiche
     compteurHab = compterHab(map);
     compteurEau = compterEau(map);
     compteurElec = compterElec(map);

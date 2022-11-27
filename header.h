@@ -9,7 +9,7 @@
 
 #define impots 10
 #define banqueDep 500000
-#define CAPACITE_CHATEAU 5000
+
 
 //Structure habitation
 typedef struct habitation
@@ -157,5 +157,27 @@ void afficher_niveau2(BITMAP* page, int map[35][45],t_habitation maison[50], int
 
 //Pause
 time_t modificationTemps(time_t tempsAModifier,int ajouterEnlever,int nombreSecondes);
+
+
+//Liste valeurs matrice map
+//0 : cases vertes
+//1: route horizontale
+//2 : route verticale
+//3 : terrain vague
+//4 : cabane
+//5 : maison
+//6 : immeuble
+//7 : gratte ciel
+//8 :
+//9 : cases libres affichage terrain vague
+//10 : cases libres affichage cabane
+//11 : cases libres affichage maison
+//12 : cases libres affichage immeuble
+//13 : cases libres affichage gratte ciel
+//14 : chateau d’eau
+//15 : centrales
+//16 :  cases libres affichage chateau d’eau
+//17 : cases libres affichage centrales
+
 
 #endif //PROJET_ECECITY_HEADER_H

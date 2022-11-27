@@ -12,7 +12,6 @@ int main()
     //Création et déclaration des bitmaps
     BITMAP* page=create_bitmap(1024,768);
     SAMPLE* musiqueFond = load_sample("musique/musique_fond.wav");
-    //SAMPLE* ambiance = load_sample("musique/ambiance_fond.wav");
 
     //Déclaration des variables
     int choixMenu;
@@ -27,8 +26,6 @@ int main()
     int pause=0;
     int mode=0;
     int** matriceEau;
-    //t_habitation* tab_hab = NULL;
-    //tab_hab=(t_habitation*)malloc(nb_hab*sizeof (t_habitation));
     t_habitation tab_hab[50];
     t_chateauEau tab_eau[20];
     t_centrales tab_elec[20];
@@ -52,13 +49,15 @@ int main()
         if(choixMenu == 1 || choixMenu==2)
         {
             clear_bitmap(page);
+            //On initialise le temps de depart
             time_t tempsdep = time(NULL);
-            //tempsdep= modificationTemps(tempsdep,0,tempsPause);
             tempsdep= modificationTemps(tempsdep,1,tempsChrono);
+            //Si on charge une partie sauvegardée
             if(choixMenu==2)
             {
                 if(testSauvegarde())
                 {
+                    //On charge les informations sauvegardées
                     chargementTempsChrono(&tempsChrono,&tempsPause);
                     tempsPause=0;
                     banque = chargementArgent();
@@ -81,6 +80,7 @@ int main()
                     sortie = 1;
                 }
             }
+            //Si on démarre une nouvelle partie, on réinitialise le variables à 0
             if(choixMenu==1)
             {
                 sortie = 0;
@@ -93,26 +93,33 @@ int main()
             }
             while(sortie==0)
             {
+                //Affichage de la map, de la barre d'outil et des informations
                 afficher_matrice_cases_vertes(page);
                 afficher_map(page,map);
                 afficherInterface(page,map,tempsdep, banque,tempsDebutPause,pause, tempsPause,tempsChrono,mode);
+                //On actualise les cycles des habitations
                 test_temps(map,tab_hab,&banque,nb_hab,nb_centrales,tab_elec,nb_chateau,tab_eau,pause, tempsPause,tempsChrono,mode);
+                //Si on clique sur l'icone de construction de routes, on rentre dans le sous programme pour construire des routes
                 if (((mouse_x >= (920) && mouse_x <= (920 + 90)) && (mouse_y) >= (130) && mouse_y <= (130 + 65)) &&
                     (mouse_b & 1)) {
                     route(page, map, tempsdep,&banque,tab_hab,nb_hab,nb_centrales,tab_elec,nb_chateau,tab_eau,tempsDebutPause,pause, tempsPause,tempsChrono,mode);
                 }
+                //Si on clique sur l'icone de construction d'habitations, on rentre dans le sous programme pour construire des habitations
                 if (((mouse_x >= (920) && mouse_x <= (920 + 100)) && (mouse_y) >= (200) && mouse_y <= (200 + 100)) && (mouse_b & 1))
                 {
                     habitation(page,map,tempsdep,&banque,&nb_hab, tab_hab,tab_elec,nb_centrales,nb_chateau,tab_eau,tempsDebutPause,pause, tempsPause,tempsChrono,mode);
                 }
+                //Si on clique sur l'icone de construction de chateaux d'eau, on rentre dans le sous programme pour construire des chateaux d'eau
                 if (((mouse_x >= (920) && mouse_x <= (920 + 75)) && (mouse_y) >= (270) && mouse_y <= (270 + 100)) &&
                     (mouse_b & 1)) {
                     chateau_eau(page, map,tempsdep,&banque, tab_hab, nb_hab,  tab_eau, &nb_chateau,nb_centrales,tab_elec,tempsDebutPause,pause, tempsPause,tempsChrono,mode);
                 }
+                //Si on clique sur l'icone de construction de centrales, on rentre dans le sous programme pour construire des centrales
                 if (((mouse_x >= (920) && mouse_x <= (920 + 75)) && (mouse_y) >= (380) && mouse_y <= (380 + 100)) &&
                     (mouse_b & 1)) {
                     centrale(page, map,tempsdep,&banque, tab_hab, nb_hab,&nb_centrales,tab_elec,nb_chateau,tab_eau,tempsDebutPause,pause, tempsPause,tempsChrono,mode);
                 }
+                //Si on appuie sur lebouton sauvegarder, on procède a la sauvegarde des informations nécessaires
                 if (((mouse_x >= (920) && mouse_x <= (920 + 40)) && (mouse_y) >= (25) && mouse_y <= (25 + 40)) &&
                     (mouse_b & 1) && pause == 0) {
                     indiquerSauvegarde(1);
@@ -125,26 +132,28 @@ int main()
                     sauvegardeArgent(banque);
                     sauvegardeModeJeu(mode);
                 }
+                //Si on appuie sur le bouton pause lorsqu'il n'ya pas de pause, on met le jeu en pause
                 if(((mouse_x>=(945)&& mouse_x<=(945+40))&& ((mouse_y)>=(70)&& mouse_y<=(70+40)))&&(mouse_b &1)&&(pause==0)) //bouton pause
                 {
+                    //On sauvegarde le temps de début de la pause afin de l'afficher sur l'interface
                     tempsDebutPause = time(NULL);
                     tempsDebutPause= modificationTemps(tempsDebutPause,0,tempsPause);
                     tempsDebutPause= modificationTemps(tempsDebutPause,1,tempsChrono);
                     pause=1;
                     rest(300);
                 }
+                //Si on appui sur le bouton pause alors que le jeu est déja en pause alors le chrono reprend
                 if(((mouse_x>=(945)&& mouse_x<=(945+40))&& ((mouse_y)>=(70)&& mouse_y<=(70+40)))&&(mouse_b &1)&&(pause==1)) //bouton pause
                 {
                     tempsFinPause = time(NULL);
-                    //tempsFinPause= modificationTemps(tempsFinPause,0,tempsPause);
                     tempsFinPause= modificationTemps(tempsFinPause,1,tempsChrono);
                     pause=0;
-                    tempsPause= difftime(tempsFinPause,tempsDebutPause);
+                    tempsPause= difftime(tempsFinPause,tempsDebutPause);//On enregistre le temps de pause total
                     rest(300);
                 }
+                //Si on clique sur la croix rouge on quitte le jeu
                 if (((mouse_x >= (970) && mouse_x <= (970 + 40)) && (mouse_y) >= (25) && mouse_y <= (25 + 40)) &&
                     (mouse_b & 1)) {
-                    //stop_sample(musiqueFond);
                     sortie = 1;
                 }
                 if(((mouse_x>=(920)&& mouse_x<=(920+50))&& ((mouse_y)>=(550)&& mouse_y<=(550+50)))&&(mouse_b &1))
