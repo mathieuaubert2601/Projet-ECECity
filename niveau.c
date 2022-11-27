@@ -15,6 +15,8 @@ void afficher_niveau(BITMAP* page, int map[35][45],t_habitation habitation[50],i
     BITMAP* infos = load_bitmap("Interface/infos.bmp",NULL);
     FONT * maPolice = load_font("submariner.pcx",NULL,NULL);
     int nb_chateau_maison=0;
+    int m;
+    int k;
 
     //Affichage des bitmaps liés au niveau -1
     for (int i = 0; i<35; i++) {
@@ -31,15 +33,9 @@ void afficher_niveau(BITMAP* page, int map[35][45],t_habitation habitation[50],i
                 blit(canalisationGrise, page, 0, 0, j*20, i*20, 20, 20);
             }
             //chateauEau
-            for (int k=0; k<nb_chateauEau; k++) {
+            for (k=0; k<nb_chateauEau; k++) {
                 blit(chateauBleu, page, 0, 0, tab_eau[k].x * 20, tab_eau[k].y * 20, chateauBleu->w, chateauBleu->h);
                 blit(canalisationBleue, page, 0, 0, tab_eau[k].XRef * 20, tab_eau[k].YRef * 20, canalisationBleue->w, canalisationBleue->h);
-                if ((mouse_x >= (tab_eau[k].x * 20) && mouse_x <= (tab_eau[k].x * 20 + 80)) && (mouse_y) >= (tab_eau[k].y*20) && mouse_y <= (tab_eau[k].y*20 + 120))
-                {
-                    blit(infos,page,0,0,(tab_eau[k].x * 20+10),(tab_eau[k].y * 20+10),infos->w,infos->h);
-                    textprintf_ex(page,maPolice,tab_eau[k].x * 20+20,tab_eau[k].y * 20+20,makecol(0,122,122),-1,"Chateau %d :",k+1);
-                    textprintf_ex(page,maPolice,tab_eau[k].x * 20+20,tab_eau[k].y * 20+35,makecol(0,122,122),-1,"%d/%d",tab_eau[k].capaciteRestante,5000);
-                }
             }
             //centrale grise (pas bon niveau)
             for(int l=0; l<nb_centrales; l++)
@@ -47,45 +43,45 @@ void afficher_niveau(BITMAP* page, int map[35][45],t_habitation habitation[50],i
                 blit(centraleGrise,page,0,0,tab_elec[l].x*20,tab_elec[l].y*20,centraleGrise->w,centraleGrise->h);
             }
             //Affichage des maisons
-            for (int m=0; m<nb_maison; m++) {
+            for (m=0; m<nb_maison; m++) {
                 nb_chateau_maison=0;
                 //maison bleue, alimentées
                 if (habitation[m].quantiteeEau == habitation[m].nb_habitants && habitation[m].niveau!=0) {
                     blit(maisonBleue, page, 0, 0, habitation[m].x * 20, habitation[m].y * 20, 60, 60);
                     blit(canalisationBleue, page, 0, 0, habitation[m].XRef * 20, habitation[m].YRef * 20, 20, 20);
-                    if ((mouse_x >= (habitation[m].x * 20) && mouse_x <= (habitation[m].x * 20 + 60)) && (mouse_y) >= (habitation[m].y*20) && mouse_y <= (habitation[m].y*20 + 60))
-                    {
-                        stretch_blit(infos,page,0,0,infos->w,infos->h,(habitation[m].x * 20+10),(habitation[m].y * 20+10),infos->w+40,infos->h);
-                        textprintf_ex(page,maPolice,habitation[m].x * 20+20,habitation[m].y * 20+20,makecol(0,122,122),-1,"Maison %d:",habitation[m].numero+1);
-                        textprintf_ex(page,maPolice,habitation[m].x * 20+20,habitation[m].y * 20+30,makecol(0,122,122),-1,"%d/%d",habitation[m].quantiteeEau,habitation[m].nb_habitants);
-                        for (int o=0; o<15; o++)
-                        {
-                            if(habitation[m].chateauEauNCR[o][0]!=-1)
-                            {
-                                nb_chateau_maison+=1;
-                                textprintf_ex(page,maPolice,habitation[m].x * 20+20,habitation[m].y * 20+40+(5*nb_chateau_maison),makecol(0,122,122),-1,"Chateau %d :%d/%d",habitation[m].chateauEauNCR[o][0]+1,habitation[m].chateauEauNCR[o][1],habitation[m].chateauEauNCR[o][1]);
-                            }
-                        }
-                    }
                 }
                     //maison grise, pas alimentées
                 else if ((habitation[m].quantiteeEau != habitation[m].nb_habitants) || habitation[m].niveau==0)
                 {
                     blit(maisonGrise,page,0,0,habitation[m].x*20,habitation[m].y*20,60,60);
-                    if ((mouse_x >= (habitation[m].x * 20) && mouse_x <= (habitation[m].x * 20 + 60)) && (mouse_y) >= (habitation[m].y*20) && mouse_y <= (habitation[m].y*20 + 60))
+
+                }
+            }
+            //Affichage des infos de la maison
+            for(m=0;m<nb_maison;m++)
+            {
+                if ((mouse_x >= (habitation[m].x * 20) && mouse_x <= (habitation[m].x * 20 + 60)) && (mouse_y) >= (habitation[m].y*20) && mouse_y <= (habitation[m].y*20 + 60))
+                {
+                    stretch_blit(infos,page,0,0,infos->w,infos->h,(habitation[m].x * 20+10),(habitation[m].y * 20+10),infos->w+40,infos->h);
+                    textprintf_ex(page,maPolice,habitation[m].x * 20+20,habitation[m].y * 20+15,makecol(0,122,122),-1,"Maison %d:",habitation[m].numero+1);
+                    textprintf_ex(page,maPolice,habitation[m].x * 20+20,habitation[m].y * 20+30,makecol(0,122,122),-1,"%d/%d",habitation[m].quantiteeEau,habitation[m].nb_habitants);
+                    for (int o=0; o<15; o++)
                     {
-                        stretch_blit(infos,page,0,0,infos->w,infos->h,(habitation[m].x * 20+10),(habitation[m].y * 20+10),infos->w+40,infos->h);
-                        textprintf_ex(page,maPolice,habitation[m].x * 20+20,habitation[m].y * 20+20,makecol(0,122,122),-1,"Maison %d:",habitation[m].numero+1);
-                        textprintf_ex(page,maPolice,habitation[m].x * 20+20,habitation[m].y * 20+30,makecol(0,122,122),-1,"%d/%d",habitation[m].quantiteeEau,habitation[m].nb_habitants);
-                        for (int o=0; o<15; o++)
+                        if(habitation[m].chateauEauNCR[o][0]!=-1)
                         {
-                            if(habitation[m].chateauEauNCR[o][0]!=-1)
-                            {
-                                nb_chateau_maison+=1;
-                                textprintf_ex(page,maPolice,habitation[m].x * 20+20,habitation[m].y * 20+40+(5*nb_chateau_maison),makecol(0,122,122),-1,"Chateau %d :%d/%d",habitation[m].chateauEauNCR[o][0]+1,habitation[m].chateauEauNCR[o][1],habitation[m].chateauEauNCR[o][1]);
-                            }
+                            nb_chateau_maison+=1;
+                            textprintf_ex(page,maPolice,habitation[m].x * 20+20,habitation[m].y * 20+40+(5*nb_chateau_maison),makecol(0,122,122),-1,"Chateau %d :%d/%d",habitation[m].chateauEauNCR[o][0]+1,habitation[m].chateauEauNCR[o][1],habitation[m].chateauEauNCR[o][1]);
                         }
                     }
+                }
+            }
+            //Affichage des infos des chateau d'eau
+            for (k=0; k<nb_chateauEau; k++) {
+                if ((mouse_x >= (tab_eau[k].x * 20) && mouse_x <= (tab_eau[k].x * 20 + 80)) && (mouse_y) >= (tab_eau[k].y*20) && mouse_y <= (tab_eau[k].y*20 + 120))
+                {
+                    blit(infos,page,0,0,(tab_eau[k].x * 20+10),(tab_eau[k].y * 20+10),infos->w,infos->h);
+                    textprintf_ex(page,maPolice,tab_eau[k].x * 20+20,tab_eau[k].y * 20+15,makecol(0,122,122),-1,"Chateau %d :",k+1);
+                    textprintf_ex(page,maPolice,tab_eau[k].x * 20+20,tab_eau[k].y * 20+30,makecol(0,122,122),-1,"%d/%d",tab_eau[k].capaciteRestante,5000);
                 }
             }
 
@@ -132,6 +128,10 @@ void afficher_niveau2(BITMAP* page, int map[35][45],t_habitation maison[50], int
     BITMAP* centraleJaune = load_bitmap("Niveau/CentraleJaune.bmp", NULL);
     BITMAP* infos = load_bitmap("Interface/infos.bmp",NULL);
     FONT * maPolice = load_font("submariner.pcx",NULL,NULL);
+
+    int k;
+    int l;
+
     //boucle pour créer l'affichage du niveau elec
     for (int i = 0; i<35; i++) {
         for (int j = 0; j < 45; j++) {
@@ -150,43 +150,44 @@ void afficher_niveau2(BITMAP* page, int map[35][45],t_habitation maison[50], int
                     blit(lignes, page, 0, 0, j*20, i*20, 20, 20);
             }
             //boucle pour afficher les centrales
-            for(int l=0; l<nb_centrales; l++)
+            for(l=0; l<nb_centrales; l++)
             {
                 blit(centraleJaune,page,0,0,tab_elec[l].x*20,tab_elec[l].y*20,centraleJaune->w,centraleJaune->h);
-                if ((mouse_x >= (tab_elec[l].x * 20) && mouse_x <= (tab_elec[l].x * 20 + 80)) && (mouse_y) >= (tab_elec[l].y*20) && mouse_y <= (tab_elec[l].y*20 + 120))
-                {
-                    blit(infos,page,0,0,(tab_elec[l].x * 20+10),(tab_elec[l].y * 20+10),infos->w,infos->h);
-                    textprintf_ex(page,font,tab_elec[l].x * 20+20,tab_elec[l].y * 20+20,makecol(0,122,122),-1,"Centrale %d :",l+1);
-                    textprintf_ex(page,font,tab_elec[l].x * 20+20,tab_elec[l].y * 20+35,makecol(0,122,122),-1,"%d/%d",tab_elec[l].capaciteRestante,5000);
-                }
             }
 
             //affichage des chateau d'eau en gris (non relatif à ce niveau)
-            for (int k=0; k<nb_chateauEau; k++)
+            for (k=0; k<nb_chateauEau; k++)
                 blit(chateauGris, page, 0, 0, tab_eau[k].x*20, tab_eau[k].y*20, chateauGris->w, chateauGris->h);
 
             //boucle pour afficher les maisons
-            for(int k=0; k<nb_maison; k++)
+            for(k=0; k<nb_maison; k++)
             {
                 //Jaune pour les maisons alimentées
                 if(maison[k].elec==1 && maison[k].niveau!=0) {
                     blit(maisonJaune, page, 0, 0, maison[k].x * 20, maison[k].y * 20, maisonJaune->w, maisonJaune->h);
-                    if ((mouse_x >= (maison[k].x * 20) && mouse_x <= (maison[k].x * 20 + 80)) && (mouse_y) >= (maison[k].y*20) && mouse_y <= (maison[k].y*20 + 120))
-                    {
-                        blit(infos,page,0,0,(maison[k].x * 20+10),(maison[k].y * 20+10),infos->w,infos->h);
-                        textprintf_ex(page,font,maison[k].x * 20+20,maison[k].y * 20+20,makecol(0,122,122),-1,"Maison :");
-                        textprintf_ex(page,font,maison[k].x * 20+20,maison[k].y * 20+35,makecol(0,122,122),-1,"%d/%d",maison[k].nb_habitants,maison[k].nb_habitants);
-                    }
                 }
+
                 //Grise pour les maisons pas alimentées
                 if(maison[k].elec==0 || maison[k].niveau==0) {
                     blit(maisonGrise, page, 0, 0, maison[k].x * 20, maison[k].y * 20, maisonGrise->w, maisonGrise->h);
-                    if ((mouse_x >= (maison[k].x * 20) && mouse_x <= (maison[k].x * 20 + 80)) && (mouse_y) >= (maison[k].y*20) && mouse_y <= (maison[k].y*20 + 120))
-                    {
-                        blit(infos,page,0,0,(maison[k].x * 20+10),(maison[k].y * 20+10),infos->w,infos->h);
-                        textprintf_ex(page,font,maison[k].x * 20+20,maison[k].y * 20+20,makecol(0,122,122),-1,"Maison :");
-                        textprintf_ex(page,font,maison[k].x * 20+20,maison[k].y * 20+35,makecol(0,122,122),-1,"%d/%d",maison[k].nb_habitants,maison[k].nb_habitants);
-                    }
+                }
+            }
+            for(k=0;k<nb_maison;k++)
+            {
+                if ((mouse_x >= (maison[k].x * 20) && mouse_x <= (maison[k].x * 20 + 80)) && (mouse_y) >= (maison[k].y*20) && mouse_y <= (maison[k].y*20 + 120))
+                {
+                    blit(infos,page,0,0,(maison[k].x * 20+10),(maison[k].y * 20+10),infos->w,infos->h);
+                    textprintf_ex(page,maPolice,maison[k].x * 20+20,maison[k].y * 20+15,makecol(0,122,122),-1,"Maison :");
+                    textprintf_ex(page,maPolice,maison[k].x * 20+20,maison[k].y * 20+30,makecol(0,122,122),-1,"%d/%d",maison[k].nb_habitants,maison[k].nb_habitants);
+                }
+            }
+            for(l=0; l<nb_centrales; l++)
+            {
+                if ((mouse_x >= (tab_elec[l].x * 20) && mouse_x <= (tab_elec[l].x * 20 + 120)) && (mouse_y) >= (tab_elec[l].y*20) && mouse_y <= (tab_elec[l].y*20 + 80))
+                {
+                    blit(infos,page,0,0,(tab_elec[l].x * 20+10),(tab_elec[l].y * 20+10),infos->w,infos->h);
+                    textprintf_ex(page,maPolice,tab_elec[l].x * 20+20,tab_elec[l].y * 20+15,makecol(0,122,122),-1,"Centrale %d :",l+1);
+                    textprintf_ex(page,maPolice,tab_elec[l].x * 20+20,tab_elec[l].y * 20+30,makecol(0,122,122),-1,"%d/%d",tab_elec[l].capaciteRestante,5000);
                 }
             }
         }
@@ -224,7 +225,7 @@ void interfaceNiveau(BITMAP* page, int type, int map[35][45])
     int compteurEau=0;
     int compteurElec=0;
     int compteurHab=0;
-    FONT * maPolice = load_font("submariner.pcx",NULL,NULL);
+
     compteurHab = compterHab(map);
     compteurEau = compterEau(map);
     compteurElec = compterElec(map);
@@ -242,6 +243,8 @@ void interfaceNiveau(BITMAP* page, int type, int map[35][45])
     BITMAP* nbElecInfos = load_bitmap("Interface/nbElecInfos.bmp", NULL);
     BITMAP* nbHab = load_bitmap("Interface/nbHab.bmp", NULL);
     BITMAP* nbHabInfos = load_bitmap("Interface/nbHabInfos.bmp", NULL);
+
+    FONT * maPolice = load_font("submariner.pcx",NULL,NULL);
 
     //Affichage de l'interface
     blit(fondCote, page, 0, 0, 900, 0, page->w, page->h);
